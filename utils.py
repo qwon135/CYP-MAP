@@ -1,79 +1,285 @@
-from rdkit import Chem
 import torch
-from pp_unimol import predict_som, to_matrix
-from sklearn.metrics import accuracy_score, f1_score, jaccard_score, precision_score, recall_score, roc_auc_score
 import numpy as np
+from sklearn.metrics import confusion_matrix, f1_score, jaccard_score, precision_score, recall_score, roc_auc_score, average_precision_score
+from torch_geometric.utils import unbatch
+import warnings
 
-def validation(model, valid_loader, smile2bond_target, dictionary, loss_fn, n_classes):
-    model.eval()    
-    valid_loss = 0
-    mol_f1s, mol_rec, mol_prc, mol_auc = 0, 0, 0, 0
-    bond_f1s, bond_prc, bond_rec, bond_auc = 0, 0, 0, 0
-    jac_score = 0
+warnings.filterwarnings('ignore', '.*Sparse CSR tensor support is in beta state.*')
 
-    y_prob_bond, y_true_bond, y_pred_bond = [], [], []
-    for batch in valid_loader:
-        smile = batch['target']['smi_name'][0]
-        mol = Chem.MolFromSmiles(smile)
-        som_target = smile2bond_target[ batch['target']['smi_name'][0]]
-        som_target = torch.from_numpy(np.array(som_target))
-        token_index = torch.BoolTensor( [i not in dictionary.special_index() for i in  batch['net_input']['src_tokens'][0].tolist()])
-        
-        with torch.no_grad():
-            logits, padding_mask = predict_som(model, batch, token_index)
-            loss = loss_fn(logits, som_target)
-        valid_loss += loss.cpu().item()
+def som_unbatch(x, num_count, num_mol, mid_list):
+    # print(torch.arange(num_mol).shape, torch.LongTensor(num_count).shape)
+    batch = torch.arange(num_mol).repeat_interleave(torch.LongTensor(num_count))
+    
+    new_dict = {}
+    for k,v in x.items():
+        # print(torch.tensor(v).shape, batch.shape)
+        x_unbatch = unbatch(torch.tensor(v), batch)
+        new_dict[k] = {mid : [round(j,3) for j in i.tolist()] for i, mid in zip(x_unbatch, mid_list)}
+            
+    return new_dict
 
-        y_true = som_target.tolist()
+def to_matrix(y_true, n_classes):
+    y_true = np.array(y_true)
+    y_true_ = np.zeros([y_true.shape[0], n_classes])
 
-        y_pred = logits.argmax(-1).cpu().tolist()
-        # print(len(set(y_pred)))
-        y_prob = torch.nn.functional.softmax( logits, 1 ).tolist()
+    for n, i in enumerate(y_true):
+        y_true_[n][i] = 1
+    return y_true_
 
-        y_true_bond += y_true
-        y_prob_bond += y_prob
-        y_pred_bond += y_pred
-
-        jac_score += jaccard_score(to_matrix(y_true, n_classes), to_matrix(y_pred, n_classes), average='macro')
-
-        mol_f1s += f1_score(y_true, y_pred, average='macro')    
-        mol_prc += precision_score(y_true, y_pred, average='macro')
-        mol_rec += recall_score(y_true, y_pred, average='macro')
-        # mol_auc = roc_auc_score(y_true, y_prob, average='macro', multi_class='ovo')
-    valid_loss /= len(valid_loader)
-
-    mol_f1s/= len(valid_loader)
-    mol_prc/= len(valid_loader)
-    mol_rec/= len(valid_loader)  
-    # mol_auc/= len(valid_loader)  
-
-    jac_score /= len(valid_loader)
-
-    y_true_bond = np.array(y_true_bond)
-    y_prob_bond = np.array(y_prob_bond)
-        
-    bond_f1s = f1_score(y_true_bond, y_pred_bond, average='macro')    
-    bond_prc = precision_score(y_true_bond, y_pred_bond, average='macro')
-    bond_rec = recall_score(y_true_bond, y_pred_bond, average='macro')    
+def custom_jaccard_score(test_bond_label, test_bond_preds):
     try:
-        bond_auc = roc_auc_score(y_true_bond, y_prob_bond, average='macro', multi_class='ovo')
-    except:        
-        bond_auc = 0
+        [[TN, FP], [FN, TP]] = confusion_matrix(test_bond_label, test_bond_preds)    
+        return TP / (TP + FP + FN)
+    except:
+        return 0
 
-    return valid_loss, mol_f1s, mol_prc, mol_rec, bond_f1s, bond_prc, bond_rec, bond_auc, jac_score
+def calculate_roc_auc(y_true, y_score):
+    if set(y_true) == set([0]):
+        return 0
+    y_true, y_score = np.array(y_true), np.array(y_score)
+    # print(y_true.shape, y_score.shape)
+    return roc_auc_score(y_true, y_score)
 
+class Validator:
+    def __init__(self, cyp_list):
+        self.cyp_list = cyp_list
+        self.valid_loss_dict = {'total_loss' : 0, 'valid_loss' : 0}    
+        self.y_true = {}
+        self.y_prob = {}
 
-def get_loaders(task, cyp, class_type):
-    task.load_dataset(f'train_{cyp}_class_type{class_type}')
-    train_dataset = task.dataset(f'train_{cyp}_class_type{class_type}')
-    train_loader = task.get_batch_iterator(train_dataset, batch_size=1, ).next_epoch_itr(shuffle=True)
+        self.mid_list = []        
+        self.node_batch, self.n_nodes = [], []
+        self.edge_batch, self.n_edges = [], []
+        self.equivalent_bonds = []
+        self.equivalent_atoms = []
 
-    task.load_dataset(f'valid_{cyp}_class_type{class_type}')
-    valid_dataset = task.dataset(f'valid_{cyp}_class_type{class_type}')
-    valid_loader = task.get_batch_iterator(valid_dataset, batch_size=1, ).next_epoch_itr(shuffle=False)
+        self.spn_atom = []
+        self.has_H = []
+        self.not_H_bond = []
+                
+        self.tasks = ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc']
+        for task in self.tasks:
+            self.y_true[task] = {}
+            self.y_prob[task] = {}
 
-    task.load_dataset(f'test_{cyp}_class_type{class_type}')
-    test_dataset = task.dataset(f'test_{cyp}_class_type{class_type}')
-    test_loader = task.get_batch_iterator(test_dataset, batch_size=1, ).next_epoch_itr(shuffle=False)
-    # test_loader = None
-    return train_loader, valid_loader, test_loader
+            for cyp in cyp_list:
+                self.y_true[task][cyp] = []
+                self.y_prob[task][cyp] = []            
+                self.valid_loss_dict[f'{cyp}_{task}_loss'] = 0
+
+    def add_probs(self, prediction):
+        for cyp in self.cyp_list:
+            for task in self.tasks:
+                self.y_prob[task][cyp] += prediction[f'{cyp}_{task}_logits'].sigmoid().cpu().tolist()
+                self.y_true[task][cyp] += prediction[f'{cyp}_{task}_label'].cpu().tolist()
+
+    def get_probs(self, task, cyp):
+        if task == 'som':                
+            y_true = np.array(self.y_true['bond'][cyp] + self.y_true['spn'][cyp]+ self.y_true['H'][cyp])
+            y_prob = np.array(self.y_prob['bond'][cyp] + self.y_prob['spn'][cyp]+ self.y_prob['H'][cyp])
+            
+            pos = self.not_H_bond + self.spn_atom + self.has_H
+            return y_true[pos], y_prob[pos]
+        y_prob = np.array(self.y_prob[task][cyp])
+        y_true = np.array(self.y_true[task][cyp])
+        if task in ['bond', 'clv', 'nn_oxi', 'rdc']:
+            y_prob = y_prob[self.not_H_bond]
+            y_true = y_true[self.not_H_bond]
+            
+        elif task in ['nh_oxi', 'H', 'atom']:
+            y_prob = y_prob[self.has_H]
+            y_true = y_true[self.has_H]
+        
+        elif task in ['spn']:
+            y_prob = y_prob[self.spn_atom]
+            y_true = y_true[self.spn_atom]
+        return y_true, y_prob
+
+    def add_graph_info(self, batch):
+        self.mid_list += batch.mid
+        if self.node_batch:
+            self.node_batch += (batch.batch + (self.node_batch[-1] + 1)).tolist()
+        else:
+            self.node_batch += batch.batch.tolist()
+        
+        edge_batch = torch.repeat_interleave(torch.arange(batch.num_graphs).to(batch.x.device), batch.n_edges, dim=0)
+        edge_batch = edge_batch.view(edge_batch.shape[0]//2, 2)[:, 0].cpu()
+        if self.edge_batch:
+            self.edge_batch += (edge_batch + self.edge_batch[-1] + 1).tolist()
+        else:
+            self.edge_batch += edge_batch.tolist()
+
+        self.equivalent_bonds += batch.equivalent_bonds
+        self.equivalent_atoms += batch.equivalent_atoms
+
+        self.n_nodes += batch.n_nodes.tolist()
+        self.n_edges += (batch.n_edges//2).tolist()
+
+        self.has_H += batch.has_H_atom.tolist()
+        self.not_H_bond += batch.not_has_H_bond.tolist()        
+        self.spn_atom += batch.spn_atom.tolist()
+    
+    def adjust_substrate(self, sub_th):
+        for cyp in self.cyp_list:
+            y_prob_sub = torch.FloatTensor(self.y_prob['subs'][cyp])
+            n_nodes = torch.LongTensor(self.n_nodes)
+            n_edges = torch.LongTensor(self.n_edges)
+
+            sub_node = (torch.repeat_interleave(y_prob_sub, n_nodes) > sub_th).long().numpy()
+            sub_edge = (torch.repeat_interleave(y_prob_sub, n_edges) > sub_th).long().numpy()
+    
+            for task in self.tasks:
+                if task == 'subs':
+                    continue
+                if task in ['bond', 'clv', 'nn_oxi', 'rdc']:
+                    self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * sub_edge).tolist()
+                else:
+                    self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * sub_node).tolist()
+
+    def adjust_som(self, th):
+        for cyp in self.cyp_list:            
+            for task in self.tasks:
+                if task == 'subs':
+                    continue
+                if task in ['spn', 'H', 'nh_oxi']:
+                    self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * (np.array(self.y_prob['atom'][cyp]) >th).astype(int)).tolist()
+                elif task in ['clv', 'nn_oxi', 'rdc']:
+                    self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * (np.array(self.y_prob['bond'][cyp]) >th).astype(int) ).tolist()
+
+    def add_loss(self, loss_dict):
+        self.valid_loss_dict['total_loss'] += loss_dict['total_loss']
+        for cyp in self.cyp_list:
+            self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_bond_loss']
+            self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_H_loss']
+            self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_spn_loss']
+            # self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_clv_loss']
+            # self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_nh_oxi_loss']
+            # self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_nn_oxi_loss']
+                                                     
+            for task in self.tasks:
+                try:
+                    self.valid_loss_dict[f'{cyp}_{task}_loss'] += loss_dict[f'{cyp}_{task}_loss'].item()
+                except:
+                    self.valid_loss_dict[f'{cyp}_{task}_loss'] += loss_dict[f'{cyp}_{task}_loss']
+    
+    def get_probs_by_mid(self, mid):
+        pass
+
+    def get_scores(self, task, cyp, average, th, y_true=None, y_prob=None):
+        if y_true is None and y_prob is None:
+            y_true, y_prob = self.get_probs(task, cyp)
+        
+        y_pred = (np.array(y_prob) > th).astype(int)
+
+        jac = custom_jaccard_score(y_true, y_pred)
+        f1s = f1_score(y_true, y_pred, average=average,  zero_division=0)
+        prc = precision_score(y_true, y_pred, average=average,  zero_division=0)
+        rec = recall_score(y_true, y_pred, average=average,  zero_division=0)
+        auc = calculate_roc_auc(y_true, y_prob)
+        apc = average_precision_score(y_true, y_prob)
+        return jac, f1s, prc, rec, auc, apc
+
+    def unbatch(self):
+        node_batch = np.repeat(np.arange(len(self.n_nodes)), self.n_nodes)
+        edge_batch = np.repeat(np.arange(len(self.n_edges)), self.n_edges)
+
+        self.y_prob_unbatch = {}
+        self.y_true_unbatch = {}
+
+        for tsk in [ 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc']:
+            self.y_prob_unbatch[tsk] = {}
+            self.y_true_unbatch[tsk] = {}
+
+        for tsk in ['bond', 'clv', 'nn_oxi', 'rdc']:
+            for cyp in self.cyp_list:
+                self.y_prob_unbatch[tsk][cyp] = self.som_unbatch(self.y_prob[tsk][cyp], edge_batch)
+                self.y_true_unbatch[tsk][cyp] = self.som_unbatch(self.y_true[tsk][cyp], edge_batch)
+        
+        for tsk in ['atom', 'spn', 'H', 'nh_oxi']:
+            for cyp in self.cyp_list:
+                self.y_prob_unbatch[tsk][cyp] = self.som_unbatch(self.y_prob[tsk][cyp], node_batch)
+                self.y_true_unbatch[tsk][cyp] = self.som_unbatch(self.y_true[tsk][cyp], node_batch)        
+
+    def eq_mean(self):        
+        for mol_idx, eq_bonds in enumerate(self.equivalent_bonds):
+            for b1, b2 in eq_bonds:
+                for tsk in ['bond', 'clv', 'nn_oxi', 'rdc']:
+                    for cyp in self.cyp_list:                                
+                        avg_prob = (self.y_prob_unbatch[tsk][cyp][mol_idx][b1] + self.y_prob_unbatch[tsk][cyp][mol_idx][b2])/2
+                        self.y_prob_unbatch[tsk][cyp][mol_idx][b1] = avg_prob
+                        self.y_prob_unbatch[tsk][cyp][mol_idx][b2] = avg_prob
+
+        for mol_idx, eq_atoms in enumerate(self.equivalent_atoms):
+            for a1, a2 in eq_atoms:
+                for tsk in ['atom', 'spn', 'H', 'nh_oxi']:    
+                    for cyp in self.cyp_list:                                
+                        avg_prob = (self.y_prob_unbatch[tsk][cyp][mol_idx][a1] + self.y_prob_unbatch[tsk][cyp][mol_idx][a2])/2
+                        self.y_prob_unbatch[tsk][cyp][mol_idx][a1] = avg_prob
+                        self.y_prob_unbatch[tsk][cyp][mol_idx][a2] = avg_prob
+
+        for tsk in [ 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc']:
+            for cyp in self.cyp_list:
+                self.y_prob[tsk][cyp] = np.concatenate( self.y_prob_unbatch[tsk][cyp], 0).tolist()                
+
+    def som_unbatch(self, x, batch):
+        batch = torch.from_numpy(batch)
+        x = np.array(x)
+        x = torch.from_numpy(x)
+        
+        x_unbatch = unbatch(x, batch)
+        x_unbatch = [i.numpy() for i in x_unbatch]
+                
+        return x_unbatch
+
+def validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args):
+    device = args.device
+    th,  average, test_only_reaction_mol = args.th, args.average, args.test_only_reaction_mol    
+    model.eval()
+
+    validator = Validator(cyp_list=model.cyp_list)
+    tasks = ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc']
+
+    for batch, batch_H in valid_loader:
+        if args.add_H:
+            batch = batch_H.to(device)
+        else:
+            batch = batch.to(device)
+
+        validator.add_graph_info(batch)
+        with torch.no_grad():
+            _, loss_dict, prediction = model.forward_with_loss(batch, loss_fn_ce, loss_fn_bce, device, args)
+        validator.add_loss(loss_dict)        
+        validator.add_probs(prediction)
+
+    scores = {k:v/ len(valid_loader) for k,v in validator.valid_loss_dict.items()}
+
+    if args.adjust_substrate:
+        validator.adjust_substrate(args.substrate_th)
+
+    tasks = ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc', 'som'] # reduction
+    metrics = ['jac','f1s','prc','rec','auc', 'apc']
+
+    if args.equivalent_mean:
+        validator.unbatch()
+        validator.eq_mean()
+
+    for cyp in model.cyp_list:
+        scores[cyp] = {}
+        scores[cyp][args.th] = {}
+                            
+        for task in tasks:
+            y_true, y_prob = validator.get_probs(task, cyp)
+            scores[cyp][f'n_{task}'] = f'{int(sum(y_true))} / {len(y_true)}'
+            if task != 'som':
+                scores[cyp][f'{task}_loss'] = validator.valid_loss_dict[f'{cyp}_{task}_loss']
+            if task == 'subs':
+                task_scores = validator.get_scores(task, cyp, average, args.substrate_th)
+            else:
+                task_scores = validator.get_scores(task, cyp, average, args.th)            
+
+            for mname, tscore in zip(metrics, task_scores):
+                scores[cyp][th][f'{mname}_{task}'] = tscore
+
+    scores['validator'] = validator
+
+    return scores
