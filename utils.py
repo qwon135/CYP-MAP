@@ -54,9 +54,11 @@ class Validator:
         self.equivalent_atoms = []
 
         self.spn_atom = []
-        self.has_H = []
+        self.has_H_atom = []
         self.not_H_bond = []
-                
+        self.bonds_idx_h = []
+        self.first_H_bond_idx = []
+
         self.tasks = ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc']
         for task in self.tasks:
             self.y_true[task] = {}
@@ -78,21 +80,26 @@ class Validator:
             y_true = np.array(self.y_true['bond'][cyp] + self.y_true['spn'][cyp]+ self.y_true['H'][cyp])
             y_prob = np.array(self.y_prob['bond'][cyp] + self.y_prob['spn'][cyp]+ self.y_prob['H'][cyp])
             
-            pos = self.not_H_bond + self.spn_atom + self.has_H
+            pos = self.not_H_bond + self.spn_atom + self.first_H_bond_idx
             return y_true[pos], y_prob[pos]
+        
         y_prob = np.array(self.y_prob[task][cyp])
         y_true = np.array(self.y_true[task][cyp])
         if task in ['bond', 'clv', 'nn_oxi', 'rdc']:
             y_prob = y_prob[self.not_H_bond]
             y_true = y_true[self.not_H_bond]
             
-        elif task in ['nh_oxi', 'H', 'atom']:
-            y_prob = y_prob[self.has_H]
-            y_true = y_true[self.has_H]
+        elif task in ['atom']:
+            y_prob = y_prob[self.has_H_atom]
+            y_true = y_true[self.has_H_atom]
         
         elif task in ['spn']:
             y_prob = y_prob[self.spn_atom]
             y_true = y_true[self.spn_atom]
+        elif task in ['H', 'nh_oxi']:
+            y_prob = y_prob[self.first_H_bond_idx]
+            y_true = y_true[self.first_H_bond_idx]            
+  
         return y_true, y_prob
 
     def add_graph_info(self, batch):
@@ -115,10 +122,11 @@ class Validator:
         self.n_nodes += batch.n_nodes.tolist()
         self.n_edges += (batch.n_edges//2).tolist()
 
-        self.has_H += batch.has_H_atom.tolist()
+        self.has_H_atom += batch.has_H_atom.tolist()
         self.not_H_bond += batch.not_has_H_bond.tolist()        
+        self.first_H_bond_idx += batch.first_H_bond_idx.tolist()  
         self.spn_atom += batch.spn_atom.tolist()
-    
+        self.bonds_idx_h += batch.bonds_idx_h
     def adjust_substrate(self, sub_th):
         for cyp in self.cyp_list:
             y_prob_sub = torch.FloatTensor(self.y_prob['subs'][cyp])
@@ -131,7 +139,7 @@ class Validator:
             for task in self.tasks:
                 if task == 'subs':
                     continue
-                if task in ['bond', 'clv', 'nn_oxi', 'rdc']:
+                if task in ['bond', 'clv', 'H', 'nn_oxi', 'rdc', 'nh_oxi']:
                     self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * sub_edge).tolist()
                 else:
                     self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * sub_node).tolist()
@@ -141,9 +149,9 @@ class Validator:
             for task in self.tasks:
                 if task == 'subs':
                     continue
-                if task in ['spn', 'H', 'nh_oxi']:
+                if task in ['spn']:
                     self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * (np.array(self.y_prob['atom'][cyp]) >th).astype(int)).tolist()
-                elif task in ['clv', 'nn_oxi', 'rdc']:
+                elif task in ['clv', 'H', 'nn_oxi', 'rdc', 'nh_oxi']:
                     self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * (np.array(self.y_prob['bond'][cyp]) >th).astype(int) ).tolist()
 
     def add_loss(self, loss_dict):
@@ -185,17 +193,18 @@ class Validator:
 
         self.y_prob_unbatch = {}
         self.y_true_unbatch = {}
-
+        self.has_H_atom_unbatch = self.som_unbatch(self.has_H_atom, node_batch)
+        self.has_H_bond_unbatch = self.som_unbatch(~np.array(self.not_H_bond), edge_batch)
         for tsk in [ 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc']:
             self.y_prob_unbatch[tsk] = {}
             self.y_true_unbatch[tsk] = {}
 
-        for tsk in ['bond', 'clv', 'nn_oxi', 'rdc']:
+        for tsk in ['bond', 'clv', 'nn_oxi', 'rdc',  'nh_oxi', 'H']:
             for cyp in self.cyp_list:
                 self.y_prob_unbatch[tsk][cyp] = self.som_unbatch(self.y_prob[tsk][cyp], edge_batch)
                 self.y_true_unbatch[tsk][cyp] = self.som_unbatch(self.y_true[tsk][cyp], edge_batch)
         
-        for tsk in ['atom', 'spn', 'H', 'nh_oxi']:
+        for tsk in ['atom', 'spn',]:
             for cyp in self.cyp_list:
                 self.y_prob_unbatch[tsk][cyp] = self.som_unbatch(self.y_prob[tsk][cyp], node_batch)
                 self.y_true_unbatch[tsk][cyp] = self.som_unbatch(self.y_true[tsk][cyp], node_batch)        
@@ -203,7 +212,7 @@ class Validator:
     def eq_mean(self):        
         for mol_idx, eq_bonds in enumerate(self.equivalent_bonds):
             for b1, b2 in eq_bonds:
-                for tsk in ['bond', 'clv', 'nn_oxi', 'rdc']:
+                for tsk in ['bond', 'clv', 'nn_oxi',  'nh_oxi', 'rdc', 'H',]:
                     for cyp in self.cyp_list:                                
                         avg_prob = (self.y_prob_unbatch[tsk][cyp][mol_idx][b1] + self.y_prob_unbatch[tsk][cyp][mol_idx][b2])/2
                         self.y_prob_unbatch[tsk][cyp][mol_idx][b1] = avg_prob
@@ -211,7 +220,7 @@ class Validator:
 
         for mol_idx, eq_atoms in enumerate(self.equivalent_atoms):
             for a1, a2 in eq_atoms:
-                for tsk in ['atom', 'spn', 'H', 'nh_oxi']:    
+                for tsk in ['atom', 'spn']:    
                     for cyp in self.cyp_list:                                
                         avg_prob = (self.y_prob_unbatch[tsk][cyp][mol_idx][a1] + self.y_prob_unbatch[tsk][cyp][mol_idx][a2])/2
                         self.y_prob_unbatch[tsk][cyp][mol_idx][a1] = avg_prob
@@ -258,6 +267,7 @@ def validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args):
 
     tasks = ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc', 'som'] # reduction
     metrics = ['jac','f1s','prc','rec','auc', 'apc']
+    validator.unbatch()
 
     if args.equivalent_mean:
         validator.unbatch()

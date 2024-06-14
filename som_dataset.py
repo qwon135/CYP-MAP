@@ -115,7 +115,8 @@ def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
     bond_nn_oxidation = [0] * len(bonds) # Reaction?
     bond_cleavage = [0] * len(bonds) # Reaction?
     bond_reduction = [0] * len(bonds)
-
+    bond_hydroxylation = [0] * len(bonds)
+    bond_nh_oxidation = [0] * len(bonds)
     bond_reaction_type = [''] * len(bonds)
         
     # spn_atoms_idx = [idx for idx, i in enumerate(atoms) if i in ['S', 'P', 'N']]
@@ -174,13 +175,22 @@ def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
                 bond_reaction_type[n] = reaction_type
                 if type_collect[reaction_type] == 'Oxidation':
                     bond_nn_oxidation[n] = 1
-                elif type_collect[reaction_type] == 'Cleavage':
+
+                if type_collect[reaction_type] == 'Cleavage':
                     bond_cleavage[n] = 1
+
+                if type_collect[reaction_type] == 'Hydroxylation':
+                    bond_hydroxylation[n] = 1
+
+                if (type_collect[reaction_type] == 'Oxidation') and ('H' in reaction_atoms) :
+                    bond_hydroxylation[n] = 1
+                    bond_nh_oxidation[n] = 1
+
                 if type_collect[reaction_type] == 'Reduction':
                     bond_reduction[n] = 1
     if return_type:
         return bond_label, bond_nn_oxidation, bond_cleavage, atom_label, atom_spn, atom_hydroxylation, atom_nh_oxidation, atom_oxidation, atom_reaction_type, bond_reaction_type
-    return bond_label, bond_nn_oxidation, bond_cleavage, bond_reduction, atom_label, atom_spn, atom_hydroxylation, atom_nh_oxidation, atom_oxidation
+    return bond_label, bond_nn_oxidation, bond_cleavage, bond_reduction, bond_hydroxylation, bond_nh_oxidation, atom_label, atom_spn, atom_hydroxylation, atom_nh_oxidation, atom_oxidation
     
 
 

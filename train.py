@@ -12,7 +12,8 @@ from rdkit.Chem import Draw, PandasTools
 from torch_geometric.loader import DataLoader
 from sklearn.metrics import accuracy_score, f1_score, jaccard_score, precision_score, recall_score, roc_auc_score, average_precision_score
 from som_dataset import CustomDataset, get_class_weight
-from models.som_models import GNNSOM
+# from models.som_models import GNNSOM
+from models.som_models_bondh import GNNSOM
 from sklearn.model_selection import train_test_split, StratifiedKFold
 import warnings
 from torch import nn
@@ -252,7 +253,6 @@ def main(args):
         state_dict=  torch.load(args.pretrain, map_location='cpu')
         if 'epoch' in args.pretrain:
             state_dict = state_dict['gnn_state_dict']
-
         e = model.gnn.load_state_dict(state_dict, strict=False)
         # e = model.gnn_som.load_state_dict(state_dict, strict=False)
         # e = model.gnn_type.load_state_dict(state_dict, strict=False)
@@ -280,12 +280,13 @@ def main(args):
 
     if args.warmup:
         print('do warmup!')
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optim, T_0=10, T_mult=1, verbose=False)
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optim, T_0=12, T_mult=1, verbose=False)
     else:
         print('not warmup!')
         scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optim, T_max=args.epochs, verbose=False)
     
-    ema = ExponentialMovingAverage(model.parameters(), decay=args.ema_decay)
+    ema = ExponentialMovingAverage(param_groups[0]['params'], decay=args.ema_decay)
+    ema_fc = ExponentialMovingAverage(param_groups[1]['params'] + param_groups[2]['params'], decay=0.9999)
 
     best_loss = 1e6
     patience = args.patience
@@ -332,6 +333,7 @@ def main(args):
             
             optim.step()   
             ema.update()
+            ema_fc.update()
     
             train_loss += loss.cpu().item()
         train_loss /= len(train_loader)

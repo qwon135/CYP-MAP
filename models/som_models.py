@@ -60,7 +60,7 @@ class SOMPredictor(torch.nn.Module):
         return logits    
 
 class SOMPredictorV2(torch.nn.Module):
-    def __init__(self, channels, dropout, n_classes, cyp_list):
+    def __init__(self, channels, dropout_som, dropout_type, n_classes, cyp_list):
         super().__init__()
         self.cyp_list = cyp_list
         self.proj_edge = torch.nn.Sequential(
@@ -71,8 +71,8 @@ class SOMPredictorV2(torch.nn.Module):
         self.reaction_head = torch.nn.ModuleDict()
         self.subtype_head = torch.nn.ModuleDict()
         for cyp in self.cyp_list:
-            self.reaction_head[cyp] = Attention(channels, dropout, 1)  # 반응 여부 예측 (0: 반응 없음, 1: 반응 있음)
-            self.subtype_head[cyp] = Attention(channels + 1, dropout, n_classes-1)  # subtype 예측 (1, 2, 3)
+            self.reaction_head[cyp] = Attention(channels, dropout_som, 1)  # 반응 여부 예측 (0: 반응 없음, 1: 반응 있음)
+            self.subtype_head[cyp] = Attention(channels + 1, dropout_type, n_classes-1)  # subtype 예측 (1, 2, 3)
 
     def forward(self, x):
         x = self.proj_edge(x)
@@ -178,11 +178,11 @@ class GNNSOM(torch.nn.Module):
                                             )
         self.substrate_fc[-1].weight.data.normal_(mean=0.0, std=0.01)
         if use_som_v2:
-            self.atom_fc = SOMPredictorV2(latent_size, dropout_som_fc, 4, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
-            self.bond_fc = SOMPredictorV2(latent_size, dropout_som_fc, 4, cyp_list) # Any reaction, Cleavage, n-n Oxidation, Reduction
+            self.atom_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 4, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
+            self.bond_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 4, cyp_list) # Any reaction, Cleavage, n-n Oxidation, Reduction
         else:
-            self.atom_fc = SOMPredictor(latent_size, dropout_som_fc, 4, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
-            self.bond_fc = SOMPredictor(latent_size, dropout_som_fc, 4, cyp_list) # Any reaction, Cleavage, n-n Oxidation        
+            self.atom_fc = SOMPredictor(latent_size, dropout_som_fc, dropout_type_fc, 4, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
+            self.bond_fc = SOMPredictor(latent_size, dropout_som_fc, dropout_type_fc, 4, cyp_list) # Any reaction, Cleavage, n-n Oxidation        
         self.tasks = ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc']
         self.atom_tasks = ['atom',  'spn', 'H',  'nh_oxi']
         self.bond_tasks = ['bond', 'clv','nn_oxi', 'rdc']
