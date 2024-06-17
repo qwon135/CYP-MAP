@@ -1,17 +1,17 @@
-from dualgraph.mol import smiles2graphwithface
-from dualgraph.dataset import DGData
+from models.dualgraph.mol import smiles2graphwithface
+from models.dualgraph.dataset import DGData
 import torch, random
 import numpy as np
 import torch_geometric.transforms as T
 from rdkit.Chem import AllChem
 from rdkit import Chem
 from torch_geometric.data import InMemoryDataset
-from dualgraph.dataset import DGData
+from models.dualgraph.dataset import DGData
 from add_equevalent import get_equivalent_bonds
 from torch_geometric.utils import to_dense_batch, dense_to_sparse
 from torch_geometric.utils import shuffle_node, mask_feature, dropout_node, dropout_edge
 from torch_geometric.transforms import RandomNodeSplit
-from torch_geometric.utils.subgraph import subgraph
+# from torch_geometric.utils.subgraph import subgraph
 
 
 # import warnings
@@ -111,20 +111,22 @@ def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
     
     reactions = [i for i in list(set(reactions)) if i]
    
-    bond_label = [0] * len(bonds) # Reaction?
-    bond_nn_oxidation = [0] * len(bonds) # Reaction?
+    bond_label = [0] * len(bonds) # Reaction?    
+    
     bond_cleavage = [0] * len(bonds) # Reaction?
     bond_reduction = [0] * len(bonds)
     bond_hydroxylation = [0] * len(bonds)
-    bond_nh_oxidation = [0] * len(bonds)
+    bond_oxidation = [0] * len(bonds)
+
     bond_reaction_type = [''] * len(bonds)
         
     # spn_atoms_idx = [idx for idx, i in enumerate(atoms) if i in ['S', 'P', 'N']]
     atom_label = [0] * len(atoms)
     atom_spn = [0] * len(atoms)
     atom_hydroxylation = [0] * len(atoms)
-    atom_nh_oxidation = [0] * len(atoms)
     atom_oxidation  = [0] * len(atoms)
+    atom_cleavage = [0] * len(atoms)
+    atom_reduction = [0] * len(atoms)
 
     atom_reaction_type = [''] * len(atoms)
 
@@ -159,22 +161,28 @@ def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
                 if type_collect[reaction_type] == 'Hydroxylation':
                     atom_hydroxylation[s_atom_idx] = 1
                     atom_hydroxylation[e_atom_idx] = 1                
+                
                 if (type_collect[reaction_type] == 'Oxidation'):
                     atom_oxidation[s_atom_idx] = 1
                     atom_oxidation[e_atom_idx] = 1
 
                 if (type_collect[reaction_type] == 'Oxidation') and ('H' in reaction_atoms) : # n-H인 Oxidaiton은 Hydroxylation으로 가정
                     atom_hydroxylation[s_atom_idx] = 1
-                    atom_hydroxylation[e_atom_idx] = 1
-                
-                    atom_nh_oxidation[s_atom_idx] = 1
-                    atom_nh_oxidation[e_atom_idx] = 1
-                
+                    atom_hydroxylation[e_atom_idx] = 1                                
+
+                if type_collect[reaction_type] == 'Cleavage':
+                    atom_cleavage[s_atom_idx] = 1
+                    atom_cleavage[e_atom_idx] = 1
+
+                if type_collect[reaction_type] == 'Reduction':
+                    atom_reduction[s_atom_idx] = 1
+                    atom_reduction[e_atom_idx] = 1
+
             if is_react:
                 bond_label[n] = 1                
                 bond_reaction_type[n] = reaction_type
                 if type_collect[reaction_type] == 'Oxidation':
-                    bond_nn_oxidation[n] = 1
+                    bond_oxidation[n] = 1
 
                 if type_collect[reaction_type] == 'Cleavage':
                     bond_cleavage[n] = 1
@@ -183,14 +191,24 @@ def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
                     bond_hydroxylation[n] = 1
 
                 if (type_collect[reaction_type] == 'Oxidation') and ('H' in reaction_atoms) :
-                    bond_hydroxylation[n] = 1
-                    bond_nh_oxidation[n] = 1
+                    bond_hydroxylation[n] = 1                    
 
                 if type_collect[reaction_type] == 'Reduction':
                     bond_reduction[n] = 1
-    if return_type:
-        return bond_label, bond_nn_oxidation, bond_cleavage, atom_label, atom_spn, atom_hydroxylation, atom_nh_oxidation, atom_oxidation, atom_reaction_type, bond_reaction_type
-    return bond_label, bond_nn_oxidation, bond_cleavage, bond_reduction, bond_hydroxylation, bond_nh_oxidation, atom_label, atom_spn, atom_hydroxylation, atom_nh_oxidation, atom_oxidation
+    
+    return (
+            bond_label,
+            bond_cleavage,
+            bond_reduction,
+            bond_hydroxylation,
+            bond_oxidation,
+            atom_label,
+            atom_cleavage,
+            atom_reduction,
+            atom_hydroxylation,
+            atom_oxidation,
+            atom_spn
+            )
     
 
 
@@ -349,147 +367,13 @@ class CustomDataset(InMemoryDataset):
         return self.df.shape[0]
 
     def get(self, idx):
-        return self.graph_list[idx], self.graph_h_list[idx]
-        if (self.add_H == 'random') and (self.mode=='train'): 
-            if random.random() > 0.5:
-                graph = self.graph_h_list[idx]
-            else:    
-                graph = self.graph_list[idx]
-        elif self.add_H:
-            graph = self.graph_h_list[idx]
-        else:
-            graph = self.graph_list[idx]
+        return self.graph_h_list[idx]
         
-        # if self.mode=='train':
-        #     if random.random() < self.args.drop_node_p:
-        #         graph = drop_node_edge(graph, p=0.05, cyp_list=self.cyp_list)
-                
-        #     if random.random() < self.args.mask_node_p:
-        #         graph = node_mask(graph, 0.05)
-        #     # if random.random() < 0.3:
-        #     #     graph = shuffle_graph(graph, self.cyp_list)
-        return graph
 
     def process(self):
         if self.from_save_pt:
-            self.graph_list, self.graph_h_list = [], []
+            self.graph_h_list = []
             for mid in self.df['POS_ID'].tolist():                
                 self.graph_h_list.append(torch.load(f'graph_pt/{mid}_addh.pt'))                
-                self.graph_list.append(torch.load(f'graph_pt/{mid}.pt'))
-            return 
-        
-        self.labels, self.label_substrate, self.atom_labels = {}, {}, {}
-        self.bond_nn_oxidation, self.bond_cleavage = {}, {}
-        self.atom_spn, self.atom_hydroxylation, self.atom_nh_oxidation = {}, {}, {}
-
-        for cyp in self.cyp_list:
-            self.labels[cyp] = []
-            self.label_substrate[cyp] = []
-            self.atom_labels[cyp] = []
-            self.bond_nn_oxidation[cyp] = []
-            self.bond_cleavage[cyp] = []
-            self.atom_spn[cyp] = []
-            self.atom_hydroxylation[cyp] = []
-            self.atom_nh_oxidation[cyp] = []
-
-        self.atoms, self.atoms_h = [], []
-        self.graph_list, self.graph_h_list = [], []         
-
-        for i in range(self.df.shape[0]):
-            pos_id = self.df.loc[i, 'POS_ID']
-
-            mol = self.df.loc[i, 'ROMol']
-            atoms = [i.GetSymbol() for i in mol.GetAtoms()]
-            bonds_idx = [(i.GetBeginAtomIdx(),i.GetEndAtomIdx()) for i in mol.GetBonds()]
-            bonds = [(i.GetBeginAtom().GetSymbol(),i.GetEndAtom().GetSymbol()) for i in mol.GetBonds()]
-
-            mol_H = AllChem.AddHs( mol, addCoords=True)
-            atoms_h = [i.GetSymbol() for i in mol_H.GetAtoms()]
-            bonds_idx_h = [(i.GetBeginAtomIdx(),i.GetEndAtomIdx()) for i in mol_H.GetBonds()]
-            bonds_h = [(i.GetBeginAtom().GetSymbol(),i.GetEndAtom().GetSymbol()) for i in mol_H.GetBonds()]
-
-            self.atoms.append(atoms)
-            self.atoms_h.append(atoms_h)
-
-            graph = mol2graph(mol)
-            graph.equivalent_bonds = get_equivalent_bonds(mol)
-            graph.pe = None
-            graph.smile =  Chem.MolToSmiles(mol)
-            graph.spn_atom = torch.BoolTensor([i in ['S', 'N'] for i in atoms ])
-            graph.has_H_atom =  torch.BoolTensor([i.GetTotalNumHs() for i in mol.GetAtoms()])
-            graph.not_has_H_bond = torch.BoolTensor([('H'not in i) for i in bonds])
-
-            graph_h = mol2graph(mol_H)
-            graph_h.equivalent_bonds = get_equivalent_bonds(mol_H)
-            graph_h.pe = None
-            graph_h.smile =  Chem.MolToSmiles(mol_H)
-            graph_h.spn_atom = torch.BoolTensor([i in ['S', 'N'] for i in atoms_h ])
-            graph_h.has_H_atom = torch.BoolTensor(graph.has_H_atom.tolist() + [False] * (len(atoms_h) - len(atoms)))
-            graph_h.not_has_H_bond = torch.BoolTensor([('H' not in i) for i in bonds_h])
-
-            for cyp in self.cyp_list:                
-                reactions = self.df.loc[i, cyp].split('\n')
-                reactions = [check_ns_oxidation(i) for i in reactions]
-                if self.add_H:
-                    bond_label, bond_nn_oxidation, bond_cleavage, atom_label, atom_spn, atom_hydroxylation, atom_nh_oxidation = mol2bond_label(atoms=atoms_h, bonds=bonds_h, bonds_idx=bonds_idx_h, reactions=reactions)
-                else:
-                    bond_label, bond_nn_oxidation, bond_cleavage, atom_label, atom_spn, atom_hydroxylation, atom_nh_oxidation = mol2bond_label(atoms=atoms, bonds=bonds, bonds_idx=bonds_idx, reactions=reactions)
                 
-                self.labels[cyp].append(bond_label)
-                self.atom_labels[cyp].append(atom_label)
-                self.label_substrate[cyp].append([1 if self.df.loc[i, cyp] != '' else 0])
-                self.bond_nn_oxidation[cyp].append(bond_nn_oxidation)
-                self.bond_cleavage[cyp].append(bond_cleavage)
-
-                self.atom_spn[cyp].append(atom_spn)
-                self.atom_hydroxylation[cyp].append(atom_hydroxylation)
-                self.atom_nh_oxidation[cyp].append(atom_nh_oxidation)
-            
-            graph.atoms = self.atoms[i]
-            graph_h.atoms = self.atoms_h[i]            
-
-            y, y_substrate, y_atom = {}, {}, {}
-            y_nn_oxidation, y_cleavage = {}, {}
-            y_spn, y_hydroxylation, y_nh_oxidation = {}, {}, {}
-
-            for cyp in self.cyp_list:
-                y[cyp] = torch.FloatTensor(self.labels[cyp][i])
-                y_substrate[cyp] = torch.FloatTensor(self.label_substrate[cyp][i])
-                y_atom[cyp] = torch.FloatTensor(self.atom_labels[cyp][i])
-                y_nn_oxidation[cyp] = torch.FloatTensor(self.bond_nn_oxidation[cyp][i])
-
-                y_cleavage[cyp] = torch.FloatTensor(self.bond_cleavage[cyp][i])
-                y_spn[cyp] = torch.FloatTensor(self.atom_spn[cyp][i])
-                y_hydroxylation[cyp] = torch.FloatTensor(self.atom_hydroxylation[cyp][i])
-                y_nh_oxidation[cyp] = torch.FloatTensor(self.atom_nh_oxidation[cyp][i])
-            
-            if self.add_H:    
-
-                graph_h.y = y
-                graph_h.y_substrate = y_substrate
-                graph_h.y_atom = y_atom
-                
-                graph_h.y_nn_oxidation = y_nn_oxidation
-                graph_h.y_cleavage = y_cleavage
-                
-                graph_h.y_spn = y_spn
-                graph_h.y_hydroxylation = y_hydroxylation
-                graph_h.y_nh_oxidation = y_nh_oxidation
-
-                graph_h.mid = self.df.loc[i, 'POS_ID']        
-            else:                           
-                graph.y = y
-                graph.y_substrate = y_substrate
-                graph.y_atom = y_atom
-                
-                graph.y_nn_oxidation = y_nn_oxidation
-                graph.y_cleavage = y_cleavage
-                
-                graph.y_spn = y_spn
-                graph.y_hydroxylation = y_hydroxylation
-                graph.y_nh_oxidation = y_nh_oxidation
-
-                graph.mid = self.df.loc[i, 'POS_ID']        
-
-            self.graph_list.append(graph)
-            self.graph_h_list.append(graph_h)
+            return

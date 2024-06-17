@@ -18,7 +18,7 @@ from sklearn.model_selection import train_test_split, StratifiedKFold
 import warnings
 from torch import nn
 from utils import validation, to_matrix
-from segmentation_models_pytorch.losses import FocalLoss, DiceLoss
+# from segmentation_models_pytorch.losses import FocalLoss, DiceLoss
 from torch_ema import ExponentialMovingAverage
 from tabulate import tabulate
 
@@ -54,21 +54,20 @@ def get_logs(epoch, train_loss, scores, cyp_list, args, mode='Valid'):
         headers1 = ['CYP', 
                    'auc_subs', 'apc_subs', 'f1s_subs', 'n_subs',
                    'subs_loss', 'bond_loss', 'atom_loss',
-                    'clv_loss', 'nn_oxi_loss', 'H_loss', 'nh_oxi_loss', 'spn_loss'
+                    'clv_loss', 'oxi_loss', 'hdx_loss', 'rdc_loss',  'spn_loss'
                    ]
         
         headers2 = ['CYP',
                     'jac_bond', 'f1s_bond', 'apc_bond', 'n_bond',
-                    'jac_spn', 'f1s_spn', 'apc_spn', 'n_spn',
-                    'jac_H', 'f1s_H', 'apc_H', 'n_H',
+                    'jac_spn', 'f1s_spn', 'apc_spn', 'n_spn',                    
                     'jac_som', 'f1s_som', 'apc_som', 'n_som',
                     ]   
-        headers3 = ['CYP', 
-                    'jac_nh_oxi', 'f1s_nh_oxi', 'apc_nh_oxi', 'n_nh_oxi',
-                    'jac_clv', 'f1s_clv', 'apc_clv',  'n_clv',
-                    'jac_nn_oxi', 'f1s_nn_oxi', 'apc_nn_oxi',  'n_nn_oxi', 
+        headers3 = ['CYP',                     
+                    'jac_hdx', 'f1s_hdx', 'apc_hdx', 'n_hdx',
+                    'jac_oxi', 'f1s_oxi', 'apc_oxi',  'n_oxi', 
+                    'jac_clv', 'f1s_clv', 'apc_clv',  'n_clv',                    
                     'jac_rdc', 'f1s_rdc', 'apc_rdc',  'n_rdc', 
-
+                    
                     ]                              
         row1, row2, row3 = [cyp], [cyp], [cyp]
         for header in headers1[1:]:
@@ -194,6 +193,7 @@ def main(args):
 
     if args.train_with_non_reaction:
         print(f'load train_nonreact_0611.sdf!')        
+        # df = PandasTools.LoadSDF('data/train_nonreact_0611.sdf')
         df = PandasTools.LoadSDF('../data/train_nonreact_0611.sdf')
     else:
         print(f'load train_0611.sdf!')
@@ -213,7 +213,7 @@ def main(args):
     print('Reaction Ratio train data : ', train_df[train_df['CYP_REACTION'] != ''].shape[0], '/', train_df.shape[0])
     
     if args.filt_decoy:
-        remove_decoy_ids_60 = pd.read_csv('../data/remove_decoy_ids_85.csv', index_col=None)
+        remove_decoy_ids_60 = pd.read_csv('data/remove_decoy_ids_85.csv', index_col=None)
         remove_ids = remove_decoy_ids_60['remove_ids'].tolist()
         n_train, n_valid = train_df.shape[0], valid_df.shape[0]
         train_df = train_df[~train_df['ID'].isin(remove_ids)].reset_index(drop=True)
@@ -285,8 +285,7 @@ def main(args):
         print('not warmup!')
         scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optim, T_max=args.epochs, verbose=False)
     
-    ema = ExponentialMovingAverage(param_groups[0]['params'], decay=args.ema_decay)
-    ema_fc = ExponentialMovingAverage(param_groups[1]['params'] + param_groups[2]['params'], decay=0.9999)
+    ema = ExponentialMovingAverage(model.parameters(), decay=args.ema_decay)
 
     best_loss = 1e6
     patience = args.patience
@@ -311,16 +310,8 @@ def main(args):
         
         train_loss = 0
         model.train()
-        for step, (batch, batch_H) in enumerate(train_loader):
-            if args.train_add_H_random:
-                if random.random() > 0.5:
-                    batch = batch.to(device)
-                else:
-                    batch = batch_H.to(device)
-            elif args.add_H:
-                batch = batch_H.to(device)
-            else:
-                batch = batch.to(device)
+        for step, batch in enumerate(train_loader):         
+            batch = batch.to(device)
 
             optim.zero_grad()
             
@@ -333,14 +324,13 @@ def main(args):
             
             optim.step()   
             ema.update()
-            ema_fc.update()
     
             train_loss += loss.cpu().item()
         train_loss /= len(train_loader)
         val_scores = validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args)        
         val_loss_dict = {'epoch' : epoch}
         for cyp in cyp_list:
-            for task in ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi']:
+            for task in ['subs', 'bond', 'atom',  'spn', 'hdx', 'clv', 'oxi', 'rdc']:
                 val_loss_dict[f'{cyp}_{task}_loss'] = val_scores[f'{cyp}_{task}_loss']
 
         loss_df.append(val_loss_dict)        
@@ -433,13 +423,13 @@ def parse_args():
     parser.add_argument("--device", type=str, default='cuda:0')
     parser.add_argument("--cyp_list", type=str, default='1A2 2A6 2B6 2C8 2C9 2C19 2D6 2E1 3A4 CYP_REACTION')
     parser.add_argument("--pooling", type=str, default='sum')    
-    parser.add_argument("--train_add_H_random", type=int, default=1)
+    parser.add_argument("--train_add_H_random", type=int, default=0)
     parser.add_argument("--add_H", type=int, default=1)
     parser.add_argument("--drop_node_p", type=float, default=0.0)
     parser.add_argument("--mask_node_p", type=float, default=0.0)
     parser.add_argument("--train_only_spn_H_atom", type=int, default=0)
     parser.add_argument("--patience", type=int, default=8)
-    parser.add_argument("--print_test_every", type=int, default=0)
+    parser.add_argument("--print_test_every", type=int, default=1)
     parser.add_argument("--filt_decoy", type=int, default=0)
     parser.add_argument("--reduction", type=str, default='sum')
 

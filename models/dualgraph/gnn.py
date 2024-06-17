@@ -555,7 +555,8 @@ class GNN2(nn.Module):
             #     mol_feat_bond = mol_feat_bond * mask_3
 
             return mol_feat_atom, mol_feat_bond, mol_feat_ring, x, edge_attr, u
-
+        else:
+            return self.pooling(x, node_batch, size=num_graphs)
         if self.gradmultiply > 0:
             x = self.pooling(x, node_batch, size=num_graphs)
             x = GradMultiply.apply(x, self.gradmultiply)        

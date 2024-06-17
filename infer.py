@@ -55,26 +55,25 @@ def get_logs(scores, cyp_list, args):
     table_data4 = []
     for cyp in cyp_list:        
         headers1 = ['CYP', 
-                   'auc_subs', 'apc_subs', 'f1s_subs', 'rec_subs', 'prc_subs', 'n_subs',
+                   'auc_subs', 'apc_subs', 'f1s_subs', 'n_subs',
                    'subs_loss', 'bond_loss', 'atom_loss',
-                    'clv_loss', 'nn_oxi_loss', 'rdc_loss', 'H_loss', 'nh_oxi_loss', 'spn_loss'
+                    'clv_loss', 'oxi_loss', 'hdx_loss', 'rdc_loss',  'spn_loss'
                    ]
         
         headers2 = ['CYP',
                     'jac_bond', 'f1s_bond', 'apc_bond', 'n_bond',
-                    'jac_spn', 'f1s_spn', 'apc_spn', 'n_spn',
-                    'jac_H', 'f1s_H', 'apc_H', 'n_H',
+                    'jac_spn', 'f1s_spn', 'apc_spn', 'n_spn',                    
                     'jac_som', 'f1s_som', 'apc_som', 'n_som',
                     ]   
-        headers3 = ['CYP', 
-                    'jac_nh_oxi', 'f1s_nh_oxi', 'apc_nh_oxi', 'n_nh_oxi',
-                    'jac_clv', 'f1s_clv', 'apc_clv',  'n_clv',
-                    'jac_nn_oxi', 'f1s_nn_oxi', 'apc_nn_oxi',  'n_nn_oxi', 
+        headers3 = ['CYP',                     
+                    'jac_hdx', 'f1s_hdx', 'apc_hdx', 'n_hdx',
+                    'jac_oxi', 'f1s_oxi', 'apc_oxi',  'n_oxi', 
+                    'jac_clv', 'f1s_clv', 'apc_clv',  'n_clv',                    
                     'jac_rdc', 'f1s_rdc', 'apc_rdc',  'n_rdc', 
-
-                    ]        
+                    
+                    ]       
         headers4 = ['CYP',
-                    'n_subs', 'n_bond', 'n_spn', 'n_H', 'n_nh_oxi', 'n_clv', 'n_nn_oxi', 'n_rdc', 'n_som'
+                    'n_subs', 'n_bond', 'n_spn', 'n_som', 'n_hdx', 'n_oxi', 'n_clv', 'n_rdc'
                     ]          
         row1, row2, row3, row4 = [cyp], [cyp], [cyp], [cyp]
         for header in headers1[1:]:
@@ -177,12 +176,14 @@ def main(args):
         'auc_subs', 'apc_subs', 'f1s_subs',
         'jac_bond', 'f1s_bond', 'prc_bond', 'rec_bond', 'auc_bond', 'apc_bond',
         'jac_spn', 'f1s_spn', 'prc_spn', 'rec_spn', 'auc_spn', 'apc_spn',
-        'jac_H', 'f1s_H', 'prc_H', 'rec_H', 'auc_H', 'apc_H',
-        'jac_nh_oxi', 'f1s_nh_oxi', 'prc_nh_oxi', 'rec_nh_oxi', 'auc_nh_oxi', 'apc_nh_oxi',
-        'jac_clv', 'f1s_clv', 'prc_clv', 'rec_clv', 'auc_clv', 'apc_clv',
-        'jac_nn_oxi', 'f1s_nn_oxi', 'prc_nn_oxi', 'rec_nn_oxi', 'auc_nn_oxi', 'apc_nn_oxi',
-        'jac_reduction', 'f1s_reduction', 'apc_reduction',  'n_reduction', 
-        'jac_som', 'f1s_som', 'prc_som', 'rec_som', 'auc_som', 'apc_som',]
+        'jac_som', 'f1s_som', 'prc_som', 'rec_som', 'auc_som', 'apc_som',
+
+        'jac_hdx', 'f1s_hdx', 'prc_hdx', 'rec_hdx', 'auc_hdx', 'apc_hdx',
+        'jac_oxi', 'f1s_oxi', 'prc_oxi', 'rec_oxi', 'auc_oxi', 'apc_oxi',
+        'jac_clv', 'f1s_clv', 'prc_clv', 'rec_clv', 'auc_clv', 'apc_clv',        
+        'jac_rdc', 'f1s_rdc', 'apc_rdc', 'rec_rdc', 'auc_rdc', 'apc_rdc',
+        
+        ]
     score_df = []    
     test_scores = validation(model, test_loader, loss_fn_ce, loss_fn_bce, args)
     

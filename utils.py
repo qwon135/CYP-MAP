@@ -59,7 +59,7 @@ class Validator:
         self.bonds_idx_h = []
         self.first_H_bond_idx = []
 
-        self.tasks = ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc']
+        self.tasks = ['subs', 'bond', 'atom',  'spn', 'hdx', 'clv', 'oxi', 'rdc']
         for task in self.tasks:
             self.y_true[task] = {}
             self.y_prob[task] = {}
@@ -77,15 +77,20 @@ class Validator:
 
     def get_probs(self, task, cyp):
         if task == 'som':                
-            y_true = np.array(self.y_true['bond'][cyp] + self.y_true['spn'][cyp]+ self.y_true['H'][cyp])
-            y_prob = np.array(self.y_prob['bond'][cyp] + self.y_prob['spn'][cyp]+ self.y_prob['H'][cyp])
-            
-            pos = self.not_H_bond + self.spn_atom + self.first_H_bond_idx
+            # y_true = np.array(self.y_true['bond'][cyp] + self.y_true['spn'][cyp]+ self.y_true['hdx'][cyp])
+            # y_prob = np.array(self.y_prob['bond'][cyp] + self.y_prob['spn'][cyp]+ self.y_prob['hdx'][cyp])
+            # pos = self.not_H_bond + self.spn_atom + self.first_H_bond_idx
+
+            y_true = np.array(self.y_true['bond'][cyp] + self.y_true['spn'][cyp])
+            y_prob = np.array(self.y_prob['bond'][cyp] + self.y_prob['spn'][cyp])            
+            bonds_with_firstH = (np.array(self.not_H_bond) + np.array( self.first_H_bond_idx)).tolist()
+            pos = bonds_with_firstH + self.spn_atom
+
             return y_true[pos], y_prob[pos]
         
         y_prob = np.array(self.y_prob[task][cyp])
         y_true = np.array(self.y_true[task][cyp])
-        if task in ['bond', 'clv', 'nn_oxi', 'rdc']:
+        if task in ['bond', 'clv', 'rdc']:
             y_prob = y_prob[self.not_H_bond]
             y_true = y_true[self.not_H_bond]
             
@@ -96,10 +101,13 @@ class Validator:
         elif task in ['spn']:
             y_prob = y_prob[self.spn_atom]
             y_true = y_true[self.spn_atom]
-        elif task in ['H', 'nh_oxi']:
+        elif task in ['hdx']:
             y_prob = y_prob[self.first_H_bond_idx]
-            y_true = y_true[self.first_H_bond_idx]            
-  
+            y_true = y_true[self.first_H_bond_idx]
+        elif task in ['oxi']:
+            oxi_idx = np.array(self.not_H_bond) + np.array( self.first_H_bond_idx)
+            y_prob = y_prob[oxi_idx]
+            y_true = y_true[oxi_idx]            
         return y_true, y_prob
 
     def add_graph_info(self, batch):
@@ -139,7 +147,7 @@ class Validator:
             for task in self.tasks:
                 if task == 'subs':
                     continue
-                if task in ['bond', 'clv', 'H', 'nn_oxi', 'rdc', 'nh_oxi']:
+                if task in ['bond', 'clv', 'hdx', 'oxi', 'rdc']:
                     self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * sub_edge).tolist()
                 else:
                     self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * sub_node).tolist()
@@ -151,18 +159,15 @@ class Validator:
                     continue
                 if task in ['spn']:
                     self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * (np.array(self.y_prob['atom'][cyp]) >th).astype(int)).tolist()
-                elif task in ['clv', 'H', 'nn_oxi', 'rdc', 'nh_oxi']:
+                elif task in ['clv', 'hdx', 'oxi', 'rdc',]:
                     self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * (np.array(self.y_prob['bond'][cyp]) >th).astype(int) ).tolist()
 
     def add_loss(self, loss_dict):
         self.valid_loss_dict['total_loss'] += loss_dict['total_loss']
         for cyp in self.cyp_list:
             self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_bond_loss']
-            self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_H_loss']
-            self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_spn_loss']
-            # self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_clv_loss']
-            # self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_nh_oxi_loss']
-            # self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_nn_oxi_loss']
+            self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_hdx_loss']
+            self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_spn_loss']            
                                                      
             for task in self.tasks:
                 try:
@@ -195,11 +200,11 @@ class Validator:
         self.y_true_unbatch = {}
         self.has_H_atom_unbatch = self.som_unbatch(self.has_H_atom, node_batch)
         self.has_H_bond_unbatch = self.som_unbatch(~np.array(self.not_H_bond), edge_batch)
-        for tsk in [ 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc']:
+        for tsk in [ 'bond', 'atom',  'spn', 'hdx', 'clv', 'oxi', 'rdc']:
             self.y_prob_unbatch[tsk] = {}
             self.y_true_unbatch[tsk] = {}
 
-        for tsk in ['bond', 'clv', 'nn_oxi', 'rdc',  'nh_oxi', 'H']:
+        for tsk in ['bond', 'clv', 'oxi', 'rdc', 'hdx']:
             for cyp in self.cyp_list:
                 self.y_prob_unbatch[tsk][cyp] = self.som_unbatch(self.y_prob[tsk][cyp], edge_batch)
                 self.y_true_unbatch[tsk][cyp] = self.som_unbatch(self.y_true[tsk][cyp], edge_batch)
@@ -212,7 +217,7 @@ class Validator:
     def eq_mean(self):        
         for mol_idx, eq_bonds in enumerate(self.equivalent_bonds):
             for b1, b2 in eq_bonds:
-                for tsk in ['bond', 'clv', 'nn_oxi',  'nh_oxi', 'rdc', 'H',]:
+                for tsk in ['bond', 'clv', 'oxi', 'rdc', 'hdx',]:
                     for cyp in self.cyp_list:                                
                         avg_prob = (self.y_prob_unbatch[tsk][cyp][mol_idx][b1] + self.y_prob_unbatch[tsk][cyp][mol_idx][b2])/2
                         self.y_prob_unbatch[tsk][cyp][mol_idx][b1] = avg_prob
@@ -226,7 +231,7 @@ class Validator:
                         self.y_prob_unbatch[tsk][cyp][mol_idx][a1] = avg_prob
                         self.y_prob_unbatch[tsk][cyp][mol_idx][a2] = avg_prob
 
-        for tsk in [ 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc']:
+        for tsk in [ 'bond', 'atom',  'spn', 'hdx', 'clv', 'oxi', 'rdc']:
             for cyp in self.cyp_list:
                 self.y_prob[tsk][cyp] = np.concatenate( self.y_prob_unbatch[tsk][cyp], 0).tolist()                
 
@@ -246,13 +251,11 @@ def validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args):
     model.eval()
 
     validator = Validator(cyp_list=model.cyp_list)
-    tasks = ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc']
+    tasks = ['subs', 'bond', 'atom',  'spn', 'hdx', 'clv', 'oxi', 'rdc']
 
-    for batch, batch_H in valid_loader:
-        if args.add_H:
-            batch = batch_H.to(device)
-        else:
-            batch = batch.to(device)
+    for batch in valid_loader:
+        
+        batch = batch.to(device)
 
         validator.add_graph_info(batch)
         with torch.no_grad():
@@ -265,7 +268,7 @@ def validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args):
     if args.adjust_substrate:
         validator.adjust_substrate(args.substrate_th)
 
-    tasks = ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi', 'rdc', 'som'] # reduction
+    tasks = ['subs', 'bond', 'atom',  'spn', 'hdx', 'clv', 'oxi', 'rdc', 'som'] # reduction
     metrics = ['jac','f1s','prc','rec','auc', 'apc']
     validator.unbatch()
 
