@@ -22,10 +22,11 @@ from tqdm import tqdm
 import warnings
 warnings.filterwarnings('ignore', '.*Sparse CSR tensor support is in beta state.*')
 
+if not os.path.exists('graph_pt'):os.mkdir('graph_pt')
 cyp_list = ['BOM_1A2', 'BOM_2A6', 'BOM_2B6', 'BOM_2C8', 'BOM_2C9', 'BOM_2C19', 'BOM_2D6', 'BOM_2E1', 'BOM_3A4', 'CYP_REACTION']
 
-df = PandasTools.LoadSDF('../data/train_nonreact_0611.sdf')
-test_df = PandasTools.LoadSDF('../data/test_0611.sdf')
+df = PandasTools.LoadSDF('data/train_nonreact_0611.sdf')
+test_df = PandasTools.LoadSDF('data/test_0611.sdf')
 
 df.loc[df['PubChem_CID'] == '2078','BOM_3A4' ] = '<2,6;Cleavage;R1>\n<6,H;Hydroxylation;R1>'
 df.loc[df['PubChem_CID'] == '45279963','BOM_2B6' ] = '<2,31;Cleavage;R1>'

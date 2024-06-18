@@ -1,5 +1,5 @@
 from torch_geometric.data import InMemoryDataset
-from ogb.lsc import PygPCQM4MDataset
+from modules.ogb.lsc import PygPCQM4MDataset
 import pandas as pd
 from tqdm import tqdm
 from torch_geometric.data import Data
@@ -9,8 +9,8 @@ from torch_sparse import SparseTensor
 import re
 import os
 import shutil
-from ogb.utils.url import decide_download, download_url, extract_zip
-from dualgraph.mol import smiles2graphwithface
+from modules.ogb.utils.url import decide_download, download_url, extract_zip
+from modules.dualgraph.mol import smiles2graphwithface
 import numpy as np
 import io
 

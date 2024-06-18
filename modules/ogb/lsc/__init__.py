@@ -2,11 +2,11 @@ try:
     from .pcqm4m import PCQM4MDataset, PCQM4MEvaluator
 except ImportError:
     pass   
-
-try:
-    from .pcqm4m_pyg import PygPCQM4MDataset
-except ImportError:
-    pass
+from .pcqm4m_pyg import PygPCQM4MDataset
+# try:
+#     from .pcqm4m_pyg import PygPCQM4MDataset
+# except ImportError:
+#     pass
 
 try:
     from .pcqm4m_dgl import DglPCQM4MDataset

@@ -3,11 +3,10 @@ from torch import nn, Tensor
 from typing import Optional, Tuple
 import torch.nn.functional as F
 from torch_geometric.nn import MessagePassing
-from ogb.utils.features import get_atom_feature_dims, get_bond_feature_dims
+from modules.ogb.utils.features import get_atom_feature_dims, get_bond_feature_dims
 import math
 from torch_geometric.utils import softmax
 from torch_scatter import scatter
-from mamba_ssm import Mamba
 
 class MetaLayer(nn.Module):
     def __init__(

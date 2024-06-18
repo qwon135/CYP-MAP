@@ -1,4 +1,4 @@
-from ogb.utils.features import (
+from modules.ogb.utils.features import (
     allowable_features,
     atom_to_feature_vector,
     bond_to_feature_vector,
@@ -8,7 +8,7 @@ from ogb.utils.features import (
 from rdkit import Chem
 import numpy as np
 import random
-from dualgraph.graph import get2DConformer, Graph, getface
+from modules.dualgraph.graph import get2DConformer, Graph, getface
 
 def simles2graphwithface_with_mask(smiles_string, mask_rato=0.3):
 

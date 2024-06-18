@@ -7,7 +7,7 @@ import os.path as osp
 import torch
 import numpy as np
 
-from ogb.utils.url import decide_download, download_url, extract_zip, makedirs
+from modules.ogb.utils.url import decide_download, download_url, extract_zip, makedirs
 
 
 class WikiKG90MDataset(object):

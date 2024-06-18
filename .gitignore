@@ -1,3 +1,8 @@
+**/__pycache__/
 *.ipynb
 *.sh
 log_text
+**.pyc
+graph_pt
+dataset_path
+ckpt

@@ -1,4 +1,4 @@
-from ogb.utils.features import (allowable_features, atom_to_feature_vector,
+from modules.ogb.utils.features import (allowable_features, atom_to_feature_vector,
  bond_to_feature_vector, atom_feature_vector_to_dict, bond_feature_vector_to_dict) 
 from rdkit import Chem
 import numpy as np

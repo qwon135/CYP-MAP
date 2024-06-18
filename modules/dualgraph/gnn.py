@@ -7,7 +7,7 @@ from torch_geometric.nn import (
     GlobalAttention,
     Set2Set,    
 )
-from ogb.utils.features import get_atom_feature_dims, get_bond_feature_dims
+from modules.ogb.utils.features import get_atom_feature_dims, get_bond_feature_dims
 from .conv import (
     MLP,
     DropoutIfTraining,
