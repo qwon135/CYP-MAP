@@ -116,7 +116,7 @@ class SOMPredictorV5(torch.nn.Module):
     
 class GNNSOM(torch.nn.Module):
     def __init__(self, 
-                 channels = 512, num_layers = 2, gnn_num_layers=8,latent_size = 128, dropout=0.1, dropout_fc=0.1, dropout_som_fc=0.1, dropout_type_fc=0.1, n_classes=1, use_mamba=False, use_face=True, node_attn=True, face_attn=True,
+                 channels = 512, num_layers = 2, gnn_num_layers=8,latent_size = 128, dropout=0.1, dropout_fc=0.1, dropout_som_fc=0.1, dropout_type_fc=0.1, n_classes=1, use_face=True, node_attn=True, face_attn=True,
                  encoder_dropout= 0.0, pooling='sum', 
                 cyp_list= ['BOM_1A2', 'BOM_2A6', 'BOM_2B6', 'BOM_2C8', 'BOM_2C9', 'BOM_2C19', 'BOM_2D6', 'BOM_2E1', 'BOM_3A4'],
                 use_som_v2=False
@@ -140,7 +140,6 @@ class GNNSOM(torch.nn.Module):
                         node_reducer = pooling,
                         face_reducer = pooling,
                         graph_pooling = pooling,
-                        use_mamba=use_mamba,
                         node_attn = node_attn,
                         face_attn = face_attn,
                         encoder_dropout=encoder_dropout,

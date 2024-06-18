@@ -277,8 +277,7 @@ class GNN2(nn.Module):
         use_bn: bool = False,
         global_attn: bool = False,
         node_attn: bool = False,
-        face_attn: bool = False,
-        use_mamba: bool = False,
+        face_attn: bool = False,        
         som_mode:bool=False,
         flag: bool = False,
         ddi: bool = False,
@@ -369,7 +368,7 @@ class GNN2(nn.Module):
                     )
             else:
                 face_model = None
-            sublayer = MetaLayer4 if use_mamba else MetaLayer2
+            sublayer = MetaLayer2
             self.gnn_layers.append(
                 sublayer(
                     edge_model=edge_model,

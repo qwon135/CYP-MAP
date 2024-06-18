@@ -220,8 +220,7 @@ def main(args):
                 dropout=args.dropout, 
                 dropout_fc = args.dropout_fc,
                 dropout_som_fc=args.dropout_som_fc,
-                dropout_type_fc=args.dropout_type_fc,
-                use_mamba= True if args.use_mamba else False, 
+                dropout_type_fc=args.dropout_type_fc,                
                 cyp_list=cyp_list, 
                 use_face = True if args.use_face else False, 
                 node_attn = True if args.node_attn else False,
@@ -388,8 +387,7 @@ def parse_args():
     parser.add_argument("--filt_som", type=int, default=0)
     parser.add_argument("--gnn_type", type=str, default='gnn')
     parser.add_argument("--pretrain", type=str, default='pretrain/gnn_pretrain.pt')
-    parser.add_argument("--optim", type=str, default='adamw')
-    parser.add_argument("--use_mamba", type=int, default=0)
+    parser.add_argument("--optim", type=str, default='adamw')    
     parser.add_argument("--use_face", type=int, default=1)
     parser.add_argument("--node_attn", type=int, default=1)
     parser.add_argument("--face_attn", type=int, default=1)

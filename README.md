@@ -1,5 +1,8 @@
 # Site-of-metabolism
 
+### Prepare graph
+- python save_graph.py
+
 ### Train
 
 - python train.py --seed 42 --save_name 'cyp_som'

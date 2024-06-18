@@ -144,21 +144,19 @@ def main(args):
     df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1)
     df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4)
 
-    test_dataset = CustomDataset(df=test_df, class_type=class_type, args=args, cyp_list=cyp_list, add_H=True if args.add_H else False, mode='test')
+    test_dataset = CustomDataset(df=test_df, args=args, cyp_list=cyp_list, mode='test')
     test_loader = DataLoader(test_dataset, num_workers=2, batch_size=16, shuffle=False)
         
     model = GNNSOM(
                 num_layers=args.num_layers, 
                 gnn_num_layers = args.gnn_num_layers,
                 pooling=args.pooling,
-                dropout=args.dropout, 
-                use_mamba= True if args.use_mamba else False, 
+                dropout=args.dropout,                 
                 cyp_list=cyp_list, 
                 use_face = True if args.use_face else False, 
                 node_attn = True if args.node_attn else False,
                 face_attn = True if args.face_attn else False,
-                encoder_dropout = args.encoder_dropout,
-                n_classes=n_classes,
+                encoder_dropout = args.encoder_dropout,                
                 use_som_v2=True,
 
                     ).to(device)
@@ -219,8 +217,7 @@ def parse_args():
     parser.add_argument("--th", type=float, default=0.1)
     parser.add_argument("--average", type=str, default='binary')
     parser.add_argument("--ckpt", type=str, default='')
-    parser.add_argument("--gnn_type", type=str, default='gnn')
-    parser.add_argument("--use_mamba", type=int, default=0)
+    parser.add_argument("--gnn_type", type=str, default='gnn')    
     parser.add_argument("--use_face", type=int, default=1)
     parser.add_argument("--node_attn", type=int, default=1)
     parser.add_argument("--face_attn", type=int, default=1)
