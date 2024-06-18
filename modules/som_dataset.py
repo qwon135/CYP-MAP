@@ -11,9 +11,7 @@ from modules.add_equevalent import get_equivalent_bonds
 from torch_geometric.utils import to_dense_batch, dense_to_sparse
 from torch_geometric.utils import shuffle_node, mask_feature, dropout_node, dropout_edge
 from torch_geometric.transforms import RandomNodeSplit
-# from torch_geometric.utils.subgraph import subgraph
-
-
+from copy import deepcopy
 # import warnings
 # warnings.filterwarnings('ignore')
 
@@ -208,117 +206,7 @@ def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
             atom_hydroxylation,
             atom_oxidation,
             atom_spn
-            )
-    
-
-
-def get_class_weight(train_df, class_type, n_classes, cyp):
-    class_weight = list(range(n_classes))
-    for i in range(train_df['ROMol'].shape[0]):
-        mol = train_df.loc[i, 'ROMol']
-        bonds_idx = [(i.GetBeginAtomIdx(),i.GetEndAtomIdx()) for i in mol.GetBonds()]
-        bonds = [(i.GetBeginAtom().GetSymbol(),i.GetEndAtom().GetSymbol()) for i in mol.GetBonds()]    
-        
-        reactions = train_df.loc[i, cyp].split('\n')
-        bond_label = mol2bond_label(bonds, bonds_idx, reactions, class_type)
-        for label in bond_label:
-            class_weight[label] += 1
-    
-    class_weight = sum(class_weight) / torch.Tensor(class_weight)
-    return class_weight
-
-from copy import deepcopy
-
-def drop_node_edge(batch_org, p, cyp_list):    
-    batch = deepcopy(batch_org)
-    prob = torch.rand(batch.num_nodes, device=batch.edge_index.device)
-    node_mask = prob > p    
-    node_mask[batch.y_atom['CYP_REACTION'].bool()] = True
-
-    edge_index, _, edge_mask = subgraph(node_mask, batch.edge_index,
-                                        num_nodes=batch.num_nodes,
-                                        return_edge_mask=True)
-    
-    node_mask_idx = torch.zeros(node_mask.shape[0]).long()
-    node_mask_idx[node_mask] = torch.arange(node_mask.sum().item())
-
-    edge_mask_idx = torch.zeros(edge_mask.shape[0]).long()
-    edge_mask_idx[edge_mask] = torch.arange(edge_mask.sum().item())
-    
-    batch.edge_index = node_mask_idx[edge_index]
-
-    ring_index = batch.ring_index[:, edge_mask]
-    # ring_index = edge_mask_idx[ring_index]
-
-    batch.ring_index = ring_index
-    batch.edge_attr = batch.edge_attr[edge_mask]
-    
-    batch.n_edges = edge_mask.sum().item()
-    batch.n_nodes = node_mask.sum().item()
-
-    nf_node_mask = ~torch.isin(batch.nf_node, torch.where(~node_mask)[0])[0]
-
-    for ridx in range(batch.num_rings):        
-        ring_node_mask = nf_node_mask[batch.nf_ring[0] == ridx+1]
-        if not ring_node_mask.all():
-            batch.ring_mask[ridx] = False
-
-    batch.nf_node = batch.nf_node[:, nf_node_mask]
-    batch.nf_node = node_mask_idx[batch.nf_node]
-    batch.nf_ring = batch.nf_ring[:, nf_node_mask]
-
-    batch.n_nfs = batch.nf_node.size(1)
-    
-    edge_mask = edge_mask.view(edge_mask.shape[0] // 2, 2)
-    edge_mask = edge_mask[:, 0]
-
-    batch.x = batch.x[node_mask]
-    batch.spn_atom = batch.spn_atom[node_mask]
-    batch.has_H_atom = batch.has_H_atom[node_mask]
-    batch.not_has_H_bond = batch.not_has_H_bond[edge_mask]
-        
-    for cyp in cyp_list:
-        batch.y_spn[cyp] = batch.y_spn[cyp][node_mask]
-        batch.y_atom[cyp] = batch.y_atom[cyp][node_mask]
-        batch.y_hydroxylation[cyp] = batch.y_hydroxylation[cyp][node_mask]
-        batch.y_nh_oxidation[cyp] = batch.y_nh_oxidation[cyp][node_mask]
-        
-        batch.y[cyp] = batch.y[cyp][edge_mask]
-        batch.y_cleavage[cyp] = batch.y_cleavage[cyp][edge_mask]
-        batch.y_nn_oxidation[cyp] = batch.y_nn_oxidation[cyp][edge_mask]
-
-    return batch
-
-def shuffle_graph(graph_org, cyp_list):    
-    graph = deepcopy(graph_org)
-
-    perm = torch.randperm(graph.x.shape[0])
-
-    graph.x = graph.x[perm]
-    graph.spn_atom = graph.spn_atom[perm]
-    graph.has_H_atom = graph.has_H_atom[perm]
-    graph.edge_index = perm[graph.edge_index]
-    graph.nf_node = perm[graph.nf_node]
-
-    for cyp in cyp_list:
-        graph.y_spn[cyp] = graph.y_spn[cyp][perm]
-        graph.y_atom[cyp] = graph.y_atom[cyp][perm]
-        graph.y_hydroxylation[cyp] = graph.y_hydroxylation[cyp][perm]
-        graph.y_nh_oxidation[cyp] = graph.y_nh_oxidation[cyp][perm]
-    
-    return graph
-
-def node_mask(graph_org, p):
-    graph = deepcopy(graph_org)
-    mask_value = torch.LongTensor([[118, 4, 11, 11, 9, 5, 5, 1, 1]])
-    mask_value = torch.repeat_interleave(mask_value, graph.x.shape[0], dim=0)
-
-    _, mask = mask_feature(graph.x.float(), p=p, mode='all')
-    
-    mask[:, [0, 2, 4, 6, 7]] = True
-    mask[graph.y_atom['CYP_REACTION'].bool(), :] = True    
-    graph.x[~mask] = mask_value[~mask]
-    return graph
+            )    
 
 class CustomDataset(InMemoryDataset):
     def __init__(self, root='dataset_path', transform=None, pre_transform=None, df=None, args=None, class_type=3, add_H=False, cyp_list=[], mode='train', position_dir = 'positions'):

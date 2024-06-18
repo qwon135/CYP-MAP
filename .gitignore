@@ -6,3 +6,4 @@ log_text
 graph_pt
 dataset_path
 ckpt
+.gitignore
