@@ -15,8 +15,7 @@ from .conv import (
     AtomEncoder,
     GINConv,
     MetaLayer2,
-    MetaLayer3,
-    MetaLayer4,
+    MetaLayer3,    
     MLPwoLastAct,
 )
 import torch.nn.functional as F

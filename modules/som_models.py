@@ -279,8 +279,8 @@ class GNNSOM(torch.nn.Module):
                 loss_dict[f'{cyp}_spn_loss'] = self.get_loss(loss_fn_bce, logits['spn'][cyp], labels['spn'], spn_atom, args.atom_loss_weight)
                 loss_dict[f'{cyp}_bond_loss'] = self.get_loss(loss_fn_bce, logits['bond'][cyp], labels['bond'], bond_with_first_H, args.bond_loss_weight)
                 task_type_weight = 0.75
-                loss_dict[f'{cyp}_clv_loss'] = self.get_loss(loss_fn_bce, logits['clv'][cyp], labels['clv'], not_has_H_bond, task_type_weight)
-                loss_dict[f'{cyp}_rdc_loss'] = self.get_loss(loss_fn_bce, logits['rdc'][cyp], labels['rdc'], not_has_H_bond, task_type_weight)
+                loss_dict[f'{cyp}_clv_loss'] = self.get_loss(loss_fn_bce, logits['clv'][cyp], labels['clv'], bond_with_first_H, task_type_weight)
+                loss_dict[f'{cyp}_rdc_loss'] = self.get_loss(loss_fn_bce, logits['rdc'][cyp], labels['rdc'], bond_with_first_H, task_type_weight)
                 loss_dict[f'{cyp}_hdx_loss'] = self.get_loss(loss_fn_bce, logits['hdx'][cyp], labels['hdx'], first_H_bond_idx, task_type_weight)
                 loss_dict[f'{cyp}_oxi_loss'] = self.get_loss(loss_fn_bce, logits['oxi'][cyp], labels['oxi'], bond_with_first_H, task_type_weight)
             else:                
@@ -289,7 +289,7 @@ class GNNSOM(torch.nn.Module):
             loss_dict[f'{cyp}_subs_loss'] = loss_dict[f'{cyp}_subs_loss'] * args.substrate_loss_weight
 
             loss_dict['total_loss'] += loss_dict[f'{cyp}_bond_loss']
-            loss_dict['total_loss'] += loss_dict[f'{cyp}_clv_loss']            
+            loss_dict['total_loss'] += loss_dict[f'{cyp}_clv_loss']
             loss_dict['total_loss'] += loss_dict[f'{cyp}_rdc_loss']
             loss_dict['total_loss'] += loss_dict[f'{cyp}_hdx_loss']
             loss_dict['total_loss'] += loss_dict[f'{cyp}_oxi_loss']

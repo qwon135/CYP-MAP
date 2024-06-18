@@ -2,8 +2,8 @@
 
 ### Train
 
-- python train.py --gnn_lr 2e-5 --save_name ver3_2e-5
+- python train.py --seed 42 --save_name 'cyp_som'
 
 ### Inference
 
- - python -u infer.py --ckpt ckpt/0_ver4_2e-5.pt --add_H 1 --th 0.1
+ - python -u infer.py --ckpt ckpt/0.pt --add_H 1 --th 0.1

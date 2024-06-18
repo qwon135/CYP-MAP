@@ -7,3 +7,5 @@ graph_pt
 dataset_path
 ckpt
 .gitignore
+find_som_useful
+infer

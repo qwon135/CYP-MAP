@@ -1,18 +1,12 @@
 import torch, argparse
 import torch_geometric.transforms as T
 from torch_geometric.loader import DataLoader
-from matplotlib import pyplot as plt
-import inspect, random, os
+import random, os
 import numpy as np
 import pandas as pd
-from rdkit.Chem import AllChem
-from rdkit import Chem
-from multiprocessing import Pool
-from rdkit.Chem import Draw, PandasTools
+from rdkit.Chem import PandasTools
 from torch_geometric.loader import DataLoader
-from sklearn.metrics import accuracy_score, f1_score, jaccard_score, precision_score, recall_score, roc_auc_score, average_precision_score
-from modules.som_dataset import CustomDataset, get_class_weight
-# from models.som_models import GNNSOM
+from modules.som_dataset import CustomDataset
 from modules.som_models import GNNSOM
 from sklearn.model_selection import train_test_split, StratifiedKFold
 import warnings
@@ -24,8 +18,6 @@ from tabulate import tabulate
 
 warnings.filterwarnings('ignore', '.*Sparse CSR tensor support is in beta state.*')
 torch.multiprocessing.set_sharing_strategy('file_system')
-
-# cyp_list = ['BOM_2A6']
 
 def seed_everything(seed: int = 42):
     random.seed(seed)
@@ -178,24 +170,11 @@ def main(args):
     if not os.path.exists('ckpt'):os.mkdir('ckpt')
     seed_everything(args.seed)
     device = args.device    
-    class_type = args.class_type
-    if args.class_type == 3:
-        args.n_classes = 1
-        n_classes = 1
-    elif args.class_type == 2:
-        args.n_classes = 4
-        n_classes = 4
-    elif args.class_type == 1:
-        n_classes = 5
-        args.n_classes = 5
-                    
-    # '1A2 2A6 2B6 2C8 2C9 2C19 2D6 2E1 3A4'
 
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
 
     if args.train_with_non_reaction:
-        print(f'load train_nonreact_0611.sdf!')        
-        # df = PandasTools.LoadSDF('data/train_nonreact_0611.sdf')
+        print(f'load train_nonreact_0611.sdf!')
         df = PandasTools.LoadSDF('data/train_nonreact_0611.sdf')
     else:
         print(f'load train_0611.sdf!')
@@ -224,13 +203,13 @@ def main(args):
         print(f'Filt Decoy ! Train {n_train} -> {train_df.shape[0]}, Valid {n_valid} -> {valid_df.shape[0]}')
 
     if not args.upscaling:        
-        train_dataset = CustomDataset(df=train_df,  class_type=class_type, args=args, cyp_list=cyp_list, add_H=True if args.add_H else False, mode='train')
+        train_dataset = CustomDataset(df=train_df,  args=args, cyp_list=cyp_list, mode='train')
         train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)
 
-    valid_dataset = CustomDataset(df=valid_df, class_type=class_type, args=args, cyp_list=cyp_list, add_H=True if args.add_H else False, mode='test')
+    valid_dataset = CustomDataset(df=valid_df, args=args, cyp_list=cyp_list, mode='test')
     valid_loader = DataLoader(valid_dataset, num_workers=8, batch_size=args.batch_size, shuffle=False)
 
-    test_dataset = CustomDataset(df=test_df, class_type=class_type, args=args, cyp_list=cyp_list, add_H=True if args.add_H else False, mode='test')
+    test_dataset = CustomDataset(df=test_df, args=args, cyp_list=cyp_list, mode='test')
     test_loader = DataLoader(test_dataset, num_workers=8, batch_size=args.batch_size, shuffle=False)
 
     epochs = args.epochs
@@ -247,8 +226,7 @@ def main(args):
                 use_face = True if args.use_face else False, 
                 node_attn = True if args.node_attn else False,
                 face_attn = True if args.face_attn else False,
-                encoder_dropout = args.encoder_dropout,
-                n_classes=args.n_classes,
+                encoder_dropout = args.encoder_dropout,                
                 use_som_v2=True,
                     ).to(device)     
     if args.pretrain:
@@ -256,8 +234,7 @@ def main(args):
         if 'epoch' in args.pretrain:
             state_dict = state_dict['gnn_state_dict']
         e = model.gnn.load_state_dict(state_dict, strict=False)
-        # e = model.gnn_som.load_state_dict(state_dict, strict=False)
-        # e = model.gnn_type.load_state_dict(state_dict, strict=False)
+        
         print(e)
     loss_fn_ce = nn.CrossEntropyLoss(reduction=args.reduction)
     loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction)
@@ -303,12 +280,11 @@ def main(args):
         with open(log_path, 'a') as f:
             f.write(f"{arg}: {value}\n")
     for epoch in range(epochs):
-        if args.upscaling:
-            # up_train_df = upscaling(train_df, cyp_list)
+        if args.upscaling:            
             up_train_df = upscaling_v2(train_df, cyp_list)            
 
-            # train_dataset = CustomDataset(df=up_train_df,  class_type=class_type, args=args, cyp_list=cyp_list, add_H=True if args.add_H else False, mode='train')
-            train_dataset = CustomDataset(df=up_train_df,  class_type=class_type, args=args, cyp_list=cyp_list, add_H='random', mode='train')
+            # train_dataset = CustomDataset(df=up_train_df,  class_type=class_type, args=args, cyp_list=cyp_list, mode='train')
+            train_dataset = CustomDataset(df=up_train_df,  args=args, cyp_list=cyp_list, mode='train')
             train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)
         
         train_loss = 0

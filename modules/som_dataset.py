@@ -209,15 +209,11 @@ def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
             )    
 
 class CustomDataset(InMemoryDataset):
-    def __init__(self, root='dataset_path', transform=None, pre_transform=None, df=None, args=None, class_type=3, add_H=False, cyp_list=[], mode='train', position_dir = 'positions'):
+    def __init__(self, root='dataset_path', transform=None, pre_transform=None, df=None, args=None, cyp_list=[], mode='train'):
         self.df = df        
-        self.mode = mode
-        self.class_type = class_type
-        self.cyp_list = cyp_list
-        self.pe_transform = T.AddRandomWalkPE(walk_length=20, attr_name='pe')
-        self.args= args
-        self.add_H = add_H
-        self.position_dir = position_dir
+        self.mode = mode        
+        self.cyp_list = cyp_list        
+        self.args= args                
         self.from_save_pt = True
         self.tasks = ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi']
 

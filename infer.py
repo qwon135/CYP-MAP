@@ -11,7 +11,6 @@ from multiprocessing import Pool
 from rdkit.Chem import Draw, PandasTools
 from torch_geometric.loader import DataLoader
 from sklearn.metrics import accuracy_score, f1_score, jaccard_score, precision_score, recall_score, roc_auc_score, average_precision_score
-from modules.som_dataset import CustomDataset, get_class_weight
 from modules.som_models import  GNNSOM
 from sklearn.model_selection import train_test_split
 import warnings, json
@@ -20,6 +19,7 @@ from utils import validation, to_matrix
 from segmentation_models_pytorch.losses import FocalLoss, DiceLoss
 from torch_ema import ExponentialMovingAverage
 from tabulate import tabulate
+from modules.som_dataset import CustomDataset
 
 warnings.filterwarnings('ignore', '.*Sparse CSR tensor support is in beta state.*')
 
@@ -115,6 +115,7 @@ def get_logs(scores, cyp_list, args):
 
 
 def main(args):
+    if not os.path.exists('infer'):os.mdkir('infer')
     seed_everything(args.seed)
     device = args.device    
     class_type = args.class_type
@@ -132,14 +133,14 @@ def main(args):
     cyp = args.cyp
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
     
-    test_df = PandasTools.LoadSDF('../data/test_0611.sdf')
+    test_df = PandasTools.LoadSDF('data/test_0611.sdf')
     test_df['CYP_REACTION'] = test_df.apply(CYP_REACTION, axis=1)
     test_df['POS_ID'] = 'TEST' + test_df.index.astype(str).str.zfill(4)
 
     if args.wo_no_id_ebomd:
         test_df = test_df[test_df['InChIKey'] != ''].reset_index(drop=True)
 
-    df = PandasTools.LoadSDF('../data/train_nonreact_0611.sdf')
+    df = PandasTools.LoadSDF('data/train_nonreact_0611.sdf')
     df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1)
     df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4)
 
@@ -192,10 +193,10 @@ def main(args):
             score_df.append({'cyp' : cyp, 'seed' : args.seed, 'metric' : metric, 'score' : test_scores[cyp][args.th][metric], 'threshold' : args.th})
 
     score_df = pd.DataFrame(score_df)
-    score_df.to_csv(f'infer/{mname}.csv', index=None)    
+    score_df.to_csv(f'infer/{mname}.csv', index=None)        
 
-    # with open(f'infer/{mname}.json', 'w') as file:
-    #     json.dump(test_scores['mid2pred'], file)
+    with open(f'infer/{mname}.txt', 'a') as f:
+        f.write(best_validloss_testscores)
     
 def parse_args():
     parser = argparse.ArgumentParser()
