@@ -174,6 +174,8 @@ def upscaling_v3(df, cyp_list, ratio):
 
 
 def main(args):
+    if not os.path.exists('log_text'):os.mkdir('log_text')
+    if not os.path.exists('ckpt'):os.mkdir('ckpt')
     seed_everything(args.seed)
     device = args.device    
     class_type = args.class_type
@@ -194,12 +196,12 @@ def main(args):
     if args.train_with_non_reaction:
         print(f'load train_nonreact_0611.sdf!')        
         # df = PandasTools.LoadSDF('data/train_nonreact_0611.sdf')
-        df = PandasTools.LoadSDF('../data/train_nonreact_0611.sdf')
+        df = PandasTools.LoadSDF('data/train_nonreact_0611.sdf')
     else:
         print(f'load train_0611.sdf!')
-        df = PandasTools.LoadSDF('../data/train_0611.sdf')
+        df = PandasTools.LoadSDF('data/train_0611.sdf')
 
-    test_df = PandasTools.LoadSDF('../data/test_0611.sdf')
+    test_df = PandasTools.LoadSDF('data/test_0611.sdf')
     
     df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)    
 
@@ -291,6 +293,7 @@ def main(args):
     patience = args.patience
     best_validloss_testscores=None
     loss_df = []
+    
     log_path = f'log_text/seed{str(args.seed).zfill(2)}_{args.save_name}.txt'
     if os.path.exists(log_path):os.remove(log_path)
     with open(log_path, 'a') as f:
@@ -408,7 +411,7 @@ def parse_args():
     parser.add_argument("--adjust_substrate", type=int, default=0)
     parser.add_argument("--filt_som", type=int, default=0)
     parser.add_argument("--gnn_type", type=str, default='gnn')
-    parser.add_argument("--pretrain", type=str, default='ckpt_pretrain/gnn_pretrain.pt')
+    parser.add_argument("--pretrain", type=str, default='pretrain/gnn_pretrain.pt')
     parser.add_argument("--optim", type=str, default='adamw')
     parser.add_argument("--use_mamba", type=int, default=0)
     parser.add_argument("--use_face", type=int, default=1)
