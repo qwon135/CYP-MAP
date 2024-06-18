@@ -1,12 +1,12 @@
-from models.dualgraph.mol import smiles2graphwithface
-from models.dualgraph.dataset import DGData
+from modules.dualgraph.mol import smiles2graphwithface
+from modules.dualgraph.dataset import DGData
 import torch, random
 import numpy as np
 import torch_geometric.transforms as T
 from rdkit.Chem import AllChem
 from rdkit import Chem
 from torch_geometric.data import InMemoryDataset
-from models.dualgraph.dataset import DGData
+from modules.dualgraph.dataset import DGData
 from add_equevalent import get_equivalent_bonds
 from torch_geometric.utils import to_dense_batch, dense_to_sparse
 from torch_geometric.utils import shuffle_node, mask_feature, dropout_node, dropout_edge

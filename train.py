@@ -11,9 +11,9 @@ from multiprocessing import Pool
 from rdkit.Chem import Draw, PandasTools
 from torch_geometric.loader import DataLoader
 from sklearn.metrics import accuracy_score, f1_score, jaccard_score, precision_score, recall_score, roc_auc_score, average_precision_score
-from som_dataset import CustomDataset, get_class_weight
+from modules.som_dataset import CustomDataset, get_class_weight
 # from models.som_models import GNNSOM
-from models.som_models_bondh import GNNSOM
+from modules.som_models import GNNSOM
 from sklearn.model_selection import train_test_split, StratifiedKFold
 import warnings
 from torch import nn
