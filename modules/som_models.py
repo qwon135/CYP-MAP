@@ -182,8 +182,8 @@ class GNNSOM(torch.nn.Module):
         self.tasks = ['subs'] + self.atom_tasks + self.bond_tasks
 
         if use_som_v2:
-            # self.atom_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 2, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
-            self.atom_fc = SOMPredictor(latent_size, dropout_type_fc, 1, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
+            self.atom_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 2, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
+            # self.atom_fc = SOMPredictor(latent_size, dropout_type_fc, 1, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
             self.bond_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 5, cyp_list) # Any reaction, Cleavage, n-n Oxidation, Reduction
         else:
             self.atom_fc = SOMPredictor(latent_size, dropout_som_fc, dropout_type_fc, 4, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
@@ -218,10 +218,10 @@ class GNNSOM(torch.nn.Module):
             logits['oxi'][cyp] = bond_logits[cyp][:, 3]
             logits['rdc'][cyp] = bond_logits[cyp][:, 4]
 
-            logits['spn'][cyp] = atom_logits[cyp].squeeze(-1)
+            # logits['spn'][cyp] = atom_logits[cyp].squeeze(-1)
 
-            # logits['atom'][cyp] = atom_logits[cyp][:, 0]
-            # logits['spn'][cyp] = atom_logits[cyp][:, 1]
+            logits['atom'][cyp] = atom_logits[cyp][:, 0]
+            logits['spn'][cyp] = atom_logits[cyp][:, 1]
             
             # logits['atom_hdx'][cyp] = atom_logits[cyp][:, 2]
             # logits['atom_clv'][cyp] = atom_logits[cyp][:, 3]
@@ -272,8 +272,8 @@ class GNNSOM(torch.nn.Module):
             if args.reduction == 'sum':
                 loss_dict[f'{cyp}_subs_loss'] = loss_fn_bce(logits['subs'][cyp], labels['subs']) / labels['subs'].shape[0]
                                 # Bond                
-                # loss_dict[f'{cyp}_atom_loss'] =self.get_loss(loss_fn_bce, logits['atom'][cyp], labels['atom'], torch.ones_like(labels['atom']).bool(), args.atom_loss_weight) 
-                loss_dict[f'{cyp}_atom_loss'] = 0
+                loss_dict[f'{cyp}_atom_loss'] =self.get_loss(loss_fn_bce, logits['atom'][cyp], labels['atom'], torch.ones_like(labels['atom']).bool(), args.atom_loss_weight) 
+                # loss_dict[f'{cyp}_atom_loss'] = 0
                 
                 loss_dict[f'{cyp}_spn_loss'] = self.get_loss(loss_fn_bce, logits['spn'][cyp], labels['spn'], spn_atom, args.atom_loss_weight)
                 loss_dict[f'{cyp}_bond_loss'] = self.get_loss(loss_fn_bce, logits['bond'][cyp], labels['bond'], bond_with_first_H, args.bond_loss_weight)
@@ -292,12 +292,12 @@ class GNNSOM(torch.nn.Module):
             loss_dict['total_loss'] += loss_dict[f'{cyp}_rdc_loss']
             loss_dict['total_loss'] += loss_dict[f'{cyp}_hdx_loss']
             loss_dict['total_loss'] += loss_dict[f'{cyp}_oxi_loss']
-
-            # loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_loss']
+            
             # loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_clv_loss']
             # loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_rdc_loss']
             # loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_hdx_loss']
             # loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_oxi_loss']
+            loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_loss']
             loss_dict['total_loss'] += loss_dict[f'{cyp}_spn_loss']
             
             loss_dict['total_loss'] += loss_dict[f'{cyp}_subs_loss'] 

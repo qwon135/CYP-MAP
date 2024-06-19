@@ -90,7 +90,11 @@ class Validator:
         
         y_prob = np.array(self.y_prob[task][cyp])
         y_true = np.array(self.y_true[task][cyp])
-        if task in ['bond', 'clv', 'rdc']:
+        if task == 'bond':
+            bonds_with_firstH = (np.array(self.not_H_bond) + np.array( self.first_H_bond_idx)).tolist()
+            y_prob = y_prob[bonds_with_firstH]
+            y_true = y_true[bonds_with_firstH]
+        elif task in ['clv', 'rdc']:
             y_prob = y_prob[self.not_H_bond]
             y_true = y_true[self.not_H_bond]
             
