@@ -395,6 +395,7 @@ def parse_args():
     parser.add_argument("--substrate_loss_weight", type=float, default=0.05)
     parser.add_argument("--bond_loss_weight", type=float, default=1.0)
     parser.add_argument("--atom_loss_weight", type=float, default=0.75)
+    parser.add_argument("--som_type_loss_weight", type=float, default=1.0)
     parser.add_argument("--equivalent_mean", type=int, default=0)
     parser.add_argument("--average", type=str, default='binary')
     parser.add_argument("--device", type=str, default='cuda:0')
@@ -408,7 +409,7 @@ def parse_args():
     parser.add_argument("--patience", type=int, default=8)
     parser.add_argument("--print_test_every", type=int, default=1)
     parser.add_argument("--filt_decoy", type=int, default=0)
-    parser.add_argument("--reduction", type=str, default='sum')
+    parser.add_argument("--reduction", type=str, default='mean')
 
     args = parser.parse_args()
     return args

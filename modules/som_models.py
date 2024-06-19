@@ -198,7 +198,7 @@ class GNNSOM(torch.nn.Module):
         if self.pooling_u:
             mol_feature = torch.cat([mol_feat_atom, mol_feat_bond, mol_feat_ring, u], -1)
         else:
-            mol_feature = u
+            mol_feature = u        
 
         edge_attr = edge_attr.view(edge_attr.shape[0] // 2, 2, edge_attr.shape[-1])
         edge_attr = edge_attr.sum(1)
@@ -207,7 +207,7 @@ class GNNSOM(torch.nn.Module):
 
         substrate_logit = self.substrate_fc(mol_feature.detach())
         bond_logits = self.bond_fc(edge_attr)
-        atom_logits = self.atom_fc(x)        
+        atom_logits = self.atom_fc(x)
 
         for cyp_idx, cyp in enumerate(self.cyp_list):
             logits['subs'][cyp] = substrate_logit[:, cyp_idx]
@@ -221,8 +221,7 @@ class GNNSOM(torch.nn.Module):
             # logits['spn'][cyp] = atom_logits[cyp].squeeze(-1)
 
             logits['atom'][cyp] = atom_logits[cyp][:, 0]
-            logits['spn'][cyp] = atom_logits[cyp][:, 1]
-            
+            logits['spn'][cyp] = atom_logits[cyp][:, 1]            
             # logits['atom_hdx'][cyp] = atom_logits[cyp][:, 2]
             # logits['atom_clv'][cyp] = atom_logits[cyp][:, 3]
             # logits['atom_oxi'][cyp] = atom_logits[cyp][:, 4]
@@ -241,7 +240,7 @@ class GNNSOM(torch.nn.Module):
         has_H_atom = batch.has_H_atom.to(device)
         not_has_H_bond = batch.not_has_H_bond.to(device)
         bond_all = torch.ones_like(not_has_H_bond).bool().to(device)
-
+        atom_all = torch.ones_like(spn_atom).bool().to(device)
         first_H_bond_idx = batch.first_H_bond_idx.to(device)
         bond_with_first_H = not_has_H_bond + first_H_bond_idx
         has_H_bond = ~(not_has_H_bond.to(device))
@@ -267,23 +266,21 @@ class GNNSOM(torch.nn.Module):
                     'atom_oxi' : batch.y_atom_oxidation[cyp],
                     'atom_rdc' :batch.y_atom_reduction[cyp] ,
 
-                    }
-            
-            if args.reduction == 'sum':
-                loss_dict[f'{cyp}_subs_loss'] = loss_fn_bce(logits['subs'][cyp], labels['subs']) / labels['subs'].shape[0]
-                                # Bond                
-                loss_dict[f'{cyp}_atom_loss'] =self.get_loss(loss_fn_bce, logits['atom'][cyp], labels['atom'], torch.ones_like(labels['atom']).bool(), args.atom_loss_weight) 
-                # loss_dict[f'{cyp}_atom_loss'] = 0
-                
-                loss_dict[f'{cyp}_spn_loss'] = self.get_loss(loss_fn_bce, logits['spn'][cyp], labels['spn'], spn_atom, args.atom_loss_weight)
-                loss_dict[f'{cyp}_bond_loss'] = self.get_loss(loss_fn_bce, logits['bond'][cyp], labels['bond'], bond_with_first_H, args.bond_loss_weight)
-                task_type_weight = 0.75
-                loss_dict[f'{cyp}_clv_loss'] = self.get_loss(loss_fn_bce, logits['clv'][cyp], labels['clv'], bond_with_first_H, task_type_weight)
-                loss_dict[f'{cyp}_rdc_loss'] = self.get_loss(loss_fn_bce, logits['rdc'][cyp], labels['rdc'], bond_with_first_H, task_type_weight)
-                loss_dict[f'{cyp}_hdx_loss'] = self.get_loss(loss_fn_bce, logits['hdx'][cyp], labels['hdx'], first_H_bond_idx, task_type_weight)
-                loss_dict[f'{cyp}_oxi_loss'] = self.get_loss(loss_fn_bce, logits['oxi'][cyp], labels['oxi'], bond_with_first_H, task_type_weight)
-            else:                
-                pass
+                    }            
+            # loss_dict[f'{cyp}_atom_loss'] = 0
+            loss_dict[f'{cyp}_subs_loss'] = loss_fn_bce(logits['subs'][cyp], labels['subs']) / labels['subs'].shape[0]            
+            loss_dict[f'{cyp}_atom_loss'] =self.get_loss(loss_fn_bce, logits['atom'][cyp], labels['atom'], atom_all, args.atom_loss_weight, args.reduction)
+            # loss_dict[f'{cyp}_atom_clv_loss'] =self.get_loss(loss_fn_bce, logits['atom_hdx'][cyp], labels['atom_hdx'], torch.ones_like(labels['atom']).bool(), args.atom_loss_weight, args.reduction)
+            # loss_dict[f'{cyp}_atom_rdc_loss'] =self.get_loss(loss_fn_bce, logits['atom_clv'][cyp], labels['atom_clv'], torch.ones_like(labels['atom']).bool(), args.atom_loss_weight, args.reduction)
+            # loss_dict[f'{cyp}_atom_hdx_loss'] =self.get_loss(loss_fn_bce, logits['atom_oxi'][cyp], labels['atom_oxi'], torch.ones_like(labels['atom']).bool(), args.atom_loss_weight, args.reduction)
+            # loss_dict[f'{cyp}_atom_oxi_loss'] =self.get_loss(loss_fn_bce, logits['atom_rdc'][cyp], labels['atom_rdc'], torch.ones_like(labels['atom']).bool(), args.atom_loss_weight, args.reduction)
+            loss_dict[f'{cyp}_spn_loss'] = self.get_loss(loss_fn_bce, logits['spn'][cyp], labels['spn'], atom_all, args.atom_loss_weight, args.reduction)
+
+            loss_dict[f'{cyp}_bond_loss'] = self.get_loss(loss_fn_bce, logits['bond'][cyp], labels['bond'], bond_all, args.bond_loss_weight, args.reduction)            
+            loss_dict[f'{cyp}_clv_loss'] = self.get_loss(loss_fn_bce, logits['clv'][cyp], labels['clv'], bond_all, args.som_type_loss_weight, args.reduction)
+            loss_dict[f'{cyp}_rdc_loss'] = self.get_loss(loss_fn_bce, logits['rdc'][cyp], labels['rdc'], bond_all, args.som_type_loss_weight, args.reduction)
+            loss_dict[f'{cyp}_hdx_loss'] = self.get_loss(loss_fn_bce, logits['hdx'][cyp], labels['hdx'], has_H_bond, args.som_type_loss_weight, args.reduction)
+            loss_dict[f'{cyp}_oxi_loss'] = self.get_loss(loss_fn_bce, logits['oxi'][cyp], labels['oxi'], bond_all, args.som_type_loss_weight, args.reduction)            
                             
             loss_dict[f'{cyp}_subs_loss'] = loss_dict[f'{cyp}_subs_loss'] * args.substrate_loss_weight
 
@@ -329,10 +326,12 @@ class GNNSOM(torch.nn.Module):
         loss_dict['total_loss'] =loss_dict['total_loss'] / len(self.cyp_list)
         return logits, loss_dict, pred_dict
     
-    def get_loss(self, loss_fn, logits, labels, select_index, task_weight):
+    def get_loss(self, loss_fn, logits, labels, select_index, task_weight, reduction):
         if not select_index.cpu().sum():
             return 0
         
-        loss = loss_fn(logits[select_index], labels[select_index]) / select_index.sum()
+        loss = loss_fn(logits[select_index], labels[select_index])
+        if reduction == 'sum':
+            loss = loss / select_index.sum()
                 
         return loss * task_weight

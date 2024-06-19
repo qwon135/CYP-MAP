@@ -170,8 +170,8 @@ class Validator:
         self.valid_loss_dict['total_loss'] += loss_dict['total_loss']
         for cyp in self.cyp_list:
             self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_bond_loss']
-            self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_hdx_loss']
-            self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_spn_loss']            
+            # self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_hdx_loss']
+            self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_spn_loss']
                                                      
             for task in self.tasks:
                 try:

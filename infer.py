@@ -228,6 +228,7 @@ def parse_args():
     parser.add_argument("--substrate_loss_weight", type=float, default=0.33)
     parser.add_argument("--bond_loss_weight", type=float, default=0.33)
     parser.add_argument("--atom_loss_weight", type=float, default=0.33)
+    parser.add_argument("--som_type_loss_weight", type=float, default=1.0)
     parser.add_argument("--device", type=str, default='cuda:0')
     parser.add_argument("--add_H", type=int, default=1)
     parser.add_argument("--train_only_spn_H_atom", type=int, default=0)
