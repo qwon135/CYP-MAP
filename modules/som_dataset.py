@@ -215,7 +215,7 @@ class CustomDataset(InMemoryDataset):
         self.cyp_list = cyp_list        
         self.args= args                
         self.from_save_pt = True
-        self.tasks = ['subs', 'bond', 'atom',  'spn', 'H', 'clv', 'nh_oxi', 'nn_oxi']
+        self.tasks = ['subs', 'bond', 'atom',  'spn', 'rdc', 'clv', 'oxi', 'hdx']
 
         self.type_collect = {
                             '' : '',
@@ -251,12 +251,12 @@ class CustomDataset(InMemoryDataset):
         return self.df.shape[0]
 
     def get(self, idx):
-        if self.mode == 'train' and random.random() > 0.7:
-            graph_h = deepcopy(self.graph_h_list[idx])
-            x = graph_h.x[:, 4]
-            x = x-1
-            x[x<0]=0
-            graph_h.x[:,4] = x
+        # if self.mode == 'train' and random.random() > 0.7:
+        #     graph_h = deepcopy(self.graph_h_list[idx])
+        #     x = graph_h.x[:, 4]
+        #     x = x-1
+        #     x[x<0]=0
+        #     graph_h.x[:,4] = x
 
             # graph_h = deepcopy(self.graph_h_list[idx])
             # x = graph_h.x[:, 4]
