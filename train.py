@@ -367,7 +367,7 @@ def parse_args():
     parser.add_argument("--clf_lr", type=float, default=2e-4)
     parser.add_argument("--weight_decay", type=float, default=1e-5)
     parser.add_argument("--ema_decay", type=float, default=0.995)
-    parser.add_argument("--dropout", type=float, default=0.0)
+    parser.add_argument("--dropout", type=float, default=0.05)
     parser.add_argument("--dropout_fc", type=float, default=0.0)
     parser.add_argument("--dropout_som_fc", type=float, default=0.0)
     parser.add_argument("--dropout_type_fc", type=float, default=0.0)
