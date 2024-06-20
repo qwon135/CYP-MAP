@@ -115,7 +115,7 @@ def get_logs(scores, cyp_list, args):
 
 
 def main(args):
-    if not os.path.exists('infer'):os.mdkir('infer')
+    if not os.path.exists('infer'):os.mkdir('infer')
     seed_everything(args.seed)
     device = args.device    
     class_type = args.class_type
@@ -193,7 +193,7 @@ def main(args):
     score_df = pd.DataFrame(score_df)
     score_df.to_csv(f'infer/{mname}.csv', index=None)        
 
-    with open(f'infer/{mname}.txt', 'a') as f:
+    with open(f'infer/{mname}.txt', 'w') as f:
         f.write(best_validloss_testscores)
     
 def parse_args():
