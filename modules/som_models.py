@@ -27,10 +27,19 @@ class Attention(torch.nn.Module):
                                 # torch.nn.Sigmoid(),
                                 torch.nn.Tanh()
                                 )
-        self.fc = Sequential(                        
-                        Dropout(dropout),
-                        Linear(channels, n_classes),
-                        )
+        # self.fc = Sequential(
+        #                 Dropout(dropout),
+        #                 Linear(channels, n_classes),
+        #                 )
+        self.fc = Sequential(
+            torch.nn.LayerNorm(channels),
+            Linear(channels, channels),
+            torch.nn.BatchNorm1d(channels),
+            # torch.nn.InstanceNorm1d(channels),
+            torch.nn.PReLU(init=0.05),
+            Dropout(dropout),
+            Linear(channels, n_classes)
+        )
 
     def forward(self, x, return_attn=False):        
         A = self.attn(x)
@@ -65,7 +74,7 @@ class SOMPredictorV2(torch.nn.Module):
         self.cyp_list = cyp_list
         self.proj_edge = torch.nn.Sequential(
                             Linear(channels, channels),
-                            torch.nn.ReLU(),
+                            torch.nn.PReLU(init=0.05),
                             Linear(channels, channels)
                             )
         self.reaction_head = torch.nn.ModuleDict()
@@ -86,34 +95,40 @@ class SOMPredictorV2(torch.nn.Module):
             logits[cyp] = torch.cat([reaction_logits, subtype_logits], dim=-1)
         return logits   
 
-class SOMPredictorV5(torch.nn.Module):
-    def __init__(self, channels, dropout, n_classes, cyp_list):
+class SOMPredictorV3(torch.nn.Module):
+    def __init__(self, channels, dropout_som, dropout_type, n_classes, cyp_list):
         super().__init__()
         self.cyp_list = cyp_list
-
-        self.proj_edge =  torch.nn.ModuleDict()        
-        self.reaction_predictor = torch.nn.ModuleDict()
-
-        for cyp in cyp_list:
-            self.proj_edge[cyp] = torch.nn.Sequential(
+        self.proj_edge = torch.nn.Sequential(
                             Linear(channels, channels),
-                            torch.nn.ReLU(),
+                            torch.nn.PReLU(init=0.05),
                             Linear(channels, channels)
                             )
-            self.reaction_predictor[cyp] = Attention(channels, dropout, 1)
-
-        self.subtype_predictor = Attention(channels+1, dropout, n_classes-1)
-
-    def forward(self, x):        
-        logits = {}
+        self.reaction_head = torch.nn.ModuleDict()
+        self.subtype_head = torch.nn.ModuleDict()
+        self.n_classes = n_classes
         for cyp in self.cyp_list:
-            x_cyp = self.proj_edge[cyp](x)
-            reaction_logits = self.reaction_predictor[cyp](x_cyp)
-            x_for_subtype = torch.cat([x, reaction_logits.sigmoid()], -1)
-            subtype_logits = self.subtype_predictor(x_for_subtype)            
-            logits[cyp] = torch.cat([reaction_logits, subtype_logits], dim=-1)
-        return logits  
-    
+            self.reaction_head[cyp] = Attention(channels, dropout_som, 1)  # 반응 여부 예측 (0: 반응 없음, 1: 반응 있음)
+            self.subtype_head[cyp] = torch.nn.ModuleDict()
+            for i in range(n_classes-1):
+                self.subtype_head[cyp][str(i)] = Attention(channels + 1, dropout_type, 1)  # subtype 예측 (1, 2, 3)
+
+    def forward(self, x):
+        x = self.proj_edge(x)
+        logits = {}
+        for cyp in self.cyp_list:            
+            reaction_logits = self.reaction_head[cyp](x)
+            reaction_probs = reaction_logits.sigmoid()
+            subtype_input = torch.cat([x, reaction_probs], dim=-1)
+
+            logit = [reaction_logits]
+            for i in range(self.n_classes-1):            
+                subtype_logits = self.subtype_head[cyp][str(i)](subtype_input)
+                logit.append(subtype_logits)
+
+            logits[cyp] = torch.cat(logit, dim=-1)
+        return logits   
+
 class GNNSOM(torch.nn.Module):
     def __init__(self, 
                  channels = 512, num_layers = 2, gnn_num_layers=8,latent_size = 128, dropout=0.1, dropout_fc=0.1, dropout_som_fc=0.1, dropout_type_fc=0.1, n_classes=1, use_face=True, node_attn=True, face_attn=True,
@@ -182,12 +197,12 @@ class GNNSOM(torch.nn.Module):
         self.tasks = ['subs'] + self.atom_tasks + self.bond_tasks
 
         if use_som_v2:
-            self.atom_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 2, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
+            self.atom_fc = SOMPredictorV3(latent_size, dropout_som_fc, dropout_type_fc, 2, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
             # self.atom_fc = SOMPredictor(latent_size, dropout_type_fc, 1, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
-            self.bond_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 5, cyp_list) # Any reaction, Cleavage, n-n Oxidation, Reduction
+            self.bond_fc = SOMPredictorV3(latent_size, dropout_som_fc, dropout_type_fc, 5, cyp_list) # Any reaction, Cleavage, n-n Oxidation, Reduction
         else:
-            self.atom_fc = SOMPredictor(latent_size, dropout_som_fc, dropout_type_fc, 4, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
-            self.bond_fc = SOMPredictor(latent_size, dropout_som_fc, dropout_type_fc, 4, cyp_list) # Any reaction, Cleavage, n-n Oxidation        
+            self.atom_fc = SOMPredictor(latent_size, dropout_som_fc, 2, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
+            self.bond_fc = SOMPredictor(latent_size, dropout_som_fc, 5, cyp_list) # Any reaction, Cleavage, n-n Oxidation        
         
 
 
