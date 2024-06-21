@@ -283,23 +283,19 @@ class GNN2(nn.Module):
         ddi: bool = False,
         gradmultiply: float = -1,
         ap_hid_size: int = None,
-        ap_mlp_layers: int = None,
-        use_pe=True
+        ap_mlp_layers: int = None,        
     ):
         super().__init__()
 
-        self.som_mode = som_mode
-        self.use_pe = use_pe
+        self.som_mode = som_mode        
         self.encoder_edge = MLPwoLastAct(
             sum(get_bond_feature_dims()),
             [mlp_hidden_size] * mlp_layers + [latent_size],
             use_layer_norm=use_layer_norm,
             use_bn=use_bn,
         )
-        if self.use_pe:
-            n_atom_dim = sum(get_atom_feature_dims()) + 3
-        else:
-            n_atom_dim = sum(get_atom_feature_dims()) 
+        
+        n_atom_dim = sum(get_atom_feature_dims()) 
         self.encoder_node = MLPwoLastAct(
             n_atom_dim,
             [mlp_hidden_size] * mlp_layers + [latent_size],

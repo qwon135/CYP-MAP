@@ -157,8 +157,7 @@ class GNNSOM(torch.nn.Module):
                         graph_pooling = pooling,
                         node_attn = node_attn,
                         face_attn = face_attn,
-                        encoder_dropout=encoder_dropout,
-                        use_pe=False
+                        encoder_dropout=encoder_dropout                        
                         )      
 
         self.bond_fc = torch.nn.ModuleDict() # Predict Reaction
@@ -197,7 +196,7 @@ class GNNSOM(torch.nn.Module):
         self.tasks = ['subs'] + self.atom_tasks + self.bond_tasks
 
         if use_som_v2:
-            self.atom_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 2, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
+            self.atom_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 6, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
             # self.atom_fc = SOMPredictor(latent_size, dropout_type_fc, 1, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
             self.bond_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 5, cyp_list) # Any reaction, Cleavage, n-n Oxidation, Reduction
         else:
@@ -236,11 +235,11 @@ class GNNSOM(torch.nn.Module):
             # logits['spn'][cyp] = atom_logits[cyp].squeeze(-1)
 
             logits['atom'][cyp] = atom_logits[cyp][:, 0]
-            logits['spn'][cyp] = atom_logits[cyp][:, 1]            
-            # logits['atom_hdx'][cyp] = atom_logits[cyp][:, 2]
-            # logits['atom_clv'][cyp] = atom_logits[cyp][:, 3]
-            # logits['atom_oxi'][cyp] = atom_logits[cyp][:, 4]
-            # logits['atom_rdc'][cyp] = atom_logits[cyp][:, 5]
+            logits['spn'][cyp] = atom_logits[cyp][:, 1]
+            logits['atom_hdx'][cyp] = atom_logits[cyp][:, 2]
+            logits['atom_clv'][cyp] = atom_logits[cyp][:, 3]
+            logits['atom_oxi'][cyp] = atom_logits[cyp][:, 4]
+            logits['atom_rdc'][cyp] = atom_logits[cyp][:, 5]
         return logits
 
     def forward_with_loss(self, batch, loss_fn_ce, loss_fn_bce, device, args):
@@ -285,10 +284,10 @@ class GNNSOM(torch.nn.Module):
             # loss_dict[f'{cyp}_atom_loss'] = 0
             loss_dict[f'{cyp}_subs_loss'] = loss_fn_bce(logits['subs'][cyp], labels['subs']) / labels['subs'].shape[0]            
             loss_dict[f'{cyp}_atom_loss'] =self.get_loss(loss_fn_bce, logits['atom'][cyp], labels['atom'], atom_all, args.atom_loss_weight, args.reduction)
-            # loss_dict[f'{cyp}_atom_clv_loss'] =self.get_loss(loss_fn_bce, logits['atom_hdx'][cyp], labels['atom_hdx'], torch.ones_like(labels['atom']).bool(), args.atom_loss_weight, args.reduction)
-            # loss_dict[f'{cyp}_atom_rdc_loss'] =self.get_loss(loss_fn_bce, logits['atom_clv'][cyp], labels['atom_clv'], torch.ones_like(labels['atom']).bool(), args.atom_loss_weight, args.reduction)
-            # loss_dict[f'{cyp}_atom_hdx_loss'] =self.get_loss(loss_fn_bce, logits['atom_oxi'][cyp], labels['atom_oxi'], torch.ones_like(labels['atom']).bool(), args.atom_loss_weight, args.reduction)
-            # loss_dict[f'{cyp}_atom_oxi_loss'] =self.get_loss(loss_fn_bce, logits['atom_rdc'][cyp], labels['atom_rdc'], torch.ones_like(labels['atom']).bool(), args.atom_loss_weight, args.reduction)
+            loss_dict[f'{cyp}_atom_clv_loss'] =self.get_loss(loss_fn_bce, logits['atom_hdx'][cyp], labels['atom_hdx'], atom_all, args.atom_loss_weight, args.reduction)
+            loss_dict[f'{cyp}_atom_rdc_loss'] =self.get_loss(loss_fn_bce, logits['atom_clv'][cyp], labels['atom_clv'], atom_all, args.atom_loss_weight, args.reduction)
+            loss_dict[f'{cyp}_atom_hdx_loss'] =self.get_loss(loss_fn_bce, logits['atom_oxi'][cyp], labels['atom_oxi'], atom_all, args.atom_loss_weight, args.reduction)
+            loss_dict[f'{cyp}_atom_oxi_loss'] =self.get_loss(loss_fn_bce, logits['atom_rdc'][cyp], labels['atom_rdc'], atom_all, args.atom_loss_weight, args.reduction)
             loss_dict[f'{cyp}_spn_loss'] = self.get_loss(loss_fn_bce, logits['spn'][cyp], labels['spn'], atom_all, args.atom_loss_weight, args.reduction)
 
             loss_dict[f'{cyp}_bond_loss'] = self.get_loss(loss_fn_bce, logits['bond'][cyp], labels['bond'], bond_all, args.bond_loss_weight, args.reduction)            
@@ -305,10 +304,10 @@ class GNNSOM(torch.nn.Module):
             loss_dict['total_loss'] += loss_dict[f'{cyp}_hdx_loss']
             loss_dict['total_loss'] += loss_dict[f'{cyp}_oxi_loss']
             
-            # loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_clv_loss']
-            # loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_rdc_loss']
-            # loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_hdx_loss']
-            # loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_oxi_loss']
+            loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_clv_loss']
+            loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_rdc_loss']
+            loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_hdx_loss']
+            loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_oxi_loss']
             loss_dict['total_loss'] += loss_dict[f'{cyp}_atom_loss']
             loss_dict['total_loss'] += loss_dict[f'{cyp}_spn_loss']
             
