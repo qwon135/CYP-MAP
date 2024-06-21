@@ -9,3 +9,5 @@ ckpt
 .gitignore
 find_som_useful
 infer
+!graph_pretrain_ver2.ipynb
+!infer_classtype2.ipynb
