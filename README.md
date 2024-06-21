@@ -9,4 +9,4 @@
 
 ### Inference
 
- - python -u infer.py --ckpt ckpt/42.pt --th 0.1
+ - python -u infer.py --ckpt ckpt/42.pt --th 0.15

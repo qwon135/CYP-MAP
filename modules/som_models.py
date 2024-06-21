@@ -197,9 +197,9 @@ class GNNSOM(torch.nn.Module):
         self.tasks = ['subs'] + self.atom_tasks + self.bond_tasks
 
         if use_som_v2:
-            self.atom_fc = SOMPredictorV3(latent_size, dropout_som_fc, dropout_type_fc, 2, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
+            self.atom_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 2, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
             # self.atom_fc = SOMPredictor(latent_size, dropout_type_fc, 1, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
-            self.bond_fc = SOMPredictorV3(latent_size, dropout_som_fc, dropout_type_fc, 5, cyp_list) # Any reaction, Cleavage, n-n Oxidation, Reduction
+            self.bond_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, 5, cyp_list) # Any reaction, Cleavage, n-n Oxidation, Reduction
         else:
             self.atom_fc = SOMPredictor(latent_size, dropout_som_fc, 2, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
             self.bond_fc = SOMPredictor(latent_size, dropout_som_fc, 5, cyp_list) # Any reaction, Cleavage, n-n Oxidation        
