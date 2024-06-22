@@ -281,8 +281,10 @@ class GNNSOM(torch.nn.Module):
                     'atom_rdc' :batch.y_atom_reduction[cyp] ,
 
                     }            
+            loss_dict[f'{cyp}_subs_loss'] = loss_fn_bce(logits['subs'][cyp], labels['subs']) / labels['subs'].shape[0]
+            loss_dict[f'{cyp}_subs_loss'] = loss_dict[f'{cyp}_subs_loss'] * args.substrate_loss_weight
+
             # loss_dict[f'{cyp}_atom_loss'] = 0
-            loss_dict[f'{cyp}_subs_loss'] = loss_fn_bce(logits['subs'][cyp], labels['subs']) / labels['subs'].shape[0]            
             loss_dict[f'{cyp}_atom_loss'] =self.get_loss(loss_fn_bce, logits['atom'][cyp], labels['atom'], atom_all, args.atom_loss_weight, args.reduction)
             loss_dict[f'{cyp}_atom_clv_loss'] =self.get_loss(loss_fn_bce, logits['atom_hdx'][cyp], labels['atom_hdx'], atom_all, args.atom_loss_weight, args.reduction)
             loss_dict[f'{cyp}_atom_rdc_loss'] =self.get_loss(loss_fn_bce, logits['atom_clv'][cyp], labels['atom_clv'], atom_all, args.atom_loss_weight, args.reduction)
@@ -290,13 +292,11 @@ class GNNSOM(torch.nn.Module):
             loss_dict[f'{cyp}_atom_oxi_loss'] =self.get_loss(loss_fn_bce, logits['atom_rdc'][cyp], labels['atom_rdc'], atom_all, args.atom_loss_weight, args.reduction)
             loss_dict[f'{cyp}_spn_loss'] = self.get_loss(loss_fn_bce, logits['spn'][cyp], labels['spn'], atom_all, args.atom_loss_weight, args.reduction)
 
-            loss_dict[f'{cyp}_bond_loss'] = self.get_loss(loss_fn_bce, logits['bond'][cyp], labels['bond'], bond_all, args.bond_loss_weight, args.reduction)            
+            loss_dict[f'{cyp}_bond_loss'] = self.get_loss(loss_fn_bce, logits['bond'][cyp], labels['bond'], bond_all, args.bond_loss_weight, args.reduction)
             loss_dict[f'{cyp}_clv_loss'] = self.get_loss(loss_fn_bce, logits['clv'][cyp], labels['clv'], bond_all, args.som_type_loss_weight, args.reduction)
             loss_dict[f'{cyp}_rdc_loss'] = self.get_loss(loss_fn_bce, logits['rdc'][cyp], labels['rdc'], bond_all, args.som_type_loss_weight, args.reduction)
             loss_dict[f'{cyp}_hdx_loss'] = self.get_loss(loss_fn_bce, logits['hdx'][cyp], labels['hdx'], has_H_bond, args.som_type_loss_weight, args.reduction)
-            loss_dict[f'{cyp}_oxi_loss'] = self.get_loss(loss_fn_bce, logits['oxi'][cyp], labels['oxi'], bond_all, args.som_type_loss_weight, args.reduction)            
-                            
-            loss_dict[f'{cyp}_subs_loss'] = loss_dict[f'{cyp}_subs_loss'] * args.substrate_loss_weight
+            loss_dict[f'{cyp}_oxi_loss'] = self.get_loss(loss_fn_bce, logits['oxi'][cyp], labels['oxi'], bond_all, args.som_type_loss_weight, args.reduction)
 
             loss_dict['total_loss'] += loss_dict[f'{cyp}_bond_loss']
             loss_dict['total_loss'] += loss_dict[f'{cyp}_clv_loss']
