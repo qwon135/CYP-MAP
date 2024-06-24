@@ -359,9 +359,9 @@ def main(args):
     
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--epochs", type=int, default=50)
+    parser.add_argument("--epochs", type=int, default=70)
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--batch_size", type=int, default=8)
+    parser.add_argument("--batch_size", type=int, default=16)
     parser.add_argument("--num_layers", type=int, default=2)
     parser.add_argument("--gnn_num_layers", type=int, default=8)
     parser.add_argument("--gnn_lr", type=float, default=4e-5)
@@ -393,7 +393,7 @@ def parse_args():
     parser.add_argument("--face_attn", type=int, default=1)
     parser.add_argument("--grad_norm", type=int, default=50)
     parser.add_argument("--substrate_loss_weight", type=float, default=0.05)
-    parser.add_argument("--bond_loss_weight", type=float, default=0.50)
+    parser.add_argument("--bond_loss_weight", type=float, default=0.25)
     parser.add_argument("--atom_loss_weight", type=float, default=0.25)
     parser.add_argument("--som_type_loss_weight", type=float, default=0.25)
     parser.add_argument("--equivalent_mean", type=int, default=0)
