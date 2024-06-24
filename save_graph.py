@@ -64,7 +64,7 @@ def main(args):
         graph_h.pe = torch.Tensor([0])
         graph_h.smile =  Chem.MolToSmiles(mol_H)
         graph_h.spn_atom = torch.BoolTensor([i in ['S', 'N'] for i in atoms_h ])
-        # graph_h.has_H_atom = torch.BoolTensor([i.GetTotalNumHs() for i in mol.GetAtoms()] + [False] * (len(atoms_h) - mol.GetNumAtoms()))
+        
         has_h_atom = [is_has_H(atom_idx, bonds_idx_h, atoms_h) for atom_idx in range(len(atoms_h))][:mol.GetNumAtoms()]
         graph_h.is_H = torch.BoolTensor([i == 'H' for i in atoms_h])
         graph_h.has_H_atom =   torch.BoolTensor( has_h_atom + [False] * (len(atoms_h) - mol.GetNumAtoms()))

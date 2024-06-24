@@ -386,7 +386,7 @@ def parse_args():
     parser.add_argument("--adjust_substrate", type=int, default=0)
     parser.add_argument("--filt_som", type=int, default=0)
     parser.add_argument("--gnn_type", type=str, default='gnn')
-    parser.add_argument("--pretrain", type=str, default='pretrain/gnn_pretrain.pt')
+    parser.add_argument("--pretrain", type=str, default='pretrain/ckpt_pretrain/gnn_pretrain.pt')
     parser.add_argument("--optim", type=str, default='adamw')    
     parser.add_argument("--use_face", type=int, default=1)
     parser.add_argument("--node_attn", type=int, default=1)

@@ -51,6 +51,8 @@ def mol2graph(mol):
     return data
 
 def main(args):
+    if not os.path.exists('pretrain_data/graph_pt'):
+        os.mkdir('pretrain_data/graph_pt')
     data = []
 
     for csv_path in glob('pretrain_data/*/*.csv'):
