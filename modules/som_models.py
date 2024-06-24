@@ -7,7 +7,6 @@ import torch
 from torch.nn import Sequential, Dropout, Linear
 # from torch_geometric.nn import Linear
 from typing import Any, Dict, Optional
-
 import torch.nn.functional as F
 from torch import Tensor
 from torch_geometric.nn.pool import TopKPooling
@@ -203,8 +202,6 @@ class GNNSOM(torch.nn.Module):
             self.atom_fc = SOMPredictor(latent_size, dropout_som_fc, 2, cyp_list) # Any Reaction, spn-oxidation, hydroxylation, n-h Oxidation
             self.bond_fc = SOMPredictor(latent_size, dropout_som_fc, 5, cyp_list) # Any reaction, Cleavage, n-n Oxidation        
         
-
-
     def forward(self, batch):
         mol_feat_atom, mol_feat_bond, mol_feat_ring, x, edge_attr, u = self.gnn(batch)
 
@@ -295,7 +292,7 @@ class GNNSOM(torch.nn.Module):
             loss_dict[f'{cyp}_bond_loss'] = self.get_loss(loss_fn_bce, logits['bond'][cyp], labels['bond'], bond_all, args.bond_loss_weight, args.reduction)
             loss_dict[f'{cyp}_clv_loss'] = self.get_loss(loss_fn_bce, logits['clv'][cyp], labels['clv'], bond_all, args.som_type_loss_weight, args.reduction)
             loss_dict[f'{cyp}_rdc_loss'] = self.get_loss(loss_fn_bce, logits['rdc'][cyp], labels['rdc'], bond_all, args.som_type_loss_weight, args.reduction)
-            loss_dict[f'{cyp}_hdx_loss'] = self.get_loss(loss_fn_bce, logits['hdx'][cyp], labels['hdx'], has_H_bond, args.som_type_loss_weight, args.reduction)
+            loss_dict[f'{cyp}_hdx_loss'] = self.get_loss(loss_fn_bce, logits['hdx'][cyp], labels['hdx'], bond_all, args.som_type_loss_weight, args.reduction)
             loss_dict[f'{cyp}_oxi_loss'] = self.get_loss(loss_fn_bce, logits['oxi'][cyp], labels['oxi'], bond_all, args.som_type_loss_weight, args.reduction)
 
             loss_dict['total_loss'] += loss_dict[f'{cyp}_bond_loss']

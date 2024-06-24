@@ -15,6 +15,7 @@ from utils import validation, to_matrix
 # from segmentation_models_pytorch.losses import FocalLoss, DiceLoss
 from torch_ema import ExponentialMovingAverage
 from tabulate import tabulate
+from timm.loss import BinaryCrossEntropy
 
 warnings.filterwarnings('ignore', '.*Sparse CSR tensor support is in beta state.*')
 torch.multiprocessing.set_sharing_strategy('file_system')
@@ -236,8 +237,8 @@ def main(args):
         
         print(e)
     loss_fn_ce = nn.CrossEntropyLoss(reduction=args.reduction)
-    loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction)
-
+    loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction)    
+    
     param_groups = [
         {"params": [], "lr": args.gnn_lr}, # model.convs의 매개변수들, 학습률 args.gnn_lr
         {"params": [], "lr": args.clf_lr},  # 나머지 매개변수들, 학습률 args.clf_lr
@@ -373,7 +374,7 @@ def parse_args():
     parser.add_argument("--dropout_type_fc", type=float, default=0.0)
     parser.add_argument("--encoder_dropout", type=float, default=0.0)
     parser.add_argument("--class_type", type=int, default=2)
-    parser.add_argument("--warmup", type=int, default=0)
+    parser.add_argument("--warmup", type=int, default=1)
     parser.add_argument("--upscaling", type=int, default=1)
     parser.add_argument("--use_focal", type=int, default=0)
     parser.add_argument("--train_with_non_reaction", type=int, default=1)
@@ -392,9 +393,9 @@ def parse_args():
     parser.add_argument("--face_attn", type=int, default=1)
     parser.add_argument("--grad_norm", type=int, default=50)
     parser.add_argument("--substrate_loss_weight", type=float, default=0.05)
-    parser.add_argument("--bond_loss_weight", type=float, default=1.0)
-    parser.add_argument("--atom_loss_weight", type=float, default=0.75)
-    parser.add_argument("--som_type_loss_weight", type=float, default=1.0)
+    parser.add_argument("--bond_loss_weight", type=float, default=0.50)
+    parser.add_argument("--atom_loss_weight", type=float, default=0.25)
+    parser.add_argument("--som_type_loss_weight", type=float, default=0.25)
     parser.add_argument("--equivalent_mean", type=int, default=0)
     parser.add_argument("--average", type=str, default='binary')
     parser.add_argument("--device", type=str, default='cuda:0')
