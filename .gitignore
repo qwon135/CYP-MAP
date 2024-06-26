@@ -15,3 +15,4 @@ pretrain_data
 plot_score
 gnn_pretrain_v2.pt
 scores
+ckpt_pretrain_randh

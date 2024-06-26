@@ -231,7 +231,7 @@ def main(args):
                     ).to(device)     
     if args.pretrain:
         state_dict=  torch.load(args.pretrain, map_location='cpu')
-        if 'epoch' in args.pretrain:
+        if 'gnn_state_dict' in state_dict.keys():
             state_dict = state_dict['gnn_state_dict']
         e = model.gnn.load_state_dict(state_dict, strict=False)
         
@@ -359,7 +359,7 @@ def main(args):
     
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--epochs", type=int, default=70)
+    parser.add_argument("--epochs", type=int, default=80)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--batch_size", type=int, default=16)
     parser.add_argument("--num_layers", type=int, default=2)
@@ -386,7 +386,7 @@ def parse_args():
     parser.add_argument("--adjust_substrate", type=int, default=0)
     parser.add_argument("--filt_som", type=int, default=0)
     parser.add_argument("--gnn_type", type=str, default='gnn')
-    parser.add_argument("--pretrain", type=str, default='pretrain/ckpt_pretrain/gnn_pretrain.pt')
+    parser.add_argument("--pretrain", type=str, default='gnn_pretrain_randh_3epoch.pt')
     parser.add_argument("--optim", type=str, default='adamw')    
     parser.add_argument("--use_face", type=int, default=1)
     parser.add_argument("--node_attn", type=int, default=1)
