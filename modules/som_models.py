@@ -314,13 +314,7 @@ class GNNSOM(torch.nn.Module):
             pred_dict[f'{cyp}_subs_label'] = labels['subs']
 
             pred_dict[f'{cyp}_bond_logits'] = logits['bond'][cyp]
-            pred_dict[f'{cyp}_bond_label'] = labels['bond']
-
-            pred_dict[f'{cyp}_clv_logits'] = logits['clv'][cyp]
-            pred_dict[f'{cyp}_clv_label'] = labels['clv']            
-
-            pred_dict[f'{cyp}_rdc_logits'] = logits['rdc'][cyp]
-            pred_dict[f'{cyp}_rdc_label'] = labels['rdc']
+            pred_dict[f'{cyp}_bond_label'] = labels['bond']    
 
             pred_dict[f'{cyp}_atom_logits'] = logits['spn'][cyp]
             pred_dict[f'{cyp}_atom_label'] = labels['spn']
@@ -328,20 +322,41 @@ class GNNSOM(torch.nn.Module):
             pred_dict[f'{cyp}_spn_logits'] = logits['spn'][cyp]
             pred_dict[f'{cyp}_spn_label'] = labels['spn']
 
-            pred_dict[f'{cyp}_hdx_logits'] = logits['hdx'][cyp]
-            pred_dict[f'{cyp}_hdx_label'] = labels['hdx']
+            # reaction_type: bond
+            pred_dict[f'{cyp}_clv_logits'] = logits['clv'][cyp]
+            pred_dict[f'{cyp}_clv_label'] = labels['clv']        
 
             pred_dict[f'{cyp}_oxi_logits'] = logits['oxi'][cyp]
             pred_dict[f'{cyp}_oxi_label'] = labels['oxi']
+
+            pred_dict[f'{cyp}_rdc_logits'] = logits['rdc'][cyp]
+            pred_dict[f'{cyp}_rdc_label'] = labels['rdc']
             
+            pred_dict[f'{cyp}_hdx_logits'] = logits['hdx'][cyp]
+            pred_dict[f'{cyp}_hdx_label'] = labels['hdx']
+
+            # # reaction_type: atom
+            pred_dict[f'{cyp}_clv_atom_logits'] = logits['atom_clv'][cyp]
+            pred_dict[f'{cyp}_clv_atom_label'] = labels['atom_clv']        
+
+            pred_dict[f'{cyp}_oxi_atom_logits'] = logits['atom_oxi'][cyp]
+            pred_dict[f'{cyp}_oxi_atom_label'] = labels['atom_oxi']
+
+            pred_dict[f'{cyp}_rdc_atom_logits'] = logits['atom_rdc'][cyp]
+            pred_dict[f'{cyp}_rdc_atom_label'] = labels['atom_rdc']
+            
+            pred_dict[f'{cyp}_hdx_atom_logits'] = logits['atom_hdx'][cyp]
+            pred_dict[f'{cyp}_hdx_atom_label'] = labels['atom_hdx']
+
         loss_dict['total_loss'] =loss_dict['total_loss'] / len(self.cyp_list)
         return logits, loss_dict, pred_dict
     
     def get_loss(self, loss_fn, logits, labels, select_index, task_weight, reduction):
         if not select_index.cpu().sum():
             return 0
-        
-        loss = loss_fn(logits[select_index], labels[select_index])
+        labels2 = labels.clone()
+        labels2[labels2==0] = 0.1
+        loss = loss_fn(logits[select_index], labels2[select_index])
         if reduction == 'sum':
             loss = loss / select_index.sum()
                 

@@ -16,3 +16,5 @@ plot_score
 gnn_pretrain_v2.pt
 scores
 ckpt_pretrain_randh
+ckpt_pretrain_randh_v3
+ckpt_old

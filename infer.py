@@ -230,10 +230,11 @@ def parse_args():
     parser.add_argument("--atom_loss_weight", type=float, default=0.33)
     parser.add_argument("--som_type_loss_weight", type=float, default=1.0)
     parser.add_argument("--device", type=str, default='cuda:0')
+    parser.add_argument("--metric_mode", type=str, default='bond')
     parser.add_argument("--add_H", type=int, default=1)
     parser.add_argument("--train_only_spn_H_atom", type=int, default=0)
     parser.add_argument("--pooling", type=str, default='sum')
-    parser.add_argument("--reduction", type=str, default='sum')
+    parser.add_argument("--reduction", type=str, default='mean')
     parser.add_argument("--cyp_list", type=str, default='1A2 2A6 2B6 2C8 2C9 2C19 2D6 2E1 3A4 CYP_REACTION')
 
     args = parser.parse_args()

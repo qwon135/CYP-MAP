@@ -44,8 +44,9 @@ def main(args):
     test_df['POS_ID'] = 'TEST' + test_df.index.astype(str).str.zfill(4)
 
     data = pd.concat([df, test_df]).reset_index(drop=True)
-
+    data['is_decoy'] = data['is_decoy'].fillna(False)
     for i in tqdm(range(data.shape[0])):
+        is_decoy = 0.1 if data.loc[i, 'is_decoy'] else 0
         pos_id = data.loc[i, 'POS_ID']
         mol = data.loc[i, 'ROMol']
 
@@ -102,8 +103,7 @@ def main(args):
 
             y[cyp] = torch.FloatTensor(bond_label)
             y_substrate[cyp] = torch.FloatTensor([1 if data.loc[i, cyp] != '' else 0])
-            y_atom[cyp] = torch.FloatTensor(atom_label)        
-
+            y_atom[cyp] = torch.FloatTensor(atom_label)
             y_spn[cyp] = torch.FloatTensor(atom_spn)
 
             y_bond_cleavage[cyp] = torch.FloatTensor(bond_cleavage)
@@ -118,11 +118,11 @@ def main(args):
             
         
         graph_h.y = y
-        graph_h.y_substrate = y_substrate
-        graph_h.y_atom = y_atom
-            
-        graph_h.y_spn = y_spn
+        graph_h.y_substrate = y_substrate        
 
+        graph_h.y_atom = y_atom            
+        graph_h.y_spn = y_spn
+        
         graph_h.y_bond_cleavage = y_bond_cleavage
         graph_h.y_bond_hydroxylation = y_bond_hydroxylation
         graph_h.y_bond_oxidation = y_bond_oxidation    

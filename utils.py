@@ -41,7 +41,7 @@ def calculate_roc_auc(y_true, y_score):
     return roc_auc_score(y_true, y_score)
 
 class Validator:
-    def __init__(self, cyp_list):
+    def __init__(self, cyp_list, metric_mode):
         self.cyp_list = cyp_list
         self.valid_loss_dict = {'total_loss' : 0, 'valid_loss' : 0}    
         self.y_true = {}
@@ -58,7 +58,7 @@ class Validator:
         self.not_H_bond = []
         self.bonds_idx_h = []
         self.first_H_bond_idx = []
-
+        self.metric_mode = metric_mode
         self.tasks = ['subs', 'bond', 'atom',  'spn', 'hdx', 'clv', 'oxi', 'rdc']
         for task in self.tasks:
             self.y_true[task] = {}
@@ -69,10 +69,28 @@ class Validator:
                 self.y_prob[task][cyp] = []            
                 self.valid_loss_dict[f'{cyp}_{task}_loss'] = 0
 
-    def add_probs(self, prediction):
+    def add_probs(self, batch, prediction):
         for cyp in self.cyp_list:
             for task in self.tasks:
-                self.y_prob[task][cyp] += prediction[f'{cyp}_{task}_logits'].sigmoid().cpu().tolist()
+                if (self.metric_mode == 'atom') and (task in ['hdx', 'clv', 'oxi', 'rdc']):
+                    probs = prediction[f'{cyp}_{task}_atom_logits'].sigmoid()#.cpu().tolist()
+                    probs = probs[batch.edge_index]                    
+                    probs = probs.mean(0)                    
+                    probs = probs.view(probs.shape[0] // 2, 2)
+                    probs = probs.mean(-1)
+                    self.y_prob[task][cyp] += probs.cpu().tolist()
+                elif self.metric_mode == 'atom_bond' and (task in ['hdx', 'clv', 'oxi', 'rdc']):
+                    atom_probs = prediction[f'{cyp}_{task}_atom_logits'].sigmoid()#.cpu().tolist()
+                    atom_probs = atom_probs[batch.edge_index]                    
+                    atom_probs = atom_probs.mean(0)                    
+                    atom_probs = atom_probs.view(atom_probs.shape[0] // 2, 2)
+                    atom_probs = atom_probs.mean(-1)
+
+                    bond_probs = prediction[f'{cyp}_{task}_logits'].sigmoid()
+
+                    self.y_prob[task][cyp] += (atom_probs/2 + bond_probs/2).cpu().tolist()
+                else:
+                    self.y_prob[task][cyp] += prediction[f'{cyp}_{task}_logits'].sigmoid().cpu().tolist()
                 self.y_true[task][cyp] += prediction[f'{cyp}_{task}_label'].cpu().tolist()
 
     def get_probs(self, task, cyp):
@@ -254,7 +272,7 @@ def validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args):
     th,  average, test_only_reaction_mol = args.th, args.average, args.test_only_reaction_mol    
     model.eval()
 
-    validator = Validator(cyp_list=model.cyp_list)
+    validator = Validator(cyp_list=model.cyp_list, metric_mode = args.metric_mode)
     tasks = ['subs', 'bond', 'atom',  'spn', 'hdx', 'clv', 'oxi', 'rdc']
 
     for batch in valid_loader:
@@ -265,7 +283,7 @@ def validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args):
         with torch.no_grad():
             _, loss_dict, prediction = model.forward_with_loss(batch, loss_fn_ce, loss_fn_bce, device, args)
         validator.add_loss(loss_dict)        
-        validator.add_probs(prediction)
+        validator.add_probs(batch, prediction)
 
     scores = {k:v/ len(valid_loader) for k,v in validator.valid_loss_dict.items()}
 
