@@ -354,9 +354,9 @@ class GNNSOM(torch.nn.Module):
     def get_loss(self, loss_fn, logits, labels, select_index, task_weight, reduction):
         if not select_index.cpu().sum():
             return 0
-        labels2 = labels.clone()
-        labels2[labels2==0] = 0.1
-        loss = loss_fn(logits[select_index], labels2[select_index])
+        # labels2 = labels.clone()
+        # labels2[labels2==0] = 0.1
+        loss = loss_fn(logits[select_index], labels[select_index])
         if reduction == 'sum':
             loss = loss / select_index.sum()
                 
