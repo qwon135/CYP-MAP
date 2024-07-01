@@ -20,7 +20,7 @@ from segmentation_models_pytorch.losses import FocalLoss, DiceLoss
 from torch_ema import ExponentialMovingAverage
 from tabulate import tabulate
 from modules.som_dataset import CustomDataset
-
+warnings.filterwarnings('ignore', '')
 warnings.filterwarnings('ignore', '.*Sparse CSR tensor support is in beta state.*')
 
 def seed_everything(seed: int = 42):
@@ -56,24 +56,26 @@ def get_logs(scores, cyp_list, args):
     for cyp in cyp_list:        
         headers1 = ['CYP', 
                    'auc_subs', 'apc_subs', 'f1s_subs', 'n_subs',
-                   'subs_loss', 'bond_loss', 'atom_loss',
-                    'clv_loss', 'oxi_loss', 'hdx_loss', 'rdc_loss',  'spn_loss'
+                   'subs_loss', 'bond_som_loss', 'atom_spn_loss',
+                   'dea_loss', 'epo_loss', 'oxi_loss', 'dha_loss', 'dhy_loss', 'rdc_loss'
                    ]
         
         headers2 = ['CYP',
-                    'jac_bond', 'f1s_bond', 'apc_bond', 'n_bond',
-                    'jac_spn', 'f1s_spn', 'apc_spn', 'n_spn',                    
+                    'jac_bond_som', 'f1s_bond_som', 'apc_bond_som', 'n_bond_som',
+                    'jac_atom_spn', 'f1s_atom_spn', 'apc_atom_spn', 'n_atom_spn',             
                     'jac_som', 'f1s_som', 'apc_som', 'n_som',
                     ]   
-        headers3 = ['CYP',                     
-                    'jac_hdx', 'f1s_hdx', 'apc_hdx', 'n_hdx',
-                    'jac_oxi', 'f1s_oxi', 'apc_oxi',  'n_oxi', 
-                    'jac_clv', 'f1s_clv', 'apc_clv',  'n_clv',                    
-                    'jac_rdc', 'f1s_rdc', 'apc_rdc',  'n_rdc', 
-                    
+        headers3 = ['CYP', 
+                    'jac_dea', 'f1s_dea', 'apc_dea', 'n_dea',
+                    'jac_epo', 'f1s_epo', 'apc_epo',  'n_epo',
+                    'jac_oxi', 'f1s_oxi', 'apc_oxi',  'n_oxi',
+                    'jac_dha', 'f1s_dha', 'apc_dha',  'n_dha',
+                    'jac_dhy', 'f1s_dhy', 'apc_dhy',  'n_dhy',
+                    'jac_rdc', 'f1s_rdc', 'apc_rdc',  'n_rdc',
+
                     ]       
         headers4 = ['CYP',
-                    'n_subs', 'n_bond', 'n_spn', 'n_som', 'n_hdx', 'n_oxi', 'n_clv', 'n_rdc'
+                    'n_subs', 'n_bond_som', 'n_atom_spn', 'n_som', 'n_dea', 'n_epo', 'n_oxi', 'n_dha', 'n_dhy', 'n_rdc'
                     ]          
         row1, row2, row3, row4 = [cyp], [cyp], [cyp], [cyp]
         for header in headers1[1:]:
@@ -133,14 +135,14 @@ def main(args):
     cyp = args.cyp
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
     
-    test_df = PandasTools.LoadSDF('data/test_0611.sdf')
+    test_df = PandasTools.LoadSDF('data/test_0628.sdf')
     test_df['CYP_REACTION'] = test_df.apply(CYP_REACTION, axis=1)
     test_df['POS_ID'] = 'TEST' + test_df.index.astype(str).str.zfill(4)
 
     if args.wo_no_id_ebomd:
         test_df = test_df[test_df['InChIKey'] != ''].reset_index(drop=True)
 
-    df = PandasTools.LoadSDF('data/train_nonreact_0611.sdf')
+    df = PandasTools.LoadSDF('data/train_nonreact_0628.sdf')
     df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1)
     df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4)
 
@@ -148,16 +150,15 @@ def main(args):
     test_loader = DataLoader(test_dataset, num_workers=2, batch_size=16, shuffle=False)
         
     model = GNNSOM(
-                num_layers=args.num_layers, 
+                num_layers=args.num_layers,
                 gnn_num_layers = args.gnn_num_layers,
                 pooling=args.pooling,
-                dropout=args.dropout,                 
+                dropout=args.dropout,
                 cyp_list=cyp_list, 
                 use_face = True if args.use_face else False, 
                 node_attn = True if args.node_attn else False,
                 face_attn = True if args.face_attn else False,
-                encoder_dropout = args.encoder_dropout,                
-                use_som_v2=True,
+                encoder_dropout = args.encoder_dropout,
 
                     ).to(device)
     model.load_state_dict(torch.load(args.ckpt, 'cpu'))
@@ -172,17 +173,20 @@ def main(args):
     print(best_validloss_testscores)
 
     metrics = [
-        'auc_subs', 'apc_subs', 'f1s_subs',
-        'jac_bond', 'f1s_bond', 'prc_bond', 'rec_bond', 'auc_bond', 'apc_bond',
-        'jac_spn', 'f1s_spn', 'prc_spn', 'rec_spn', 'auc_spn', 'apc_spn',
-        'jac_som', 'f1s_som', 'prc_som', 'rec_som', 'auc_som', 'apc_som',
-
-        'jac_hdx', 'f1s_hdx', 'prc_hdx', 'rec_hdx', 'auc_hdx', 'apc_hdx',
-        'jac_oxi', 'f1s_oxi', 'prc_oxi', 'rec_oxi', 'auc_oxi', 'apc_oxi',
-        'jac_clv', 'f1s_clv', 'prc_clv', 'rec_clv', 'auc_clv', 'apc_clv',        
-        'jac_rdc', 'f1s_rdc', 'apc_rdc', 'rec_rdc', 'auc_rdc', 'apc_rdc',
+        'auc_subs', 'apc_subs', 'f1s_subs', 'rec_subs', 'prc_subs',
+        'jac_bond_som', 'f1s_bond_som', 'prc_bond_som', 'rec_bond_som', 'auc_bond_som', 'apc_bond_som',
+        'jac_atom_spn', 'f1s_atom_spn', 'prc_atom_spn', 'rec_atom_spn', 'auc_atom_spn', 'apc_atom_spn',
         
+        'jac_dea', 'f1s_dea', 'prc_dea', 'rec_dea', 'auc_dea', 'apc_dea',
+        'jac_epo', 'f1s_epo', 'prc_epo', 'rec_epo', 'auc_epo', 'apc_epo',
+        'jac_oxi', 'f1s_oxi', 'prc_oxi', 'rec_oxi', 'auc_oxi', 'apc_oxi',
+        'jac_dha', 'f1s_dha', 'prc_dha', 'rec_dha', 'auc_dha', 'apc_dha',
+        'jac_dhy', 'f1s_dhy', 'prc_dhy', 'rec_dhy', 'auc_dhy', 'apc_dhy',
+        'jac_rdc', 'f1s_rdc', 'prc_rdc', 'rec_rdc', 'auc_rdc', 'apc_rdc',
+        
+        'jac_som', 'f1s_som', 'prc_som', 'rec_som', 'auc_som', 'apc_som',
         ]
+
     score_df = []    
     test_scores = validation(model, test_loader, loss_fn_ce, loss_fn_bce, args)
     
@@ -202,7 +206,7 @@ def parse_args():
     parser.add_argument("--epochs", type=int, default=50)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--n_classes", type=int, default=1)
-    parser.add_argument("--batch_size", type=int, default=16)    
+    parser.add_argument("--batch_size", type=int, default=32)    
     parser.add_argument("--num_layers", type=int, default=2)
     parser.add_argument("--gnn_num_layers", type=int, default=8)
     parser.add_argument("--gnn_lr", type=float, default=5e-5)

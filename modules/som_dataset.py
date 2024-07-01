@@ -71,11 +71,11 @@ def check_reaction(bond_atom_sidx, bond_atom_eidx, bond_atom_s_symbol, bond_atom
     
     reaction_atom_s = int(reaction_atom_s)
 
-    if reaction_type in ['S-Oxidation', 'N-Oxidation', 'P-Oxidation']:
+    if reaction_type in ['S-Oxidation', 'N-Oxidation', 'P-Oxidation', 'SPN-Oxidation', 'spn']:
         return 0
 
     # 둘다 숫자인 경우는 해당 atom 인덱스 일치 여부 확인
-    if reaction_atom_e == 'H': # Hydroxylation or Oxidation
+    if reaction_atom_e == 'H': # Dealkylation or Oxidation
         if ((reaction_atom_s == bond_atom_sidx) and (bond_atom_e_symbol == 'H')) or ((reaction_atom_s == bond_atom_eidx) and (bond_atom_s_symbol ==  'H')): 
             return 1
     else:
@@ -88,125 +88,94 @@ def check_reaction(bond_atom_sidx, bond_atom_eidx, bond_atom_s_symbol, bond_atom
   
 def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
     type_collect = {
-                '' : '',
-                'Cleavage' : 'Cleavage', 
-                'Hydroxylation' : 'Hydroxylation',
+            '' : '',
+            # 1. Dealkylation
+            'Dealkylation' : 'dea', 
+            'Hydrolysis' : 'dea', 
+            'S-N-Cleavage' : 'dea', 
+            'Decarboxylation' : 'dea', 
+            'Cleavage' : 'dea',
 
-                'Oxidiation' : 'Oxidation',
-                'Oxidation' : 'Oxidation',
-                'Epoxidation' : 'Oxidation',
-                'UnspOxidation' : 'Oxidation',
+            # 2. Oxidation
+            'Hydroxylation' : 'oxi',
+            'Oxidiation' : 'oxi',
+            'Oxidation' : 'oxi',
+            'UnspOxidation' : 'oxi',
 
-                'Rearrangement' : 'Rearrangement', 
-                'Reduction' : 'Reduction', 
-                'Dehydrogenation' : 'Dehydrogenation',
-                'Desulfuration' : 'Desulfuration',
-                'Denitrosation' : 'Denitrosation',
-                'UnspReduction' : 'Reduction',
+            # 3. Dehalogenation
+            'Dehalogenation' : 'dha',
+            'Desulfuration' : 'dha',
+            'Deboronation' : 'dha',
+            'Denitrosation' : 'dha',            
 
-                'N-Oxidation': 'SPN-Oxidation',
-                'S-Oxidation': 'SPN-Oxidation'}
+            # 3. Epoxidation
+            'Epoxidation' : 'epo',
+            
+            # 4. Dehydrogenation
+            'Dehydrogenation' : 'dhy',
+
+            # 5. SPN-Oxidation
+            'N-Oxidation': 'spn',
+            'S-Oxidation': 'spn',
+
+            # 6. Reduction
+            'Reduction' : 'rdc',
+            'UnspReduction' : 'rdc',
+
+            # ETC
+            'Rearrangement' : 'Rearrangement', 
+            'Cyclization' : 'Cyclization',
+
+            }
     
-    reactions = [i for i in list(set(reactions)) if i]
-   
-    bond_label = [0] * len(bonds) # Reaction?    
-    
-    bond_cleavage = [0] * len(bonds) # Reaction?
-    bond_reduction = [0] * len(bonds)
-    bond_hydroxylation = [0] * len(bonds)
-    bond_oxidation = [0] * len(bonds)
+    reactions = [i for i in list(set(reactions)) if i]           
+    labels = {
+                'bond_som' : [0] * len(bonds),
+                'bond_dea' : [0] * len(bonds),
+                'bond_oxi' : [0] * len(bonds),
+                'bond_dha' : [0] * len(bonds),
+                'bond_epo' : [0] * len(bonds),
+                'bond_dhy' : [0] * len(bonds),
+                'bond_rdc' : [0] * len(bonds),
 
-    bond_reaction_type = [''] * len(bonds)
-        
-    # spn_atoms_idx = [idx for idx, i in enumerate(atoms) if i in ['S', 'P', 'N']]
-    atom_label = [0] * len(atoms)
-    atom_spn = [0] * len(atoms)
-    atom_hydroxylation = [0] * len(atoms)
-    atom_oxidation  = [0] * len(atoms)
-    atom_cleavage = [0] * len(atoms)
-    atom_reduction = [0] * len(atoms)
-
-    atom_reaction_type = [''] * len(atoms)
+                'atom_som' : [0] * len(atoms),
+                'atom_spn' : [0] * len(atoms),
+                'atom_dea' : [0] * len(atoms),
+                'atom_oxi' : [0] * len(atoms),
+                'atom_dha' : [0] * len(atoms),
+                'atom_epo' : [0] * len(atoms),
+                'atom_dhy' : [0] * len(atoms),
+                'atom_rdc' : [0] * len(atoms),
+                }
 
     for reaction in reactions:
         reaction = check_ns_oxidation(reaction)
         reaction_atoms, reaction_type, _ = reaction[1:-1].split(';')
+        reaction_type = type_collect[reaction_type]
 
-        if reaction_type == 'S-Oxidation':
+        if reaction_type == 'Rearrangement':
+            continue
+
+        if reaction_type == 'spn':
             r_atom_idx = int(reaction_atoms.split(',')[0]) - 1
-            atom_label[r_atom_idx] = 1
-            atom_spn[r_atom_idx] = 1     
-            atom_oxidation[r_atom_idx] = 1
-            atom_reaction_type[r_atom_idx] = 'S-Oxidation'
-
-        if reaction_type == 'N-Oxidation': # 'P-Oxidation'
-            r_atom_idx = int(reaction_atoms.split(',')[0]) - 1
-            atom_label[r_atom_idx] = 1
-            atom_spn[r_atom_idx] = 1
-            atom_oxidation[r_atom_idx] = 1
-            atom_reaction_type[r_atom_idx] = 'N-Oxidation'
-
-        # make bond label
+            labels['atom_som'][r_atom_idx] = 1
+            labels[f'atom_{reaction_type}'][r_atom_idx] = 1
+        
         for n in range(len(bonds)):
             s_atom_idx, e_atom_idx, s_atom, e_atom = bonds_idx[n][0], bonds_idx[n][1], bonds[n][0], bonds[n][1]
             is_react = check_reaction(s_atom_idx, e_atom_idx, s_atom, e_atom, reaction)
             
             if is_react:
-                atom_label[s_atom_idx] = 1
-                atom_label[e_atom_idx] = 1
-                atom_reaction_type[s_atom_idx] = reaction_type
-                atom_reaction_type[e_atom_idx] = reaction_type
-                if type_collect[reaction_type] == 'Hydroxylation':
-                    atom_hydroxylation[s_atom_idx] = 1
-                    atom_hydroxylation[e_atom_idx] = 1                
+                labels['atom_som'][s_atom_idx], labels['atom_som'][e_atom_idx] = 1, 1
+                labels['bond_som'][n] = 1
                 
-                if (type_collect[reaction_type] == 'Oxidation'):
-                    atom_oxidation[s_atom_idx] = 1
-                    atom_oxidation[e_atom_idx] = 1
+                if f'atom_{reaction_type}' in labels:
+                    labels[f'atom_{reaction_type}'][s_atom_idx], labels[f'atom_{reaction_type}'][e_atom_idx] = 1, 1
+                if f'bond_{reaction_type}' in labels:
+                    labels[f'bond_{reaction_type}'][n] = 1
 
-                if (type_collect[reaction_type] == 'Oxidation') and ('H' in reaction_atoms) : # n-H인 Oxidaiton은 Hydroxylation으로 가정
-                    atom_hydroxylation[s_atom_idx] = 1
-                    atom_hydroxylation[e_atom_idx] = 1                                
-
-                if type_collect[reaction_type] == 'Cleavage':
-                    atom_cleavage[s_atom_idx] = 1
-                    atom_cleavage[e_atom_idx] = 1
-
-                if type_collect[reaction_type] == 'Reduction':
-                    atom_reduction[s_atom_idx] = 1
-                    atom_reduction[e_atom_idx] = 1
-
-            if is_react:
-                bond_label[n] = 1                
-                bond_reaction_type[n] = reaction_type
-                if type_collect[reaction_type] == 'Oxidation':
-                    bond_oxidation[n] = 1
-
-                if type_collect[reaction_type] == 'Cleavage':
-                    bond_cleavage[n] = 1
-
-                if type_collect[reaction_type] == 'Hydroxylation':
-                    bond_hydroxylation[n] = 1
-
-                if (type_collect[reaction_type] == 'Oxidation') and ('H' in reaction_atoms) :
-                    bond_hydroxylation[n] = 1                    
-
-                if type_collect[reaction_type] == 'Reduction':
-                    bond_reduction[n] = 1
-    
-    return (
-            bond_label,
-            bond_cleavage,
-            bond_reduction,
-            bond_hydroxylation,
-            bond_oxidation,
-            atom_label,
-            atom_cleavage,
-            atom_reduction,
-            atom_hydroxylation,
-            atom_oxidation,
-            atom_spn
-            )    
+       
+    return labels
 
 class CustomDataset(InMemoryDataset):
     def __init__(self, root='dataset_path', transform=None, pre_transform=None, df=None, args=None, cyp_list=[], mode='train'):
@@ -214,29 +183,7 @@ class CustomDataset(InMemoryDataset):
         self.mode = mode        
         self.cyp_list = cyp_list        
         self.args= args                
-        self.from_save_pt = True
-        self.tasks = ['subs', 'bond', 'atom',  'spn', 'rdc', 'clv', 'oxi', 'hdx']
-
-        self.type_collect = {
-                            '' : '',
-                            'Cleavage' : 'Cleavage', 
-                            'Hydroxylation' : 'Hydroxylation',
-
-                            'Oxidiation' : 'Oxidation',
-                            'Oxidation' : 'Oxidation',
-                            'Epoxidation' : 'Oxidation',
-                            'UnspOxidation' : 'Oxidation',
-
-                            'Rearrangement' : 'Rearrangement', 
-                            'Reduction' : 'Reduction', 
-                            'Dehydrogenation' : 'Dehydrogenation',
-                            'Desulfuration' : 'Desulfuration',
-                            'Denitrosation' : 'Denitrosation',
-                            'UnspReduction' : 'UnspReduction',
-
-                            'N-Oxidation': 'SPN-Oxidation',
-                            'S-Oxidation': 'SPN-Oxidation',
-                            }    
+        self.from_save_pt = True        
         super().__init__(root, transform, pre_transform, df)        
 
     @property
@@ -259,5 +206,4 @@ class CustomDataset(InMemoryDataset):
             self.graph_h_list = []
             for mid in self.df['POS_ID'].tolist():                
                 self.graph_h_list.append(torch.load(f'graph_pt/{mid}_addh.pt'))                
-                
             return

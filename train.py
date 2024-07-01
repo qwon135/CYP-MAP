@@ -16,7 +16,7 @@ from utils import validation, to_matrix
 from torch_ema import ExponentialMovingAverage
 from tabulate import tabulate
 from timm.loss import BinaryCrossEntropy
-
+warnings.filterwarnings('ignore', '')
 warnings.filterwarnings('ignore', '.*Sparse CSR tensor support is in beta state.*')
 torch.multiprocessing.set_sharing_strategy('file_system')
 
@@ -46,22 +46,24 @@ def get_logs(epoch, train_loss, scores, cyp_list, args, mode='Valid'):
     for cyp in cyp_list:        
         headers1 = ['CYP', 
                    'auc_subs', 'apc_subs', 'f1s_subs', 'n_subs',
-                   'subs_loss', 'bond_loss', 'atom_loss',
-                    'clv_loss', 'oxi_loss', 'hdx_loss', 'rdc_loss',  'spn_loss'
+                   'subs_loss', 'bond_som_loss', 'atom_spn_loss',
+                   'dea_loss', 'epo_loss', 'oxi_loss', 'dha_loss', 'dhy_loss', 'rdc_loss'
                    ]
         
         headers2 = ['CYP',
-                    'jac_bond', 'f1s_bond', 'apc_bond', 'n_bond',
-                    'jac_spn', 'f1s_spn', 'apc_spn', 'n_spn',                    
-                    'jac_som', 'f1s_som', 'apc_som', 'n_som',
+                    'jac_bond_som', 'f1s_bond_som', 'apc_bond_som', #'n_bond_som',
+                    'jac_atom_spn', 'f1s_atom_spn', 'apc_atom_spn', #'n_atom_spn',                    
+                    'jac_som', 'f1s_som', 'apc_som', #'n_som',
                     ]   
-        headers3 = ['CYP',                     
-                    'jac_hdx', 'f1s_hdx', 'apc_hdx', 'n_hdx',
-                    'jac_oxi', 'f1s_oxi', 'apc_oxi',  'n_oxi', 
-                    'jac_clv', 'f1s_clv', 'apc_clv',  'n_clv',                    
-                    'jac_rdc', 'f1s_rdc', 'apc_rdc',  'n_rdc', 
-                    
-                    ]                              
+        headers3 = ['CYP', 
+                    'jac_dea', 'f1s_dea', 'apc_dea',# 'n_dea',
+                    'jac_epo', 'f1s_epo', 'apc_epo',#  'n_epo',
+                    'jac_oxi', 'f1s_oxi', 'apc_oxi',#  'n_oxi',
+                    'jac_dha', 'f1s_dha', 'apc_dha',#  'n_dha',
+                    'jac_dhy', 'f1s_dhy', 'apc_dhy',#  'n_dhy',
+                    'jac_rdc', 'f1s_rdc', 'apc_rdc',#  'n_rdc',
+
+                    ]                            
         row1, row2, row3 = [cyp], [cyp], [cyp]
         for header in headers1[1:]:
             if 'loss' in header or header[:2] == 'n_':
@@ -175,13 +177,13 @@ def main(args):
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
 
     if args.train_with_non_reaction:
-        print(f'load train_nonreact_0611.sdf!')
-        df = PandasTools.LoadSDF('data/train_nonreact_0611.sdf')
+        print(f'load train_nonreact_0628.sdf!')
+        df = PandasTools.LoadSDF('data/train_nonreact_0628.sdf')
     else:
-        print(f'load train_0611.sdf!')
-        df = PandasTools.LoadSDF('data/train_0611.sdf')
+        print(f'load train_0628.sdf!')
+        df = PandasTools.LoadSDF('data/train_0628.sdf')
 
-    test_df = PandasTools.LoadSDF('data/test_0611.sdf')
+    test_df = PandasTools.LoadSDF('data/test_0628.sdf')
     
     df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)    
 
@@ -226,8 +228,7 @@ def main(args):
                 use_face = True if args.use_face else False, 
                 node_attn = True if args.node_attn else False,
                 face_attn = True if args.face_attn else False,
-                encoder_dropout = args.encoder_dropout,                
-                use_som_v2=True,
+                encoder_dropout = args.encoder_dropout,                                
                     ).to(device)     
     if args.pretrain:
         state_dict=  torch.load(args.pretrain, map_location='cpu')
@@ -309,7 +310,7 @@ def main(args):
         val_scores = validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args)        
         val_loss_dict = {'epoch' : epoch}
         for cyp in cyp_list:
-            for task in ['subs', 'bond', 'atom',  'spn', 'hdx', 'clv', 'oxi', 'rdc']:
+            for task in ['subs', 'bond_som', 'atom_som',  'atom_spn', 'dea', 'epo','oxi', 'dha', 'dhy', 'rdc']:
                 val_loss_dict[f'{cyp}_{task}_loss'] = val_scores[f'{cyp}_{task}_loss']
 
         loss_df.append(val_loss_dict)        
@@ -337,13 +338,12 @@ def main(args):
             best_validloss_testscores = get_logs(epoch, train_loss, test_scores, cyp_list, args, mode='Test')
 
             patience = args.patience
-            if args.print_test_every:                            
+            if args.print_test_every:
                 print(best_validloss_testscores)
                 with open(log_path, 'a') as f:
                     print('!!!!Test!!!!\n\n')
                     f.write('!!!!Test!!!!\n\n')
-                    f.write(best_validloss_testscores + '\n\n')
-            
+                    f.write(best_validloss_testscores + '\n\n')            
         else:
             patience -= 1
         if not patience:
