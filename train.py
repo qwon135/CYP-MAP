@@ -311,7 +311,7 @@ def main(args):
         val_loss_dict = {'epoch' : epoch}
         for cyp in cyp_list:
             for task in ['subs', 'bond_som', 'atom_som',  'atom_spn', 'dea', 'epo','oxi', 'dha', 'dhy', 'rdc']:
-                val_loss_dict[f'{cyp}_{task}_loss'] = val_scores[f'{cyp}_{task}_loss']
+                val_loss_dict[f'{cyp}_{task}_loss'] = val_scores[f'{cyp}_{task}_loss'].cpu().item()
 
         loss_df.append(val_loss_dict)        
         if args.save_name:
@@ -371,7 +371,7 @@ def parse_args():
     parser.add_argument("--dropout", type=float, default=0.0)
     parser.add_argument("--dropout_fc", type=float, default=0.0)
     parser.add_argument("--dropout_som_fc", type=float, default=0.0)
-    parser.add_argument("--dropout_type_fc", type=float, default=0.0)
+    parser.add_argument("--dropout_type_fc", type=float, default=0.1)
     parser.add_argument("--encoder_dropout", type=float, default=0.0)
     parser.add_argument("--class_type", type=int, default=2)
     parser.add_argument("--warmup", type=int, default=1)
