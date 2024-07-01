@@ -197,7 +197,12 @@ class CustomDataset(InMemoryDataset):
     def len(self):
         return self.df.shape[0]
 
-    def get(self, idx):       
+    def get(self, idx):
+        # if self.mode == 'train':
+            # if random.random() < 0.5:
+            #     graph = deepcopy(self.graph_h_list[idx])
+            #     graph.x[:, 4]=0
+            #     return graph
         return self.graph_h_list[idx]
         
 
