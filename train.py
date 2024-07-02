@@ -45,7 +45,7 @@ def get_logs(epoch, train_loss, scores, cyp_list, args, mode='Valid'):
 
     for cyp in cyp_list:        
         headers1 = ['CYP', 
-                   'auc_subs', 'apc_subs', 'f1s_subs', 'n_subs',
+                #    'auc_subs', 'apc_subs', 'f1s_subs', 'n_subs',
                    'subs_loss', 'bond_som_loss', 'atom_spn_loss',
                    'dea_loss', 'epo_loss', 'oxi_loss', 'dha_loss', 'dhy_loss', 'rdc_loss'
                    ]
@@ -54,6 +54,7 @@ def get_logs(epoch, train_loss, scores, cyp_list, args, mode='Valid'):
                     'jac_bond_som', 'f1s_bond_som', 'apc_bond_som', #'n_bond_som',
                     'jac_atom_spn', 'f1s_atom_spn', 'apc_atom_spn', #'n_atom_spn',                    
                     'jac_som', 'f1s_som', 'apc_som', #'n_som',
+                    'auc_subs', 'apc_subs', 'f1s_subs',
                     ]   
         headers3 = ['CYP', 
                     'jac_dea', 'f1s_dea', 'apc_dea',# 'n_dea',
@@ -85,11 +86,11 @@ def get_logs(epoch, train_loss, scores, cyp_list, args, mode='Valid'):
                 row3.append(scores[cyp][args.th][header])
 
 
-        table_data1.append(row1)
+        # table_data1.append(row1)
         table_data2.append(row2)
         table_data3.append(row3)        
 
-    logs += (tabulate(table_data1, headers1, tablefmt="grid", floatfmt=".4f") + '\n')
+    # logs += (tabulate(table_data1, headers1, tablefmt="grid", floatfmt=".4f") + '\n')
     logs += (tabulate(table_data2, headers2, tablefmt="grid", floatfmt=".4f") + '\n')
     logs += tabulate(table_data3, headers3, tablefmt="grid", floatfmt=".4f")
     
@@ -361,7 +362,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--epochs", type=int, default=80)
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--batch_size", type=int, default=16)
+    parser.add_argument("--batch_size", type=int, default=12)
     parser.add_argument("--num_layers", type=int, default=2)
     parser.add_argument("--gnn_num_layers", type=int, default=8)
     parser.add_argument("--gnn_lr", type=float, default=4e-5)

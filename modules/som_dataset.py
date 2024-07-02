@@ -199,10 +199,14 @@ class CustomDataset(InMemoryDataset):
 
     def get(self, idx):
         # if self.mode == 'train':
-            # if random.random() < 0.5:
-            #     graph = deepcopy(self.graph_h_list[idx])
-            #     graph.x[:, 4]=0
-            #     return graph
+        #     if random.random() < 0.5:
+        #         graph = deepcopy(self.graph_h_list[idx])
+        #         x = graph.x[:, 4]
+        #         x -= 1
+        #         x[x<0] = 0
+        #         graph.x[:, 4] =x
+                
+        #         return graph
         return self.graph_h_list[idx]
         
 
