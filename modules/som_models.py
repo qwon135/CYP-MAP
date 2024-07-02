@@ -256,8 +256,10 @@ class GNNSOM(torch.nn.Module):
             
             for tsk in self.tasks[1:]:
                 if 'atom' in tsk:
+                    args.atom_loss_weight = 1/6
                     loss_dict[f'{cyp}_{tsk}_loss'] = self.get_loss(loss_fn_bce, logits[tsk][cyp], batch.y[cyp][tsk], atom_all, args.atom_loss_weight, args.reduction)
                 elif 'bond' in tsk:
+                    args.bond_loss_weight = 1/5
                     loss_dict[f'{cyp}_{tsk}_loss'] = self.get_loss(loss_fn_bce, logits[tsk][cyp], batch.y[cyp][tsk], bond_all, args.bond_loss_weight, args.reduction)
 
                 loss_dict['total_loss'] += loss_dict[f'{cyp}_{tsk}_loss']
