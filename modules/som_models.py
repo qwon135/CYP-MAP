@@ -260,12 +260,12 @@ class GNNSOM(torch.nn.Module):
                     loss_dict[f'{cyp}_{tsk}_loss'] = self.get_loss(loss_fn_bce, logits[tsk][cyp], batch.y[cyp][tsk], atom_all, args.atom_loss_weight, args.reduction)
                 elif 'bond' in tsk:
                     args.bond_loss_weight = 1/6
-                    loss_dict[f'{cyp}_{tsk}_loss'] = self.get_loss(loss_fn_bce, logits[tsk][cyp], batch.y[cyp][tsk], bond_all, args.bond_loss_weight, args.reduction)
+                    loss_dict[f'{cyp}_{tsk}_loss'] = self.get_loss(loss_fn_bce, logits[tsk][cyp], batch.y[cyp][tsk], bond_with_first_H, args.bond_loss_weight, args.reduction)
 
                 loss_dict['total_loss'] += loss_dict[f'{cyp}_{tsk}_loss']
 
                 pred_dict[f'{cyp}_{tsk}_logits'] = logits[tsk][cyp]
-                pred_dict[f'{cyp}_{tsk}_label'] = batch.y[cyp][tsk]
+                pred_dict[f'{cyp}_{tsk}_label'] = torch.ge(batch.y[cyp][tsk], 0.5)
 
         loss_dict['total_loss'] =loss_dict['total_loss'] / len(self.cyp_list)
         return logits, loss_dict, pred_dict
