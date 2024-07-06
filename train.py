@@ -241,9 +241,14 @@ def main(args):
         
         print(e)
     loss_fn_ce = nn.CrossEntropyLoss(reduction=args.reduction)
+<<<<<<< HEAD
     loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction, pos_weight=torch.FloatTensor([2.0]).to(args.device))    
     # loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction)
 
+=======
+    loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction)    
+    
+>>>>>>> parent of 1c923af... 240703
     param_groups = [
         {"params": [], "lr": args.gnn_lr}, # model.convs의 매개변수들, 학습률 args.gnn_lr
         {"params": [], "lr": args.clf_lr},  # 나머지 매개변수들, 학습률 args.clf_lr
