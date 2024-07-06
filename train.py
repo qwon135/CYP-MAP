@@ -190,6 +190,8 @@ def main(args):
 
     df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
     df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
+    if args.test_only_reaction_mol:
+        df = df[df['BOM_1A2'] != ''].reset_index(drop=True)
 
     train_df, valid_df = train_test_split(df, stratify=df['is_react'], random_state=args.seed, test_size=0.2)
     train_df, valid_df = train_df.reset_index(drop=True), valid_df.reset_index(drop=True)    
@@ -239,8 +241,8 @@ def main(args):
         
         print(e)
     loss_fn_ce = nn.CrossEntropyLoss(reduction=args.reduction)
-    # loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction, pos_weight=torch.FloatTensor([1.5]).to(args.device))    
-    loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction)    
+    loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction, pos_weight=torch.FloatTensor([2.0]).to(args.device))    
+    # loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction)
 
     param_groups = [
         {"params": [], "lr": args.gnn_lr}, # model.convs의 매개변수들, 학습률 args.gnn_lr

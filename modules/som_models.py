@@ -46,26 +46,7 @@ class Attention(torch.nn.Module):
         if return_attn:
             return mul_x, self.fc(mul_x)
         return self.fc(mul_x)
-
-class SOMPredictor(torch.nn.Module):
-    def __init__(self, channels, dropout, n_classes, cyp_list):
-        super().__init__()
-        self.cyp_list = cyp_list
-        self.proj_edge = torch.nn.Sequential(
-                            Linear(channels ,channels),
-                            torch.nn.ReLU(),
-                            Linear(channels ,channels)
-                            )
-        self.attn_fc = torch.nn.ModuleDict()
-        for cyp in self.cyp_list:
-            self.attn_fc[cyp] = Attention(channels, dropout, n_classes)
-
-    def forward(self, x):
-        x = self.proj_edge(x)
-        logits = {}
-        for cyp in self.cyp_list:
-            logits[cyp] = self.attn_fc[cyp](x)
-        return logits    
+  
 
 class SOMPredictorV2(torch.nn.Module):
     def __init__(self, channels, dropout_som, dropout_type, n_classes, cyp_list):
@@ -94,39 +75,6 @@ class SOMPredictorV2(torch.nn.Module):
             logits[cyp] = torch.cat([reaction_logits, subtype_logits], dim=-1)
         return logits   
 
-class SOMPredictorV3(torch.nn.Module):
-    def __init__(self, channels, dropout_som, dropout_type, n_classes, cyp_list):
-        super().__init__()
-        self.cyp_list = cyp_list
-        self.proj_edge = torch.nn.Sequential(
-                            Linear(channels, channels),
-                            torch.nn.PReLU(init=0.05),
-                            Linear(channels, channels)
-                            )
-        self.reaction_head = torch.nn.ModuleDict()
-        self.subtype_head = torch.nn.ModuleDict()
-        self.n_classes = n_classes
-        for cyp in self.cyp_list:
-            self.reaction_head[cyp] = Attention(channels, dropout_som, 1)  # 반응 여부 예측 (0: 반응 없음, 1: 반응 있음)
-            self.subtype_head[cyp] = torch.nn.ModuleDict()
-            for i in range(n_classes-1):
-                self.subtype_head[cyp][str(i)] = Attention(channels + 1, dropout_type, 1)  # subtype 예측 (1, 2, 3)
-
-    def forward(self, x):
-        x = self.proj_edge(x)
-        logits = {}
-        for cyp in self.cyp_list:            
-            reaction_logits = self.reaction_head[cyp](x)
-            reaction_probs = reaction_logits.sigmoid()
-            subtype_input = torch.cat([x, reaction_probs], dim=-1)
-
-            logit = [reaction_logits]
-            for i in range(self.n_classes-1):            
-                subtype_logits = self.subtype_head[cyp][str(i)](subtype_input)
-                logit.append(subtype_logits)
-
-            logits[cyp] = torch.cat(logit, dim=-1)
-        return logits   
 
 class GNNSOM(torch.nn.Module):
     def __init__(self, 

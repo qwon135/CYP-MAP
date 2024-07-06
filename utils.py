@@ -36,8 +36,10 @@ def custom_jaccard_score(test_bond_label, test_bond_preds):
 def calculate_roc_auc(y_true, y_score):
     if set(y_true) == set([0]):
         return 0
+    if set(y_true) == set([1]):
+        return 1    
     y_true, y_score = np.array(y_true), np.array(y_score)
-    # print(y_true.shape, y_score.shape)
+    # print(y_true.shape, y_score.shape)    
     return roc_auc_score(y_true, y_score)
 
 class Validator:
