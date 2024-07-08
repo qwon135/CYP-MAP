@@ -135,14 +135,14 @@ def main(args):
     cyp = args.cyp
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
     
-    test_df = PandasTools.LoadSDF('data/test_0628.sdf')
+    test_df = PandasTools.LoadSDF('data/test_0708.sdf')
     test_df['CYP_REACTION'] = test_df.apply(CYP_REACTION, axis=1)
     test_df['POS_ID'] = 'TEST' + test_df.index.astype(str).str.zfill(4)
 
     if args.wo_no_id_ebomd:
         test_df = test_df[test_df['InChIKey'] != ''].reset_index(drop=True)
 
-    df = PandasTools.LoadSDF('data/train_nonreact_0628.sdf')
+    df = PandasTools.LoadSDF('data/train_nonreact_0708.sdf')
     df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1)
     df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4)
 

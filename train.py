@@ -176,37 +176,31 @@ def main(args):
     device = args.device    
 
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
+    test_df = PandasTools.LoadSDF('data/test_0708.sdf')
 
     if args.train_with_non_reaction:
-        print(f'load train_nonreact_0628.sdf!')
-        df = PandasTools.LoadSDF('data/train_nonreact_0628.sdf')
+        # print(f'load train_nonreact_0708.sdf!')
+        df = PandasTools.LoadSDF('data/train_nonreact_0708.sdf')
+        df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
+        df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
+        df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
     else:
-        print(f'load train_0628.sdf!')
-        df = PandasTools.LoadSDF('data/train_0628.sdf')
-
-    test_df = PandasTools.LoadSDF('data/test_0628.sdf')
+        # print(f'load train_0708.sdf!')
+        df = PandasTools.LoadSDF('data/train_nonreact_0708.sdf')
+        df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
+        df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
+        df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
+        df['is_decoy'] = df['is_decoy'].fillna(False)
+        df['is_decoy'] = df['is_decoy'].astype(bool)
+        df = df[df['is_react'] == '0'].reset_index(drop=True)
     
-    df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)    
-
-    df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
-    df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
     if args.test_only_reaction_mol:
         df = df[df['BOM_1A2'] != ''].reset_index(drop=True)
-
     train_df, valid_df = train_test_split(df, stratify=df['is_react'], random_state=args.seed, test_size=0.2)
     train_df, valid_df = train_df.reset_index(drop=True), valid_df.reset_index(drop=True)    
 
     print('Reaction Ratio data : ', df[df['CYP_REACTION'] != ''].shape[0], '/', df.shape[0])
     print('Reaction Ratio train data : ', train_df[train_df['CYP_REACTION'] != ''].shape[0], '/', train_df.shape[0])
-    
-    if args.filt_decoy:
-        remove_decoy_ids_60 = pd.read_csv('data/remove_decoy_ids_85.csv', index_col=None)
-        remove_ids = remove_decoy_ids_60['remove_ids'].tolist()
-        n_train, n_valid = train_df.shape[0], valid_df.shape[0]
-        train_df = train_df[~train_df['ID'].isin(remove_ids)].reset_index(drop=True)
-        valid_df = valid_df[~valid_df['ID'].isin(remove_ids)].reset_index(drop=True)
-
-        print(f'Filt Decoy ! Train {n_train} -> {train_df.shape[0]}, Valid {n_valid} -> {valid_df.shape[0]}')
 
     if not args.upscaling:        
         train_dataset = CustomDataset(df=train_df,  args=args, cyp_list=cyp_list, mode='train')
