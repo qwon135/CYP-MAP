@@ -193,7 +193,9 @@ def main(args):
         df['is_decoy'] = df['is_decoy'].fillna(False)
         df['is_decoy'] = df['is_decoy'].astype(bool)
         df = df[df['is_react'] == '0'].reset_index(drop=True)
-    
+    # ebmod = PandasTools.LoadSDF('/home/pjh/workspace/SOM/CYPSOM/Site-of-metabolism/DCyPre/ebmod.sdf')
+    # df = df[df['InChIKey'].isin( ebmod['InChIKey'])].reset_index(drop=True)
+
     if args.test_only_reaction_mol:
         df = df[df['BOM_1A2'] != ''].reset_index(drop=True)
     train_df, valid_df = train_test_split(df, stratify=df['is_react'], random_state=args.seed, test_size=0.2)
@@ -235,8 +237,8 @@ def main(args):
         
         print(e)
     loss_fn_ce = nn.CrossEntropyLoss(reduction=args.reduction)
-    # loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction, pos_weight=torch.FloatTensor([2.0]).to(args.device))    
-    loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction)
+    loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction, pos_weight=torch.FloatTensor([2.0]).to(args.device))
+    # loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction)
 
     param_groups = [
         {"params": [], "lr": args.gnn_lr}, # model.convs의 매개변수들, 학습률 args.gnn_lr
@@ -253,6 +255,7 @@ def main(args):
 
     if args.optim == 'adamw':
         optim = torch.optim.AdamW(param_groups, weight_decay=args.weight_decay)
+        # optim = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     elif args.optim == 'adam':
         optim = torch.optim.Adam(param_groups, weight_decay=args.weight_decay)
 
@@ -368,12 +371,12 @@ def parse_args():
     parser.add_argument("--ema_decay", type=float, default=0.995)
     parser.add_argument("--dropout", type=float, default=0.0)
     parser.add_argument("--dropout_fc", type=float, default=0.0)
-    parser.add_argument("--dropout_som_fc", type=float, default=0.1)
-    parser.add_argument("--dropout_type_fc", type=float, default=0.1)
+    parser.add_argument("--dropout_som_fc", type=float, default=0.0)
+    parser.add_argument("--dropout_type_fc", type=float, default=0.0)
     parser.add_argument("--encoder_dropout", type=float, default=0.0)
     parser.add_argument("--class_type", type=int, default=2)
     parser.add_argument("--warmup", type=int, default=1)
-    parser.add_argument("--upscaling", type=int, default=1)
+    parser.add_argument("--upscaling", type=int, default=0)
     parser.add_argument("--use_focal", type=int, default=0)
     parser.add_argument("--train_with_non_reaction", type=int, default=1)
     parser.add_argument("--test_only_reaction_mol", type=int, default=0)
@@ -396,7 +399,7 @@ def parse_args():
     parser.add_argument("--som_type_loss_weight", type=float, default=1.0)
     parser.add_argument("--equivalent_mean", type=int, default=0)
     parser.add_argument("--average", type=str, default='binary')
-    parser.add_argument("--device", type=str, default='cuda:0')
+    parser.add_argument("--device", type=str, default='cuda:0')    
     parser.add_argument("--cyp_list", type=str, default='1A2 2A6 2B6 2C8 2C9 2C19 2D6 2E1 3A4 CYP_REACTION')
     parser.add_argument("--pooling", type=str, default='sum')    
     parser.add_argument("--train_add_H_random", type=int, default=0)

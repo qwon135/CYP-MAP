@@ -213,27 +213,27 @@ class Validator:
         apc = average_precision_score(y_true, y_prob)
         return jac, f1s, prc, rec, auc, apc
 
-    # def unbatch(self):
-    #     node_batch = np.repeat(np.arange(len(self.n_nodes)), self.n_nodes)
-    #     edge_batch = np.repeat(np.arange(len(self.n_edges)), self.n_edges)
+    def unbatch(self):
+        node_batch = np.repeat(np.arange(len(self.n_nodes)), self.n_nodes)
+        edge_batch = np.repeat(np.arange(len(self.n_edges)), self.n_edges)
 
-    #     self.y_prob_unbatch = {}
-    #     self.y_true_unbatch = {}
-    #     self.has_H_atom_unbatch = self.som_unbatch(self.has_H_atom, node_batch)
-    #     self.has_H_bond_unbatch = self.som_unbatch(~np.array(self.not_H_bond), edge_batch)
-    #     for tsk in [ 'bond_som', 'atom_som',  'spn', 'dea', 'epo', 'oxi', 'dha', 'dhy']:
-    #         self.y_prob_unbatch[tsk] = {}
-    #         self.y_true_unbatch[tsk] = {}
+        self.y_prob_unbatch = {}
+        self.y_true_unbatch = {}
+        self.has_H_atom_unbatch = self.som_unbatch(self.has_H_atom, node_batch)
+        self.has_H_bond_unbatch = self.som_unbatch(~np.array(self.not_H_bond), edge_batch)
+        for tsk in [ 'bond_som', 'atom_som',  'atom_spn', 'dea', 'epo', 'oxi', 'dha', 'dhy', 'rdc']:
+            self.y_prob_unbatch[tsk] = {}
+            self.y_true_unbatch[tsk] = {}
 
-    #     for tsk in ['bond', 'clv', 'oxi', 'rdc', 'hdx']:
-    #         for cyp in self.cyp_list:
-    #             self.y_prob_unbatch[tsk][cyp] = self.som_unbatch(self.y_prob[tsk][cyp], edge_batch)
-    #             self.y_true_unbatch[tsk][cyp] = self.som_unbatch(self.y_true[tsk][cyp], edge_batch)
+        for tsk in ['bond_som', 'dea', 'epo', 'oxi', 'dha', 'dhy', 'rdc']:
+            for cyp in self.cyp_list:
+                self.y_prob_unbatch[tsk][cyp] = self.som_unbatch(self.y_prob[tsk][cyp], edge_batch)
+                self.y_true_unbatch[tsk][cyp] = self.som_unbatch(self.y_true[tsk][cyp], edge_batch)
         
-    #     for tsk in ['atom', 'spn',]:
-    #         for cyp in self.cyp_list:
-    #             self.y_prob_unbatch[tsk][cyp] = self.som_unbatch(self.y_prob[tsk][cyp], node_batch)
-    #             self.y_true_unbatch[tsk][cyp] = self.som_unbatch(self.y_true[tsk][cyp], node_batch)        
+        for tsk in ['atom_som', 'atom_spn']:
+            for cyp in self.cyp_list:
+                self.y_prob_unbatch[tsk][cyp] = self.som_unbatch(self.y_prob[tsk][cyp], node_batch)
+                self.y_true_unbatch[tsk][cyp] = self.som_unbatch(self.y_true[tsk][cyp], node_batch)        
 
     # def eq_mean(self):        
     #     for mol_idx, eq_bonds in enumerate(self.equivalent_bonds):
@@ -256,13 +256,13 @@ class Validator:
     #         for cyp in self.cyp_list:
     #             self.y_prob[tsk][cyp] = np.concatenate( self.y_prob_unbatch[tsk][cyp], 0).tolist()                
 
-    # def som_unbatch(self, x, batch):
-    #     batch = torch.from_numpy(batch)
-    #     x = np.array(x)
-    #     x = torch.from_numpy(x)
+    def som_unbatch(self, x, batch):
+        batch = torch.from_numpy(batch)
+        x = np.array(x)
+        x = torch.from_numpy(x)
         
-    #     x_unbatch = unbatch(x, batch)
-    #     x_unbatch = [i.numpy() for i in x_unbatch]
+        x_unbatch = unbatch(x, batch)
+        x_unbatch = [i.numpy() for i in x_unbatch]
                 
         return x_unbatch
 

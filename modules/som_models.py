@@ -215,7 +215,7 @@ class GNNSOM(torch.nn.Module):
                 pred_dict[f'{cyp}_{tsk}_logits'] = logits[tsk][cyp]
                 pred_dict[f'{cyp}_{tsk}_label'] = batch.y[cyp][tsk]
 
-        loss_dict['total_loss'] =loss_dict['total_loss'] / len(self.cyp_list)
+        # loss_dict['total_loss'] =loss_dict['total_loss'] / len(self.cyp_list)
         return logits, loss_dict, pred_dict
     
     def get_loss(self, loss_fn, logits, labels, select_index, task_weight, reduction):
