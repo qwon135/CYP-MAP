@@ -57,7 +57,7 @@ def get_logs(scores, cyp_list, args):
         headers1 = ['CYP', 
                    'auc_subs', 'apc_subs', 'f1s_subs', 'n_subs',
                    'subs_loss', 'bond_som_loss', 'atom_spn_loss',
-                   'dea_loss', 'epo_loss', 'oxi_loss', 'dha_loss', 'dhy_loss', 'rdc_loss'
+                   'oxc_loss', 'oxi_loss', 'epo_loss', 'sut_loss', 'dhy_loss', 'hys_loss', 'rdc_loss'
                    ]
         
         headers2 = ['CYP',
@@ -66,16 +66,17 @@ def get_logs(scores, cyp_list, args):
                     'jac_som', 'f1s_som', 'apc_som', 'n_som',
                     ]   
         headers3 = ['CYP', 
-                    'jac_dea', 'f1s_dea', 'apc_dea', 'n_dea',
-                    'jac_epo', 'f1s_epo', 'apc_epo',  'n_epo',
-                    'jac_oxi', 'f1s_oxi', 'apc_oxi',  'n_oxi',
-                    'jac_dha', 'f1s_dha', 'apc_dha',  'n_dha',
-                    'jac_dhy', 'f1s_dhy', 'apc_dhy',  'n_dhy',
-                    'jac_rdc', 'f1s_rdc', 'apc_rdc',  'n_rdc',
+                    'jac_oxc', 'f1s_oxc', 'apc_oxc', 'n_oxc',
+                    'jac_oxi', 'f1s_oxi', 'apc_oxi', 'n_oxi',
+                    'jac_epo', 'f1s_epo', 'apc_epo', 'n_epo',
+                    'jac_sut', 'f1s_sut', 'apc_sut', 'n_sut',
+                    'jac_dhy', 'f1s_dhy', 'apc_dhy', 'n_dhy',
+                    'jac_hys', 'f1s_hys', 'apc_hys', 'n_hys',
+                    'jac_rdc', 'f1s_rdc', 'apc_rdc', 'n_rdc',
 
                     ]       
         headers4 = ['CYP',
-                    'n_subs', 'n_bond_som', 'n_atom_spn', 'n_som', 'n_dea', 'n_epo', 'n_oxi', 'n_dha', 'n_dhy', 'n_rdc'
+                    'n_subs', 'n_bond_som', 'n_atom_spn', 'n_som', 'n_oxc', 'n_oxi', 'n_epo', 'n_sut', 'n_dhy', 'n_hys', 'n_rdc',
                     ]          
         row1, row2, row3, row4 = [cyp], [cyp], [cyp], [cyp]
         for header in headers1[1:]:
@@ -135,14 +136,14 @@ def main(args):
     cyp = args.cyp
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
     
-    test_df = PandasTools.LoadSDF('data/test_0708.sdf')
+    test_df = PandasTools.LoadSDF('data/test_0710.sdf')
     test_df['CYP_REACTION'] = test_df.apply(CYP_REACTION, axis=1)
     test_df['POS_ID'] = 'TEST' + test_df.index.astype(str).str.zfill(4)
 
     if args.wo_no_id_ebomd:
         test_df = test_df[test_df['InChIKey'] != ''].reset_index(drop=True)
 
-    df = PandasTools.LoadSDF('data/train_nonreact_0708.sdf')
+    df = PandasTools.LoadSDF('data/train_nonreact_0710.sdf')
     df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1)
     df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4)
 
@@ -161,7 +162,8 @@ def main(args):
                 encoder_dropout = args.encoder_dropout,
 
                     ).to(device)
-    model.load_state_dict(torch.load(args.ckpt, 'cpu'))
+    if args.ckpt:
+        model.load_state_dict(torch.load(args.ckpt, 'cpu'))
         
     loss_fn_bce = nn.BCEWithLogitsLoss()
     loss_fn_ce = nn.CrossEntropyLoss()
@@ -177,13 +179,14 @@ def main(args):
         'jac_bond_som', 'f1s_bond_som', 'prc_bond_som', 'rec_bond_som', 'auc_bond_som', 'apc_bond_som',
         'jac_atom_spn', 'f1s_atom_spn', 'prc_atom_spn', 'rec_atom_spn', 'auc_atom_spn', 'apc_atom_spn',
         
-        'jac_dea', 'f1s_dea', 'prc_dea', 'rec_dea', 'auc_dea', 'apc_dea',
-        'jac_epo', 'f1s_epo', 'prc_epo', 'rec_epo', 'auc_epo', 'apc_epo',
+        'jac_oxc', 'f1s_oxc', 'prc_oxc', 'rec_oxc', 'auc_oxc', 'apc_oxc',
         'jac_oxi', 'f1s_oxi', 'prc_oxi', 'rec_oxi', 'auc_oxi', 'apc_oxi',
-        'jac_dha', 'f1s_dha', 'prc_dha', 'rec_dha', 'auc_dha', 'apc_dha',
+        'jac_epo', 'f1s_epo', 'prc_epo', 'rec_epo', 'auc_epo', 'apc_epo',
+        'jac_sut', 'f1s_sut', 'prc_sut', 'rec_sut', 'auc_sut', 'apc_sut',
         'jac_dhy', 'f1s_dhy', 'prc_dhy', 'rec_dhy', 'auc_dhy', 'apc_dhy',
+        'jac_hys', 'f1s_hys', 'prc_hys', 'rec_hys', 'auc_hys', 'apc_hys',
         'jac_rdc', 'f1s_rdc', 'prc_rdc', 'rec_rdc', 'auc_rdc', 'apc_rdc',
-        
+
         'jac_som', 'f1s_som', 'prc_som', 'rec_som', 'auc_som', 'apc_som',
         ]
 

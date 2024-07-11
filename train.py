@@ -47,7 +47,7 @@ def get_logs(epoch, train_loss, scores, cyp_list, args, mode='Valid'):
         headers1 = ['CYP', 
                 #    'auc_subs', 'apc_subs', 'f1s_subs', 'n_subs',
                    'subs_loss', 'bond_som_loss', 'atom_spn_loss',
-                   'dea_loss', 'epo_loss', 'oxi_loss', 'dha_loss', 'dhy_loss', 'rdc_loss'
+                   'oxc_loss', 'oxi_loss', 'epo_loss', 'sut_loss', 'dhy_loss', 'hys_loss', 'rdc_loss'
                    ]
         
         headers2 = ['CYP',
@@ -57,13 +57,13 @@ def get_logs(epoch, train_loss, scores, cyp_list, args, mode='Valid'):
                     'auc_subs', 'apc_subs', 'f1s_subs',
                     ]   
         headers3 = ['CYP', 
-                    'jac_dea', 'f1s_dea', 'apc_dea',# 'n_dea',
-                    'jac_epo', 'f1s_epo', 'apc_epo',#  'n_epo',
-                    'jac_oxi', 'f1s_oxi', 'apc_oxi',#  'n_oxi',
-                    'jac_dha', 'f1s_dha', 'apc_dha',#  'n_dha',
+                    'jac_oxc', 'f1s_oxc', 'apc_oxc',# 'n_dea',
+                    'jac_oxi', 'f1s_oxi', 'apc_oxi',#  'n_epo',
+                    'jac_epo', 'f1s_epo', 'apc_epo',#  'n_oxi',
+                    'jac_sut', 'f1s_sut', 'apc_sut',#  'n_dha',
                     'jac_dhy', 'f1s_dhy', 'apc_dhy',#  'n_dhy',
+                    'jac_hys', 'f1s_hys', 'apc_hys',#  'n_rdc',
                     'jac_rdc', 'f1s_rdc', 'apc_rdc',#  'n_rdc',
-
                     ]                            
         row1, row2, row3 = [cyp], [cyp], [cyp]
         for header in headers1[1:]:
@@ -152,7 +152,22 @@ def upscaling_v2(df, cyp_list):
     print()
 
     return up_sample_df
+def downscaling(df, cyp_list):
+    n_data = df.shape[0]
+    
+    reaction_df = df[df['CYP_REACTION'] != ''].reset_index(drop=True)    
 
+    non_reaction_df = df[df['CYP_REACTION'] == ''].reset_index(drop=True)
+    non_reaction_df = non_reaction_df.sample(non_reaction_df.shape[0] // 2)
+
+    down_sample_df = pd.concat([reaction_df, non_reaction_df]).reset_index(drop=True)
+
+    print('down ratio!')
+    for cyp in cyp_list:
+        print(f'{cyp} :({df[df[cyp] != ""].shape[0]} -> {down_sample_df[down_sample_df[cyp] != ""].shape[0]}) / ({df.shape[0]} -> {down_sample_df.shape[0]})')
+    print()
+
+    return down_sample_df
 def upscaling_v3(df, cyp_list, ratio):
     n_data = df.shape[0]
     reaction_df = df[df['CYP_REACTION'] != ''].reset_index(drop=True)
@@ -176,17 +191,17 @@ def main(args):
     device = args.device    
 
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
-    test_df = PandasTools.LoadSDF('data/test_0708.sdf')
+    test_df = PandasTools.LoadSDF('data/test_0710.sdf')
 
     if args.train_with_non_reaction:
-        # print(f'load train_nonreact_0708.sdf!')
-        df = PandasTools.LoadSDF('data/train_nonreact_0708.sdf')
+        # print(f'load train_nonreact_0710.sdf!')
+        df = PandasTools.LoadSDF('data/train_nonreact_0710.sdf')
         df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
         df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
         df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
     else:
-        # print(f'load train_0708.sdf!')
-        df = PandasTools.LoadSDF('data/train_nonreact_0708.sdf')
+        # print(f'load train_0710.sdf!')
+        df = PandasTools.LoadSDF('data/train_nonreact_0710.sdf')
         df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
         df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
         df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
@@ -289,6 +304,9 @@ def main(args):
             train_dataset = CustomDataset(df=up_train_df,  args=args, cyp_list=cyp_list, mode='train')
             train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)
         
+        train_dataset = CustomDataset(df=downscaling(train_df, cyp_list),  args=args, cyp_list=cyp_list, mode='train')
+        train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)                
+
         train_loss = 0
         model.train()
         for step, batch in enumerate(train_loader):         
@@ -311,7 +329,7 @@ def main(args):
         val_scores = validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args)        
         val_loss_dict = {'epoch' : epoch}
         for cyp in cyp_list:
-            for task in ['subs', 'bond_som', 'atom_som',  'atom_spn', 'dea', 'epo','oxi', 'dha', 'dhy', 'rdc']:
+            for task in ['subs', 'bond_som', 'atom_som',  'atom_spn', 'oxc', 'oxi', 'epo', 'sut', 'dhy', 'hys', 'rdc']:
                 val_loss_dict[f'{cyp}_{task}_loss'] = val_scores[f'{cyp}_{task}_loss'].cpu().item()
 
         loss_df.append(val_loss_dict)        
@@ -360,7 +378,7 @@ def main(args):
     
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--epochs", type=int, default=80)
+    parser.add_argument("--epochs", type=int, default=30)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--batch_size", type=int, default=12)
     parser.add_argument("--num_layers", type=int, default=2)

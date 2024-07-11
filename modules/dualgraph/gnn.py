@@ -455,10 +455,12 @@ class GNN2(nn.Module):
         u = self.global_init.expand(num_graphs, -1)
 
         x = self.encoder_node(x)        
+        x_encoder_node = x.clone()
         
         if perturb is not None:
             x = x + perturb
         edge_attr = self.encoder_edge(edge_attr)        
+        edge_attr_encoder_edge = edge_attr.clone()
 
         if perturb_edge is not None:
             edge_attr = edge_attr + perturb_edge
@@ -548,7 +550,7 @@ class GNN2(nn.Module):
             #     mask_3 = (random_3 >= self.dropnet).to(torch.float32)
             #     mol_feat_bond = mol_feat_bond * mask_3
 
-            return mol_feat_atom, mol_feat_bond, mol_feat_ring, x, edge_attr, u
+            return mol_feat_atom, mol_feat_bond, mol_feat_ring, x, edge_attr, u, x_encoder_node, edge_attr_encoder_edge
         else:
             return self.pooling(x, node_batch, size=num_graphs)
         if self.gradmultiply > 0:

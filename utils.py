@@ -61,7 +61,7 @@ class Validator:
         self.bonds_idx_h = []
         self.first_H_bond_idx = []
         self.metric_mode = metric_mode
-        self.tasks = ['subs', 'bond_som', 'atom_som',  'atom_spn', 'dea', 'epo', 'oxi', 'dha', 'dhy', 'rdc']
+        self.tasks = ['subs', 'bond_som', 'atom_som',  'atom_spn', 'oxc', 'oxi', 'epo', 'sut', 'dhy', 'hys', 'rdc']
         for task in self.tasks:
             self.y_true[task] = {}
             self.y_prob[task] = {}
@@ -74,7 +74,7 @@ class Validator:
     def add_probs(self, batch, prediction):
         for cyp in self.cyp_list:
             for task in self.tasks:
-                if (self.metric_mode == 'atom') and (task in ['dea', 'epo', 'oxi', 'dha', 'dhy', 'rdc']):
+                if (self.metric_mode == 'atom') and (task in ['oxc', 'oxi', 'epo', 'sut', 'dhy', 'hys', 'rdc']):
                     probs = prediction[f'{cyp}_atom_{task}_atom_logits'].sigmoid()#.cpu().tolist()
                     probs = probs[batch.edge_index]                    
                     probs = probs.mean(0)                    
@@ -82,7 +82,7 @@ class Validator:
                     probs = probs.mean(-1)
                     self.y_prob[task][cyp] += probs.cpu().tolist()
 
-                elif self.metric_mode == 'atom_bond' and (task in ['dea', 'epo', 'oxi', 'dha', 'dhy', 'rdc']):
+                elif self.metric_mode == 'atom_bond' and (task in ['oxc', 'oxi', 'epo', 'sut', 'dhy', 'hys', 'rdc']):
                     atom_probs = prediction[f'{cyp}_bond_{task}_atom_logits'].sigmoid()#.cpu().tolist()
                     atom_probs = atom_probs[batch.edge_index]                    
                     atom_probs = atom_probs.mean(0)                    
@@ -93,12 +93,12 @@ class Validator:
 
                     self.y_prob[task][cyp] += (atom_probs/2 + bond_probs/2).cpu().tolist()
                 else:                    
-                    if task in ['dea', 'epo', 'oxi', 'dha', 'dhy', 'rdc']:
+                    if task in ['oxc', 'oxi', 'epo', 'sut', 'dhy', 'hys', 'rdc']:
                         self.y_prob[task][cyp] += prediction[f'{cyp}_bond_{task}_logits'].sigmoid().cpu().tolist()
                     else:
                         self.y_prob[task][cyp] += prediction[f'{cyp}_{task}_logits'].sigmoid().cpu().tolist()
 
-                if task in ['dea', 'epo', 'oxi', 'dha', 'dhy', 'rdc']:
+                if task in ['oxc', 'oxi', 'epo', 'sut', 'dhy', 'hys', 'rdc']:
                     self.y_true[task][cyp] += prediction[f'{cyp}_bond_{task}_label'].cpu().tolist()                
                 elif task == 'atom_spn':
                     self.y_true[task][cyp] += prediction[f'{cyp}_atom_spn_label'].cpu().tolist()
@@ -117,7 +117,7 @@ class Validator:
         y_prob = np.array(self.y_prob[task][cyp])
         y_true = np.array(self.y_true[task][cyp])
 
-        if task in ['bond_som', 'dea', 'epo', 'oxi', 'dha', 'rdc']:
+        if task in ['bond_som', 'oxc', 'oxi', 'epo', 'sut', 'dhy', 'hys', 'rdc']:
             bonds_with_firstH = (np.array(self.not_H_bond) + np.array( self.first_H_bond_idx)).tolist()
             y_prob = y_prob[bonds_with_firstH]
             y_true = y_true[bonds_with_firstH]
@@ -190,7 +190,7 @@ class Validator:
             self.valid_loss_dict['valid_loss'] += loss_dict[f'{cyp}_atom_spn_loss']
 
             for task in self.tasks:
-                if task in [ 'dea', 'epo', 'oxi', 'dha', 'dhy', 'rdc']:
+                if task in [ 'oxc', 'oxi', 'epo', 'sut', 'dhy', 'hys', 'rdc']:
                     self.valid_loss_dict[f'{cyp}_{task}_loss'] += loss_dict[f'{cyp}_bond_{task}_loss']
                 else:
                     self.valid_loss_dict[f'{cyp}_{task}_loss'] += loss_dict[f'{cyp}_{task}_loss']
@@ -221,11 +221,11 @@ class Validator:
         self.y_true_unbatch = {}
         self.has_H_atom_unbatch = self.som_unbatch(self.has_H_atom, node_batch)
         self.has_H_bond_unbatch = self.som_unbatch(~np.array(self.not_H_bond), edge_batch)
-        for tsk in [ 'bond_som', 'atom_som',  'atom_spn', 'dea', 'epo', 'oxi', 'dha', 'dhy', 'rdc']:
+        for tsk in [ 'bond_som', 'atom_som',  'atom_spn', 'oxc', 'oxi', 'epo', 'sut', 'dhy', 'hys', 'rdc']:
             self.y_prob_unbatch[tsk] = {}
             self.y_true_unbatch[tsk] = {}
 
-        for tsk in ['bond_som', 'dea', 'epo', 'oxi', 'dha', 'dhy', 'rdc']:
+        for tsk in ['bond_som', 'oxc', 'oxi', 'epo', 'sut', 'dhy', 'hys', 'rdc']:
             for cyp in self.cyp_list:
                 self.y_prob_unbatch[tsk][cyp] = self.som_unbatch(self.y_prob[tsk][cyp], edge_batch)
                 self.y_true_unbatch[tsk][cyp] = self.som_unbatch(self.y_true[tsk][cyp], edge_batch)
@@ -272,7 +272,7 @@ def validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args):
     model.eval()
 
     validator = Validator(cyp_list=model.cyp_list, metric_mode = args.metric_mode)
-    tasks = ['subs', 'som', 'bond_som', 'atom_som', 'atom_spn', 'dea', 'epo', 'oxi', 'dha', 'dhy', 'rdc']
+    tasks = ['subs', 'som', 'bond_som', 'atom_som', 'atom_spn', 'oxc', 'oxi', 'epo', 'sut', 'dhy', 'hys', 'rdc']
 
     for batch in valid_loader:
         

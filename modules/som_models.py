@@ -10,11 +10,12 @@ from typing import Any, Dict, Optional
 import torch.nn.functional as F
 from torch import Tensor
 from torch_geometric.nn.pool import TopKPooling
-from .dualgraph.gnn import GNN2, GNN
+from .dualgraph.gnn import GNN2, GNN, one_hot_bonds, one_hot_atoms
 from torch_geometric.utils import softmax
 # from torch_scatter import scatter
 from torch_geometric.nn import NNConv
 from torch_geometric.utils import scatter
+from modules.ogb.utils.features import get_atom_feature_dims, get_bond_feature_dims
 
 class Attention(torch.nn.Module):
     def __init__(self, channels, dropout, n_classes):
@@ -137,15 +138,20 @@ class GNNSOM(torch.nn.Module):
                                             )
         self.substrate_fc[-1].weight.data.normal_(mean=0.0, std=0.01)
         
-        self.atom_tasks = ['atom_som', 'atom_spn', 'atom_dea', 'atom_epo', 'atom_oxi', 'atom_dha', 'atom_dhy', 'atom_rdc']
-        self.bond_tasks = ['bond_som', 'bond_dea', 'bond_epo', 'bond_oxi', 'bond_dha', 'bond_dhy', 'bond_rdc']
+        self.atom_tasks = ['atom_som', 'atom_spn', 'atom_oxc', 'atom_oxi', 'atom_epo', 'atom_sut', 'atom_dhy', 'atom_hys', 'atom_rdc']
+        self.bond_tasks = ['bond_som', 'bond_oxc', 'bond_oxi', 'bond_epo', 'bond_sut', 'bond_dhy', 'bond_hys', 'bond_rdc']
         self.tasks = ['subs'] + self.atom_tasks + self.bond_tasks
         
         self.atom_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, len(self.atom_tasks), cyp_list)
         self.bond_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, len(self.bond_tasks), cyp_list)
                 
     def forward(self, batch):
-        mol_feat_atom, mol_feat_bond, mol_feat_ring, x, edge_attr, u = self.gnn(batch)
+        mol_feat_atom, mol_feat_bond, mol_feat_ring, x, edge_attr, u, x_encoder_node, edge_attr_encoder_edge = self.gnn(batch)
+
+        # edge_attr = torch.cat([edge_attr, edge_attr_encoder_edge ], -1)
+        # x = torch.cat([x, x_encoder_node], -1)        
+        x = x + x_encoder_node
+        edge_attr = edge_attr + edge_attr_encoder_edge
 
         # if self.pooling_edge:
         if self.pooling_u:
@@ -204,10 +210,10 @@ class GNNSOM(torch.nn.Module):
             
             for tsk in self.tasks[1:]:
                 if 'atom' in tsk:
-                    args.atom_loss_weight = 1/7
+                    args.atom_loss_weight = 1/9
                     loss_dict[f'{cyp}_{tsk}_loss'] = self.get_loss(loss_fn_bce, logits[tsk][cyp], batch.y[cyp][tsk], atom_all, args.atom_loss_weight, args.reduction)
                 elif 'bond' in tsk:
-                    args.bond_loss_weight = 1/6
+                    args.bond_loss_weight = 1/8
                     loss_dict[f'{cyp}_{tsk}_loss'] = self.get_loss(loss_fn_bce, logits[tsk][cyp], batch.y[cyp][tsk], bond_all, args.bond_loss_weight, args.reduction)
 
                 loss_dict['total_loss'] += loss_dict[f'{cyp}_{tsk}_loss']
@@ -215,7 +221,7 @@ class GNNSOM(torch.nn.Module):
                 pred_dict[f'{cyp}_{tsk}_logits'] = logits[tsk][cyp]
                 pred_dict[f'{cyp}_{tsk}_label'] = batch.y[cyp][tsk]
 
-        # loss_dict['total_loss'] =loss_dict['total_loss'] / len(self.cyp_list)
+        loss_dict['total_loss'] =loss_dict['total_loss'] / len(self.cyp_list)
         return logits, loss_dict, pred_dict
     
     def get_loss(self, loss_fn, logits, labels, select_index, task_weight, reduction):

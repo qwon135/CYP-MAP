@@ -89,12 +89,14 @@ def check_reaction(bond_atom_sidx, bond_atom_eidx, bond_atom_s_symbol, bond_atom
 def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
     type_collect = {
             '' : '',
-            # 1. Dealkylation
-            'Dealkylation' : 'dea', 
-            'Hydrolysis' : 'dea', 
-            'S-N-Cleavage' : 'dea', 
-            'Decarboxylation' : 'dea', 
-            'Cleavage' : 'dea',
+            # 1. OxidativeCleavage
+            'Dealkylation' : 'oxc', 
+            'Ox-Ring-opening' : 'oxc', 
+            'Decarboxylation' : 'oxc',
+            'S-N-Cleavage' : 'oxc', 
+            'Decarboxylation' : 'oxc', 
+            'Ox-Ring-opening' : "oxc",
+            'Cleavage' : 'oxc',
 
             # 2. Oxidation
             'Hydroxylation' : 'oxi',
@@ -102,23 +104,28 @@ def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
             'Oxidation' : 'oxi',
             'UnspOxidation' : 'oxi',
 
-            # 3. Dehalogenation
-            'Dehalogenation' : 'dha',
-            'Desulfuration' : 'dha',
-            'Deboronation' : 'dha',
-            'Denitrosation' : 'dha',            
-
             # 3. Epoxidation
             'Epoxidation' : 'epo',
+
+
+            # 4.Substitution
+            'Dehalogenation' : 'sut',
+            'Desulfuration' : 'sut',
+            'Deboronation' : 'sut',
+            'Denitrosation' : 'sut',
             
-            # 4. Dehydrogenation
+            # 5. Dehydrogenation
             'Dehydrogenation' : 'dhy',
+            'Dehydration' : 'dhy',
 
-            # 5. SPN-Oxidation
+            # 6. SPN-Oxidation
             'N-Oxidation': 'spn',
-            'S-Oxidation': 'spn',
+            'S-Oxidation': 'spn',            
 
-            # 6. Reduction
+            # 7. Hydrolysis
+            'Hydrolysis' : 'hys',
+
+            # 8. Reduction
             'Reduction' : 'rdc',
             'UnspReduction' : 'rdc',
 
@@ -131,20 +138,22 @@ def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
     reactions = [i for i in list(set(reactions)) if i]           
     labels = {
                 'bond_som' : [0] * len(bonds),
-                'bond_dea' : [0] * len(bonds),
+                'bond_oxc' : [0] * len(bonds),
                 'bond_oxi' : [0] * len(bonds),
-                'bond_dha' : [0] * len(bonds),
                 'bond_epo' : [0] * len(bonds),
+                'bond_sut' : [0] * len(bonds),
                 'bond_dhy' : [0] * len(bonds),
+                'bond_hys' : [0] * len(bonds),
                 'bond_rdc' : [0] * len(bonds),
 
                 'atom_som' : [0] * len(atoms),
                 'atom_spn' : [0] * len(atoms),
-                'atom_dea' : [0] * len(atoms),
+                'atom_oxc' : [0] * len(atoms),
                 'atom_oxi' : [0] * len(atoms),
-                'atom_dha' : [0] * len(atoms),
                 'atom_epo' : [0] * len(atoms),
+                'atom_sut' : [0] * len(atoms),
                 'atom_dhy' : [0] * len(atoms),
+                'atom_hys' : [0] * len(atoms),
                 'atom_rdc' : [0] * len(atoms),
                 }
 

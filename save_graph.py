@@ -29,8 +29,8 @@ def main(args):
         
     cyp_list = ['BOM_1A2', 'BOM_2A6', 'BOM_2B6', 'BOM_2C8', 'BOM_2C9', 'BOM_2C19', 'BOM_2D6', 'BOM_2E1', 'BOM_3A4', 'CYP_REACTION']
 
-    df = PandasTools.LoadSDF('data/train_nonreact_0708.sdf')
-    test_df = PandasTools.LoadSDF('data/test_0708.sdf')
+    df = PandasTools.LoadSDF('data/train_nonreact_0710.sdf')
+    test_df = PandasTools.LoadSDF('data/test_0710.sdf')
 
     for col in ['BOM_1A2', 'BOM_2A6', 'BOM_2B6', 'BOM_2C8', 'BOM_2C9', 'BOM_2C19', 'BOM_2D6', 'BOM_2E1', 'BOM_3A4',]:
         df[col] = df[col].str.replace('><', '>\n<')
