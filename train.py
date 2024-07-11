@@ -158,7 +158,7 @@ def downscaling(df, cyp_list):
     reaction_df = df[df['CYP_REACTION'] != ''].reset_index(drop=True)    
 
     non_reaction_df = df[df['CYP_REACTION'] == ''].reset_index(drop=True)
-    non_reaction_df = non_reaction_df.sample(non_reaction_df.shape[0] // 2)
+    non_reaction_df = non_reaction_df.sample(non_reaction_df.shape[0] // 4)
 
     down_sample_df = pd.concat([reaction_df, non_reaction_df]).reset_index(drop=True)
 
@@ -304,8 +304,8 @@ def main(args):
             train_dataset = CustomDataset(df=up_train_df,  args=args, cyp_list=cyp_list, mode='train')
             train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)
         
-        train_dataset = CustomDataset(df=downscaling(train_df, cyp_list),  args=args, cyp_list=cyp_list, mode='train')
-        train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)                
+        # train_dataset = CustomDataset(df=downscaling(train_df, cyp_list),  args=args, cyp_list=cyp_list, mode='train')
+        # train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)                
 
         train_loss = 0
         model.train()
@@ -393,7 +393,7 @@ def parse_args():
     parser.add_argument("--dropout_type_fc", type=float, default=0.0)
     parser.add_argument("--encoder_dropout", type=float, default=0.0)
     parser.add_argument("--class_type", type=int, default=2)
-    parser.add_argument("--warmup", type=int, default=1)
+    parser.add_argument("--warmup", type=int, default=0)
     parser.add_argument("--upscaling", type=int, default=0)
     parser.add_argument("--use_focal", type=int, default=0)
     parser.add_argument("--train_with_non_reaction", type=int, default=1)
