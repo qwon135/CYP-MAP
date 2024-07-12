@@ -16,6 +16,7 @@ from utils import validation, to_matrix
 from torch_ema import ExponentialMovingAverage
 from tabulate import tabulate
 from timm.loss import BinaryCrossEntropy
+
 warnings.filterwarnings('ignore', '')
 warnings.filterwarnings('ignore', '.*Sparse CSR tensor support is in beta state.*')
 torch.multiprocessing.set_sharing_strategy('file_system')
@@ -185,6 +186,14 @@ def upscaling_v3(df, cyp_list, ratio):
 
 
 def main(args):
+    if args.use_wandb:
+        import wandb
+        wandb.login()
+        wandb.init(project="CYP450_SOM_Prediction", 
+                name=f"seed_{args.seed}",
+                # config=args
+                )
+
     if not os.path.exists('log_text'):os.mkdir('log_text')
     if not os.path.exists('ckpt'):os.mkdir('ckpt')
     seed_everything(args.seed)
@@ -276,7 +285,7 @@ def main(args):
 
     if args.warmup:
         print('do warmup!')
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optim, T_0=12, T_mult=1, verbose=False)
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optim, T_0=10, T_mult=1, verbose=False)
     else:
         print('not warmup!')
         scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optim, T_max=args.epochs, verbose=False)
@@ -345,7 +354,8 @@ def main(args):
         
         print(val_logs)
 
-        print()
+        print()        
+
         if val_scores['valid_loss'] < best_loss:
             best_loss = val_scores['valid_loss']
             if args.save_name:
@@ -354,6 +364,15 @@ def main(args):
                 torch.save(model.state_dict(), f'ckpt/{args.seed}.pt')
 
             test_scores = validation(model, test_loader, loss_fn_ce, loss_fn_bce, args)
+
+            if args.use_wandb:
+                score_log = {"epoch": epoch, "val_loss": float(val_scores['valid_loss'].cpu().item())}    
+                for cyp in cyp_list:
+                    score_log[f'{cyp}_jac'] = float(test_scores[cyp][args.th]['jac_bond_som'])
+                    score_log[f'{cyp}_f1s'] = float(test_scores[cyp][args.th]['f1s_bond_som'])
+                    # score_log[f'{cyp}_apc'] = float(test_scores[cyp][args.th]['apc_bond_som'])            
+                wandb.log(score_log)
+
             best_validloss_testscores = get_logs(epoch, train_loss, test_scores, cyp_list, args, mode='Test')
 
             patience = args.patience
@@ -374,6 +393,9 @@ def main(args):
     print(best_validloss_testscores)
     with open(log_path, 'a') as f:
         f.write(best_validloss_testscores)
+    if args.use_wandb:
+        wandb.finish()
+
 
     
 def parse_args():
@@ -395,7 +417,6 @@ def parse_args():
     parser.add_argument("--class_type", type=int, default=2)
     parser.add_argument("--warmup", type=int, default=0)
     parser.add_argument("--upscaling", type=int, default=0)
-    parser.add_argument("--use_focal", type=int, default=0)
     parser.add_argument("--train_with_non_reaction", type=int, default=1)
     parser.add_argument("--test_only_reaction_mol", type=int, default=0)
     parser.add_argument("--add_equivalent", type=bool, default=True)
@@ -430,6 +451,7 @@ def parse_args():
     parser.add_argument("--print_test_every", type=int, default=1)
     parser.add_argument("--filt_decoy", type=int, default=0)
     parser.add_argument("--reduction", type=str, default='mean')
+    parser.add_argument("--use_wandb", type=int, default=0)
 
     args = parser.parse_args()
     return args

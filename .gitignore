@@ -18,3 +18,4 @@ pretrain_v5
 !get_probablity.ipynb
 DCyPre
 GNN-SOM
+wandb
