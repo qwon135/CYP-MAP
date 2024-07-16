@@ -26,11 +26,15 @@ def is_has_H(atom_idx, bonds_idx_h, atoms_h):
 def main(args):
     if not os.path.exists('graph_pt'):
         os.mkdir('graph_pt')
+    else:
+        import shutil
+        shutil.rmtree('graph_pt')
+        os.mkdir('graph_pt')
         
     cyp_list = ['BOM_1A2', 'BOM_2A6', 'BOM_2B6', 'BOM_2C8', 'BOM_2C9', 'BOM_2C19', 'BOM_2D6', 'BOM_2E1', 'BOM_3A4', 'CYP_REACTION']
 
-    df = PandasTools.LoadSDF('data/train_nonreact_0710.sdf')
-    test_df = PandasTools.LoadSDF('data/test_0710.sdf')
+    df = PandasTools.LoadSDF('data/train_nonreact_0712.sdf')
+    test_df = PandasTools.LoadSDF('data/test_0712.sdf')
 
     for col in ['BOM_1A2', 'BOM_2A6', 'BOM_2B6', 'BOM_2C8', 'BOM_2C9', 'BOM_2C19', 'BOM_2D6', 'BOM_2E1', 'BOM_3A4',]:
         df[col] = df[col].str.replace('><', '>\n<')
@@ -55,9 +59,7 @@ def main(args):
         test_df[col] = test_df[col].str.replace('DehydrogenationR1', 'Dehydrogenation;R1')    
         
         df[col] = df[col].str.replace('N;Denitrosation', 'N;N-Oxidation')
-        test_df[col] = test_df[col].str.replace('N;Denitrosation', 'N;N-Oxidation')    
-
-    
+        test_df[col] = test_df[col].str.replace('N;Denitrosation', 'N;N-Oxidation')
 
     df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1)
     test_df['CYP_REACTION'] = test_df.apply(CYP_REACTION, axis=1)

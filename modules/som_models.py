@@ -200,14 +200,16 @@ class GNNSOM(torch.nn.Module):
         pred_dict['not_has_H_bond'] = not_has_H_bond
         pred_dict['has_H_bond'] = has_H_bond
 
-        for cyp in self.cyp_list:
+        for cyp_idx, cyp in enumerate(self.cyp_list):
             loss_dict[f'{cyp}_subs_loss'] = loss_fn_bce(logits['subs'][cyp], batch.y_substrate[cyp]) / batch.y_substrate[cyp].shape[0]
             loss_dict[f'{cyp}_subs_loss'] = loss_dict[f'{cyp}_subs_loss'] * args.substrate_loss_weight
             pred_dict[f'{cyp}_subs_logits'] = logits['subs'][cyp]
             pred_dict[f'{cyp}_subs_label'] = batch.y_substrate[cyp]
 
             loss_dict['total_loss'] += loss_dict[f'{cyp}_subs_loss']
-            
+
+            loss_fn_bce.pos_weight = args.pos_weight[cyp_idx]
+
             for tsk in self.tasks[1:]:
                 if 'atom' in tsk:
                     args.atom_loss_weight = 1/9

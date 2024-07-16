@@ -103,33 +103,6 @@ def cosine_scheduler(base_value, final_value, epochs):
     
     return schedule  
 
-def upscaling(df, cyp_list):
-    n_data = df.shape[0]
-    up_sample_df = []
-    for cyp in cyp_list:
-        if cyp == 'CYP_REACTION':continue
-        df_reaction = df[df[cyp] != ''].reset_index(drop=True)
-        df_non_reaction = df[df[cyp] == ''].reset_index(drop=True)
-
-        df_reaction = df_reaction.sample((n_data//2) // len(cyp_list), replace=True).reset_index(drop=True)
-        df_non_reaction = df_non_reaction.sample((n_data//2) // len(cyp_list)).reset_index(drop=True)
-
-        up_sample_df.append(df_reaction)
-        up_sample_df.append(df_non_reaction)
-
-    up_sample_df = pd.concat(up_sample_df).reset_index(drop=True)
-
-    pos_id_counts = up_sample_df['POS_ID'].value_counts()
-    pos_id_counts = pos_id_counts[pos_id_counts <= 3]
-    up_sample_df = up_sample_df[up_sample_df['POS_ID'].isin(pos_id_counts.index)]
-
-    print('Upsample ratio!')
-    for cyp in cyp_list:
-        print(f'{cyp} :({df[df[cyp] != ""].shape[0]} -> {up_sample_df[up_sample_df[cyp] != ""].shape[0]}) / {up_sample_df.shape[0]}')
-    print()
-
-    return up_sample_df
-
 def upscaling_v2(df, cyp_list):
     n_data = df.shape[0]
     non_reaction_df = df[df['CYP_REACTION'] == ''].reset_index(drop=True)
@@ -153,36 +126,31 @@ def upscaling_v2(df, cyp_list):
     print()
 
     return up_sample_df
-def downscaling(df, cyp_list):
-    n_data = df.shape[0]
-    
-    reaction_df = df[df['CYP_REACTION'] != ''].reset_index(drop=True)    
 
-    non_reaction_df = df[df['CYP_REACTION'] == ''].reset_index(drop=True)
-    non_reaction_df = non_reaction_df.sample(non_reaction_df.shape[0] // 4)
-
-    down_sample_df = pd.concat([reaction_df, non_reaction_df]).reset_index(drop=True)
-
-    print('down ratio!')
+def get_pos_weight(df, cyp_list):
+    pos_weight = []
     for cyp in cyp_list:
-        print(f'{cyp} :({df[df[cyp] != ""].shape[0]} -> {down_sample_df[down_sample_df[cyp] != ""].shape[0]}) / ({df.shape[0]} -> {down_sample_df.shape[0]})')
-    print()
+        pw = df.shape[0]/df[df[cyp] != ''].shape[0]
+        pw /= 2
+        pos_weight.append(pw)
+    pos_weight = torch.tensor(pos_weight)
+    pos_weight[pos_weight<1] = 1
+    # pos_weight = pos_weight.log2()
+    return pos_weight
 
-    return down_sample_df
-def upscaling_v3(df, cyp_list, ratio):
-    n_data = df.shape[0]
-    reaction_df = df[df['CYP_REACTION'] != ''].reset_index(drop=True)
-    non_reaction_df = df[df['CYP_REACTION'] == ''].reset_index(drop=True)
-    non_reaction_df = non_reaction_df.sample(int(non_reaction_df.shape[0] * ratio), replace=True).reset_index(drop=True)
-    
-    up_sample_df = pd.concat([reaction_df, non_reaction_df]).reset_index(drop=True)
-
-    print('Upsample ratio!')
-    for cyp in cyp_list:
-        print(f'{cyp} :({df[df[cyp] != ""].shape[0]} -> {up_sample_df[up_sample_df[cyp] != ""].shape[0]}) / ({df.shape[0]} -> {up_sample_df.shape[0]})')
-    print()
-
-    return up_sample_df
+# def get_pos_weight(df, cyp_list):
+#     react_ratio = {cyp : [0,0] for cyp in cyp_list}
+#     for pid in df['POS_ID'].tolist():
+#         graph =torch.load(f'graph_pt/{pid}_addh.pt')
+#         for cyp in cyp_list:
+#             n_bond = graph.y[cyp]['bond_som'].shape[0]
+#             n_react_bond = graph.y[cyp]['bond_som'].sum().item()
+#             react_ratio[cyp][0] += n_react_bond
+#             react_ratio[cyp][1] += n_bond
+#     pos_weight = torch.tensor([i[1]/i[0] for i in react_ratio.values()])            
+#     pos_weight = pos_weight.log()
+#     # pos_weight = (pos_weight/100).exp()
+#     return pos_weight
 
 
 def main(args):
@@ -200,17 +168,17 @@ def main(args):
     device = args.device    
 
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
-    test_df = PandasTools.LoadSDF('data/test_0710.sdf')
+    test_df = PandasTools.LoadSDF('data/test_0712.sdf')
 
     if args.train_with_non_reaction:
-        # print(f'load train_nonreact_0710.sdf!')
-        df = PandasTools.LoadSDF('data/train_nonreact_0710.sdf')
+        # print(f'load train_nonreact_0712.sdf!')
+        df = PandasTools.LoadSDF('data/train_nonreact_0712.sdf')
         df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
         df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
         df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
     else:
-        # print(f'load train_0710.sdf!')
-        df = PandasTools.LoadSDF('data/train_nonreact_0710.sdf')
+        # print(f'load train_0712.sdf!')
+        df = PandasTools.LoadSDF('data/train_nonreact_0712.sdf')
         df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
         df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
         df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
@@ -305,16 +273,20 @@ def main(args):
         print(f"{arg}: {value}")
         with open(log_path, 'a') as f:
             f.write(f"{arg}: {value}\n")
+    
+    args.pos_weight = get_pos_weight(train_df, cyp_list)
+    print(f'pos_weight :')
+    for i,j in zip(cyp_list, args.pos_weight):
+        print(f'{i} : {j:.2f}')
+
     for epoch in range(epochs):
         if args.upscaling:            
             up_train_df = upscaling_v2(train_df, cyp_list)            
-
-            # train_dataset = CustomDataset(df=up_train_df,  class_type=class_type, args=args, cyp_list=cyp_list, mode='train')
+            
             train_dataset = CustomDataset(df=up_train_df,  args=args, cyp_list=cyp_list, mode='train')
-            train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)
-        
-        # train_dataset = CustomDataset(df=downscaling(train_df, cyp_list),  args=args, cyp_list=cyp_list, mode='train')
-        # train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)                
+            train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)        
+
+            args.pos_weight = get_pos_weight(train_df, cyp_list)
 
         train_loss = 0
         model.train()
@@ -414,7 +386,6 @@ def parse_args():
     parser.add_argument("--dropout_som_fc", type=float, default=0.0)
     parser.add_argument("--dropout_type_fc", type=float, default=0.0)
     parser.add_argument("--encoder_dropout", type=float, default=0.0)
-    parser.add_argument("--class_type", type=int, default=2)
     parser.add_argument("--warmup", type=int, default=0)
     parser.add_argument("--upscaling", type=int, default=0)
     parser.add_argument("--train_with_non_reaction", type=int, default=1)
@@ -431,7 +402,7 @@ def parse_args():
     parser.add_argument("--use_face", type=int, default=1)
     parser.add_argument("--node_attn", type=int, default=1)
     parser.add_argument("--face_attn", type=int, default=1)
-    parser.add_argument("--grad_norm", type=int, default=50)
+    parser.add_argument("--grad_norm", type=int, default=40)
     parser.add_argument("--substrate_loss_weight", type=float, default=0.05)
     parser.add_argument("--bond_loss_weight", type=float, default=1.0)
     parser.add_argument("--atom_loss_weight", type=float, default=1.0)
