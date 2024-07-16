@@ -402,7 +402,7 @@ def parse_args():
     parser.add_argument("--use_face", type=int, default=1)
     parser.add_argument("--node_attn", type=int, default=1)
     parser.add_argument("--face_attn", type=int, default=1)
-    parser.add_argument("--grad_norm", type=int, default=40)
+    parser.add_argument("--grad_norm", type=int, default=35)
     parser.add_argument("--substrate_loss_weight", type=float, default=0.05)
     parser.add_argument("--bond_loss_weight", type=float, default=1.0)
     parser.add_argument("--atom_loss_weight", type=float, default=1.0)
