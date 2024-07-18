@@ -14,36 +14,11 @@ from .dualgraph.gnn import GNN2, GNN, one_hot_bonds, one_hot_atoms
 from torch_geometric.utils import softmax
 
 # from torch_scatter import scatter
-from torch_geometric.nn.models import GCN, GIN, GAT
+from torch_geometric.nn.models import GCN, GIN
 from torch_geometric.nn import MessagePassing
 # from torch_geometric.nn import MPNN
-from torch_geometric.utils import scatter, add_self_loops
-from torch_geometric.nn.pool import global_add_pool
+from torch_geometric.utils import scatter
 from modules.ogb.utils.features import get_atom_feature_dims, get_bond_feature_dims
-
-class MPNNConv(MessagePassing):
-    def __init__(self, in_channels, out_channels):
-        super(MPNNConv, self).__init__(aggr='add')  # "Add" aggregation
-        self.lin = torch.nn.Linear(in_channels, out_channels)
-        self.edge_lin = torch.nn.Linear(13, out_channels)
-
-    def forward(self, x, edge_index, edge_attr):
-        # Add self-loops to the adjacency matrix
-        edge_index, edge_attr = add_self_loops(edge_index, edge_attr, num_nodes=x.size(0))
-        
-        # Linearly transform node feature matrix
-        x = self.lin(x)
-
-        return self.propagate(edge_index, x=x, edge_attr=edge_attr)
-
-    def message(self, x_j, edge_attr):
-        # x_j has shape [E, out_channels]
-        # edge_attr has shape [E, 1]
-
-        return x_j + self.edge_lin(edge_attr)
-
-    def update(self, aggr_out):
-        return aggr_out
 
 class Attention(torch.nn.Module):
     def __init__(self, channels, dropout, n_classes):
@@ -113,28 +88,14 @@ class GNNSOM(torch.nn.Module):
                 ):
         super().__init__()
         self.gnn_type = gnn_type
-        if self.gnn_type.lower() != 'gnn':
-            if self.gnn_type.lower() == 'gcn':
-                self.gnn = GCN(in_channels=sum(get_atom_feature_dims()), hidden_channels=latent_size, num_layers=gnn_num_layers)
-            elif self.gnn_type.lower() == 'gin':
-                self.gnn = GIN(in_channels=sum(get_atom_feature_dims()), hidden_channels=latent_size, num_layers=gnn_num_layers)
-            elif self.gnn_type.lower() == 'gat':
-                self.gnn = GAT(in_channels=sum(get_atom_feature_dims()), hidden_channels=latent_size, num_layers=gnn_num_layers)
-            elif self.gnn_type.lower() == 'mpnn':
-                self.gnn = MPNNConv(in_channels=sum(get_atom_feature_dims()), out_channels=latent_size)
-            self.node_proj = torch.nn.Sequential(
-                                        torch.nn.Linear(latent_size, latent_size),
-                                        torch.nn.PReLU(init=0.05),
-                                        torch.nn.Linear(latent_size, latent_size)
-                                        )
-            self.bond_proj = torch.nn.Sequential(
-                                        torch.nn.Linear(latent_size, latent_size),
-                                        torch.nn.PReLU(init=0.05),
-                                        torch.nn.Linear(latent_size, latent_size)
-                                        )
-            self.pooling_u=False
+        if self.gnn_type.lower() == 'gcn':
+            self.gnn = GCN()
+        elif self.gnn_type.lower() == 'gin':
+            self.gnn = GIN()
+        elif self.gnn_type.lower() == 'mpnn':
+            self.gnn = MessagePassing()
 
-        else:
+        elif self.gnn_type.lower() == 'gnn':
             self.gnn = GNN2(
                         mlp_hidden_size = channels,
                         mlp_layers = num_layers,
@@ -157,11 +118,13 @@ class GNNSOM(torch.nn.Module):
                         face_attn = face_attn,
                         encoder_dropout=encoder_dropout                        
                         )      
-            self.pooling_u=True
+
+
 
         self.bond_fc = torch.nn.ModuleDict() # Predict Reaction
         self.atom_fc = torch.nn.ModuleDict()
         self.cyp_list = cyp_list
+        self.pooling_u=True
         if self.pooling_u:
             self.substrate_fc = torch.nn.Sequential(
                                             torch.nn.LayerNorm(latent_size * 4),
@@ -197,33 +160,21 @@ class GNNSOM(torch.nn.Module):
         self.bond_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, len(self.bond_tasks), cyp_list)
                 
     def forward(self, batch):
-        if self.gnn_type == 'gnn':
-            mol_feat_atom, mol_feat_bond, mol_feat_ring, x, edge_attr, u, x_encoder_node, edge_attr_encoder_edge = self.gnn(batch)
+        mol_feat_atom, mol_feat_bond, mol_feat_ring, x, edge_attr, u, x_encoder_node, edge_attr_encoder_edge = self.gnn(batch)
 
-            x = x + x_encoder_node
-            edge_attr = edge_attr + edge_attr_encoder_edge
+        # edge_attr = torch.cat([edge_attr, edge_attr_encoder_edge ], -1)
+        # x = torch.cat([x, x_encoder_node], -1)        
+        x = x + x_encoder_node
+        edge_attr = edge_attr + edge_attr_encoder_edge
 
-            if self.pooling_u:
-                mol_feature = torch.cat([mol_feat_atom, mol_feat_bond, mol_feat_ring, u], -1)
-            else:
-                mol_feature = u        
-
-            edge_attr = edge_attr.view(edge_attr.shape[0] // 2, 2, edge_attr.shape[-1])
-            edge_attr = edge_attr.sum(1)
+        # if self.pooling_edge:
+        if self.pooling_u:
+            mol_feature = torch.cat([mol_feat_atom, mol_feat_bond, mol_feat_ring, u], -1)
         else:
-            x = one_hot_atoms(batch.x)
-            edge_attr = one_hot_bonds(batch.edge_attr)
+            mol_feature = u        
 
-            if self.gnn_type in ['gcn', 'gin', 'gat']:
-                x = self.gnn(x = x, edge_index =batch.edge_index)
-            elif self.gnn_type in ['mpnn']:
-                x = self.gnn(x = x, edge_index =batch.edge_index, edge_attr = edge_attr)
-
-            edge_attr = x[batch.edge_index].mean(0)            
-            edge_attr = edge_attr.view(edge_attr.shape[0] // 2, 2, edge_attr.shape[-1]).sum(1)
-
-            x, edge_attr = self.node_proj(x), self.bond_proj(edge_attr)            
-            mol_feature = global_add_pool(x, batch.batch)
+        edge_attr = edge_attr.view(edge_attr.shape[0] // 2, 2, edge_attr.shape[-1])
+        edge_attr = edge_attr.sum(1)
         
         logits = {task : {} for task in self.tasks}
 

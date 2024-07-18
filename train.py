@@ -131,11 +131,21 @@ def get_pos_weight(df, cyp_list):
     pos_weight = []
     for cyp in cyp_list:
         pw = df.shape[0]/df[df[cyp] != ''].shape[0]
-        pw /= 2
+        pw /= 1.5
         pos_weight.append(pw)
     pos_weight = torch.tensor(pos_weight)
     pos_weight[pos_weight<1] = 1
+
     # pos_weight = pos_weight.log2()
+    return pos_weight
+
+def get_pos_weight(df, cyp_list):
+    pos_weight = []
+    for cyp in cyp_list:
+        pw = df.shape[0]/df[df[cyp] != ''].shape[0]        
+        pos_weight.append(pw)
+    pos_weight = torch.tensor(pos_weight)
+    pos_weight = pos_weight.log2()
     return pos_weight
 
 # def get_pos_weight(df, cyp_list):
@@ -219,7 +229,8 @@ def main(args):
                 use_face = True if args.use_face else False, 
                 node_attn = True if args.node_attn else False,
                 face_attn = True if args.face_attn else False,
-                encoder_dropout = args.encoder_dropout,                                
+                encoder_dropout = args.encoder_dropout,
+                gnn_type=args.gnn_type               
                     ).to(device)     
     if args.pretrain:
         state_dict=  torch.load(args.pretrain, map_location='cpu')
@@ -379,7 +390,7 @@ def parse_args():
     parser.add_argument("--gnn_num_layers", type=int, default=8)
     parser.add_argument("--gnn_lr", type=float, default=4e-5)
     parser.add_argument("--clf_lr", type=float, default=2e-4)
-    parser.add_argument("--weight_decay", type=float, default=1e-3)
+    parser.add_argument("--weight_decay", type=float, default=1e-5)
     parser.add_argument("--ema_decay", type=float, default=0.995)
     parser.add_argument("--dropout", type=float, default=0.0)
     parser.add_argument("--dropout_fc", type=float, default=0.0)
@@ -418,7 +429,7 @@ def parse_args():
     parser.add_argument("--mask_node_p", type=float, default=0.0)
     parser.add_argument("--metric_mode", type=str, default='bond')
     parser.add_argument("--train_only_spn_H_atom", type=int, default=0)
-    parser.add_argument("--patience", type=int, default=8)
+    parser.add_argument("--patience", type=int, default=3)
     parser.add_argument("--print_test_every", type=int, default=1)
     parser.add_argument("--filt_decoy", type=int, default=0)
     parser.add_argument("--reduction", type=str, default='mean')
