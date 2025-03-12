@@ -147,6 +147,8 @@ def main(args):
     df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1)
     df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4)
 
+    args.pos_weight = torch.tensor([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+
     test_dataset = CustomDataset(df=test_df, args=args, cyp_list=cyp_list, mode='test')
     test_loader = DataLoader(test_dataset, num_workers=2, batch_size=16, shuffle=False)
         
