@@ -48,6 +48,7 @@ How to run the model with example data:
 
 ## Example Dataset
 - `data/` directory contains the following files:
-  - `train_0819.sdf`: Training data for known CYP reactions
-  - `train_decoy_0819.sdf`: Training data with molecules that have no known CYP reactions
-  - `test_0819.sdf`: Specially curated test dataset for model evaluation
+  - `cyp_map_train.sdf`: Training data for known CYP reactions
+  - `Decoys_cypreact_Drug_like.sdf`: Training data with molecules that have no known CYP reactions
+  - `cyp_map_test.sdf`: Specially curated test dataset for model evaluation
+  - `cyp_map_train_with_decoy.sdf`: Combined dataset containing both CYP reactions (from cyp_map_train) and decoy molecules

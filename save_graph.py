@@ -33,33 +33,9 @@ def main(args):
         
     cyp_list = ['BOM_1A2', 'BOM_2A6', 'BOM_2B6', 'BOM_2C8', 'BOM_2C9', 'BOM_2C19', 'BOM_2D6', 'BOM_2E1', 'BOM_3A4', 'CYP_REACTION']
 
-    df = PandasTools.LoadSDF('data/train_nonreact_0819.sdf')
-    test_df = PandasTools.LoadSDF('data/test_0819.sdf')
+    df = PandasTools.LoadSDF('data/cyp_map_train_with_decoy.sdf')
+    test_df = PandasTools.LoadSDF('data/cyp_map_test.sdf')
 
-    for col in ['BOM_1A2', 'BOM_2A6', 'BOM_2B6', 'BOM_2C8', 'BOM_2C9', 'BOM_2C19', 'BOM_2D6', 'BOM_2E1', 'BOM_3A4',]:
-        df[col] = df[col].str.replace('><', '>\n<')
-        test_df[col] = test_df[col].str.replace('><', '>\n<')
-
-        df[col] = df[col].str.replace('DealkylationR2', 'Dealkylation;R2')
-        test_df[col] = test_df[col].str.replace('DealkylationR2', 'Dealkylation;R2')
-
-        df[col] = df[col].str.replace('DehydrogenationR3>', 'Dehydrogenation;R3>')
-        test_df[col] = test_df[col].str.replace('DehydrogenationR3>', 'Dehydrogenation;R3>')
-
-        df[col] = df[col].str.replace('/', '\n').str.replace('R2<', 'R2>\n<')
-        test_df[col] = test_df[col].str.replace('/', '\n').str.replace('R2<', 'R2>\n<')
-
-        df[col] =df[col].str.replace('/', '\n').str.replace('R1<', 'R1>\n<')
-        test_df[col] =test_df[col].str.replace('/', '\n').str.replace('R1<', 'R1>\n<')
-
-        df[col] =df[col].str.replace(';;R3', ';R3')
-        test_df[col] =test_df[col].str.replace(';;R3', ';R3')
-
-        df[col] = df[col].str.replace('DehydrogenationR1', 'Dehydrogenation;R1')
-        test_df[col] = test_df[col].str.replace('DehydrogenationR1', 'Dehydrogenation;R1')    
-        
-        df[col] = df[col].str.replace('N;Denitrosation', 'N;N-Oxidation')
-        test_df[col] = test_df[col].str.replace('N;Denitrosation', 'N;N-Oxidation')
 
     df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1)
     test_df['CYP_REACTION'] = test_df.apply(CYP_REACTION, axis=1)
@@ -69,6 +45,7 @@ def main(args):
 
     data = pd.concat([df, test_df]).reset_index(drop=True)
     data['is_decoy'] = data['is_decoy'].fillna(False)
+    
     for i in tqdm(range(data.shape[0])):
         is_decoy = 0.1 if data.loc[i, 'is_decoy'] else 0
 

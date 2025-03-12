@@ -148,20 +148,6 @@ def get_pos_weight(df, cyp_list):
     pos_weight = pos_weight.log2()
     return pos_weight
 
-# def get_pos_weight(df, cyp_list):
-#     react_ratio = {cyp : [0,0] for cyp in cyp_list}
-#     for pid in df['POS_ID'].tolist():
-#         graph =torch.load(f'graph_pt/{pid}_addh.pt')
-#         for cyp in cyp_list:
-#             n_bond = graph.y[cyp]['bond_som'].shape[0]
-#             n_react_bond = graph.y[cyp]['bond_som'].sum().item()
-#             react_ratio[cyp][0] += n_react_bond
-#             react_ratio[cyp][1] += n_bond
-#     pos_weight = torch.tensor([i[1]/i[0] for i in react_ratio.values()])            
-#     pos_weight = pos_weight.log()
-#     # pos_weight = (pos_weight/100).exp()
-#     return pos_weight
-
 
 def main(args):
     if args.use_wandb:
@@ -178,25 +164,22 @@ def main(args):
     device = args.device    
 
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
-    test_df = PandasTools.LoadSDF('data/test_0819.sdf')
+    test_df = PandasTools.LoadSDF('data/cyp_map_test.sdf')
 
     if args.train_with_non_reaction:
-        # print(f'load train_nonreact_0819.sdf!')
-        df = PandasTools.LoadSDF('data/train_nonreact_0819.sdf')
+        df = PandasTools.LoadSDF('data/cyp_map_train_with_decoy.sdf')
         df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
         df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
         df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
     else:
-        # print(f'load train_0819.sdf!')
-        df = PandasTools.LoadSDF('data/train_nonreact_0819.sdf')
+        df = PandasTools.LoadSDF('data/cyp_map_train.sdf')
         df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
         df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
         df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
         df['is_decoy'] = df['is_decoy'].fillna(False)
         df['is_decoy'] = df['is_decoy'].astype(bool)
         df = df[df['is_react'] == '0'].reset_index(drop=True)
-    # ebmod = PandasTools.LoadSDF('/home/pjh/workspace/SOM/CYPSOM/Site-of-metabolism/DCyPre/ebmod.sdf')
-    # df = df[df['InChIKey'].isin( ebmod['InChIKey'])].reset_index(drop=True)
+
 
     if args.test_only_reaction_mol:
         df = df[df['BOM_1A2'] != ''].reset_index(drop=True)
