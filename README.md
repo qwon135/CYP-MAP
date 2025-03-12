@@ -45,17 +45,3 @@ How to run the model with example data:
 ### Self-supervised graph contrastive learning
 - Utilization of atomic and bond properties of molecular structures
 - Prediction of metabolism sites for various CYP isoforms
-
-Example Dataset
-
-Molecular structure files for testing included in the data/ directory
-Input format: SMILES strings or SDF files
-
-Code and Software Availability
-
-Repository: GitHub - qwon135/CYP-MAP
-License: MIT License
-DOI: [Add DOI here]
-
-Citation Information
-If the paper is published, please cite as follows:
