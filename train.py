@@ -178,17 +178,17 @@ def main(args):
     device = args.device    
 
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
-    test_df = PandasTools.LoadSDF('data/test_0712.sdf')
+    test_df = PandasTools.LoadSDF('data/test_0819.sdf')
 
     if args.train_with_non_reaction:
-        # print(f'load train_nonreact_0712.sdf!')
-        df = PandasTools.LoadSDF('data/train_nonreact_0712.sdf')
+        # print(f'load train_nonreact_0819.sdf!')
+        df = PandasTools.LoadSDF('data/train_nonreact_0819.sdf')
         df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
         df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
         df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
     else:
-        # print(f'load train_0712.sdf!')
-        df = PandasTools.LoadSDF('data/train_nonreact_0712.sdf')
+        # print(f'load train_0819.sdf!')
+        df = PandasTools.LoadSDF('data/train_nonreact_0819.sdf')
         df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
         df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
         df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)

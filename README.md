@@ -45,3 +45,9 @@ How to run the model with example data:
 ### Self-supervised graph contrastive learning
 - Utilization of atomic and bond properties of molecular structures
 - Prediction of metabolism sites for various CYP isoforms
+
+## Example Dataset
+- `data/` directory contains the following files:
+  - `train_0819.sdf`: Training data for known CYP reactions
+  - `train_decoy_0819.sdf`: Training data with molecules that have no known CYP reactions
+  - `test_0819.sdf`: Specially curated test dataset for model evaluation
