@@ -1,19 +1,61 @@
-# Site-of-metabolism
+## CYP-MAP: Site-of-Metabolism Prediction Tool
+### Overview
+CYP-MAP is a graph-based deep learning tool for predicting sites of metabolism (SoM) by CYP enzymes. This tool analyzes the structure of drug molecules to identify locations with high potential for metabolism.
+### Supported Environment
 
-### Prepare pratrain graph
-- `tar -zxvf pretrain/pretrain_data.tar.gz`
-- `python pretrain/save_graph_pretrain.py`
+Operating Systems: Linux (Ubuntu 18.04 or higher recommended), macOS
+Programming Language: Python 3.8 or higher
+GPU Support: CUDA 11.8 or higher (multi-GPU support)
 
-### Pretrain(Graph Contrastive Learning)
-- `CUDA_VISIBLE_DEVICES=0,1,2,3 python -u -m torch.distributed.run --nproc_per_node=4 --nnodes=1 --master_port 12312 pretrain/run_pretrain.py`
+### Installation Guide
+Required Dependencies
+bashCopypip install -r requirements.txt
+Essential packages:
 
-### Prepare finetune graph
-- `python save_graph.py`
+PyTorch 2.0.1
+RDKit 2022.03.2
+NumPy 1.20.0+
+torch_geometric 2.3.1
+dgl 1.1.2+cu117
 
-### Train
+### Estimated Installation Time
+Typical installation time: approximately 5-10 minutes (may vary depending on environment and internet speed)
+Usage
+1. Prepare Pretraining Data
+- tar -zxvf pretrain/pretrain_data.tar.gz
+- python pretrain/save_graph_pretrain.py
+2. Graph Contrastive Learning
+- CUDA_VISIBLE_DEVICES=0,1,2,3 python -u -m torch.distributed.run --nproc_per_node=4 --nnodes=1 --master_port 12312 pretrain/run_pretrain.py
+3. Prepare Fine-tuning Graph
+- python save_graph.py
+4. Train Model
+- python train.py --seed 42
+5. Inference
+- python -u infer.py --ckpt ckpt/42.pt --th 0.15
+### Demo Execution
+How to run the model with example data:
+- python -u infer.py --demo --ckpt ckpt/42.pt --th 0.15
 
-- `python train.py --seed 42`
+- Typical execution time: approximately 0.5 seconds per molecule (CPU), 0.1 seconds (GPU)
+- Batch processing time for 1000 molecules: approximately 2 minutes (on GPU)
 
-### Inference
+### Algorithm Description
+- CYP-MAP uses molecular graph representation and graph neural networks to predict drug metabolism sites. Key features:
 
- - `python -u infer.py --ckpt ckpt/42.pt --th 0.15`
+### Self-supervised graph contrastive learning
+- Utilization of atomic and bond properties of molecular structures
+- Prediction of metabolism sites for various CYP isoforms
+
+Example Dataset
+
+Molecular structure files for testing included in the data/ directory
+Input format: SMILES strings or SDF files
+
+Code and Software Availability
+
+Repository: GitHub - qwon135/CYP-MAP
+License: MIT License
+DOI: [Add DOI here]
+
+Citation Information
+If the paper is published, please cite as follows:
