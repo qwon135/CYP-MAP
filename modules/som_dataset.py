@@ -56,8 +56,10 @@ def mol2graph(mol):
 def check_ns_oxidation(reaction):
     if not reaction:
         return reaction
-    
-    atom = reaction.split(',')[1].split(';')[0]
+    try:
+        atom = reaction.split(',')[1].split(';')[0]
+    except:
+        print(reaction)
     reac_type = reaction.split(',')[1].split(';')[1]
     if atom in ['N', 'S'] and reac_type == 'Oxidation':
         reaction = reaction.replace('Oxidation', f'{atom}-Oxidation')
@@ -102,6 +104,7 @@ def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):
             'Hydroxylation' : 'oxi',
             'Oxidiation' : 'oxi',
             'Oxidation' : 'oxi',
+            'Oxidative-Cleavage(Ring)' : 'oxi',
             'UnspOxidation' : 'oxi',
 
             # 3. Epoxidation
