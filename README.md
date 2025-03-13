@@ -1,4 +1,6 @@
 ## CYP-MAP: Site-of-Metabolism Prediction Tool
+![back ground](https://github.com/user-attachments/assets/1b863ee5-10a5-4288-b6ed-86379b31d3ce)
+
 ### Overview
 CYP-MAP is a graph-based deep learning tool for predicting sites of metabolism (SoM) by CYP enzymes. This tool analyzes the structure of drug molecules to identify locations with high potential for metabolism.
 ### Supported Environment
@@ -38,6 +40,39 @@ How to run the model with example data:
 
 - Typical execution time: approximately 0.5 seconds per molecule (CPU), 0.1 seconds (GPU)
 - Batch processing time for 1000 molecules: approximately 2 minutes (on GPU)
+
+## Command Line Usage
+
+### When the input is SMILES:
+```bash
+python output_module --smiles 'CC1=C(C=C(C=C1)NC2=NC=CC(=N2)N(C)C3=CC4=NN(C(=C4C=C3)C)C)S(=O)(=O)N' --subtype sub9 --base_dir "./output_dir/"
+```
+
+### When the input is Structural Data File (SDF):
+```bash
+python output_module --sdf "./example_molecules.sdf" --subtype sub9 --base_dir "./output_dir/"
+python output_module --sdf "./example_molecules.sdf" --subtype sub9 --mode broad --base_dir "./output_dir/"
+```
+
+### Input Type Options:
+- `--smiles`: SMILES string of the molecule
+- `--sdf`: Path to the SDF file
+
+### CYP450 Mode (--subtype):
+- `--subtype`: Subtype to predict. Options: 'sub9', 'all'
+  - **all (All)**: A model trained on molecules metabolized by all 9 CYP450 subtypes without distinction
+  - **sub9 (9 Subtypes)**: A model trained to distinguish between the 9 CYP450 subtypes, providing detailed predictions for each subtype
+
+### Prediction Window (--mode):
+- `--mode`: Prediction mode. Options: 'default', 'broad'
+  - **Default**: An optimized option without coverage constraints
+  - **Broad**: An option optimized under the condition of 80% SOM (Site of Metabolism) coverage
+
+### Output Type:
+- `--output_type`: Type of output to generate (e.g., default, only-som, json)
+
+### Output Path:
+- `--base_dir`: Base directory to save outputs
 
 ### Algorithm Description
 - CYP-MAP uses molecular graph representation and graph neural networks to predict drug metabolism sites. Key features:
