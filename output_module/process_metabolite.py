@@ -445,6 +445,10 @@ def save_metabolites_to_sdf_total(output_dict, base_path, subtypes_threshold):
     for test_key, test_value in output_dict.items():
         try:
             for Cyp_type, output_value in test_value['outputs'].items():
+                if Cyp_type == 'max':
+                  Cyp_type = 'SUB9'
+                elif Cyp_type == 'CYP_REACTION':
+                  Cyp_type = 'CYP_ALL'
                 sdf_filename = os.path.join(base_path, f"{test_key}_{Cyp_type}.sdf")
                 with SDWriter(sdf_filename) as writer:
                     metabolites = output_value['metabolite']
@@ -472,7 +476,8 @@ def save_metabolites_to_sdf_total(output_dict, base_path, subtypes_threshold):
                               cyp_reaction_score = "{:.4f}".format(mol_data['Subtype_Reaction_Score'][subtype])
                               cyp_score = "{:.4f}".format(mol_data['Subtype_Score'][subtype])
                               cyp_subs_score = "{:.4f}".format(mol_data['Subtype_Subs_Score'][subtype])
-                              row = f'[{subtype.split("_")[1]}] SOM_score: {cyp_som_score}, Reaction_score: {cyp_reaction_score}, Score: {cyp_score}\n'
+                              subtype_label = "CYP_ALL" if subtype == "CYP_REACTION" else subtype
+                              row = f'[{subtype_label.split("_")[1]}] SOM_score: {cyp_som_score}, Reaction_score: {cyp_reaction_score}, Score: {cyp_score}\n'
                               cyp_scores += row
                               reaction_str = ','.join(reaction)
                             for mol_total in mols:
@@ -509,9 +514,9 @@ def save_metabolites_to_sdf_total(output_dict, base_path, subtypes_threshold):
                                     mol.SetProp('Reaction', reaction_str)
                                     mol.SetProp('Score', str(round(float(score), 4)))
                                     mol.SetProp('Reaction_Score', str(round(float(reaction_score), 4)))
-                                    mol.SetProp('Bond_Score', str(round(float(bond_score), 4)))
+                                    mol.SetProp('SoM_Score', str(round(float(bond_score), 4)))
                                     mol.SetProp('Rank', str(rank))
-                                    mol.SetProp('Subtype', ', '.join([cyp.split('_')[1] for cyp in CYP_types]))
+                                    mol.SetProp('Subtype', ', '.join([("CYP_ALL" if cyp == "CYP_REACTION" else cyp).split('_')[1] for cyp in CYP_types]))
                                     mol.SetProp('Subtype_Scores', cyp_scores)
                                     # mol.SetProp('SoM', SoM)
                                     if float(MW) > 44.009 and float(MW)*5 > Descriptors.MolWt(Chem.MolFromSmiles(test_value['substrate'])): #CO2

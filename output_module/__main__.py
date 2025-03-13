@@ -234,7 +234,7 @@ def main(smiles=None, sdf=None, subtype='all', base_dir='./output', output_type=
         if column not in test_df.columns:
             test_df[column] = None
 
-    models = ['ckpt/12.pt', 'ckpt/15.pt', 'ckpt/18.pt', 'ckpt/22.pt', 'ckpt/27.pt']
+    models = sorted([os.path.join('ckpt', f) for f in os.listdir('ckpt') if f.endswith('.pt')])
     reaction_rules = pd.read_csv('./output_module/reaction_rules/cyp_map_rules.csv', encoding='cp949')
     output_data = []
     for model_path in models:

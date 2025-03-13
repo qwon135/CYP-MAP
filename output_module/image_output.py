@@ -102,7 +102,9 @@ def SoM_to_image(df, som_dict, dir_path, subtype, input_threshold, sub_threshold
       with tempfile.NamedTemporaryFile(delete=True) as tmp:
           tmp.write(svg_text.encode())
           tmp.flush()
-          cairosvg.svg2png(url=tmp.name, write_to=f"{dir_path}/{database_id}_{subtype}.png")
+          image_subtype = "SUB9" if subtype == "max" else "CYP_ALL" if subtype == "CYP_REACTION" else subtype
+          cairosvg.svg2png(url=tmp.name, write_to=f"{dir_path}/{database_id}_{image_subtype}.png")
+
     except Exception as e:
       print(e)
 
@@ -214,7 +216,9 @@ def SoM_to_image_metabolite(df, som_dict, dir_path, subtype, input_threshold, su
         with tempfile.NamedTemporaryFile(delete=True) as tmp:
             tmp.write(svg_text.encode())
             tmp.flush()
-            cairosvg.svg2png(url=tmp.name, write_to=f"{dir_path}/{database_id}_{subtype}.png")
+            image_subtype = "SUB9" if subtype == "max" else "CYP_ALL" if subtype == "CYP_REACTION" else subtype
+            cairosvg.svg2png(url=tmp.name, write_to=f"{dir_path}/{database_id}_{image_subtype}.png")
+            
     except Exception as e:
       SoM_to_image(df, som_dict, dir_path, subtype, 1, 1)
       print(e)
