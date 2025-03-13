@@ -241,7 +241,7 @@ def save_metabolite_image_web(sdf_dir, sdf_file, ref_mol, output_dir):
             score = probe_mol.GetProp('Score') if probe_mol.HasProp('Score') else 'N/A'
             score = str(round(float(score), 4))
             Rank = str(probe_mol.GetProp('Rank') if probe_mol.HasProp('Rank') else 'N/A')
-            bond_score = probe_mol.GetProp('Bond_Score') if probe_mol.HasProp('Bond_Score') else 'N/A'
+            bond_score = probe_mol.GetProp('SoM_Score') if probe_mol.HasProp('SoM_Score') else 'N/A'
             reaction_score = probe_mol.GetProp('Reaction_Score') if probe_mol.HasProp('Reaction_Score') else 'N/A'
             reaction = probe_mol.GetProp('Reaction') if probe_mol.HasProp('Reaction') else 'N/A'
             reaction = remove_last_hyphen(reaction.split(',')[0].split('(')[0])
