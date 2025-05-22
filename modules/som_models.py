@@ -89,8 +89,8 @@ class SOMPredictorV2(torch.nn.Module):
         self.reaction_head = torch.nn.ModuleDict()
         self.subtype_head = torch.nn.ModuleDict()
         for cyp in self.cyp_list:
-            self.reaction_head[cyp] = Attention(channels, dropout_som, 1)  # 반응 여부 예측 (0: 반응 없음, 1: 반응 있음)
-            self.subtype_head[cyp] = Attention(channels + 1, dropout_type, n_classes-1)  # subtype 예측 (1, 2, 3)
+            self.reaction_head[cyp] = Attention(channels, dropout_som, 1)  # Predicting reaction occurrence (0: no, 1: yes)
+            self.subtype_head[cyp] = Attention(channels + 1, dropout_type, n_classes-1)  # Subtype prediction (1, 2, 3)
 
     def forward(self, x):
         x = self.proj_edge(x)
@@ -105,7 +105,7 @@ class SOMPredictorV2(torch.nn.Module):
         return logits   
 
 
-class GNNSOM(torch.nn.Module):
+class CYPMAP_GNN(torch.nn.Module):
     def __init__(self, 
                  channels = 512, num_layers = 2, gnn_num_layers=8,latent_size = 128, dropout=0.1, dropout_fc=0.1, dropout_som_fc=0.1, dropout_type_fc=0.1, n_classes=1, use_face=True, node_attn=True, face_attn=True,
                  encoder_dropout= 0.0, pooling='sum', gnn_type = 'gnn',

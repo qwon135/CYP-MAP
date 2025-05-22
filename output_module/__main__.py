@@ -9,7 +9,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(os.path.dirname(current_dir))
 sys.path.append(parent_dir)
 from modules.som_dataset import CustomDataset
-from modules.som_models import GNNSOM
+from modules.som_models import CYPMAP_GNN
 from utils import validation
 import datetime
 import warnings
@@ -96,7 +96,7 @@ class CONFIG:
 config = CONFIG()
 
 def run_model_validation(model_path, test_df):
-    model = GNNSOM(
+    model = CYPMAP_GNN(
         num_layers=2,
         gnn_num_layers=8,
         pooling='sum',

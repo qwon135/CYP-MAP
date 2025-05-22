@@ -49,9 +49,6 @@ def mol2graph(mol):
 
     return data
 
-# To DO
-# 갯수는 어떻게 처리할지?
-#  S랑 N 을 따로 할지 같이 할지?
 
 def check_ns_oxidation(reaction):
     if not reaction:
@@ -66,7 +63,7 @@ def check_ns_oxidation(reaction):
     return reaction
 
 def check_reaction(bond_atom_sidx, bond_atom_eidx, bond_atom_s_symbol, bond_atom_e_symbol, reaction):
-    bond_atom_sidx, bond_atom_eidx = bond_atom_sidx+1, bond_atom_eidx+1 # 0부터 시작해서 맞춰 줘야함
+    bond_atom_sidx, bond_atom_eidx = bond_atom_sidx+1, bond_atom_eidx+1
     
     reaction_atoms, reaction_type, _ = reaction[1:-1].split(';')
     reaction_atom_s, reaction_atom_e = reaction_atoms.split(',')
@@ -76,7 +73,6 @@ def check_reaction(bond_atom_sidx, bond_atom_eidx, bond_atom_s_symbol, bond_atom
     if reaction_type in ['S-Oxidation', 'N-Oxidation', 'P-Oxidation', 'SPN-Oxidation', 'spn']:
         return 0
 
-    # 둘다 숫자인 경우는 해당 atom 인덱스 일치 여부 확인
     if reaction_atom_e == 'H': # Dealkylation or Oxidation
         if ((reaction_atom_s == bond_atom_sidx) and (bond_atom_e_symbol == 'H')) or ((reaction_atom_s == bond_atom_eidx) and (bond_atom_s_symbol ==  'H')): 
             return 1
@@ -85,7 +81,6 @@ def check_reaction(bond_atom_sidx, bond_atom_eidx, bond_atom_s_symbol, bond_atom
         if ((bond_atom_sidx == reaction_atom_s) and (bond_atom_eidx == reaction_atom_e)) or ((bond_atom_sidx == reaction_atom_e) and (bond_atom_eidx == reaction_atom_s)):                    
             return 1        
     return 0
-
 
   
 def mol2bond_label(atoms, bonds, bonds_idx, reactions, return_type=False):

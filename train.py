@@ -7,7 +7,7 @@ import pandas as pd
 from rdkit.Chem import PandasTools
 from torch_geometric.loader import DataLoader
 from modules.som_dataset import CustomDataset
-from modules.som_models import GNNSOM
+from modules.som_models import CYPMAP_GNN
 from sklearn.model_selection import train_test_split, StratifiedKFold
 import warnings
 from torch import nn
@@ -200,7 +200,7 @@ def main(args):
     test_loader = DataLoader(test_dataset, num_workers=8, batch_size=args.batch_size, shuffle=False)
 
     epochs = args.epochs
-    model = GNNSOM(
+    model = CYPMAP_GNN(
                 num_layers=args.num_layers, 
                 gnn_num_layers = args.gnn_num_layers,
                 pooling=args.pooling,

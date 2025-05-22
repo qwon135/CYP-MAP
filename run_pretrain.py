@@ -33,12 +33,12 @@ def get_time(start_time, step, total_steps):
     current_time = time.time()
     elapsed_time = current_time - start_time
     
-    # 예상 남은 시간 계산
+
     steps_per_sec = (step + 1) / elapsed_time
     remaining_steps = total_steps - (step + 1)
     estimated_time_remaining = remaining_steps / steps_per_sec
     
-    # 시간 형식 지정
+
     elapse_time = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
     remain_time = time.strftime("%H:%M:%S", time.gmtime(estimated_time_remaining))
     return remain_time, elapse_time

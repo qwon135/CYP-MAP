@@ -11,7 +11,7 @@ from multiprocessing import Pool
 from rdkit.Chem import Draw, PandasTools
 from torch_geometric.loader import DataLoader
 from sklearn.metrics import accuracy_score, f1_score, jaccard_score, precision_score, recall_score, roc_auc_score, average_precision_score
-from modules.som_models import  GNNSOM
+from modules.som_models import  CYPMAP_GNN
 from sklearn.model_selection import train_test_split
 import warnings, json
 from torch import nn
@@ -152,7 +152,7 @@ def main(args):
     test_dataset = CustomDataset(df=test_df, args=args, cyp_list=cyp_list, mode='test')
     test_loader = DataLoader(test_dataset, num_workers=2, batch_size=16, shuffle=False)
         
-    model = GNNSOM(
+    model = CYPMAP_GNN(
                 num_layers=args.num_layers,
                 gnn_num_layers = args.gnn_num_layers,
                 pooling=args.pooling,

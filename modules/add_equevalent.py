@@ -16,7 +16,6 @@ def atom_pair2bondidx(mol):
     atom_pair2bond = {}
 
     for bond_idx, bond in enumerate(mol.GetBonds()):
-        # 결합의 시작 원자와 끝 원자 인덱스 얻기
         begin_atom_idx, end_atom_idx = bond.GetBeginAtomIdx(), bond.GetEndAtomIdx()         
         atom_pair2bond[(begin_atom_idx, end_atom_idx)] = bond_idx
         atom_pair2bond[(end_atom_idx, begin_atom_idx)] = bond_idx
@@ -39,7 +38,6 @@ def get_equivalent_bonds(mol):
     eq_bonds = []
 
     for bond_idx, bond in enumerate(mol.GetBonds()):
-        # 결합의 시작 원자와 끝 원자 인덱스 얻기
         s_idx, e_idx = bond.GetBeginAtomIdx(), bond.GetEndAtomIdx() #
         
         for eq_s_idx in equivalent_dict[s_idx]:
