@@ -1,0 +1,388 @@
+BTM00001
+  CDK     08072417372D
+
+ 11 11  0  0  0  0  0  0  0  0999 V2000
+   -2.7715   -0.8505    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.4723   -0.1007    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.1733   -0.8507    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.1262   -0.0998    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+    1.1267    1.4010    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.1723    2.1510    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.4719    1.4002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.7709    2.1502    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.6394   -1.5093    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.1731   -2.3507    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6035    0.1605    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  2  0  0  0  0
+  6  7  1  0  0  0  0
+  2  7  1  0  0  0  0
+  7  8  2  0  0  0  0
+  4  9  1  0  0  0  0
+  3 10  1  0  0  0  0
+  4 11  1  0  0  0  0
+M  CHG  1   4   1
+M  CHG  1  11  -1
+M  END
+> <InChI>
+InChI=1S/C7H9NO3/c1-5-7(10)6(9)3-4-8(5,2)11/h3-4,10H,1-2H3
+
+> <InChIKey>
+CXTYLQGTKNIDNX-UHFFFAOYSA-N
+
+> <SMILES>
+OC1=C([N+](C=CC1=O)(C)[O-])C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C7H9NO3
+
+> <Major_Isotope_Mass>
+155.05824314799997
+
+> <ALogP>
+-0.7091999999999994
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+N-Oxidation of alicyclic tertiary amine
+
+> <Reaction_ID>
+BTMR1099
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C8
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0000_Deferiprone
+
+> <Precursor_SMILES>
+OC1=C(N(C=CC1=O)C)C
+
+> <Precursor_InChI>
+InChI=1S/C7H9NO2/c1-5-7(10)6(9)3-4-8(5)2/h3-4,10H,1-2H3
+
+> <Precursor_InChIKey>
+TZXKOCQBRNJULO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+0.893499
+
+> <Precursor_Major_Isotope_Mass>
+139.0633
+
+$$$$
+BTM00002
+  CDK     08072417372D
+
+  9  9  0  0  0  0  0  0  0  0999 V2000
+   -0.3245   -1.3135    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3243    0.1865    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.9748    0.9365    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.9743    2.4373    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3252    3.1881    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6243    2.4381    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6238    0.9373    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.9228    0.1873    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.2739    0.1867    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  2  0  0  0  0
+  6  7  1  0  0  0  0
+  2  7  1  0  0  0  0
+  7  8  2  0  0  0  0
+  3  9  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C6H7NO2/c1-4-6(9)5(8)2-3-7-4/h2-3,9H,1H3,(H,7,8)
+
+> <InChIKey>
+UVOPIJQQMRLUAD-UHFFFAOYSA-N
+
+> <SMILES>
+OC1=C(NC=CC1=O)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C6H7NO2
+
+> <Major_Isotope_Mass>
+125.047678464
+
+> <ALogP>
+0.6875999999999997
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+N-Dealkylation of alicyclic tertiary amine
+
+> <Reaction_ID>
+BTMR1144
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0000_Deferiprone
+
+> <Precursor_SMILES>
+OC1=C(N(C=CC1=O)C)C
+
+> <Precursor_InChI>
+InChI=1S/C7H9NO2/c1-5-7(10)6(9)3-4-8(5)2/h3-4,10H,1-2H3
+
+> <Precursor_InChIKey>
+TZXKOCQBRNJULO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+0.893499
+
+> <Precursor_Major_Isotope_Mass>
+139.0633
+
+$$$$
+BTM00003
+  CDK     08072417372D
+
+ 11 11  0  0  0  0  0  0  0  0999 V2000
+   -0.3249    2.4383    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3251    0.9383    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6242    0.1883    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6237   -1.3125    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3242   -2.0633    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.9749   -1.3133    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.9744    0.1875    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.2734    0.9375    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.9227   -2.0625    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.9233    0.9381    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2222    0.1879    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  2  0  0  0  0
+  6  7  1  0  0  0  0
+  2  7  1  0  0  0  0
+  7  8  2  0  0  0  0
+  4  9  1  0  0  0  0
+  3 10  1  0  0  0  0
+ 11 10  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C7H9NO3/c1-8-3-2-6(10)7(11)5(8)4-9/h2-3,9,11H,4H2,1H3
+
+> <InChIKey>
+USQKJVRETHWJNS-UHFFFAOYSA-N
+
+> <SMILES>
+OC1=C(N(C=CC1=O)C)CO
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C7H9NO3
+
+> <Major_Isotope_Mass>
+155.058243148
+
+> <ALogP>
+0.4348999999999998
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+Hydroxylation of methyl carbon adjacent to aliphatic ring
+
+> <Reaction_ID>
+BTMR0054
+
+> <Enzyme(s)>
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0000_Deferiprone
+
+> <Precursor_SMILES>
+OC1=C(N(C=CC1=O)C)C
+
+> <Precursor_InChI>
+InChI=1S/C7H9NO2/c1-5-7(10)6(9)3-4-8(5)2/h3-4,10H,1-2H3
+
+> <Precursor_InChIKey>
+TZXKOCQBRNJULO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+0.893499
+
+> <Precursor_Major_Isotope_Mass>
+139.0633
+
+$$$$
+BTM00004
+  CDK     08072417372D
+
+ 10 10  0  0  0  0  0  0  0  0999 V2000
+    1.2990   -0.7500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0000   -0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2990    2.2500    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5981    1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5981    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2990   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2990   -2.2500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2990    3.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2990    2.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  2  0  0  0  0
+  6  7  1  0  0  0  0
+  2  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  4  9  1  0  0  0  0
+  3 10  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C7H11NO2/c1-5-7(10)6(9)3-4-8(5)2/h3-4,6,9-10H,1-2H3
+
+> <InChIKey>
+DPXGUZLEUZKCGL-UHFFFAOYSA-N
+
+> <SMILES>
+OC1=C(N(C=CC1O)C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C7H11NO2
+
+> <Major_Isotope_Mass>
+141.078978592
+
+> <ALogP>
+-0.5510000000000008
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+Reduction of ketone to alcohol
+
+> <Reaction_ID>
+BTMR1171
+
+> <Enzyme(s)>
+CYP2C9
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0000_Deferiprone
+
+> <Precursor_SMILES>
+OC1=C(N(C=CC1=O)C)C
+
+> <Precursor_InChI>
+InChI=1S/C7H9NO2/c1-5-7(10)6(9)3-4-8(5)2/h3-4,10H,1-2H3
+
+> <Precursor_InChIKey>
+TZXKOCQBRNJULO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+0.893499
+
+> <Precursor_Major_Isotope_Mass>
+139.0633
+
+$$$$

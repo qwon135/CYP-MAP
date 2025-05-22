@@ -1,0 +1,447 @@
+BTM00001
+  CDK     0807241714
+
+  2  1  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/CH2O/c1-2/h1H2
+
+> <InChIKey>
+WSFSSNUMVMOOMR-UHFFFAOYSA-N
+
+> <SMILES>
+O=C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+CH2O
+
+> <Major_Isotope_Mass>
+30.010564684
+
+> <ALogP>
+-0.8841
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+O-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1331
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0076_Nuciferine
+
+> <Precursor_SMILES>
+O(C1=C2C=3[C@H](N(CCC3C=C1OC)C)CC4=C2C=CC=C4)C
+
+> <Precursor_InChI>
+InChI=1S/C19H21NO2/c1-20-9-8-13-11-16(21-2)19(22-3)18-14-7-5-4-6-12(14)10-15(20)17(13)18/h4-7,11,15H,8-10H2,1-3H3/t15-/m1/s1
+
+> <Precursor_InChIKey>
+ORJVQPIHKOARKV-OAHLLOKOSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+295.1572
+
+$$$$
+BTM00002
+  CDK     0807241714
+
+ 21 24  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  3  8  2  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  2  0  0  0  0
+  1 10  1  0  0  0  0
+ 10 11  1  0  0  0  0
+ 11 12  1  0  0  0  0
+  5 13  1  0  0  0  0
+  4 14  1  0  0  0  0
+ 14 15  1  0  0  0  0
+ 15 16  2  0  0  0  0
+  2 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  2  0  0  0  0
+ 18 19  1  0  0  0  0
+ 19 20  2  0  0  0  0
+ 15 20  1  0  0  0  0
+  1 21  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C18H19NO2/c1-19-8-7-12-10-15(21-2)18(20)17-13-6-4-3-5-11(13)9-14(19)16(12)17/h3-6,10,14,20H,7-9H2,1-2H3
+
+> <InChIKey>
+YXVXMURDCBMPRH-UHFFFAOYSA-N
+
+> <SMILES>
+C1(=C2C=3C(N(CCC3C=C1OC)C)CC4=C2C=CC=C4)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C18H19NO2
+
+> <Major_Isotope_Mass>
+281.14157884800005
+
+> <ALogP>
+3.3163000000000005
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+O-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1331
+
+> <Enzyme(s)>
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0076_Nuciferine
+
+> <Precursor_SMILES>
+O(C1=C2C=3[C@H](N(CCC3C=C1OC)C)CC4=C2C=CC=C4)C
+
+> <Precursor_InChI>
+InChI=1S/C19H21NO2/c1-20-9-8-13-11-16(21-2)19(22-3)18-14-7-5-4-6-12(14)10-15(20)17(13)18/h4-7,11,15H,8-10H2,1-3H3/t15-/m1/s1
+
+> <Precursor_InChIKey>
+ORJVQPIHKOARKV-OAHLLOKOSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+295.1572
+
+$$$$
+BTM00003
+  CDK     0807241714
+
+ 21 24  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  2  0  0  0  0
+  3  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  2  0  0  0  0
+ 10 11  1  0  0  0  0
+ 11 12  2  0  0  0  0
+  7 12  1  0  0  0  0
+  5 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+ 14 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+  4 16  2  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  2  0  0  0  0
+  2 18  1  0  0  0  0
+ 18 19  1  0  0  0  0
+ 19 20  1  0  0  0  0
+  1 21  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C18H19NO2/c1-20-15-10-12-7-8-19-14-9-11-5-3-4-6-13(11)17(16(12)14)18(15)21-2/h3-6,10,14,19H,7-9H2,1-2H3
+
+> <InChIKey>
+QQKAHDMMPBQDAC-UHFFFAOYSA-N
+
+> <SMILES>
+O(C1=C2C=3C(CC4=C2C=CC=C4)NCCC3C=C1OC)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C18H19NO2
+
+> <Major_Isotope_Mass>
+281.141578848
+
+> <ALogP>
+3.0314000000000005
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+N-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1332
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C8
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0076_Nuciferine
+
+> <Precursor_SMILES>
+O(C1=C2C=3[C@H](N(CCC3C=C1OC)C)CC4=C2C=CC=C4)C
+
+> <Precursor_InChI>
+InChI=1S/C19H21NO2/c1-20-9-8-13-11-16(21-2)19(22-3)18-14-7-5-4-6-12(14)10-15(20)17(13)18/h4-7,11,15H,8-10H2,1-3H3/t15-/m1/s1
+
+> <Precursor_InChIKey>
+ORJVQPIHKOARKV-OAHLLOKOSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+295.1572
+
+$$$$
+BTM00004
+  CDK     0807241714
+
+ 21 24  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  4  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+  2 11  1  0  0  0  0
+ 11 12  1  0  0  0  0
+  6 13  1  0  0  0  0
+  5 14  1  0  0  0  0
+ 14 15  1  0  0  0  0
+ 15 16  2  0  0  0  0
+  3 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  2  0  0  0  0
+ 18 19  1  0  0  0  0
+ 19 20  2  0  0  0  0
+ 15 20  1  0  0  0  0
+  1 21  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C18H19NO2/c1-19-8-7-12-10-15(20)18(21-2)17-13-6-4-3-5-11(13)9-14(19)16(12)17/h3-6,10,14,20H,7-9H2,1-2H3
+
+> <InChIKey>
+AKXOIHNFHOEPHN-UHFFFAOYSA-N
+
+> <SMILES>
+O(C1=C2C=3C(N(CCC3C=C1O)C)CC4=C2C=CC=C4)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C18H19NO2
+
+> <Major_Isotope_Mass>
+281.14157884800005
+
+> <ALogP>
+3.3163000000000005
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+O-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1331
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0076_Nuciferine
+
+> <Precursor_SMILES>
+O(C1=C2C=3[C@H](N(CCC3C=C1OC)C)CC4=C2C=CC=C4)C
+
+> <Precursor_InChI>
+InChI=1S/C19H21NO2/c1-20-9-8-13-11-16(21-2)19(22-3)18-14-7-5-4-6-12(14)10-15(20)17(13)18/h4-7,11,15H,8-10H2,1-3H3/t15-/m1/s1
+
+> <Precursor_InChIKey>
+ORJVQPIHKOARKV-OAHLLOKOSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+295.1572
+
+$$$$

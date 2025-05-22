@@ -1,0 +1,81 @@
+BTM00001
+  CDK     07192412442D
+
+  5  4  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 Cl  0  0  0  0  0  0  0  0  0  0  0  0
+    1.2990   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5981   -0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8971   -0.7500    0.0000 Cl  0  0  0  0  0  0  0  0  0  0  0  0
+    1.2990   -2.2500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  3  4  1  0  0  0  0 
+  5  2  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C2H4Cl2O/c3-1-2(4)5/h2,5H,1H2
+
+> <InChIKey>
+QXBDFCZHAAOUBY-UHFFFAOYSA-N
+
+> <SMILES>
+ClC(CCl)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C2H4Cl2O
+
+> <Major_Isotope_Mass>
+113.963920108
+
+> <ALogP>
+0.9615
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Hydroxylation of carbon adjacent to halogen
+
+> <Reaction_ID>
+BTMR1079
+
+> <Enzyme(s)>
+CYP2E1
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0100_1_2-dichloroethane
+
+> <Precursor_SMILES>
+ClCCCl
+
+> <Precursor_InChI>
+InChI=1S/C2H4Cl2/c3-1-2-4/h1-2H2
+
+> <Precursor_InChIKey>
+WSLDOOZREJYCGB-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+1.5118
+
+> <Precursor_Major_Isotope_Mass>
+97.96900
+
+$$$$

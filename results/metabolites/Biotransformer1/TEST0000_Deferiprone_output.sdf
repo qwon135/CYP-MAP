@@ -1,0 +1,192 @@
+BTM00001
+  CDK     07192412372D
+
+ 11 11  0  0  0  0  0  0  0  0999 V2000
+    2.5989   -1.5002    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000    0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    1.5000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3000    0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3000   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0000   -1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0000   -3.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    3.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5989    1.5002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5989   -1.5002    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  6  7  1  0  0  0  0 
+  2  7  1  0  0  0  0 
+  7  8  2  0  0  0  0 
+  4  9  1  0  0  0  0 
+  3 10  1  0  0  0  0 
+  6 11  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C7H9NO3/c1-4-6(10)7(11)5(9)3-8(4)2/h3,9-10H,1-2H3
+
+> <InChIKey>
+ONPBQHTVVMAFRQ-UHFFFAOYSA-N
+
+> <SMILES>
+OC1=C(N(C=C(C1=O)O)C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C7H9NO3
+
+> <Major_Isotope_Mass>
+155.05824314799997
+
+> <ALogP>
+1.2739999999999996
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Hydroxylation of carbon alpha to conjugated carbonyl
+
+> <Reaction_ID>
+BTMR1055
+
+> <Enzyme(s)>
+CYP1A2
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0000_Deferiprone
+
+> <Precursor_SMILES>
+OC1=C(N(C=CC1=O)C)C
+
+> <Precursor_InChI>
+InChI=1S/C7H9NO2/c1-5-7(10)6(9)3-4-8(5)2/h3-4,10H,1-2H3
+
+> <Precursor_InChIKey>
+TZXKOCQBRNJULO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+1.541399
+
+> <Precursor_Major_Isotope_Mass>
+139.0633
+
+$$$$
+BTM00002
+  CDK     07192412372D
+
+ 11 11  0  0  0  0  0  0  0  0999 V2000
+   -0.3249    2.4383    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3251    0.9383    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6242    0.1883    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6237   -1.3125    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3242   -2.0633    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.9749   -1.3133    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.9744    0.1875    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.2734    0.9375    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.9227   -2.0625    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.9233    0.9381    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2222    0.1879    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  6  7  1  0  0  0  0 
+  2  7  1  0  0  0  0 
+  7  8  2  0  0  0  0 
+  4  9  1  0  0  0  0 
+  3 10  1  0  0  0  0 
+ 11 10  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C7H9NO3/c1-8-3-2-6(10)7(11)5(8)4-9/h2-3,9,11H,4H2,1H3
+
+> <InChIKey>
+USQKJVRETHWJNS-UHFFFAOYSA-N
+
+> <SMILES>
+OC1=C(N(C=CC1=O)C)CO
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C7H9NO3
+
+> <Major_Isotope_Mass>
+155.058243148
+
+> <ALogP>
+0.6531999999999994
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+Aliphatic hydroxylation of methyl carbon adjacent to aromatic ring
+
+> <Reaction_ID>
+BTMR1058
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C19
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0000_Deferiprone
+
+> <Precursor_SMILES>
+OC1=C(N(C=CC1=O)C)C
+
+> <Precursor_InChI>
+InChI=1S/C7H9NO2/c1-5-7(10)6(9)3-4-8(5)2/h3-4,10H,1-2H3
+
+> <Precursor_InChIKey>
+TZXKOCQBRNJULO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+1.541399
+
+> <Precursor_Major_Isotope_Mass>
+139.0633
+
+$$$$

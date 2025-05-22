@@ -1,0 +1,291 @@
+BTM00001
+  CDK     0807241708
+
+ 12 12  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  2  4  1  0  0  0  0
+  2  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  2  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+  6 11  1  0  0  0  0
+  5 12  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C10H15NO/c1-10(2,11)9(12)8-6-4-3-5-7-8/h3-7,9,12H,11H2,1-2H3
+
+> <InChIKey>
+QFTWUVJQXPFWNM-UHFFFAOYSA-N
+
+> <SMILES>
+NC(C)(C)C(C1=CC=CC=C1)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C10H15NO
+
+> <Major_Isotope_Mass>
+165.1153641
+
+> <ALogP>
+1.0076999999999994
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1328
+
+> <Enzyme(s)>
+CYP2A6
+CYP2C9
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0033_Phentermine
+
+> <Precursor_SMILES>
+NC(CC1=CC=CC=C1)(C)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15N/c1-10(2,11)8-9-6-4-3-5-7-9/h3-7H,8,11H2,1-2H3
+
+> <Precursor_InChIKey>
+DHHVAGZRUROJKS-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+149.1204
+
+$$$$
+BTM00002
+  CDK     0807241708
+
+ 12 12  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  2  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  2  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  2  0  0  0  0
+  3  8  1  0  0  0  0
+  1  9  1  0  0  0  0
+  1 10  1  0  0  0  0
+  1 11  1  0  0  0  0
+ 11 12  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C10H15NO/c1-10(2,11-12)8-9-6-4-3-5-7-9/h3-7,11-12H,8H2,1-2H3
+
+> <InChIKey>
+BFFVZWRUMOUGAM-UHFFFAOYSA-N
+
+> <SMILES>
+C(CC1=CC=CC=C1)(C)(C)NO
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C10H15NO
+
+> <Major_Isotope_Mass>
+165.1153641
+
+> <ALogP>
+1.7087999999999994
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1328
+
+> <Enzyme(s)>
+CYP1A2
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0033_Phentermine
+
+> <Precursor_SMILES>
+NC(CC1=CC=CC=C1)(C)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15N/c1-10(2,11)8-9-6-4-3-5-7-9/h3-7H,8,11H2,1-2H3
+
+> <Precursor_InChIKey>
+DHHVAGZRUROJKS-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+149.1204
+
+$$$$
+BTM00003
+  CDK     0807241708
+
+ 12 12  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  2  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  4  9  1  0  0  0  0
+  7 10  1  0  0  0  0
+  2 11  1  0  0  0  0
+  2 12  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C10H15NO/c1-10(2,11)7-8-3-5-9(12)6-4-8/h3-6,12H,7,11H2,1-2H3
+
+> <InChIKey>
+DQFAEBUKXCRWHR-UHFFFAOYSA-N
+
+> <SMILES>
+NC(CC1=CC=C(C=C1)O)(C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C10H15NO
+
+> <Major_Isotope_Mass>
+165.1153641
+
+> <ALogP>
+1.5722
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1328
+
+> <Enzyme(s)>
+CYP2C9
+CYP2D6
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0033_Phentermine
+
+> <Precursor_SMILES>
+NC(CC1=CC=CC=C1)(C)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15N/c1-10(2,11)8-9-6-4-3-5-7-9/h3-7H,8,11H2,1-2H3
+
+> <Precursor_InChIKey>
+DHHVAGZRUROJKS-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+149.1204
+
+$$$$

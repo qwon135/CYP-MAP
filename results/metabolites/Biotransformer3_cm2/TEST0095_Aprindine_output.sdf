@@ -1,0 +1,402 @@
+BTM00001
+  CDK     0807241716
+
+  5  4  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  1  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C4H11N/c1-3-5-4-2/h5H,3-4H2,1-2H3
+
+> <InChIKey>
+HPNMFZURTQLUMO-UHFFFAOYSA-N
+
+> <SMILES>
+C(C)NCC
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C4H11N
+
+> <Major_Isotope_Mass>
+73.089149352
+
+> <ALogP>
+0.48179999999999995
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+N-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1332
+
+> <Enzyme(s)>
+CYP2C9
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0095_Aprindine
+
+> <Precursor_SMILES>
+C1=CC=C(C=C1)N(CCCN(CC)CC)C2CC3=CC=CC=C3C2
+
+> <Precursor_InChI>
+InChI=1S/C22H30N2/c1-3-23(4-2)15-10-16-24(21-13-6-5-7-14-21)22-17-19-11-8-9-12-20(19)18-22/h5-9,11-14,22H,3-4,10,15-18H2,1-2H3
+
+> <Precursor_InChIKey>
+NZLBHDRPUJLHCE-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+322.2408
+
+$$$$
+BTM00002
+  CDK     0807241716
+
+ 20 22  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  2  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  2  0  0  0  0
+  1  6  1  0  0  0  0
+  4  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+  7 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+ 14 15  2  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  2  0  0  0  0
+ 17 18  1  0  0  0  0
+ 18 19  2  0  0  0  0
+ 14 19  1  0  0  0  0
+ 19 20  1  0  0  0  0
+ 12 20  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C18H19NO/c20-12-6-11-19(17-9-2-1-3-10-17)18-13-15-7-4-5-8-16(15)14-18/h1-5,7-10,12,18H,6,11,13-14H2
+
+> <InChIKey>
+JBUNQUTUCJXUOS-UHFFFAOYSA-N
+
+> <SMILES>
+C1=CC=C(C=C1)N(CCC=O)C2CC3=CC=CC=C3C2
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C18H19NO
+
+> <Major_Isotope_Mass>
+265.146664228
+
+> <ALogP>
+3.752
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+N-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1332
+
+> <Enzyme(s)>
+CYP2C9
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0095_Aprindine
+
+> <Precursor_SMILES>
+C1=CC=C(C=C1)N(CCCN(CC)CC)C2CC3=CC=CC=C3C2
+
+> <Precursor_InChI>
+InChI=1S/C22H30N2/c1-3-23(4-2)15-10-16-24(21-13-6-5-7-14-21)22-17-19-11-8-9-12-20(19)18-22/h5-9,11-14,22H,3-4,10,15-18H2,1-2H3
+
+> <Precursor_InChIKey>
+NZLBHDRPUJLHCE-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+322.2408
+
+$$$$
+BTM00003
+  CDK     0807241716
+
+ 22 24  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  2  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  2  0  0  0  0
+  1  6  1  0  0  0  0
+  4  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  1  0  0  0  0
+ 11 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+  7 14  1  0  0  0  0
+ 14 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  2  0  0  0  0
+ 17 18  1  0  0  0  0
+ 18 19  2  0  0  0  0
+ 19 20  1  0  0  0  0
+ 20 21  2  0  0  0  0
+ 16 21  1  0  0  0  0
+ 21 22  1  0  0  0  0
+ 14 22  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C20H26N2/c1-2-21-13-8-14-22(19-11-4-3-5-12-19)20-15-17-9-6-7-10-18(17)16-20/h3-7,9-12,20-21H,2,8,13-16H2,1H3
+
+> <InChIKey>
+JVKNBCGVGGFZLV-UHFFFAOYSA-N
+
+> <SMILES>
+C1=CC=C(C=C1)N(CCCNCC)C2CC3=CC=CC=C3C2
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C20H26N2
+
+> <Major_Isotope_Mass>
+294.209598832
+
+> <ALogP>
+4.014299999999998
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+N-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1332
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0095_Aprindine
+
+> <Precursor_SMILES>
+C1=CC=C(C=C1)N(CCCN(CC)CC)C2CC3=CC=CC=C3C2
+
+> <Precursor_InChI>
+InChI=1S/C22H30N2/c1-3-23(4-2)15-10-16-24(21-13-6-5-7-14-21)22-17-19-11-8-9-12-20(19)18-22/h5-9,11-14,22H,3-4,10,15-18H2,1-2H3
+
+> <Precursor_InChIKey>
+NZLBHDRPUJLHCE-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+322.2408
+
+$$$$
+BTM00004
+  CDK     0807241716
+
+  3  2  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C2H4O/c1-2-3/h2H,1H3
+
+> <InChIKey>
+IKHGUXGNUITLKF-UHFFFAOYSA-N
+
+> <SMILES>
+CC=O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C2H4O
+
+> <Major_Isotope_Mass>
+44.026214748
+
+> <ALogP>
+-0.1825
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+N-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1332
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0095_Aprindine
+
+> <Precursor_SMILES>
+C1=CC=C(C=C1)N(CCCN(CC)CC)C2CC3=CC=CC=C3C2
+
+> <Precursor_InChI>
+InChI=1S/C22H30N2/c1-3-23(4-2)15-10-16-24(21-13-6-5-7-14-21)22-17-19-11-8-9-12-20(19)18-22/h5-9,11-14,22H,3-4,10,15-18H2,1-2H3
+
+> <Precursor_InChIKey>
+NZLBHDRPUJLHCE-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+322.2408
+
+$$$$

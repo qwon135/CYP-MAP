@@ -1,0 +1,490 @@
+BTM00001
+  CDK     0807241715
+
+ 21 21  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  2  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  2  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+  6 11  1  0  0  0  0
+ 11 12  1  0  0  0  0
+  7 13  1  0  0  0  0
+  5 14  1  0  0  0  0
+ 14 15  2  0  0  0  0
+ 14 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  1  0  0  0  0
+  4 19  1  0  0  0  0
+  1 20  1  0  0  0  0
+ 20 21  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C15H21NO5/c1-10-6-5-7-11(2)14(10)16(13(18)8-20-4)12(3)15(19)21-9-17/h5-7,12,17H,8-9H2,1-4H3
+
+> <InChIKey>
+HYBOBXSJTQAIGQ-UHFFFAOYSA-N
+
+> <SMILES>
+O(C(=O)C(N(C1=C(C=CC=C1C)C)C(=O)COC)C)CO
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C15H21NO5
+
+> <Major_Isotope_Mass>
+295.14197277200003
+
+> <ALogP>
+1.8194999999999966
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1328
+
+> <Enzyme(s)>
+CYP2C9
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0085_METALAXYL
+
+> <Precursor_SMILES>
+O(C(=O)[C@@H](N(C1=C(C=CC=C1C)C)C(=O)COC)C)C
+
+> <Precursor_InChI>
+InChI=1S/C15H21NO4/c1-10-7-6-8-11(2)14(10)16(13(17)9-19-4)12(3)15(18)20-5/h6-8,12H,9H2,1-5H3/t12-/m0/s1
+
+> <Precursor_InChIKey>
+ZQEIXNIJLIKNTD-LBPRGKRZSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+279.1470
+
+$$$$
+BTM00002
+  CDK     0807241715
+
+ 14 14  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  2  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  2  0  0  0  0
+  1  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  2  8  1  0  0  0  0
+  1  9  1  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 10 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C11H15NO2/c1-8-5-4-6-9(2)11(8)12-10(13)7-14-3/h4-6H,7H2,1-3H3,(H,12,13)
+
+> <InChIKey>
+OXXYGGDIKKXTFB-UHFFFAOYSA-N
+
+> <SMILES>
+C1(=C(C=CC=C1C)C)NC(=O)COC
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C11H15NO2
+
+> <Major_Isotope_Mass>
+193.11027872
+
+> <ALogP>
+1.872700000000001
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+N-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1332
+
+> <Enzyme(s)>
+CYP2B6
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0085_METALAXYL
+
+> <Precursor_SMILES>
+O(C(=O)[C@@H](N(C1=C(C=CC=C1C)C)C(=O)COC)C)C
+
+> <Precursor_InChI>
+InChI=1S/C15H21NO4/c1-10-7-6-8-11(2)14(10)16(13(17)9-19-4)12(3)15(18)20-5/h6-8,12H,9H2,1-5H3/t12-/m0/s1
+
+> <Precursor_InChIKey>
+ZQEIXNIJLIKNTD-LBPRGKRZSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+279.1470
+
+$$$$
+BTM00003
+  CDK     0807241715
+
+  7  6  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  2  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  4  6  2  0  0  0  0
+  1  7  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C4H6O3/c1-3(5)4(6)7-2/h1-2H3
+
+> <InChIKey>
+CWKLZLBVOJRSOM-UHFFFAOYSA-N
+
+> <SMILES>
+O(C(=O)C(C)=O)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C4H6O3
+
+> <Major_Isotope_Mass>
+102.03169405199999
+
+> <ALogP>
+-0.24270000000000036
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+N-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1332
+
+> <Enzyme(s)>
+CYP2B6
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0085_METALAXYL
+
+> <Precursor_SMILES>
+O(C(=O)[C@@H](N(C1=C(C=CC=C1C)C)C(=O)COC)C)C
+
+> <Precursor_InChI>
+InChI=1S/C15H21NO4/c1-10-7-6-8-11(2)14(10)16(13(17)9-19-4)12(3)15(18)20-5/h6-8,12H,9H2,1-5H3/t12-/m0/s1
+
+> <Precursor_InChIKey>
+ZQEIXNIJLIKNTD-LBPRGKRZSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+279.1470
+
+$$$$
+BTM00004
+  CDK     0807241715
+
+  2  1  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/CH2O/c1-2/h1H2
+
+> <InChIKey>
+WSFSSNUMVMOOMR-UHFFFAOYSA-N
+
+> <SMILES>
+O=C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+CH2O
+
+> <Major_Isotope_Mass>
+30.010564684
+
+> <ALogP>
+-0.8841
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+O-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1331
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C9
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0085_METALAXYL
+
+> <Precursor_SMILES>
+O(C(=O)[C@@H](N(C1=C(C=CC=C1C)C)C(=O)COC)C)C
+
+> <Precursor_InChI>
+InChI=1S/C15H21NO4/c1-10-7-6-8-11(2)14(10)16(13(17)9-19-4)12(3)15(18)20-5/h6-8,12H,9H2,1-5H3/t12-/m0/s1
+
+> <Precursor_InChIKey>
+ZQEIXNIJLIKNTD-LBPRGKRZSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+279.1470
+
+$$$$
+BTM00005
+  CDK     0807241715
+
+ 19 19  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  2  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  2  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+  6 11  1  0  0  0  0
+ 11 12  1  0  0  0  0
+  7 13  1  0  0  0  0
+  5 14  1  0  0  0  0
+ 14 15  2  0  0  0  0
+ 14 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+  4 18  1  0  0  0  0
+  1 19  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C14H19NO4/c1-9-6-5-7-10(2)13(9)15(12(17)8-16)11(3)14(18)19-4/h5-7,11,16H,8H2,1-4H3
+
+> <InChIKey>
+HOOCPOQCHBHJLU-UHFFFAOYSA-N
+
+> <SMILES>
+O(C(=O)C(N(C1=C(C=CC=C1C)C)C(=O)CO)C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C14H19NO4
+
+> <Major_Isotope_Mass>
+265.131408088
+
+> <ALogP>
+1.9681000000000002
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00005
+
+> <Reaction>
+O-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1331
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C9
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0085_METALAXYL
+
+> <Precursor_SMILES>
+O(C(=O)[C@@H](N(C1=C(C=CC=C1C)C)C(=O)COC)C)C
+
+> <Precursor_InChI>
+InChI=1S/C15H21NO4/c1-10-7-6-8-11(2)14(10)16(13(17)9-19-4)12(3)15(18)20-5/h6-8,12H,9H2,1-5H3/t12-/m0/s1
+
+> <Precursor_InChIKey>
+ZQEIXNIJLIKNTD-LBPRGKRZSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+279.1470
+
+$$$$

@@ -1,0 +1,343 @@
+BTM00001
+  CDK     08072417392D
+
+ 18 19  0  0  0  0  0  0  0  0999 V2000
+   -3.8977   -1.5024    0.0000 Cl  0  0  0  0  0  0  0  0  0  0  0  0
+   -2.6000   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.6000    0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8977    1.5024    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.1953    2.2547    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.6500    0.2047    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1453    2.8000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2900    1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000    1.5000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    2.2641    2.6492    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3359    2.6492    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6000    0.7500    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6000   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000   -1.5000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2900   -1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2850   -3.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  4  6  2  0  0  0  0
+  4  7  1  0  0  0  0
+  3  8  2  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 10 12  2  0  0  0  0
+ 10 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+ 14 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+  9 16  2  0  0  0  0
+ 16 17  1  0  0  0  0
+  2 17  2  0  0  0  0
+ 18 17  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C7H8ClN3O5S2/c8-5-3(17(9,13)14)1-4-6(7(5)12)10-2-11-18(4,15)16/h1,10-12H,2H2,(H2,9,13,14)
+
+> <InChIKey>
+KHTDSKGJCQFBSO-UHFFFAOYSA-N
+
+> <SMILES>
+ClC=1C(S(=O)(=O)N)=CC=2S(=O)(=O)NCNC2C1O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C7H8ClN3O5S2
+
+> <Major_Isotope_Mass>
+312.959390036
+
+> <ALogP>
+-0.5470999999999999
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Hydroxylation of aromatic carbon ortho to halide group
+
+> <Reaction_ID>
+BTMR1040
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0019_Hydrochlorothiazide
+
+> <Precursor_SMILES>
+ClC=1C(S(=O)(=O)N)=CC=2S(=O)(=O)NCNC2C1
+
+> <Precursor_InChI>
+InChI=1S/C7H8ClN3O4S2/c8-4-1-5-7(2-6(4)16(9,12)13)17(14,15)11-3-10-5/h1-2,10-11H,3H2,(H2,9,12,13)
+
+> <Precursor_InChIKey>
+JZUFKLXOESDKRF-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+-0.27969
+
+> <Precursor_Major_Isotope_Mass>
+296.9644
+
+$$$$
+BTM00002
+  CDK     08072417392D
+
+ 18 18  0  0  0  0  0  0  0  0999 V2000
+    4.0315    1.5774    0.0000 Cl  0  0  0  0  0  0  0  0  0  0  0  0
+    2.7323    0.8277    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.7319   -0.6732    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.0309   -1.4232    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    5.3299   -2.1732    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    4.7809   -0.1241    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.2809   -2.7222    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4323   -1.4240    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1333   -0.6740    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.1659   -1.4238    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.1302   -2.5727    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2019   -2.5730    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4648   -0.6736    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7639   -1.4234    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.1653    1.5768    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1338    0.8268    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4333    1.5777    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.0629   -0.6732    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  4  6  2  0  0  0  0
+  4  7  1  0  0  0  0
+  3  8  2  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 10 12  2  0  0  0  0
+ 10 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+ 15 16  1  0  0  0  0
+  9 16  2  0  0  0  0
+ 16 17  1  0  0  0  0
+  2 17  2  0  0  0  0
+ 14 18  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C7H8ClN3O5S2/c8-4-1-5(9)7(18(15,16)11-3-12)2-6(4)17(10,13)14/h1-3H,9H2,(H,11,12)(H2,10,13,14)
+
+> <InChIKey>
+ZQGOQDHPVQYYPI-UHFFFAOYSA-N
+
+> <SMILES>
+ClC=1C(S(=O)(=O)N)=CC(S(=O)(=O)NC=O)=C(N)C1
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C7H8ClN3O5S2
+
+> <Major_Isotope_Mass>
+312.959390036
+
+> <ALogP>
+-0.9305999999999999
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+N-Dealkylation of secondary arylalkylamine
+
+> <Reaction_ID>
+BTMR1141
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0019_Hydrochlorothiazide
+
+> <Precursor_SMILES>
+ClC=1C(S(=O)(=O)N)=CC=2S(=O)(=O)NCNC2C1
+
+> <Precursor_InChI>
+InChI=1S/C7H8ClN3O4S2/c8-4-1-5-7(2-6(4)16(9,12)13)17(14,15)11-3-10-5/h1-2,10-11H,3H2,(H2,9,12,13)
+
+> <Precursor_InChIKey>
+JZUFKLXOESDKRF-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+-0.27969
+
+> <Precursor_Major_Isotope_Mass>
+296.9644
+
+$$$$
+BTM00003
+  CDK     08072417392D
+
+ 18 19  0  0  0  0  0  0  0  0999 V2000
+   -3.8977   -1.5024    0.0000 Cl  0  0  0  0  0  0  0  0  0  0  0  0
+   -2.6000   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.6000    0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8977    1.5024    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.1953    2.2547    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.6500    0.2047    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1453    2.8000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2900    1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000    1.5000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    2.2641    2.6492    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3359    2.6492    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6000    0.7500    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6000   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000   -1.5000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2900   -1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2850    3.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  4  6  2  0  0  0  0
+  4  7  1  0  0  0  0
+  3  8  2  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 10 12  2  0  0  0  0
+ 10 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+ 14 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+  9 16  2  0  0  0  0
+ 16 17  1  0  0  0  0
+  2 17  2  0  0  0  0
+ 18  8  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C7H8ClN3O5S2/c8-3-1-4-7(18(15,16)11-2-10-4)5(12)6(3)17(9,13)14/h1,10-12H,2H2,(H2,9,13,14)
+
+> <InChIKey>
+DWVSYFYNWRMAOH-UHFFFAOYSA-N
+
+> <SMILES>
+ClC=1C(S(=O)(=O)N)=C(C=2S(=O)(=O)NCNC2C1)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C7H8ClN3O5S2
+
+> <Major_Isotope_Mass>
+312.95939003599995
+
+> <ALogP>
+-0.5470999999999999
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+Hydroxylation of aromatic carbon meta to halide group
+
+> <Reaction_ID>
+BTMR1039
+
+> <Enzyme(s)>
+CYP2A6
+CYP2B6
+CYP2C9
+CYP2C19
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0019_Hydrochlorothiazide
+
+> <Precursor_SMILES>
+ClC=1C(S(=O)(=O)N)=CC=2S(=O)(=O)NCNC2C1
+
+> <Precursor_InChI>
+InChI=1S/C7H8ClN3O4S2/c8-4-1-5-7(2-6(4)16(9,12)13)17(14,15)11-3-10-5/h1-2,10-11H,3H2,(H2,9,12,13)
+
+> <Precursor_InChIKey>
+JZUFKLXOESDKRF-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+-0.27969
+
+> <Precursor_Major_Isotope_Mass>
+296.9644
+
+$$$$

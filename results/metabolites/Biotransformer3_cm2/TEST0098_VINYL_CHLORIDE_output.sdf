@@ -1,0 +1,81 @@
+BTM00001
+  CDK     0807241717
+
+  4  4  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 Cl  0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  2  4  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C2H3ClO/c3-2-1-4-2/h2H,1H2
+
+> <InChIKey>
+WBNCHVFLFSFIGK-UHFFFAOYSA-N
+
+> <SMILES>
+ClC1CO1
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C2H3ClO
+
+> <Major_Isotope_Mass>
+77.987242396
+
+> <ALogP>
+0.5234000000000001
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1334
+
+> <Enzyme(s)>
+CYP2A6
+CYP2E1
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0098_VINYL_CHLORIDE
+
+> <Precursor_SMILES>
+ClC=C
+
+> <Precursor_InChI>
+InChI=1S/C2H3Cl/c1-2-3/h2H,1H2
+
+> <Precursor_InChIKey>
+BZHJMEDXRYGGRV-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+61.99232
+
+$$$$

@@ -1,0 +1,253 @@
+BTM00001
+  CDK     0807241715
+
+  6  6  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  1  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  3  5  1  0  0  0  0
+  1  6  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C5H8O/c1-4(2)5-3-6-5/h5H,1,3H2,2H3
+
+> <InChIKey>
+JZQHTTYHPIAPCZ-UHFFFAOYSA-N
+
+> <SMILES>
+C(C)(C1CO1)=C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C5H8O
+
+> <Major_Isotope_Mass>
+84.057514876
+
+> <ALogP>
+0.961
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1334
+
+> <Enzyme(s)>
+CYP2A6
+CYP2E1
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0086_Isoprene
+
+> <Precursor_SMILES>
+C(C)(C=C)=C
+
+> <Precursor_InChI>
+InChI=1S/C5H8/c1-4-5(2)3/h4H,1-2H2,3H3
+
+> <Precursor_InChIKey>
+RRHGJUQNOFWUDK-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+68.06260
+
+$$$$
+BTM00002
+  CDK     0807241715
+
+  6  6  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  1  3  1  0  0  0  0
+  3  4  2  0  0  0  0
+  1  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  1  6  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C5H8O/c1-3-5(2)4-6-5/h3H,1,4H2,2H3
+
+> <InChIKey>
+FVCDMHWSPLRYAB-UHFFFAOYSA-N
+
+> <SMILES>
+C1(C)(C=C)CO1
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C5H8O
+
+> <Major_Isotope_Mass>
+84.057514876
+
+> <ALogP>
+0.7195999999999999
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1334
+
+> <Enzyme(s)>
+CYP2A6
+CYP2E1
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0086_Isoprene
+
+> <Precursor_SMILES>
+C(C)(C=C)=C
+
+> <Precursor_InChI>
+InChI=1S/C5H8/c1-4-5(2)3/h4H,1-2H2,3H3
+
+> <Precursor_InChIKey>
+RRHGJUQNOFWUDK-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+68.06260
+
+$$$$
+BTM00003
+  CDK     0807241715
+
+  6  5  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  1  4  2  0  0  0  0
+  1  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C5H8O/c1-3-5(2)4-6/h3,6H,1-2,4H2
+
+> <InChIKey>
+LMYXCSGJPKDGLM-UHFFFAOYSA-N
+
+> <SMILES>
+C(C=C)(=C)CO
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C5H8O
+
+> <Major_Isotope_Mass>
+84.057514876
+
+> <ALogP>
+0.7707000000000008
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1328
+
+> <Enzyme(s)>
+CYP2E1
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0086_Isoprene
+
+> <Precursor_SMILES>
+C(C)(C=C)=C
+
+> <Precursor_InChI>
+InChI=1S/C5H8/c1-4-5(2)3/h4H,1-2H2,3H3
+
+> <Precursor_InChIKey>
+RRHGJUQNOFWUDK-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+68.06260
+
+$$$$

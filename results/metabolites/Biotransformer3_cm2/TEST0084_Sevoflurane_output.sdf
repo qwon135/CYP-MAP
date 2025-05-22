@@ -1,0 +1,196 @@
+BTM00001
+  CDK     0807241715
+
+ 13 12  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  2  4  1  0  0  0  0
+  2  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  5  9  1  0  0  0  0
+  9 10  1  0  0  0  0
+  9 11  1  0  0  0  0
+  9 12  1  0  0  0  0
+  5 13  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C4H3F7O2/c5-1-13-2(12,3(6,7)8)4(9,10)11/h12H,1H2
+
+> <InChIKey>
+KLYRBQOFLZROLB-UHFFFAOYSA-N
+
+> <SMILES>
+FC(F)(F)C(OCF)(C(F)(F)F)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C4H3F7O2
+
+> <Major_Isotope_Mass>
+216.002126876
+
+> <ALogP>
+1.8431000000000002
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1328
+
+> <Enzyme(s)>
+CYP2A6
+CYP2E1
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0084_Sevoflurane
+
+> <Precursor_SMILES>
+FC(F)(F)C(OCF)C(F)(F)F
+
+> <Precursor_InChI>
+InChI=1S/C4H3F7O/c5-1-12-2(3(6,7)8)4(9,10)11/h2H,1H2
+
+> <Precursor_InChIKey>
+DFEYYRMXOJXZRJ-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+200.0072
+
+$$$$
+BTM00002
+  CDK     0807241715
+
+ 13 12  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  2  4  1  0  0  0  0
+  2  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  7  9  1  0  0  0  0
+  5 10  1  0  0  0  0
+ 10 11  1  0  0  0  0
+ 10 12  1  0  0  0  0
+ 10 13  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C4H3F7O2/c5-2(12)13-1(3(6,7)8)4(9,10)11/h1-2,12H
+
+> <InChIKey>
+VJHVQOLWZJPVMX-UHFFFAOYSA-N
+
+> <SMILES>
+FC(F)(F)C(OC(F)O)C(F)(F)F
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C4H3F7O2
+
+> <Major_Isotope_Mass>
+216.002126876
+
+> <ALogP>
+2.3527
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1328
+
+> <Enzyme(s)>
+CYP2A6
+CYP2E1
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0084_Sevoflurane
+
+> <Precursor_SMILES>
+FC(F)(F)C(OCF)C(F)(F)F
+
+> <Precursor_InChI>
+InChI=1S/C4H3F7O/c5-1-12-2(3(6,7)8)4(9,10)11/h2H,1H2
+
+> <Precursor_InChIKey>
+DFEYYRMXOJXZRJ-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+200.0072
+
+$$$$

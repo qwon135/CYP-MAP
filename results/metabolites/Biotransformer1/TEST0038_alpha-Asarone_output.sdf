@@ -1,0 +1,956 @@
+BTM00001
+  CDK     07192412402D
+
+ 16 16  0  0  0  0  0  0  0  0999 V2000
+   -0.0005   -1.4996    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005    0.0004    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3005    0.7504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3005    2.2504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005    3.0004    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005    4.5004    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2995    5.2504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2995    2.2504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5984    3.0006    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8976    2.2508    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2995    0.7504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5994    0.0002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5992   -1.4998    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8981   -2.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2986   -2.2496    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8978   -3.7500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  1  0  0  0  0 
+  5  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  1  0  0  0  0 
+  8 11  2  0  0  0  0 
+  2 11  1  0  0  0  0 
+  3 12  1  0  0  0  0 
+ 12 13  2  0  0  0  0 
+ 13 14  1  0  0  0  0 
+  1 15  1  0  0  0  0 
+ 16 14  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C12H16O4/c1-14-10-8-12(16-3)11(15-2)7-9(10)5-4-6-13/h4-5,7-8,13H,6H2,1-3H3/b5-4+
+
+> <InChIKey>
+TXWGYXAWALNJBI-SNAWJCMRSA-N
+
+> <SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)/C=C/CO)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C12H16O4
+
+> <Major_Isotope_Mass>
+224.104858992
+
+> <ALogP>
+2.0263
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Allylic hydroxylation
+
+> <Reaction_ID>
+BTMR1091
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C9
+CYP2C19
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0038_alpha-Asarone
+
+> <Precursor_SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)/C=C/C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H16O3/c1-5-6-9-7-11(14-3)12(15-4)8-10(9)13-2/h5-8H,1-4H3/b6-5+
+
+> <Precursor_InChIKey>
+RKFAZBXYICVSKP-AATRIKPKSA-N
+
+> <Precursor_ALogP>
+2.914500
+
+> <Precursor_Major_Isotope_Mass>
+208.1099
+
+$$$$
+BTM00002
+  CDK     07192412402D
+
+ 14 14  0  0  0  0  0  0  0  0999 V2000
+   -0.0005   -2.9996    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005   -1.4996    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3005   -0.7496    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3005    0.7504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005    1.5004    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005    3.0004    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2995    3.7504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2995    0.7504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5984    1.5006    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8976    0.7508    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2995   -0.7496    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5994   -1.4998    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5992   -2.9998    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8981   -3.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  1  0  0  0  0 
+  5  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  1  0  0  0  0 
+  8 11  2  0  0  0  0 
+  2 11  1  0  0  0  0 
+  3 12  1  0  0  0  0 
+ 12 13  2  0  0  0  0 
+ 13 14  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C11H14O3/c1-4-5-8-6-10(13-2)11(14-3)7-9(8)12/h4-7,12H,1-3H3/b5-4+
+
+> <InChIKey>
+QBJNZNZEGWFAMV-SNAWJCMRSA-N
+
+> <SMILES>
+OC1=C(C=C(OC)C(OC)=C1)/C=C/C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C11H14O3
+
+> <Major_Isotope_Mass>
+194.094294308
+
+> <ALogP>
+2.663499999999999
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+O-Dealkylation
+
+> <Reaction_ID>
+BTMR0052
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0038_alpha-Asarone
+
+> <Precursor_SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)/C=C/C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H16O3/c1-5-6-9-7-11(14-3)12(15-4)8-10(9)13-2/h5-8H,1-4H3/b6-5+
+
+> <Precursor_InChIKey>
+RKFAZBXYICVSKP-AATRIKPKSA-N
+
+> <Precursor_ALogP>
+2.914500
+
+> <Precursor_Major_Isotope_Mass>
+208.1099
+
+$$$$
+BTM00003
+  CDK     07192412402D
+
+ 14 14  0  0  0  0  0  0  0  0999 V2000
+   -2.2732    0.9378    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.9742    0.1878    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3253    0.9386    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.6244    0.1886    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.6239   -1.3122    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.9229   -2.0622    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    4.2220   -1.3122    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3244   -2.0631    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3246   -3.5631    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.9747   -1.3131    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3251    2.4386    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.9741    3.1884    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.9743    4.6884    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.5723    0.1878    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  1  0  0  0  0 
+  5  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  8 10  2  0  0  0  0 
+  2 10  1  0  0  0  0 
+  3 11  1  0  0  0  0 
+ 11 12  2  0  0  0  0 
+ 12 13  1  0  0  0  0 
+  1 14  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C11H14O3/c1-4-5-8-6-11(14-3)9(12)7-10(8)13-2/h4-7,12H,1-3H3/b5-4+
+
+> <InChIKey>
+WLAGPZFTVDIKSA-SNAWJCMRSA-N
+
+> <SMILES>
+O(C1=C(C=C(OC)C(O)=C1)/C=C/C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C11H14O3
+
+> <Major_Isotope_Mass>
+194.09429430799997
+
+> <ALogP>
+2.663499999999999
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+O-Dealkylation
+
+> <Reaction_ID>
+BTMR0052
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0038_alpha-Asarone
+
+> <Precursor_SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)/C=C/C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H16O3/c1-5-6-9-7-11(14-3)12(15-4)8-10(9)13-2/h5-8H,1-4H3/b6-5+
+
+> <Precursor_InChIKey>
+RKFAZBXYICVSKP-AATRIKPKSA-N
+
+> <Precursor_ALogP>
+2.914500
+
+> <Precursor_Major_Isotope_Mass>
+208.1099
+
+$$$$
+BTM00004
+  CDK     07192412402D
+
+ 14 14  0  0  0  0  0  0  0  0999 V2000
+    1.2989   -2.2500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2989   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0011    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0011    1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2989    2.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2989    3.7500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5989    1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8978    2.2502    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1970    1.5004    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5989    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3000   -0.7502    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5992   -0.0004    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8981   -0.7506    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5980   -3.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  5  7  1  0  0  0  0 
+  7  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  7 10  2  0  0  0  0 
+  2 10  1  0  0  0  0 
+  3 11  1  0  0  0  0 
+ 11 12  2  0  0  0  0 
+ 12 13  1  0  0  0  0 
+  1 14  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C11H14O3/c1-4-5-8-6-9(12)11(14-3)7-10(8)13-2/h4-7,12H,1-3H3/b5-4+
+
+> <InChIKey>
+YNQPLQDDJMDJNP-SNAWJCMRSA-N
+
+> <SMILES>
+O(C1=C(C=C(O)C(OC)=C1)/C=C/C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C11H14O3
+
+> <Major_Isotope_Mass>
+194.094294308
+
+> <ALogP>
+2.663499999999999
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+O-Dealkylation
+
+> <Reaction_ID>
+BTMR0052
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0038_alpha-Asarone
+
+> <Precursor_SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)/C=C/C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H16O3/c1-5-6-9-7-11(14-3)12(15-4)8-10(9)13-2/h5-8H,1-4H3/b6-5+
+
+> <Precursor_InChIKey>
+RKFAZBXYICVSKP-AATRIKPKSA-N
+
+> <Precursor_ALogP>
+2.914500
+
+> <Precursor_Major_Isotope_Mass>
+208.1099
+
+$$$$
+BTM00002
+  CDK     07192412402D
+
+ 14 14  0  0  0  0  0  0  0  0999 V2000
+   -0.0005   -2.9996    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005   -1.4996    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3005   -0.7496    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3005    0.7504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005    1.5004    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005    3.0004    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2995    3.7504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2995    0.7504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5984    1.5006    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8976    0.7508    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2995   -0.7496    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5994   -1.4998    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5992   -2.9998    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8981   -3.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  1  0  0  0  0 
+  5  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  1  0  0  0  0 
+  8 11  2  0  0  0  0 
+  2 11  1  0  0  0  0 
+  3 12  1  0  0  0  0 
+ 12 13  2  0  0  0  0 
+ 13 14  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C11H14O3/c1-4-5-8-6-10(13-2)11(14-3)7-9(8)12/h4-7,12H,1-3H3/b5-4+
+
+> <InChIKey>
+QBJNZNZEGWFAMV-SNAWJCMRSA-N
+
+> <SMILES>
+OC1=C(C=C(OC)C(OC)=C1)/C=C/C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C11H14O3
+
+> <Major_Isotope_Mass>
+194.094294308
+
+> <ALogP>
+2.663499999999999
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+O-Aryl dealkylation adjacent to substituted carbon
+
+> <Reaction_ID>
+BTMR1131
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C9
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0038_alpha-Asarone
+
+> <Precursor_SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)/C=C/C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H16O3/c1-5-6-9-7-11(14-3)12(15-4)8-10(9)13-2/h5-8H,1-4H3/b6-5+
+
+> <Precursor_InChIKey>
+RKFAZBXYICVSKP-AATRIKPKSA-N
+
+> <Precursor_ALogP>
+2.914500
+
+> <Precursor_Major_Isotope_Mass>
+208.1099
+
+$$$$
+BTM00003
+  CDK     07192412402D
+
+ 14 14  0  0  0  0  0  0  0  0999 V2000
+   -2.2732    0.9378    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.9742    0.1878    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3253    0.9386    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.6244    0.1886    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.6239   -1.3122    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.9229   -2.0622    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    4.2220   -1.3122    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3244   -2.0631    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3246   -3.5631    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.9747   -1.3131    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3251    2.4386    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.9741    3.1884    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.9743    4.6884    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.5723    0.1878    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  1  0  0  0  0 
+  5  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  8 10  2  0  0  0  0 
+  2 10  1  0  0  0  0 
+  3 11  1  0  0  0  0 
+ 11 12  2  0  0  0  0 
+ 12 13  1  0  0  0  0 
+  1 14  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C11H14O3/c1-4-5-8-6-11(14-3)9(12)7-10(8)13-2/h4-7,12H,1-3H3/b5-4+
+
+> <InChIKey>
+WLAGPZFTVDIKSA-SNAWJCMRSA-N
+
+> <SMILES>
+O(C1=C(C=C(OC)C(O)=C1)/C=C/C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C11H14O3
+
+> <Major_Isotope_Mass>
+194.09429430799997
+
+> <ALogP>
+2.663499999999999
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+O-Aryl dealkylation adjacent to substituted carbon
+
+> <Reaction_ID>
+BTMR1131
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C9
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0038_alpha-Asarone
+
+> <Precursor_SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)/C=C/C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H16O3/c1-5-6-9-7-11(14-3)12(15-4)8-10(9)13-2/h5-8H,1-4H3/b6-5+
+
+> <Precursor_InChIKey>
+RKFAZBXYICVSKP-AATRIKPKSA-N
+
+> <Precursor_ALogP>
+2.914500
+
+> <Precursor_Major_Isotope_Mass>
+208.1099
+
+$$$$
+BTM00004
+  CDK     07192412402D
+
+ 14 14  0  0  0  0  0  0  0  0999 V2000
+    1.2989   -2.2500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2989   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0011    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0011    1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2989    2.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2989    3.7500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5989    1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8978    2.2502    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1970    1.5004    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5989    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3000   -0.7502    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5992   -0.0004    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8981   -0.7506    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5980   -3.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  5  7  1  0  0  0  0 
+  7  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  7 10  2  0  0  0  0 
+  2 10  1  0  0  0  0 
+  3 11  1  0  0  0  0 
+ 11 12  2  0  0  0  0 
+ 12 13  1  0  0  0  0 
+  1 14  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C11H14O3/c1-4-5-8-6-9(12)11(14-3)7-10(8)13-2/h4-7,12H,1-3H3/b5-4+
+
+> <InChIKey>
+YNQPLQDDJMDJNP-SNAWJCMRSA-N
+
+> <SMILES>
+O(C1=C(C=C(O)C(OC)=C1)/C=C/C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C11H14O3
+
+> <Major_Isotope_Mass>
+194.094294308
+
+> <ALogP>
+2.663499999999999
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+O-Aryl dealkylation adjacent to substituted carbon
+
+> <Reaction_ID>
+BTMR1131
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C9
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0038_alpha-Asarone
+
+> <Precursor_SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)/C=C/C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H16O3/c1-5-6-9-7-11(14-3)12(15-4)8-10(9)13-2/h5-8H,1-4H3/b6-5+
+
+> <Precursor_InChIKey>
+RKFAZBXYICVSKP-AATRIKPKSA-N
+
+> <Precursor_ALogP>
+2.914500
+
+> <Precursor_Major_Isotope_Mass>
+208.1099
+
+$$$$
+BTM00005
+  CDK     07192412402D
+
+ 16 17  0  0  0  0  0  0  0  0999 V2000
+   -0.8596    2.8506    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.1589    2.1010    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.1589    0.6002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.4582   -0.1494    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.7575    0.6019    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.0568   -0.1477    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.3556    0.6027    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.7575    2.1027    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.0564    2.8529    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.0562    4.3529    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.4582    2.8523    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.8600   -0.1500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6400   -0.1500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.9389    0.6002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.8592    4.3506    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.1100   -1.4500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  1  0  0  0  0 
+  5  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  1  0  0  0  0 
+  8 11  2  0  0  0  0 
+  2 11  1  0  0  0  0 
+  3 12  1  0  0  0  0 
+ 12 13  1  0  0  0  0 
+ 13 14  1  0  0  0  0 
+  1 15  1  0  0  0  0 
+ 13 16  1  0  0  0  0 
+ 16 12  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C12H16O4/c1-7-12(16-7)8-5-10(14-3)11(15-4)6-9(8)13-2/h5-7,12H,1-4H3
+
+> <InChIKey>
+NPWQZYRDLOGPMX-UHFFFAOYSA-N
+
+> <SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)C2C(C)O2)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C12H16O4
+
+> <Major_Isotope_Mass>
+224.104858992
+
+> <ALogP>
+1.803600000000001
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00005
+
+> <Reaction>
+Epoxidation of alkene
+
+> <Reaction_ID>
+BTMR0109
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2B6
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0038_alpha-Asarone
+
+> <Precursor_SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)/C=C/C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H16O3/c1-5-6-9-7-11(14-3)12(15-4)8-10(9)13-2/h5-8H,1-4H3/b6-5+
+
+> <Precursor_InChIKey>
+RKFAZBXYICVSKP-AATRIKPKSA-N
+
+> <Precursor_ALogP>
+2.914500
+
+> <Precursor_Major_Isotope_Mass>
+208.1099
+
+$$$$
+BTM00001
+  CDK     07192412402D
+
+ 16 16  0  0  0  0  0  0  0  0999 V2000
+   -0.0005   -1.4996    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005    0.0004    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3005    0.7504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3005    2.2504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005    3.0004    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0005    4.5004    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2995    5.2504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2995    2.2504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5984    3.0006    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8976    2.2508    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2995    0.7504    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5994    0.0002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5992   -1.4998    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8981   -2.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2986   -2.2496    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8978   -3.7500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  1  0  0  0  0 
+  5  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  1  0  0  0  0 
+  8 11  2  0  0  0  0 
+  2 11  1  0  0  0  0 
+  3 12  1  0  0  0  0 
+ 12 13  2  0  0  0  0 
+ 13 14  1  0  0  0  0 
+  1 15  1  0  0  0  0 
+ 16 14  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C12H16O4/c1-14-10-8-12(16-3)11(15-2)7-9(10)5-4-6-13/h4-5,7-8,13H,6H2,1-3H3/b5-4+
+
+> <InChIKey>
+TXWGYXAWALNJBI-SNAWJCMRSA-N
+
+> <SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)/C=C/CO)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C12H16O4
+
+> <Major_Isotope_Mass>
+224.104858992
+
+> <ALogP>
+2.0263
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Allylic hydroxylation
+
+> <Reaction_ID>
+BTMR0071
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0038_alpha-Asarone
+
+> <Precursor_SMILES>
+O(C1=C(C=C(OC)C(OC)=C1)/C=C/C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H16O3/c1-5-6-9-7-11(14-3)12(15-4)8-10(9)13-2/h5-8H,1-4H3/b6-5+
+
+> <Precursor_InChIKey>
+RKFAZBXYICVSKP-AATRIKPKSA-N
+
+> <Precursor_ALogP>
+2.914500
+
+> <Precursor_Major_Isotope_Mass>
+208.1099
+
+$$$$

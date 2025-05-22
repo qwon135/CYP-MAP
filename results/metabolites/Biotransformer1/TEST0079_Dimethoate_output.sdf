@@ -1,0 +1,192 @@
+BTM00001
+  CDK     07192412432D
+
+ 12 11  0  0  0  0  0  0  0  0999 V2000
+    1.2990    0.3086    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5981    1.0586    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5981    2.5586    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8971    0.3086    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1962    1.0586    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    6.4952    0.3086    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+    7.7942    1.0586    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    9.0933    0.3086    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.5310   -0.8405    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    6.0440   -2.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    1.0586    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    7.4594   -0.8405    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  2  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  1  0  0  0  0 
+  7  8  1  0  0  0  0 
+  6  9  1  0  0  0  0 
+  9 10  1  0  0  0  0 
+  1 11  1  0  0  0  0 
+  6 12  2  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C5H12NO4PS/c1-6-5(7)4-12-11(8,9-2)10-3/h4H2,1-3H3,(H,6,7)
+
+> <InChIKey>
+PZXOQEXFMJCDPG-UHFFFAOYSA-N
+
+> <SMILES>
+N(C(=O)CSP(OC)(OC)=O)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C5H12NO4PS
+
+> <Major_Isotope_Mass>
+213.02246549399996
+
+> <ALogP>
+-0.07020000000000007
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Desulfuration of organophosphothioate
+
+> <Reaction_ID>
+BTMR0070
+
+> <Enzyme(s)>
+CYP2B6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0079_Dimethoate
+
+> <Precursor_SMILES>
+N(C(=O)CSP(=S)(OC)OC)C
+
+> <Precursor_InChI>
+InChI=1S/C5H12NO3PS2/c1-6-5(7)4-12-10(11,8-2)9-3/h4H2,1-3H3,(H,6,7)
+
+> <Precursor_InChIKey>
+MCWXGJITAZMZEV-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+0.828900
+
+> <Precursor_Major_Isotope_Mass>
+228.9996
+
+$$$$
+BTM00001
+  CDK     07192412432D
+
+ 12 11  0  0  0  0  0  0  0  0999 V2000
+    1.2990    0.3086    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5981    1.0586    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5981    2.5586    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8971    0.3086    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1962    1.0586    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    6.4952    0.3086    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+    7.7942    1.0586    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    9.0933    0.3086    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.5310   -0.8405    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    6.0440   -2.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    1.0586    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    7.4594   -0.8405    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  2  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  1  0  0  0  0 
+  7  8  1  0  0  0  0 
+  6  9  1  0  0  0  0 
+  9 10  1  0  0  0  0 
+  1 11  1  0  0  0  0 
+  6 12  2  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C5H12NO4PS/c1-6-5(7)4-12-11(8,9-2)10-3/h4H2,1-3H3,(H,6,7)
+
+> <InChIKey>
+PZXOQEXFMJCDPG-UHFFFAOYSA-N
+
+> <SMILES>
+N(C(=O)CSP(OC)(OC)=O)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C5H12NO4PS
+
+> <Major_Isotope_Mass>
+213.02246549399996
+
+> <ALogP>
+-0.07020000000000007
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Desulfuration of organophosphorodithioate
+
+> <Reaction_ID>
+BTMR1159
+
+> <Enzyme(s)>
+CYP2B6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0079_Dimethoate
+
+> <Precursor_SMILES>
+N(C(=O)CSP(=S)(OC)OC)C
+
+> <Precursor_InChI>
+InChI=1S/C5H12NO3PS2/c1-6-5(7)4-12-10(11,8-2)9-3/h4H2,1-3H3,(H,6,7)
+
+> <Precursor_InChIKey>
+MCWXGJITAZMZEV-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+0.828900
+
+> <Precursor_Major_Isotope_Mass>
+228.9996
+
+$$$$

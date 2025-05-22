@@ -1,0 +1,218 @@
+BTM00001
+  CDK     0807241706
+
+ 18 19  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 Cl  0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  4  6  2  0  0  0  0
+  4  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  3  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  1  0  0  0  0
+ 11 12  2  0  0  0  0
+ 11 13  2  0  0  0  0
+ 11 14  1  0  0  0  0
+ 14 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 10 17  2  0  0  0  0
+ 17 18  1  0  0  0  0
+  2 18  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C7H8ClN3O5S2/c8-4-1-5-7(17(13,14)10-3-9-5)2-6(4)18(15,16)11-12/h1-2,9-12H,3H2
+
+> <InChIKey>
+OGVRJTQOJMUWOC-UHFFFAOYSA-N
+
+> <SMILES>
+ClC=1C(S(=O)(=O)NO)=CC=2S(=O)(=O)NCNC2C1
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C7H8ClN3O5S2
+
+> <Major_Isotope_Mass>
+312.959390036
+
+> <ALogP>
+-0.6363999999999996
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1328
+
+> <Enzyme(s)>
+CYP2C9
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0019_Hydrochlorothiazide
+
+> <Precursor_SMILES>
+ClC=1C(S(=O)(=O)N)=CC=2S(=O)(=O)NCNC2C1
+
+> <Precursor_InChI>
+InChI=1S/C7H8ClN3O4S2/c8-4-1-5-7(2-6(4)16(9,12)13)17(14,15)11-3-10-5/h1-2,10-11H,3H2,(H2,9,12,13)
+
+> <Precursor_InChIKey>
+JZUFKLXOESDKRF-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+296.9644
+
+$$$$
+BTM00002
+  CDK     0807241706
+
+ 18 19  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 Cl  0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  2  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  2  0  0  0  0
+  6  8  2  0  0  0  0
+  6  9  1  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  1  0  0  0  0
+ 11 12  1  0  0  0  0
+  5 12  2  0  0  0  0
+ 12 13  1  0  0  0  0
+  2 13  2  0  0  0  0
+  3 14  1  0  0  0  0
+ 14 15  2  0  0  0  0
+ 14 16  2  0  0  0  0
+ 14 17  1  0  0  0  0
+ 14 18  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C7H8ClN3O5S2/c8-4-1-5-6(17(12,13)11-3-10-5)2-7(4)18(9,14,15)16/h1-2,10-11H,3H2,(H2,9,14,15,16)
+
+> <InChIKey>
+WZIRBNCLALVHTA-UHFFFAOYSA-N
+
+> <SMILES>
+ClC=1C(=CC=2S(=O)(=O)NCNC2C1)S(=O)(=O)(N)=O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C7H8ClN3O5S2
+
+> <Major_Isotope_Mass>
+312.959390036
+
+> <ALogP>
+0.07560000000000028
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+SNP-Oxidation from CyProduct
+
+> <Reaction_ID>
+BTMR1329
+
+> <Enzyme(s)>
+CYP2B6
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0019_Hydrochlorothiazide
+
+> <Precursor_SMILES>
+ClC=1C(S(=O)(=O)N)=CC=2S(=O)(=O)NCNC2C1
+
+> <Precursor_InChI>
+InChI=1S/C7H8ClN3O4S2/c8-4-1-5-7(2-6(4)16(9,12)13)17(14,15)11-3-10-5/h1-2,10-11H,3H2,(H2,9,12,13)
+
+> <Precursor_InChIKey>
+JZUFKLXOESDKRF-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+296.9644
+
+$$$$

@@ -1,0 +1,1327 @@
+BTM00001
+  CDK     07192412372D
+
+  8  8  0  0  1  0  0  0  0  0999 V2000
+   -1.1122   -1.0300    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0978   -0.1400    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -0.3622    1.2800    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.8622    1.2800    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.3222   -0.1400    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7499   -0.6000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5255   -0.6000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6377    0.4065    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  1  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  2  7  1  6  0  0  0 
+  7  8  2  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C4H5NO3/c6-2-3-1-5-4(7)8-3/h2-3H,1H2,(H,5,7)/t3-/m1/s1
+
+> <InChIKey>
+ZFFSGENIZLZEMH-GSVOUGTGSA-N
+
+> <SMILES>
+O1[C@H](CNC1=O)C=O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C4H5NO3
+
+> <Major_Isotope_Mass>
+115.02694301999999
+
+> <ALogP>
+-0.42190000000000005
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+O-Dealkylation
+
+> <Reaction_ID>
+BTMR0052
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00002
+  CDK     07192412372D
+
+  9  9  0  0  0  0  0  0  0  0999 V2000
+    2.5989    3.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000    2.2498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    2.9998    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3000    2.2498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3000    0.7498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0000   -0.0002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000    0.7498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0000   -1.5002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5989    3.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  2  0  0  0  0 
+  2  7  1  0  0  0  0 
+  6  8  1  0  0  0  0 
+  4  9  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C8H10O/c1-6-3-7(2)5-8(9)4-6/h3-5,9H,1-2H3
+
+> <InChIKey>
+TUAMRELNJMMDMT-UHFFFAOYSA-N
+
+> <SMILES>
+OC1=CC(=CC(=C1)C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C8H10O
+
+> <Major_Isotope_Mass>
+122.07316494
+
+> <ALogP>
+2.6623999999999994
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+O-Dealkylation
+
+> <Reaction_ID>
+BTMR0052
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00003
+  CDK     07192412372D
+
+ 17 18  0  0  1  0  0  0  0  0999 V2000
+   -6.1930    1.6304    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.9830    2.5204    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -5.4430    3.9404    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.9430    3.9404    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.4030    2.5204    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.8307    2.0604    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.5553    2.0604    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4431    3.0669    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0153    2.6069    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6994    1.1397    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7289    0.6788    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.8413    1.6851    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5254    3.1523    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0971    3.6132    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6377    4.1586    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0440   -0.7878    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.4715   -1.2482    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  1  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  2  7  1  6  0  0  0 
+  7  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  2  0  0  0  0 
+ 10 11  1  0  0  0  0 
+ 11 12  2  0  0  0  0 
+ 12 13  1  0  0  0  0 
+ 13 14  2  0  0  0  0 
+  9 14  1  0  0  0  0 
+ 13 15  1  0  0  0  0 
+ 11 16  1  0  0  0  0 
+ 17 16  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C12H15NO4/c1-8-2-9(6-14)4-10(3-8)16-7-11-5-13-12(15)17-11/h2-4,11,14H,5-7H2,1H3,(H,13,15)/t11-/m1/s1
+
+> <InChIKey>
+CXMDQDWPEIFDFF-LLVKDONJSA-N
+
+> <SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)CO
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C12H15NO4
+
+> <Major_Isotope_Mass>
+237.10010796
+
+> <ALogP>
+1.6092
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+Aliphatic hydroxylation of methyl carbon adjacent to aromatic ring
+
+> <Reaction_ID>
+BTMR1058
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C8
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00001
+  CDK     07192412372D
+
+  8  8  0  0  1  0  0  0  0  0999 V2000
+   -1.1122   -1.0300    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0978   -0.1400    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -0.3622    1.2800    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.8622    1.2800    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.3222   -0.1400    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7499   -0.6000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5255   -0.6000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6377    0.4065    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  1  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  2  7  1  6  0  0  0 
+  7  8  2  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C4H5NO3/c6-2-3-1-5-4(7)8-3/h2-3H,1H2,(H,5,7)/t3-/m1/s1
+
+> <InChIKey>
+ZFFSGENIZLZEMH-GSVOUGTGSA-N
+
+> <SMILES>
+O1[C@H](CNC1=O)C=O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C4H5NO3
+
+> <Major_Isotope_Mass>
+115.02694301999999
+
+> <ALogP>
+-0.42190000000000005
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+O-Aryl dealkylation not adjacent to substituted carbon
+
+> <Reaction_ID>
+BTMR1132
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C8
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00002
+  CDK     07192412372D
+
+  9  9  0  0  0  0  0  0  0  0999 V2000
+    2.5989    3.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000    2.2498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    2.9998    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3000    2.2498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3000    0.7498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0000   -0.0002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000    0.7498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0000   -1.5002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5989    3.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  2  0  0  0  0 
+  2  7  1  0  0  0  0 
+  6  8  1  0  0  0  0 
+  4  9  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C8H10O/c1-6-3-7(2)5-8(9)4-6/h3-5,9H,1-2H3
+
+> <InChIKey>
+TUAMRELNJMMDMT-UHFFFAOYSA-N
+
+> <SMILES>
+OC1=CC(=CC(=C1)C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C8H10O
+
+> <Major_Isotope_Mass>
+122.07316494
+
+> <ALogP>
+2.6623999999999994
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+O-Aryl dealkylation not adjacent to substituted carbon
+
+> <Reaction_ID>
+BTMR1132
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C8
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00004
+  CDK     07192412372D
+
+ 17 18  0  0  1  0  0  0  0  0999 V2000
+    0.0000    1.2800    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2100    0.3900    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -0.7500   -1.0300    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7500   -1.0300    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2100    0.3900    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6377    0.8500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.6377    0.8500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7499   -0.1565    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.1777    0.3035    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.2902   -0.7039    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.7179   -0.2439    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.0332    1.2234    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.9206    2.2308    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.4929    1.7708    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.2364    3.6972    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.8303   -1.2502    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.9744   -2.1703    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  1  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  2  7  1  6  0  0  0 
+  7  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  2  0  0  0  0 
+ 10 11  1  0  0  0  0 
+ 11 12  2  0  0  0  0 
+ 12 13  1  0  0  0  0 
+ 13 14  2  0  0  0  0 
+  9 14  1  0  0  0  0 
+ 13 15  1  0  0  0  0 
+ 11 16  1  0  0  0  0 
+ 17 10  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C12H15NO4/c1-7-3-8(2)11(14)10(4-7)16-6-9-5-13-12(15)17-9/h3-4,9,14H,5-6H2,1-2H3,(H,13,15)/t9-/m1/s1
+
+> <InChIKey>
+STZZXMNUAJVXKW-SECBINFHSA-N
+
+> <SMILES>
+O1[C@H](CNC1=O)COC2=C(C(=CC(=C2)C)C)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C12H15NO4
+
+> <Major_Isotope_Mass>
+237.10010796
+
+> <ALogP>
+2.4325
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+Hydroxylation of benzene on carbon ortho to electron donating group
+
+> <Reaction_ID>
+BTMR1045
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C8
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00005
+  CDK     07192412372D
+
+ 17 18  0  0  1  0  0  0  0  0999 V2000
+    0.0000    1.2800    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2100    0.3900    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -0.7500   -1.0300    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7500   -1.0300    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2100    0.3900    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6377    0.8500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.6377    0.8500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7499   -0.1565    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.1777    0.3035    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.2907   -0.7034    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.7194   -0.2438    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.0352    1.2226    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.9222    2.2294    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.4934    1.7699    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.2379    3.6958    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.8313   -1.2507    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -9.4629    1.6825    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  1  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  2  7  1  6  0  0  0 
+  7  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  2  0  0  0  0 
+ 10 11  1  0  0  0  0 
+ 11 12  2  0  0  0  0 
+ 12 13  1  0  0  0  0 
+ 13 14  2  0  0  0  0 
+  9 14  1  0  0  0  0 
+ 13 15  1  0  0  0  0 
+ 11 16  1  0  0  0  0 
+ 17 12  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C12H15NO4/c1-7-3-9(4-8(2)11(7)14)16-6-10-5-13-12(15)17-10/h3-4,10,14H,5-6H2,1-2H3,(H,13,15)/t10-/m1/s1
+
+> <InChIKey>
+YOVFUKFMYKSSKN-SNVBAGLBSA-N
+
+> <SMILES>
+O1[C@H](CNC1=O)COC2=CC(=C(C(=C2)C)O)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C12H15NO4
+
+> <Major_Isotope_Mass>
+237.10010796
+
+> <ALogP>
+2.4325
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00005
+
+> <Reaction>
+Hydroxylation of benzene on carbon ortho to electron donating group
+
+> <Reaction_ID>
+BTMR1045
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C8
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00001
+  CDK     07192412372D
+
+  8  8  0  0  1  0  0  0  0  0999 V2000
+   -1.1122   -1.0300    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0978   -0.1400    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -0.3622    1.2800    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.8622    1.2800    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.3222   -0.1400    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7499   -0.6000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5255   -0.6000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6377    0.4065    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  1  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  2  7  1  6  0  0  0 
+  7  8  2  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C4H5NO3/c6-2-3-1-5-4(7)8-3/h2-3H,1H2,(H,5,7)/t3-/m1/s1
+
+> <InChIKey>
+ZFFSGENIZLZEMH-GSVOUGTGSA-N
+
+> <SMILES>
+O1[C@H](CNC1=O)C=O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C4H5NO3
+
+> <Major_Isotope_Mass>
+115.02694301999999
+
+> <ALogP>
+-0.42190000000000005
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+O-Aryl dealkylation adjacent to substituted carbon
+
+> <Reaction_ID>
+BTMR1131
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C8
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00002
+  CDK     07192412372D
+
+  9  9  0  0  0  0  0  0  0  0999 V2000
+    2.5989    3.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000    2.2498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    2.9998    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3000    2.2498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3000    0.7498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0000   -0.0002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000    0.7498    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0000   -1.5002    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5989    3.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  2  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  2  0  0  0  0 
+  5  6  1  0  0  0  0 
+  6  7  2  0  0  0  0 
+  2  7  1  0  0  0  0 
+  6  8  1  0  0  0  0 
+  4  9  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C8H10O/c1-6-3-7(2)5-8(9)4-6/h3-5,9H,1-2H3
+
+> <InChIKey>
+TUAMRELNJMMDMT-UHFFFAOYSA-N
+
+> <SMILES>
+OC1=CC(=CC(=C1)C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C8H10O
+
+> <Major_Isotope_Mass>
+122.07316494
+
+> <ALogP>
+2.6623999999999994
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+O-Aryl dealkylation adjacent to substituted carbon
+
+> <Reaction_ID>
+BTMR1131
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C8
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00004
+  CDK     07192412372D
+
+ 17 18  0  0  1  0  0  0  0  0999 V2000
+    0.0000    1.2800    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2100    0.3900    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -0.7500   -1.0300    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7500   -1.0300    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2100    0.3900    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6377    0.8500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.6377    0.8500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7499   -0.1565    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.1777    0.3035    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.2902   -0.7039    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.7179   -0.2439    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.0332    1.2234    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.9206    2.2308    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.4929    1.7708    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.2364    3.6972    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.8303   -1.2502    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.9744   -2.1703    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  1  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  2  7  1  6  0  0  0 
+  7  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  2  0  0  0  0 
+ 10 11  1  0  0  0  0 
+ 11 12  2  0  0  0  0 
+ 12 13  1  0  0  0  0 
+ 13 14  2  0  0  0  0 
+  9 14  1  0  0  0  0 
+ 13 15  1  0  0  0  0 
+ 11 16  1  0  0  0  0 
+ 17 10  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C12H15NO4/c1-7-3-8(2)11(14)10(4-7)16-6-9-5-13-12(15)17-9/h3-4,9,14H,5-6H2,1-2H3,(H,13,15)/t9-/m1/s1
+
+> <InChIKey>
+STZZXMNUAJVXKW-SECBINFHSA-N
+
+> <SMILES>
+O1[C@H](CNC1=O)COC2=C(C(=CC(=C2)C)C)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C12H15NO4
+
+> <Major_Isotope_Mass>
+237.10010796
+
+> <ALogP>
+2.4325
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+Hydroxylation of benzene on carbon para to electron donating group
+
+> <Reaction_ID>
+BTMR1047
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C8
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00006
+  CDK     07192412372D
+
+ 17 18  0  0  1  0  0  0  0  0999 V2000
+   -5.3963    2.6479    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1863    3.5379    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -4.6463    4.9579    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.1463    4.9579    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.6063    3.5379    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.0340    3.0779    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.7586    3.0779    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4431    1.6115    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0153    1.1515    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6994   -0.3157    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7289   -0.7766    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.8413    0.2297    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5254    1.6969    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0971    2.1578    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6377    2.7032    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0440   -2.2431    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7641    6.1710    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  1  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  2  7  1  6  0  0  0 
+  7  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  2  0  0  0  0 
+ 10 11  1  0  0  0  0 
+ 11 12  2  0  0  0  0 
+ 12 13  1  0  0  0  0 
+ 13 14  2  0  0  0  0 
+  9 14  1  0  0  0  0 
+ 13 15  1  0  0  0  0 
+ 11 16  1  0  0  0  0 
+ 17  3  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C12H15NO4/c1-7-3-8(2)5-9(4-7)16-6-10-11(14)13-12(15)17-10/h3-5,10-11,14H,6H2,1-2H3,(H,13,15)/t10-,11?/m0/s1
+
+> <InChIKey>
+HPPPEUXFIVRINO-VUWPPUDQSA-N
+
+> <SMILES>
+O1[C@H](C(NC1=O)O)COC2=CC(=CC(=C2)C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C12H15NO4
+
+> <Major_Isotope_Mass>
+237.10010795999997
+
+> <ALogP>
+2.3601999999999994
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00006
+
+> <Reaction>
+Hydroxylation of heteroalicyclic secondary carbon
+
+> <Reaction_ID>
+BTMR1070
+
+> <Enzyme(s)>
+CYP1A2
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00006
+  CDK     07192412372D
+
+ 17 18  0  0  1  0  0  0  0  0999 V2000
+   -5.3963    2.6479    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1863    3.5379    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -4.6463    4.9579    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.1463    4.9579    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.6063    3.5379    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.0340    3.0779    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.7586    3.0779    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4431    1.6115    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0153    1.1515    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6994   -0.3157    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7289   -0.7766    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.8413    0.2297    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5254    1.6969    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0971    2.1578    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6377    2.7032    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0440   -2.2431    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7641    6.1710    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  1  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  2  7  1  6  0  0  0 
+  7  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  2  0  0  0  0 
+ 10 11  1  0  0  0  0 
+ 11 12  2  0  0  0  0 
+ 12 13  1  0  0  0  0 
+ 13 14  2  0  0  0  0 
+  9 14  1  0  0  0  0 
+ 13 15  1  0  0  0  0 
+ 11 16  1  0  0  0  0 
+ 17  3  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C12H15NO4/c1-7-3-8(2)5-9(4-7)16-6-10-11(14)13-12(15)17-10/h3-5,10-11,14H,6H2,1-2H3,(H,13,15)/t10-,11?/m0/s1
+
+> <InChIKey>
+HPPPEUXFIVRINO-VUWPPUDQSA-N
+
+> <SMILES>
+O1[C@H](C(NC1=O)O)COC2=CC(=CC(=C2)C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C12H15NO4
+
+> <Major_Isotope_Mass>
+237.10010795999997
+
+> <ALogP>
+2.3601999999999994
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00006
+
+> <Reaction>
+Hydroxylation of heteroalicyclic secondary carbon
+
+> <Reaction_ID>
+BTMR1071
+
+> <Enzyme(s)>
+CYP1A2
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$
+BTM00003
+  CDK     07192412372D
+
+ 17 18  0  0  1  0  0  0  0  0999 V2000
+   -6.1930    1.6304    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.9830    2.5204    0.0000 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -5.4430    3.9404    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.9430    3.9404    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.4030    2.5204    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.8307    2.0604    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.5553    2.0604    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4431    3.0669    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0153    2.6069    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6994    1.1397    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7289    0.6788    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.8413    1.6851    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5254    3.1523    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0971    3.6132    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6377    4.1586    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0440   -0.7878    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.4715   -1.2482    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  3  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  1  5  1  0  0  0  0 
+  5  6  2  0  0  0  0 
+  2  7  1  6  0  0  0 
+  7  8  1  0  0  0  0 
+  8  9  1  0  0  0  0 
+  9 10  2  0  0  0  0 
+ 10 11  1  0  0  0  0 
+ 11 12  2  0  0  0  0 
+ 12 13  1  0  0  0  0 
+ 13 14  2  0  0  0  0 
+  9 14  1  0  0  0  0 
+ 13 15  1  0  0  0  0 
+ 11 16  1  0  0  0  0 
+ 17 16  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C12H15NO4/c1-8-2-9(6-14)4-10(3-8)16-7-11-5-13-12(15)17-11/h2-4,11,14H,5-7H2,1H3,(H,13,15)/t11-/m1/s1
+
+> <InChIKey>
+CXMDQDWPEIFDFF-LLVKDONJSA-N
+
+> <SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)CO
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C12H15NO4
+
+> <Major_Isotope_Mass>
+237.10010796
+
+> <ALogP>
+1.6092
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+Allylic hydroxylation
+
+> <Reaction_ID>
+BTMR0071
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0001_metaxalone
+
+> <Precursor_SMILES>
+O1[C@H](CNC1=O)COC2=CC(=CC(=C2)C)C
+
+> <Precursor_InChI>
+InChI=1S/C12H15NO3/c1-8-3-9(2)5-10(4-8)15-7-11-6-13-12(14)16-11/h3-5,11H,6-7H2,1-2H3,(H,13,14)/t11-/m1/s1
+
+> <Precursor_InChIKey>
+IMWZZHHPURKASS-LLVKDONJSA-N
+
+> <Precursor_ALogP>
+2.6999
+
+> <Precursor_Major_Isotope_Mass>
+221.1051
+
+$$$$

@@ -1,0 +1,797 @@
+BTM00001
+  CDK     0807241714
+
+  2  1  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/CH2O/c1-2/h1H2
+
+> <InChIKey>
+WSFSSNUMVMOOMR-UHFFFAOYSA-N
+
+> <SMILES>
+O=C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+CH2O
+
+> <Major_Isotope_Mass>
+30.010564684
+
+> <ALogP>
+-0.8841
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+O-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1331
+
+> <Enzyme(s)>
+CYP2A6
+CYP2C8
+CYP2E1
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$
+BTM00002
+  CDK     0807241714
+
+ 17 17  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  4  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  4  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  2 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+ 12 15  2  0  0  0  0
+  1 15  1  0  0  0  0
+ 11 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C10H15O4PS2/c1-12-15(16,13-2)14-9-4-5-10(17-3)8(6-9)7-11/h4-6,11H,7H2,1-3H3
+
+> <InChIKey>
+ZDXGXRYOLHJDAI-UHFFFAOYSA-N
+
+> <SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)CO
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C10H15O4PS2
+
+> <Major_Isotope_Mass>
+294.01493759
+
+> <ALogP>
+2.248200000000002
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1328
+
+> <Enzyme(s)>
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$
+BTM00003
+  CDK     0807241714
+
+ 15 15  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  4  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  4  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  2 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 12 13  2  0  0  0  0
+  1 13  1  0  0  0  0
+ 12 14  1  0  0  0  0
+ 11 15  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C9H13O3PS2/c1-7-6-8(4-5-9(7)14)12-13(15,10-2)11-3/h4-6,14H,1-3H3
+
+> <InChIKey>
+CAZFJFFPXSYKGL-UHFFFAOYSA-N
+
+> <SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(=C1)S)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C9H13O3PS2
+
+> <Major_Isotope_Mass>
+264.004372906
+
+> <ALogP>
+3.156999999999999
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+S-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1333
+
+> <Enzyme(s)>
+CYP2C8
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$
+BTM00004
+  CDK     0807241714
+
+ 10 10  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  2  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  5  8  2  0  0  0  0
+  1  8  1  0  0  0  0
+  4  9  1  0  0  0  0
+  2 10  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C8H10OS/c1-6-5-7(9)3-4-8(6)10-2/h3-5,9H,1-2H3
+
+> <InChIKey>
+VKALYYFVKBXHTF-UHFFFAOYSA-N
+
+> <SMILES>
+C1=C(C=C(C(SC)=C1)C)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C8H10OS
+
+> <Major_Isotope_Mass>
+154.04523594
+
+> <ALogP>
+2.5905999999999993
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+Hydrolysis from CyProduct
+
+> <Reaction_ID>
+BTMR1341
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C8
+CYP2C9
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$
+BTM00005
+  CDK     0807241714
+
+  7  6  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  2  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  2  7  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C2H7O3PS/c1-4-6(3,7)5-2/h1-2H3,(H,3,7)
+
+> <InChIKey>
+WWJJVKAEQGGYHJ-UHFFFAOYSA-N
+
+> <SMILES>
+S=P(OC)(OC)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C2H7O3PS
+
+> <Major_Isotope_Mass>
+141.985351714
+
+> <ALogP>
+0.13929999999999973
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00005
+
+> <Reaction>
+Hydrolysis from CyProduct
+
+> <Reaction_ID>
+BTMR1341
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C8
+CYP2C9
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$
+BTM00006
+  CDK     0807241714
+
+ 17 17  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  4  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  4  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  2 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 12 13  2  0  0  0  0
+  1 13  1  0  0  0  0
+ 12 14  1  0  0  0  0
+ 14 15  1  0  0  0  0
+ 14 16  2  0  0  0  0
+ 11 17  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C10H15O4PS2/c1-8-7-9(5-6-10(8)17(4)11)14-15(16,12-2)13-3/h5-7H,1-4H3
+
+> <InChIKey>
+DLAPIMGBBDILHJ-UHFFFAOYSA-N
+
+> <SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(=C1)S(C)=O)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C10H15O4PS2
+
+> <Major_Isotope_Mass>
+294.01493759
+
+> <ALogP>
+2.227100000000001
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00006
+
+> <Reaction>
+SNP-Oxidation from CyProduct
+
+> <Reaction_ID>
+BTMR1329
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$
+BTM00007
+  CDK     0807241714
+
+ 15 15  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  4  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  4  8  1  0  0  0  0
+  2  9  1  0  0  0  0
+  9 10  2  0  0  0  0
+ 10 11  1  0  0  0  0
+ 11 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+ 11 14  2  0  0  0  0
+  1 14  1  0  0  0  0
+ 10 15  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C9H13O3PS2/c1-7-6-8(4-5-9(7)15-3)12-13(10,14)11-2/h4-6H,1-3H3,(H,10,14)
+
+> <InChIKey>
+NLHSFEVAEQMFRL-UHFFFAOYSA-N
+
+> <SMILES>
+C1=C(OP(=S)(OC)O)C=C(C(SC)=C1)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C9H13O3PS2
+
+> <Major_Isotope_Mass>
+264.00437290599996
+
+> <ALogP>
+2.9303999999999992
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00007
+
+> <Reaction>
+O-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1331
+
+> <Enzyme(s)>
+CYP2A6
+CYP2E1
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$
+BTM00008
+  CDK     0807241714
+
+ 16 16  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  4  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  4  9  2  0  0  0  0
+  2 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+ 12 15  2  0  0  0  0
+  1 15  1  0  0  0  0
+ 11 16  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C10H15O4PS/c1-8-7-9(5-6-10(8)16-4)14-15(11,12-2)13-3/h5-7H,1-4H3
+
+> <InChIKey>
+ZNRZGJAHNMGWQN-UHFFFAOYSA-N
+
+> <SMILES>
+C1=C(OP(OC)(OC)=O)C=C(C(SC)=C1)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C10H15O4PS
+
+> <Major_Isotope_Mass>
+262.04286659
+
+> <ALogP>
+2.439800000000001
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00008
+
+> <Reaction>
+Desulfurization from CyProduct
+
+> <Reaction_ID>
+BTMR1340
+
+> <Enzyme(s)>
+CYP1A2
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$

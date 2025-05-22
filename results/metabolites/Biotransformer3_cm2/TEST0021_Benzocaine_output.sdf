@@ -1,0 +1,370 @@
+BTM00001
+  CDK     0807241706
+
+ 13 13  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  2  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  2  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  4  9  1  0  0  0  0
+  7 10  1  0  0  0  0
+ 10 11  1  0  0  0  0
+  1 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+M  CHG  1  10   1
+M  CHG  1  11  -1
+M  END
+> <InChI>
+InChI=1S/C9H11NO3/c1-2-13-9(11)7-3-5-8(10-12)6-4-7/h3-6H,2,10H2,1H3
+
+> <InChIKey>
+ZCZCIURSCIMHGN-UHFFFAOYSA-N
+
+> <SMILES>
+O(C(=O)C1=CC=C(C=C1)[NH2+][O-])CC
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C9H11NO3
+
+> <Major_Isotope_Mass>
+181.073893212
+
+> <ALogP>
+1.2839999999999996
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+SNP-Oxidation from CyProduct
+
+> <Reaction_ID>
+BTMR1329
+
+> <Enzyme(s)>
+CYP2E1
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0021_Benzocaine
+
+> <Precursor_SMILES>
+O(C(=O)C1=CC=C(N)C=C1)CC
+
+> <Precursor_InChI>
+InChI=1S/C9H11NO2/c1-2-12-9(11)7-3-5-8(10)6-4-7/h3-6H,2,10H2,1H3
+
+> <Precursor_InChIKey>
+BLFLLBZGZJTVJG-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+165.0789
+
+$$$$
+BTM00002
+  CDK     0807241706
+
+ 10 10  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  1  3  1  0  0  0  0
+  3  4  2  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  2  0  0  0  0
+  6  7  1  0  0  0  0
+  6  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  3  9  1  0  0  0  0
+  1 10  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C7H7NO2/c8-6-3-1-5(2-4-6)7(9)10/h1-4H,8H2,(H,9,10)
+
+> <InChIKey>
+ALYNCZNDIQEVRV-UHFFFAOYSA-N
+
+> <SMILES>
+C(=O)(C1=CC=C(N)C=C1)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C7H7NO2
+
+> <Major_Isotope_Mass>
+137.047678464
+
+> <ALogP>
+0.6878000000000001
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+O-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1331
+
+> <Enzyme(s)>
+CYP2A6
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0021_Benzocaine
+
+> <Precursor_SMILES>
+O(C(=O)C1=CC=C(N)C=C1)CC
+
+> <Precursor_InChI>
+InChI=1S/C9H11NO2/c1-2-12-9(11)7-3-5-8(10)6-4-7/h3-6H,2,10H2,1H3
+
+> <Precursor_InChIKey>
+BLFLLBZGZJTVJG-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+165.0789
+
+$$$$
+BTM00003
+  CDK     0807241706
+
+  3  2  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C2H4O/c1-2-3/h2H,1H3
+
+> <InChIKey>
+IKHGUXGNUITLKF-UHFFFAOYSA-N
+
+> <SMILES>
+CC=O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C2H4O
+
+> <Major_Isotope_Mass>
+44.026214748
+
+> <ALogP>
+-0.1825
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+O-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1331
+
+> <Enzyme(s)>
+CYP2A6
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0021_Benzocaine
+
+> <Precursor_SMILES>
+O(C(=O)C1=CC=C(N)C=C1)CC
+
+> <Precursor_InChI>
+InChI=1S/C9H11NO2/c1-2-12-9(11)7-3-5-8(10)6-4-7/h3-6H,2,10H2,1H3
+
+> <Precursor_InChIKey>
+BLFLLBZGZJTVJG-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+165.0789
+
+$$$$
+BTM00004
+  CDK     0807241706
+
+ 13 13  0  0  0  0  0  0  0  0999 V2000
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  2  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  2  0  0  0  0
+  7  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  4  9  1  0  0  0  0
+  7 10  1  0  0  0  0
+ 10 11  1  0  0  0  0
+  1 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C9H11NO3/c1-2-13-9(11)7-3-5-8(10-12)6-4-7/h3-6,10,12H,2H2,1H3
+
+> <InChIKey>
+WTIQBXJYUKTCPO-UHFFFAOYSA-N
+
+> <SMILES>
+O(C(=O)C1=CC=C(C=C1)NO)CC
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C9H11NO3
+
+> <Major_Isotope_Mass>
+181.07389321199997
+
+> <ALogP>
+1.2802999999999995
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+Hydroxylation from CyProduct
+
+> <Reaction_ID>
+BTMR1328
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0021_Benzocaine
+
+> <Precursor_SMILES>
+O(C(=O)C1=CC=C(N)C=C1)CC
+
+> <Precursor_InChI>
+InChI=1S/C9H11NO2/c1-2-12-9(11)7-3-5-8(10)6-4-7/h3-6H,2,10H2,1H3
+
+> <Precursor_InChIKey>
+BLFLLBZGZJTVJG-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+
+
+> <Precursor_Major_Isotope_Mass>
+165.0789
+
+$$$$

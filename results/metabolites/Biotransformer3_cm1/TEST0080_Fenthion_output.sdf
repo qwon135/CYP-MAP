@@ -1,0 +1,520 @@
+BTM00001
+  CDK     08072417462D
+
+ 17 17  0  0  0  0  0  0  0  0999 V2000
+   -1.5900    0.9200    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.5900   -0.5800    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8889   -1.3302    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1881   -0.5804    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.2241    0.5688    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.4870   -1.3306    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.7862   -0.5808    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.1524    0.5685    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.6296    0.3078    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2900   -1.3300    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0100   -0.5800    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0100    0.9200    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3089    1.6702    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6081    0.9204    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2900    1.6700    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3089   -1.3302    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6081   -0.5804    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  4  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  4  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  2 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+ 12 15  2  0  0  0  0
+  1 15  1  0  0  0  0
+ 11 16  1  0  0  0  0
+ 17 16  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C10H15O4PS2/c1-12-15(16,13-2)14-9-4-5-10(17-3)8(6-9)7-11/h4-6,11H,7H2,1-3H3
+
+> <InChIKey>
+ZDXGXRYOLHJDAI-UHFFFAOYSA-N
+
+> <SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)CO
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C10H15O4PS2
+
+> <Major_Isotope_Mass>
+294.01493759
+
+> <ALogP>
+2.248200000000002
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Aliphatic hydroxylation of methyl carbon adjacent to aromatic ring
+
+> <Reaction_ID>
+BTMR1058
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+3.338900
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$
+BTM00002
+  CDK     08072417462D
+
+ 16 16  0  0  0  0  0  0  0  0999 V2000
+   -1.5900    0.9200    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.5900   -0.5800    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8889   -1.3302    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1881   -0.5804    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.4870   -1.3306    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.7862   -0.5808    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.2241    0.5688    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7373    1.9783    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2900   -1.3300    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0100   -0.5800    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0100    0.9200    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3089    1.6702    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6081    0.9204    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2900    1.6700    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3089   -1.3302    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.1524    0.5685    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  4  7  1  0  0  0  0
+  7  8  1  0  0  0  0
+  2  9  1  0  0  0  0
+  9 10  2  0  0  0  0
+ 10 11  1  0  0  0  0
+ 11 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+ 11 14  2  0  0  0  0
+  1 14  1  0  0  0  0
+ 10 15  1  0  0  0  0
+  4 16  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C10H15O4PS/c1-8-7-9(5-6-10(8)16-4)14-15(11,12-2)13-3/h5-7H,1-4H3
+
+> <InChIKey>
+ZNRZGJAHNMGWQN-UHFFFAOYSA-N
+
+> <SMILES>
+C1=C(OP(OC)(OC)=O)C=C(C(SC)=C1)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C10H15O4PS
+
+> <Major_Isotope_Mass>
+262.04286658999996
+
+> <ALogP>
+2.439800000000001
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+Desulfuration of organophosphothioate
+
+> <Reaction_ID>
+BTMR0070
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+3.338900
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$
+BTM00003
+  CDK     08072417462D
+
+ 17 17  0  0  0  0  0  0  0  0999 V2000
+   -1.5900    0.9200    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.5900   -0.5800    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8889   -1.3302    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1881   -0.5804    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.2241    0.5688    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.4870   -1.3306    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.7862   -0.5808    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.1524    0.5685    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.6296    0.3078    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2900   -1.3300    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0100   -0.5800    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0100    0.9200    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3089    1.6702    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6081    0.9204    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2900    1.6700    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3089   -1.3302    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3087    3.1702    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  2  0  0  0  0
+  4  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  4  8  1  0  0  0  0
+  8  9  1  0  0  0  0
+  2 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+ 12 15  2  0  0  0  0
+  1 15  1  0  0  0  0
+ 11 16  1  0  0  0  0
+ 13 17  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C10H15O4PS2/c1-8-7-9(5-6-10(8)17(4)11)14-15(16,12-2)13-3/h5-7H,1-4H3
+
+> <InChIKey>
+DLAPIMGBBDILHJ-UHFFFAOYSA-N
+
+> <SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(S(C)=O)=C1)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C10H15O4PS2
+
+> <Major_Isotope_Mass>
+294.01493759
+
+> <ALogP>
+2.227100000000001
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+S-Oxidation of alkylarylthioether to sulfoxide
+
+> <Reaction_ID>
+BTMR0058
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2B6
+CYP2C9
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+3.338900
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$
+BTM00004
+  CDK     08072417462D
+
+ 10 10  0  0  0  0  0  0  0  0999 V2000
+    0.3600   -0.2058    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.6590    0.5442    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.6586    2.0450    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3590    2.7958    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.9400    2.0458    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.2392    2.7956    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.5381    2.0454    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.9395    0.5450    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3593    4.2958    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.9582   -0.2056    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  2  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+  5  8  2  0  0  0  0
+  1  8  1  0  0  0  0
+  4  9  1  0  0  0  0
+  2 10  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C8H10OS/c1-6-5-7(9)3-4-8(6)10-2/h3-5,9H,1-2H3
+
+> <InChIKey>
+VKALYYFVKBXHTF-UHFFFAOYSA-N
+
+> <SMILES>
+C1=C(C=C(C(SC)=C1)C)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C8H10OS
+
+> <Major_Isotope_Mass>
+154.04523594
+
+> <ALogP>
+2.5905999999999993
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+Dearylation of organphosphosulfur compound
+
+> <Reaction_ID>
+BTMR1170
+
+> <Enzyme(s)>
+CYP2B6
+CYP2C9
+CYP2C19
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+3.338900
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$
+BTM00005
+  CDK     08072417462D
+
+  7  6  0  0  0  0  0  0  0  0999 V2000
+   -2.3078    1.1781    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3436    2.3272    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3794    1.1781    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0445    3.0772    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2545    2.3272    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.6426    3.0772    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.9417    2.3272    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  2  0  0  0  0
+  2  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  2  6  1  0  0  0  0
+  6  7  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C2H7O3PS/c1-4-6(3,7)5-2/h1-2H3,(H,3,7)
+
+> <InChIKey>
+WWJJVKAEQGGYHJ-UHFFFAOYSA-N
+
+> <SMILES>
+OP(=S)(OC)OC
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C2H7O3PS
+
+> <Major_Isotope_Mass>
+141.985351714
+
+> <ALogP>
+0.13929999999999973
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00005
+
+> <Reaction>
+Dearylation of organphosphosulfur compound
+
+> <Reaction_ID>
+BTMR1170
+
+> <Enzyme(s)>
+CYP2B6
+CYP2C9
+CYP2C19
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0080_Fenthion
+
+> <Precursor_SMILES>
+C1=C(OP(=S)(OC)OC)C=C(C(SC)=C1)C
+
+> <Precursor_InChI>
+InChI=1S/C10H15O3PS2/c1-8-7-9(5-6-10(8)16-4)13-14(15,11-2)12-3/h5-7H,1-4H3
+
+> <Precursor_InChIKey>
+PNVJTZOFSHSLTO-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+3.338900
+
+> <Precursor_Major_Isotope_Mass>
+278.0200
+
+$$$$

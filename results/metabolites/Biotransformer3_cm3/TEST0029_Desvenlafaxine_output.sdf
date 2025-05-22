@@ -1,0 +1,1247 @@
+BTM00001
+  CDK     08072416502D
+
+ 20 21  0  0  0  0  0  0  0  0999 V2000
+    0.4274    0.6652    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3857   -0.4888    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3555    0.6555    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6582    1.3991    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.9536    0.6427    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    6.2563    1.3863    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.9462   -0.8572    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6457    1.6540    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6534    0.9040    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.9379    1.6288    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.9634    3.1729    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.2685    3.9122    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6643    3.9229    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6602    3.1288    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6819   -1.2453    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6744   -2.7453    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3706   -3.4887    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0744   -2.7322    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0819   -1.2322    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.3140   -0.4983    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  5  7  1  0  0  0  0
+  3  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 11 13  1  0  0  0  0
+ 13 14  2  0  0  0  0
+  8 14  1  0  0  0  0
+  2 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  1  0  0  0  0
+ 18 19  1  0  0  0  0
+  2 19  1  0  0  0  0
+ 20  3  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C16H25NO3/c1-17(2)12-16(20,13-6-8-14(18)9-7-13)15(19)10-4-3-5-11-15/h6-9,18-20H,3-5,10-12H2,1-2H3
+
+> <InChIKey>
+ONTSNMOTGNPGCW-UHFFFAOYSA-N
+
+> <SMILES>
+OC1(C(CN(C)C)(C2=CC=C(O)C=C2)O)CCCCC1
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C16H25NO3
+
+> <Major_Isotope_Mass>
+279.18344365999997
+
+> <ALogP>
+2.1567999999999987
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Hydroxylation of non-terminal aliphatic carbon adjacent to aromatic ring
+
+> <Reaction_ID>
+BTMR1077
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C8
+CYP2C9
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0029_Desvenlafaxine
+
+> <Precursor_SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCCCC1
+
+> <Precursor_InChI>
+InChI=1S/C16H25NO2/c1-17(2)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <Precursor_InChIKey>
+KYYIDSXMWOZKMP-HNNXBMFYSA-N
+
+> <Precursor_ALogP>
+2.7711
+
+> <Precursor_Major_Isotope_Mass>
+263.1885
+
+$$$$
+BTM00002
+  CDK     08072416502D
+
+ 20 21  0  0  1  0  0  0  0  0999 V2000
+    0.0970    3.5006    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5754    3.7542    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5680    2.2542    0.0000 C   0  0  1  0  0  0  0  0  0  0  0  0
+    0.2653    1.5106    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0300    2.2670    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.3327    1.5234    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0227    3.7669    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.8633    1.4978    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.1624    2.2478    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.4469    1.5229    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.4724   -0.0212    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.7776   -0.7605    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    4.1733   -0.7712    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.8488    0.0229    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0684    5.1668    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.0381    6.3112    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.5148    6.0430    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.0218    4.6304    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.0521    3.4860    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.4076    5.4341    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  6  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  5  7  1  0  0  0  0
+  3  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 11 13  1  0  0  0  0
+ 13 14  2  0  0  0  0
+  8 14  1  0  0  0  0
+  2 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  1  0  0  0  0
+ 18 19  1  0  0  0  0
+  2 19  1  0  0  0  0
+ 20 15  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C16H25NO3/c1-17(2)11-14(12-6-8-13(18)9-7-12)16(20)10-4-3-5-15(16)19/h6-9,14-15,18-20H,3-5,10-11H2,1-2H3/t14-,15?,16?/m0/s1
+
+> <InChIKey>
+DNOYRYUPNADNQC-FHERZECASA-N
+
+> <SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)C(CCCC1)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C16H25NO3
+
+> <Major_Isotope_Mass>
+279.18344366
+
+> <ALogP>
+1.8041999999999998
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00002
+
+> <Reaction>
+Hydroxylation of alicyclic secondary carbon
+
+> <Reaction_ID>
+BTMR1068
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0029_Desvenlafaxine
+
+> <Precursor_SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCCCC1
+
+> <Precursor_InChI>
+InChI=1S/C16H25NO2/c1-17(2)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <Precursor_InChIKey>
+KYYIDSXMWOZKMP-HNNXBMFYSA-N
+
+> <Precursor_ALogP>
+2.7711
+
+> <Precursor_Major_Isotope_Mass>
+263.1885
+
+$$$$
+BTM00003
+  CDK     08072416502D
+
+ 20 21  0  0  1  0  0  0  0  0999 V2000
+    0.8563    3.0614    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3348    3.3145    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3274    1.8145    0.0000 C   0  0  1  0  0  0  0  0  0  0  0  0
+    1.0247    1.0709    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2706    1.8273    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.5733    1.0837    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2632    3.3273    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6227    1.0581    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.9218    1.8081    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.2063    1.0832    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.2318   -0.4609    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    7.5370   -1.2001    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    4.9327   -1.2109    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6082   -0.4168    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.8287    4.7274    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.7986    5.8728    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.2746    5.6052    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.7806    4.1922    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8107    3.0469    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.2921    7.2847    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  6  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  5  7  1  0  0  0  0
+  3  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 11 13  1  0  0  0  0
+ 13 14  2  0  0  0  0
+  8 14  1  0  0  0  0
+  2 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  1  0  0  0  0
+ 18 19  1  0  0  0  0
+  2 19  1  0  0  0  0
+ 20 16  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C16H25NO3/c1-17(2)11-15(12-5-7-13(18)8-6-12)16(20)9-3-4-14(19)10-16/h5-8,14-15,18-20H,3-4,9-11H2,1-2H3/t14?,15-,16?/m0/s1
+
+> <InChIKey>
+NNBHVXWBAPGROK-PCKAHOCUSA-N
+
+> <SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CC(CCC1)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C16H25NO3
+
+> <Major_Isotope_Mass>
+279.18344365999997
+
+> <ALogP>
+1.4104000000000005
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00003
+
+> <Reaction>
+Hydroxylation of alicyclic secondary carbon
+
+> <Reaction_ID>
+BTMR1068
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0029_Desvenlafaxine
+
+> <Precursor_SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCCCC1
+
+> <Precursor_InChI>
+InChI=1S/C16H25NO2/c1-17(2)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <Precursor_InChIKey>
+KYYIDSXMWOZKMP-HNNXBMFYSA-N
+
+> <Precursor_ALogP>
+2.7711
+
+> <Precursor_Major_Isotope_Mass>
+263.1885
+
+$$$$
+BTM00004
+  CDK     08072416502D
+
+ 20 21  0  0  1  0  0  0  0  0999 V2000
+   -0.8621    2.6415    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6164    2.8945    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6090    1.3945    0.0000 C   0  0  1  0  0  0  0  0  0  0  0  0
+   -0.6937    0.6510    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.9891    1.4073    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.2918    0.6637    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.9817    2.9073    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.9043    0.6382    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.2034    1.3882    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.4879    0.6633    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.5134   -0.8808    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.8185   -1.6201    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.2143   -1.6308    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.8898   -0.8367    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1103    4.3075    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0802    5.4528    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5561    5.1852    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.0622    3.7723    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.0923    2.6269    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.5260    6.3295    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  6  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  5  7  1  0  0  0  0
+  3  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 11 13  1  0  0  0  0
+ 13 14  2  0  0  0  0
+  8 14  1  0  0  0  0
+  2 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  1  0  0  0  0
+ 18 19  1  0  0  0  0
+  2 19  1  0  0  0  0
+ 20 17  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C16H25NO3/c1-17(2)11-15(12-3-5-13(18)6-4-12)16(20)9-7-14(19)8-10-16/h3-6,14-15,18-20H,7-11H2,1-2H3/t14?,15-,16?/m0/s1
+
+> <InChIKey>
+ZCPNCESOXFGVLN-PCKAHOCUSA-N
+
+> <SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCC(CC1)O
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C16H25NO3
+
+> <Major_Isotope_Mass>
+279.18344366
+
+> <ALogP>
+1.5342000000000007
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00004
+
+> <Reaction>
+Hydroxylation of alicyclic secondary carbon
+
+> <Reaction_ID>
+BTMR1068
+
+> <Enzyme(s)>
+CYP1A2
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0029_Desvenlafaxine
+
+> <Precursor_SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCCCC1
+
+> <Precursor_InChI>
+InChI=1S/C16H25NO2/c1-17(2)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <Precursor_InChIKey>
+KYYIDSXMWOZKMP-HNNXBMFYSA-N
+
+> <Precursor_ALogP>
+2.7711
+
+> <Precursor_Major_Isotope_Mass>
+263.1885
+
+$$$$
+BTM00005
+  CDK     08072416502D
+
+ 20 21  0  0  1  0  0  0  0  0999 V2000
+   -2.6523    2.9424    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.1752    3.2032    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.1752    1.7032    0.0000 C   0  0  1  0  0  0  0  0  0  0  0  0
+   -2.4742    0.9532    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7733    1.7032    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.0723    0.9532    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7733    3.2032    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1239    0.9532    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1234   -0.5477    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4224   -1.2977    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.7219   -0.5468    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.0210   -1.2968    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.7224    0.9540    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4234    1.7040    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3028    2.9422    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2669    4.0914    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7529    5.5015    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.7250    5.7624    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6891    4.6133    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.0216    1.7038    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  6  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  5  7  1  0  0  0  0
+  3  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 11 13  1  0  0  0  0
+ 13 14  2  0  0  0  0
+  8 14  1  0  0  0  0
+  2 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  1  0  0  0  0
+ 18 19  1  0  0  0  0
+  2 19  1  0  0  0  0
+ 20 13  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C16H25NO3/c1-17(2)11-13(16(20)8-4-3-5-9-16)12-6-7-14(18)15(19)10-12/h6-7,10,13,18-20H,3-5,8-9,11H2,1-2H3/t13-/m0/s1
+
+> <InChIKey>
+YEFVKRBTEMHJDG-ZDUSSCGKSA-N
+
+> <SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C(=C2)O)CCCCC1
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C16H25NO3
+
+> <Major_Isotope_Mass>
+279.18344365999997
+
+> <ALogP>
+2.5037
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00005
+
+> <Reaction>
+2-Hydroxylation of 1,4-disubstituted benzene
+
+> <Reaction_ID>
+BTMR0037
+
+> <Enzyme(s)>
+CYP1A2
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0029_Desvenlafaxine
+
+> <Precursor_SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCCCC1
+
+> <Precursor_InChI>
+InChI=1S/C16H25NO2/c1-17(2)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <Precursor_InChIKey>
+KYYIDSXMWOZKMP-HNNXBMFYSA-N
+
+> <Precursor_ALogP>
+2.7711
+
+> <Precursor_Major_Isotope_Mass>
+263.1885
+
+$$$$
+BTM00006
+  CDK     08072416502D
+
+ 20 21  0  0  1  0  0  0  0  0999 V2000
+   -1.1494    0.8142    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6297    2.2213    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6656    1.4649    0.0000 C   0  0  1  0  0  0  0  0  0  0  0  0
+    0.6582   -0.0351    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.9536   -0.7914    0.0000 N   0  3  0  0  0  0  0  0  0  0  0  0
+    2.7099    0.5039    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.2489   -1.5478    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.9683    2.2085    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.9683    3.7085    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.2383    4.4585    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.5883    3.7085    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.8811    4.4692    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    4.5883    2.2085    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.2383    1.4585    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3409    3.3660    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.1654    4.7780    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6422    5.0453    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.6128    3.9006    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.1066    2.4886    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.1972   -2.0868    0.0000 O   0  5  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  6  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  5  7  1  0  0  0  0
+  3  8  1  0  0  0  0
+  8  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 11 13  1  0  0  0  0
+ 13 14  2  0  0  0  0
+  8 14  1  0  0  0  0
+  2 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  1  0  0  0  0
+ 18 19  1  0  0  0  0
+  2 19  1  0  0  0  0
+  5 20  1  0  0  0  0
+M  CHG  1   5   1
+M  CHG  1  20  -1
+M  END
+> <InChI>
+InChI=1S/C16H25NO3/c1-17(2,20)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <InChIKey>
+CZFVXEWRFNKSSC-HNNXBMFYSA-N
+
+> <SMILES>
+OC1([C@@H](C[N+](C)(C)[O-])C2=CC=C(O)C=C2)CCCCC1
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C16H25NO3
+
+> <Major_Isotope_Mass>
+279.18344365999997
+
+> <ALogP>
+2.3660000000000005
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00006
+
+> <Reaction>
+N-Oxidation of aliphatic tertiary amine
+
+> <Reaction_ID>
+BTMR1100
+
+> <Enzyme(s)>
+CYP1A2
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0029_Desvenlafaxine
+
+> <Precursor_SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCCCC1
+
+> <Precursor_InChI>
+InChI=1S/C16H25NO2/c1-17(2)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <Precursor_InChIKey>
+KYYIDSXMWOZKMP-HNNXBMFYSA-N
+
+> <Precursor_ALogP>
+2.7711
+
+> <Precursor_Major_Isotope_Mass>
+263.1885
+
+$$$$
+BTM00007
+  CDK     08072416502D
+
+ 17 18  0  0  1  0  0  0  0  0999 V2000
+    0.7515    1.5193    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2073    2.6729    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0954    3.4165    0.0000 C   0  0  1  0  0  0  0  0  0  0  0  0
+    1.1028    4.9165    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3908    2.6602    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6898    3.4102    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.9743    2.6853    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.9998    1.1412    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.3050    0.4019    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.7008    0.3912    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3763    1.1853    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.7133    4.0859    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.1893    4.3535    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1591    3.2081    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.6531    1.7952    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.1771    1.5276    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.1925    5.6729    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  3  5  1  1  0  0  0
+  5  6  2  0  0  0  0
+  6  7  1  0  0  0  0
+  7  8  2  0  0  0  0
+  8  9  1  0  0  0  0
+  8 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+  5 11  1  0  0  0  0
+  2 12  1  0  0  0  0
+ 12 13  1  0  0  0  0
+ 13 14  1  0  0  0  0
+ 14 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+  2 16  1  0  0  0  0
+  4 17  2  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C14H18O3/c15-10-13(11-4-6-12(16)7-5-11)14(17)8-2-1-3-9-14/h4-7,10,13,16-17H,1-3,8-9H2/t13-/m0/s1
+
+> <InChIKey>
+VQEJEHYUPFWBTJ-ZDUSSCGKSA-N
+
+> <SMILES>
+OC1([C@@H](C=O)C2=CC=C(O)C=C2)CCCCC1
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C14H18O3
+
+> <Major_Isotope_Mass>
+234.12559443599997
+
+> <ALogP>
+2.3354999999999997
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00007
+
+> <Reaction>
+N-Dealkylation of acyclic tertiary amine
+
+> <Reaction_ID>
+BTMR1142
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0029_Desvenlafaxine
+
+> <Precursor_SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCCCC1
+
+> <Precursor_InChI>
+InChI=1S/C16H25NO2/c1-17(2)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <Precursor_InChIKey>
+KYYIDSXMWOZKMP-HNNXBMFYSA-N
+
+> <Precursor_ALogP>
+2.7711
+
+> <Precursor_Major_Isotope_Mass>
+263.1885
+
+$$$$
+BTM00008
+  CDK     08072416502D
+
+  3  2  0  0  0  0  0  0  0  0999 V2000
+   -0.0000    0.7500    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2990    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    2.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  1  3  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C2H7N/c1-3-2/h3H,1-2H3
+
+> <InChIKey>
+ROSDSFDQCJNGOL-UHFFFAOYSA-N
+
+> <SMILES>
+N(C)C
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C2H7N
+
+> <Major_Isotope_Mass>
+45.057849224
+
+> <ALogP>
+-0.21580000000000035
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00008
+
+> <Reaction>
+N-Dealkylation of acyclic tertiary amine
+
+> <Reaction_ID>
+BTMR1142
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0029_Desvenlafaxine
+
+> <Precursor_SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCCCC1
+
+> <Precursor_InChI>
+InChI=1S/C16H25NO2/c1-17(2)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <Precursor_InChIKey>
+KYYIDSXMWOZKMP-HNNXBMFYSA-N
+
+> <Precursor_ALogP>
+2.7711
+
+> <Precursor_Major_Isotope_Mass>
+263.1885
+
+$$$$
+BTM00009
+  CDK     08072416502D
+
+ 18 19  0  0  1  0  0  0  0  0999 V2000
+    3.5188   -0.5509    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.0404   -0.8044    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.0478    0.6956    0.0000 C   0  0  1  0  0  0  0  0  0  0  0  0
+    3.3505    1.4392    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.6458    0.6828    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    5.9485    1.4264    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7524    1.4520    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.5466    0.7020    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.8311    1.4268    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.8566    2.9710    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1618    3.7102    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.5576    3.7210    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7670    2.9268    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.5637   -0.5362    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.4060   -1.6806    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1010   -3.0932    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5777   -3.3614    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5474   -2.2170    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  6  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  3  7  1  0  0  0  0
+  7  8  2  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  2  0  0  0  0
+ 10 11  1  0  0  0  0
+ 10 12  1  0  0  0  0
+ 12 13  2  0  0  0  0
+  7 13  1  0  0  0  0
+  2 14  1  0  0  0  0
+ 14 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  1  0  0  0  0
+  2 18  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C15H23NO2/c1-16-11-14(12-5-7-13(17)8-6-12)15(18)9-3-2-4-10-15/h5-8,14,16-18H,2-4,9-11H2,1H3/t14-/m0/s1
+
+> <InChIKey>
+MMSWXJSQCAEDLK-AWEZNQCLSA-N
+
+> <SMILES>
+OC1([C@@H](CNC)C2=CC=C(O)C=C2)CCCCC1
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C15H23NO2
+
+> <Major_Isotope_Mass>
+249.172878976
+
+> <ALogP>
+2.2351999999999985
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00009
+
+> <Reaction>
+N-Dealkylation of acyclic tertiary amine
+
+> <Reaction_ID>
+BTMR1142
+
+> <Enzyme(s)>
+CYP1A2
+CYP2A6
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP2E1
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0029_Desvenlafaxine
+
+> <Precursor_SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCCCC1
+
+> <Precursor_InChI>
+InChI=1S/C16H25NO2/c1-17(2)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <Precursor_InChIKey>
+KYYIDSXMWOZKMP-HNNXBMFYSA-N
+
+> <Precursor_ALogP>
+2.7711
+
+> <Precursor_Major_Isotope_Mass>
+263.1885
+
+$$$$
+BTM00010
+  CDK     08072416502D
+
+ 20 21  0  0  1  0  0  0  0  0999 V2000
+    4.4177    2.1443    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8980    0.7372    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.6027    1.4936    0.0000 C   0  0  1  0  0  0  0  0  0  0  0  0
+    2.6101    2.9936    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.9128    3.7372    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    3.9202    5.2372    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.2081    2.9808    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000    0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3000   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0300   -1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3200   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.6128   -1.5107    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3200    0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0300    1.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.9274   -0.4075    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.4337   -1.8195    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.9105   -2.0868    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.8811   -0.9420    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.3749    0.4700    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3148    3.7500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  5  7  1  0  0  0  0
+  3  8  1  6  0  0  0
+  8  9  2  0  0  0  0
+  9 10  1  0  0  0  0
+ 10 11  2  0  0  0  0
+ 11 12  1  0  0  0  0
+ 11 13  1  0  0  0  0
+ 13 14  2  0  0  0  0
+  8 14  1  0  0  0  0
+  2 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  1  0  0  0  0
+ 18 19  1  0  0  0  0
+  2 19  1  0  0  0  0
+  4 20  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C16H25NO3/c1-17(2)15(19)14(12-6-8-13(18)9-7-12)16(20)10-4-3-5-11-16/h6-9,14-15,18-20H,3-5,10-11H2,1-2H3/t14-,15?/m1/s1
+
+> <InChIKey>
+MYEMEXOFEFQTCL-GICMACPYSA-N
+
+> <SMILES>
+OC1([C@@H](C(N(C)C)O)C2=CC=C(O)C=C2)CCCCC1
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C16H25NO3
+
+> <Major_Isotope_Mass>
+279.18344365999997
+
+> <ALogP>
+2.5280000000000005
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00010
+
+> <Reaction>
+Aliphatic hydroxylation of carbon alpha to secondary or tertiary alkyl-N
+
+> <Reaction_ID>
+BTMR1081
+
+> <Enzyme(s)>
+CYP2B6
+CYP2C19
+CYP2D6
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0029_Desvenlafaxine
+
+> <Precursor_SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCCCC1
+
+> <Precursor_InChI>
+InChI=1S/C16H25NO2/c1-17(2)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <Precursor_InChIKey>
+KYYIDSXMWOZKMP-HNNXBMFYSA-N
+
+> <Precursor_ALogP>
+2.7711
+
+> <Precursor_Major_Isotope_Mass>
+263.1885
+
+$$$$
+BTM00011
+  CDK     08072416502D
+
+ 18 19  0  0  0  0  0  0  0  0999 V2000
+    3.5188   -0.5509    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.0404   -0.8044    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.0478    0.6956    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.3505    1.4392    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.6458    0.6828    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    5.9485    1.4264    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7524    1.4520    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.5466    0.7020    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.8311    1.4268    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.8566    2.9710    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1618    3.7102    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.5576    3.7210    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7670    2.9268    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.5637   -0.5362    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.4060   -1.6806    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1010   -3.0932    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5777   -3.3614    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5474   -2.2170    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0
+  2  3  1  0  0  0  0
+  3  4  1  0  0  0  0
+  4  5  1  0  0  0  0
+  5  6  1  0  0  0  0
+  3  7  1  0  0  0  0
+  7  8  2  0  0  0  0
+  8  9  1  0  0  0  0
+  9 10  2  0  0  0  0
+ 10 11  1  0  0  0  0
+ 10 12  1  0  0  0  0
+ 12 13  2  0  0  0  0
+  7 13  1  0  0  0  0
+  2 14  1  0  0  0  0
+ 14 15  1  0  0  0  0
+ 15 16  1  0  0  0  0
+ 16 17  1  0  0  0  0
+ 17 18  1  0  0  0  0
+  2 18  1  0  0  0  0
+M  END
+> <InChI>
+InChI=1S/C15H23NO2/c1-16-11-14(12-5-7-13(17)8-6-12)15(18)9-3-2-4-10-15/h5-8,14,16-18H,2-4,9-11H2,1H3
+
+> <InChIKey>
+MMSWXJSQCAEDLK-UHFFFAOYSA-N
+
+> <SMILES>
+OC1(C(CNC)C2=CC=C(O)C=C2)CCCCC1
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C15H23NO2
+
+> <Major_Isotope_Mass>
+249.172878976
+
+> <ALogP>
+2.2351999999999985
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+1
+
+> <Post_Em_Herbicide_Likeness_Violations>
+1
+
+> <Metabolite_ID>
+BTM00011
+
+> <Reaction>
+N-Dealkylation from CyProduct
+
+> <Reaction_ID>
+BTMR1332
+
+> <Enzyme(s)>
+CYP2B6
+CYP2C8
+CYP2C9
+CYP2C19
+CYP2D6
+CYP3A4
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0029_Desvenlafaxine
+
+> <Precursor_SMILES>
+OC1([C@@H](CN(C)C)C2=CC=C(O)C=C2)CCCCC1
+
+> <Precursor_InChI>
+InChI=1S/C16H25NO2/c1-17(2)12-15(13-6-8-14(18)9-7-13)16(19)10-4-3-5-11-16/h6-9,15,18-19H,3-5,10-12H2,1-2H3/t15-/m0/s1
+
+> <Precursor_InChIKey>
+KYYIDSXMWOZKMP-HNNXBMFYSA-N
+
+> <Precursor_ALogP>
+2.7711
+
+> <Precursor_Major_Isotope_Mass>
+263.1885
+
+$$$$

@@ -1,0 +1,84 @@
+BTM00001
+  CDK     07192412442D
+
+  6  5  0  0  0  0  0  0  0  0999 V2000
+    2.5981   -0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2990   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.8971   -0.7500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1962   -0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.4952   -0.7500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0  0  0  0 
+  2  3  1  0  0  0  0 
+  1  4  1  0  0  0  0 
+  4  5  1  0  0  0  0 
+  6  5  1  0  0  0  0 
+M  END
+> <InChI>
+InChI=1S/C4H10O2/c1-2-6-4-3-5/h5H,2-4H2,1H3
+
+> <InChIKey>
+ZNQVEEAIQZEUHB-UHFFFAOYSA-N
+
+> <SMILES>
+O(CC)CCO
+
+> <Synonyms>
+
+
+> <PUBCHEM_CID>
+
+
+> <Molecular_formula>
+C4H10O2
+
+> <Major_Isotope_Mass>
+90.06807956
+
+> <ALogP>
+-0.2384999999999998
+
+> <Lipinski_Violations>
+0
+
+> <Insecticide_Likeness_Violations>
+0
+
+> <Post_Em_Herbicide_Likeness_Violations>
+0
+
+> <Metabolite_ID>
+BTM00001
+
+> <Reaction>
+Hydroxylation of terminal methyl
+
+> <Reaction_ID>
+BTMR1061
+
+> <Enzyme(s)>
+CYP2A6
+CYP2E1
+
+> <Biosystem>
+HUMAN
+
+> <Precursor_ID>
+TEST0101_Diethyl_Ether
+
+> <Precursor_SMILES>
+O(CC)CC
+
+> <Precursor_InChI>
+InChI=1S/C4H10O/c1-3-5-4-2/h3-4H2,1-2H3
+
+> <Precursor_InChIKey>
+RTZKZFJDLAIYFH-UHFFFAOYSA-N
+
+> <Precursor_ALogP>
+0.551300
+
+> <Precursor_Major_Isotope_Mass>
+74.07316
+
+$$$$
