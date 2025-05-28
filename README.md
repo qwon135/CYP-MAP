@@ -27,15 +27,30 @@ Typical installation time: approximately 5-10 minutes (may vary depending on env
 
 ## Usage
 
-1. Prepare Pretraining Data
+1. Pretrain: Graph Contrastive Learning
+
+   Option A: Multi-GPU (Distributed Data Parallel)
+   If you have multiple GPUs (e.g., 4), run the following command for distributed pretraining:
+
    ```bash
-   tar -zxvf pretrain/pretrain_data.tar.gz
-   python pretrain/save_graph_pretrain.py
+   cd pretrain   
+   CUDA_VISIBLE_DEVICES=0,1,2,3 python -u -m torch.distributed.run --nproc_per_node=4 --nnodes=1 --master_port 12312 run_pretrain.py
    ```
 
-2. Graph Contrastive Learning
+   Option B: Single GPU
+   If you have only one GPU, run the following simpler command:
+
    ```bash
-   CUDA_VISIBLE_DEVICES=0,1,2,3 python -u -m torch.distributed.run --nproc_per_node=4 --nnodes=1 --master_port 12312 pretrain/run_pretrain.py
+   cd pretrain   
+   python run_pretrain.py
+   ```
+
+   Skip Pretraining (Optional)
+   A pretrained GNN model is already provided at:
+
+   ```bash
+   pretrain/ckpt_pretrain/gnn_pretrain.pt
+
    ```
 
 3. Prepare Fine-tuning Graph
