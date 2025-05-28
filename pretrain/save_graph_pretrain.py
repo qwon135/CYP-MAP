@@ -45,7 +45,7 @@ def main(args):
         data = data[~data['MOL_ID'].isin(['chembl34_2311326'])] .reset_index(drop=True) # Error moleculer
         data.to_parquet('pretrain_data.parquet')
     else:
-        data = pd.read_parquet('pretrain_data.parquet').loc[:5000]
+        data = pd.read_parquet('pretrain_data.parquet')
 
     for mid, smile in tqdm(data[['MOL_ID', 'smiles']].values):
 

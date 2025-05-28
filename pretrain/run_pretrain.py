@@ -286,7 +286,7 @@ def loss_cl(x1, x2):
     return loss
 
 def main(args):
-    data = pd.read_parquet('pretrain_data.parquet').loc[:5000]
+    data = pd.read_parquet('pretrain_data.parquet')
     train_dataset = MoleculeDataset_graphcl(df = data)
     train_dataset.set_augMode('sample')
     train_dataset.set_augProb(np.ones(25) / 25)
