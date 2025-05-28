@@ -1,5 +1,5 @@
 ## CYP-MAP: Multi-Level GNN Model for Site of Metabolism Prediction
-![back ground](https://github.com/user-attachments/assets/38367d5d-f568-40f8-891a-0b942973a3e8)
+![Model Architecture](data/img.png)
 
 ### Overview
 CYP-MAP is a multi-level graph neural network (GNN) model designed to predict sites of metabolism (SoM) by Cytochrome P450 (CYP) enzymes, which play a key role in drug metabolism. By analyzing the molecular structure of drug candidates, CYP-MAP identifies potential metabolic sites, reaction types, and CYP450 subtypes. Developed using experimentally validated metabolic data from DrugBank and other sources, the model integrates global, bond, and atom-level representations to capture both local reactivity and broader molecular properties. This predictive capability supports drug optimization for improved efficacy and safety.
