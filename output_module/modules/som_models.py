@@ -105,7 +105,7 @@ class SOMPredictorV2(torch.nn.Module):
         return logits   
 
 
-class GNNSOM(torch.nn.Module):
+class CYPMAP_GNN(torch.nn.Module):
     def __init__(self, 
                  channels = 512, num_layers = 2, gnn_num_layers=8,latent_size = 128, dropout=0.1, dropout_fc=0.1, dropout_som_fc=0.1, dropout_type_fc=0.1, n_classes=1, use_face=True, node_attn=True, face_attn=True,
                  encoder_dropout= 0.0, pooling='sum', gnn_type = 'gnn',
