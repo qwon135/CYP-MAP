@@ -1,0 +1,27 @@
+# GNN + Molecule utils
+rdkit
+mordred
+
+# Data handling
+pandas
+numpy
+scikit-learn
+scipy
+pyarrow
+
+# Plotting / display (optional but common)
+matplotlib
+seaborn
+tqdm
+
+# Configuration and utilities
+omegaconf
+hydra-core
+tabulate
+
+# Optional, used for svg/pdf rendering
+svgutils
+CairoSVG
+lxml
+tinycss2
+cssselect2

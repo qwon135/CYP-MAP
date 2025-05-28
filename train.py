@@ -1,5 +1,4 @@
 import torch, argparse
-import torch_geometric.transforms as T
 from torch_geometric.loader import DataLoader
 import random, os
 import numpy as np
@@ -8,14 +7,12 @@ from rdkit.Chem import PandasTools
 from torch_geometric.loader import DataLoader
 from modules.som_dataset import CustomDataset
 from modules.som_models import CYPMAP_GNN
-from sklearn.model_selection import train_test_split, StratifiedKFold
+from sklearn.model_selection import train_test_split
 import warnings
 from torch import nn
-from utils import validation, to_matrix
-# from segmentation_models_pytorch.losses import FocalLoss, DiceLoss
+from utils import validation
 from torch_ema import ExponentialMovingAverage
 from tabulate import tabulate
-from timm.loss import BinaryCrossEntropy
 
 warnings.filterwarnings('ignore', '')
 warnings.filterwarnings('ignore', '.*Sparse CSR tensor support is in beta state.*')
@@ -46,25 +43,24 @@ def get_logs(epoch, train_loss, scores, cyp_list, args, mode='Valid'):
 
     for cyp in cyp_list:        
         headers1 = ['CYP', 
-                #    'auc_subs', 'apc_subs', 'f1s_subs', 'n_subs',
                    'subs_loss', 'bond_som_loss', 'atom_spn_loss',
                    'oxc_loss', 'oxi_loss', 'epo_loss', 'sut_loss', 'dhy_loss', 'hys_loss', 'rdc_loss'
                    ]
         
         headers2 = ['CYP',
-                    'jac_bond_som', 'f1s_bond_som', 'apc_bond_som', #'n_bond_som',
-                    'jac_atom_spn', 'f1s_atom_spn', 'apc_atom_spn', #'n_atom_spn',                    
-                    'jac_som', 'f1s_som', 'apc_som', #'n_som',
+                    'jac_bond_som', 'f1s_bond_som', 'apc_bond_som', 
+                    'jac_atom_spn', 'f1s_atom_spn', 'apc_atom_spn', 
+                    'jac_som', 'f1s_som', 'apc_som', 
                     'auc_subs', 'apc_subs', 'f1s_subs',
                     ]   
         headers3 = ['CYP', 
-                    'jac_oxc', 'f1s_oxc', 'apc_oxc',# 'n_dea',
-                    'jac_oxi', 'f1s_oxi', 'apc_oxi',#  'n_epo',
-                    'jac_epo', 'f1s_epo', 'apc_epo',#  'n_oxi',
-                    'jac_sut', 'f1s_sut', 'apc_sut',#  'n_dha',
-                    'jac_dhy', 'f1s_dhy', 'apc_dhy',#  'n_dhy',
-                    'jac_hys', 'f1s_hys', 'apc_hys',#  'n_rdc',
-                    'jac_rdc', 'f1s_rdc', 'apc_rdc',#  'n_rdc',
+                    'jac_oxc', 'f1s_oxc', 'apc_oxc',
+                    'jac_oxi', 'f1s_oxi', 'apc_oxi',
+                    'jac_epo', 'f1s_epo', 'apc_epo',
+                    'jac_sut', 'f1s_sut', 'apc_sut',
+                    'jac_dhy', 'f1s_dhy', 'apc_dhy',
+                    'jac_hys', 'f1s_hys', 'apc_hys',
+                    'jac_rdc', 'f1s_rdc', 'apc_rdc',
                     ]                            
         row1, row2, row3 = [cyp], [cyp], [cyp]
         for header in headers1[1:]:
@@ -86,46 +82,20 @@ def get_logs(epoch, train_loss, scores, cyp_list, args, mode='Valid'):
             else:
                 row3.append(scores[cyp][args.th][header])
 
-
-        # table_data1.append(row1)
         table_data2.append(row2)
         table_data3.append(row3)        
 
-    # logs += (tabulate(table_data1, headers1, tablefmt="grid", floatfmt=".4f") + '\n')
     logs += (tabulate(table_data2, headers2, tablefmt="grid", floatfmt=".4f") + '\n')
     logs += tabulate(table_data3, headers3, tablefmt="grid", floatfmt=".4f")
     
     return logs
+
 def cosine_scheduler(base_value, final_value, epochs):
 
     iters = np.arange(epochs)
     schedule = final_value + 0.5 * (base_value - final_value) * (1 + np.cos(np.pi * iters / len(iters)))
     
     return schedule  
-
-def upscaling_v2(df, cyp_list):
-    n_data = df.shape[0]
-    non_reaction_df = df[df['CYP_REACTION'] == ''].reset_index(drop=True)
-    up_sample_df = [non_reaction_df.sample((non_reaction_df.shape[0]//2), replace=True).reset_index(drop=True)]
-    for cyp in cyp_list:
-        if cyp == 'CYP_REACTION':continue
-        df_reaction = df[df[cyp] != ''].reset_index(drop=True)        
-        df_reaction = df_reaction.sample((n_data//2) // len(cyp_list), replace=True).reset_index(drop=True)
-        up_sample_df.append(df_reaction)
-        
-
-    up_sample_df = pd.concat(up_sample_df).reset_index(drop=True)
-
-    pos_id_counts = up_sample_df['POS_ID'].value_counts()
-    pos_id_counts = pos_id_counts[pos_id_counts <= 3]
-    up_sample_df = up_sample_df[up_sample_df['POS_ID'].isin(pos_id_counts.index)].reset_index(drop=True)
-
-    print('Upsample ratio!')
-    for cyp in cyp_list:
-        print(f'{cyp} :({df[df[cyp] != ""].shape[0]} -> {up_sample_df[up_sample_df[cyp] != ""].shape[0]}) / ({df.shape[0]} -> {up_sample_df.shape[0]})')
-    print()
-
-    return up_sample_df
 
 def get_pos_weight(df, cyp_list):
     pos_weight = []
@@ -150,14 +120,6 @@ def get_pos_weight(df, cyp_list):
 
 
 def main(args):
-    if args.use_wandb:
-        import wandb
-        wandb.login()
-        wandb.init(project="CYP450_SOM_Prediction", 
-                name=f"seed_{args.seed}",
-                # config=args
-                )
-
     if not os.path.exists('log_text'):os.mkdir('log_text')
     if not os.path.exists('ckpt'):os.mkdir('ckpt')
     seed_everything(args.seed)
@@ -166,32 +128,19 @@ def main(args):
     cyp_list = [f'BOM_{i}'.replace(f'BOM_CYP_REACTION', 'CYP_REACTION') for i in args.cyp_list.split()]
     test_df = PandasTools.LoadSDF('data/cyp_map_test.sdf')
 
-    if args.train_with_non_reaction:
-        df = PandasTools.LoadSDF('data/cyp_map_train_with_decoy.sdf')
-        df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
-        df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
-        df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
-    else:
-        df = PandasTools.LoadSDF('data/cyp_map_train.sdf')
-        df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
-        df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
-        df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)
-        df['is_decoy'] = df['is_decoy'].fillna(False)
-        df['is_decoy'] = df['is_decoy'].astype(bool)
-        df = df[df['is_react'] == '0'].reset_index(drop=True)
-
-
-    if args.test_only_reaction_mol:
-        df = df[df['BOM_1A2'] != ''].reset_index(drop=True)
+    df = PandasTools.LoadSDF('data/cyp_map_train_with_decoy.sdf')
+    df['CYP_REACTION'], test_df['CYP_REACTION'] = df.apply(CYP_REACTION, axis=1), test_df.apply(CYP_REACTION, axis=1)
+    df['POS_ID'], test_df['POS_ID'] = 'TRAIN' + df.index.astype(str).str.zfill(4), 'TEST' + test_df.index.astype(str).str.zfill(4)
+    df['is_react'] = (df['CYP_REACTION'] == '').astype(int).astype(str)    
+    
     train_df, valid_df = train_test_split(df, stratify=df['is_react'], random_state=args.seed, test_size=0.2)
     train_df, valid_df = train_df.reset_index(drop=True), valid_df.reset_index(drop=True)    
 
     print('Reaction Ratio data : ', df[df['CYP_REACTION'] != ''].shape[0], '/', df.shape[0])
     print('Reaction Ratio train data : ', train_df[train_df['CYP_REACTION'] != ''].shape[0], '/', train_df.shape[0])
 
-    if not args.upscaling:        
-        train_dataset = CustomDataset(df=train_df,  args=args, cyp_list=cyp_list, mode='train')
-        train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)
+    train_dataset = CustomDataset(df=train_df,  args=args, cyp_list=cyp_list, mode='train')
+    train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)
 
     valid_dataset = CustomDataset(df=valid_df, args=args, cyp_list=cyp_list, mode='test')
     valid_loader = DataLoader(valid_dataset, num_workers=8, batch_size=args.batch_size, shuffle=False)
@@ -224,24 +173,22 @@ def main(args):
         print(e)
     loss_fn_ce = nn.CrossEntropyLoss(reduction=args.reduction)
     loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction, pos_weight=torch.FloatTensor([2.0]).to(args.device))
-    # loss_fn_bce = nn.BCEWithLogitsLoss(reduction=args.reduction)
 
     param_groups = [
-        {"params": [], "lr": args.gnn_lr}, # model.convs의 매개변수들, 학습률 args.gnn_lr
-        {"params": [], "lr": args.clf_lr},  # 나머지 매개변수들, 학습률 args.clf_lr
-        {"params": [], "lr": args.clf_lr}  # 나머지 매개변수들, 학습률 args.clf_lr
+        {"params": [], "lr": args.gnn_lr},
+        {"params": [], "lr": args.clf_lr},
+        {"params": [], "lr": args.clf_lr} 
     ]    
     for name, param in model.named_parameters():
         if  'gnn' in name:
-            param_groups[0]["params"].append(param) # convs가 이름에 포함되면 첫번째 그룹에 추가
+            param_groups[0]["params"].append(param)
         elif 'substrate_fc' in name:
-            param_groups[1]["params"].append(param) # convs가 이름에 포함되면 첫번째 그룹에 추가
+            param_groups[1]["params"].append(param)
         else:
-            param_groups[2]["params"].append(param) # 아니면 두번째 그룹에 추가
+            param_groups[2]["params"].append(param)
 
     if args.optim == 'adamw':
-        optim = torch.optim.AdamW(param_groups, weight_decay=args.weight_decay)
-        # optim = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+        optim = torch.optim.AdamW(param_groups, weight_decay=args.weight_decay)        
     elif args.optim == 'adam':
         optim = torch.optim.Adam(param_groups, weight_decay=args.weight_decay)
 
@@ -274,13 +221,6 @@ def main(args):
         print(f'{i} : {j:.2f}')
 
     for epoch in range(epochs):
-        if args.upscaling:            
-            up_train_df = upscaling_v2(train_df, cyp_list)            
-            
-            train_dataset = CustomDataset(df=up_train_df,  args=args, cyp_list=cyp_list, mode='train')
-            train_loader = DataLoader(train_dataset, num_workers=8, batch_size=args.batch_size, shuffle=True, drop_last=True)        
-
-            args.pos_weight = get_pos_weight(train_df, cyp_list)
 
         train_loss = 0
         model.train()
@@ -331,14 +271,6 @@ def main(args):
 
             test_scores = validation(model, test_loader, loss_fn_ce, loss_fn_bce, args)
 
-            if args.use_wandb:
-                score_log = {"epoch": epoch, "val_loss": float(val_scores['valid_loss'].cpu().item())}    
-                for cyp in cyp_list:
-                    score_log[f'{cyp}_jac'] = float(test_scores[cyp][args.th]['jac_bond_som'])
-                    score_log[f'{cyp}_f1s'] = float(test_scores[cyp][args.th]['f1s_bond_som'])
-                    # score_log[f'{cyp}_apc'] = float(test_scores[cyp][args.th]['apc_bond_som'])            
-                wandb.log(score_log)
-
             best_validloss_testscores = get_logs(epoch, train_loss, test_scores, cyp_list, args, mode='Test')
 
             patience = args.patience
@@ -359,9 +291,6 @@ def main(args):
     print(best_validloss_testscores)
     with open(log_path, 'a') as f:
         f.write(best_validloss_testscores)
-    if args.use_wandb:
-        wandb.finish()
-
 
     
 def parse_args():
@@ -414,9 +343,7 @@ def parse_args():
     parser.add_argument("--train_only_spn_H_atom", type=int, default=0)
     parser.add_argument("--patience", type=int, default=3)
     parser.add_argument("--print_test_every", type=int, default=1)
-    parser.add_argument("--filt_decoy", type=int, default=0)
     parser.add_argument("--reduction", type=str, default='mean')
-    parser.add_argument("--use_wandb", type=int, default=0)
 
     args = parser.parse_args()
     return args

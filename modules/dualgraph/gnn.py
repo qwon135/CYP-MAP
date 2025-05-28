@@ -4,8 +4,7 @@ from torch_geometric.nn import (
     global_add_pool,
     global_mean_pool,
     global_max_pool,
-    GlobalAttention,
-    Set2Set,    
+
 )
 from modules.ogb.utils.features import get_atom_feature_dims, get_bond_feature_dims
 from .conv import (
@@ -13,9 +12,7 @@ from .conv import (
     DropoutIfTraining,
     MetaLayer,
     AtomEncoder,
-    GINConv,
-    MetaLayer2,
-    MetaLayer3,    
+    GINConv,        
     MLPwoLastAct,
 )
 import torch.nn.functional as F
@@ -23,231 +20,7 @@ from .utils import GradMultiply
 
 _REDUCER_NAMES = {"sum": global_add_pool, "mean": global_mean_pool, "max": global_max_pool}
 
-
 class GNN(nn.Module):
-    def __init__(
-        self,
-        mlp_hidden_size: int = 512,
-        mlp_layers: int = 2,
-        latent_size: int = 128,
-        use_layer_norm: bool = False,
-        num_message_passing_steps: int = 8,
-        global_reducer: str = "sum",
-        node_reducer: str = "sum",
-        face_reducer: str = "sum",
-        dropedge_rate: float = 0.1,
-        dropnode_rate: float = 0.1,
-        ignore_globals: bool = True,
-        use_face: bool = True,
-        dropout: float = 0.1,
-        dropnet: float = 0.1,
-        init_face: bool = False,
-        graph_pooling: str = "sum",
-        use_outer: bool = False,
-        ddi = False
-    ):
-        super().__init__()
-        self.ddi = ddi
-        self.encoder_edge = MLP(
-            sum(get_bond_feature_dims()),
-            [mlp_hidden_size] * mlp_layers + [latent_size],
-            use_layer_norm=use_layer_norm,
-        )
-        self.encoder_node = MLP(
-            sum(get_atom_feature_dims()),
-            [mlp_hidden_size] * mlp_layers + [latent_size],
-            use_layer_norm=use_layer_norm,
-        )
-        self.encoder_global = MLP(
-            latent_size,
-            [mlp_hidden_size] * mlp_layers + [latent_size],
-            use_layer_norm=use_layer_norm,
-        )
-        if use_face:
-            self.encoder_face = MLP(
-                latent_size * (2 if init_face else 1),
-                [mlp_hidden_size] * mlp_layers + [latent_size],
-                use_layer_norm=use_layer_norm,
-            )
-        else:
-            self.encoder_face = None
-
-        self.gnn_layers = nn.ModuleList()
-        for _ in range(num_message_passing_steps):
-            edge_model = DropoutIfTraining(
-                p=dropedge_rate,
-                submodule=MLP(
-                    latent_size * (6 if use_face else 4),
-                    [mlp_hidden_size] * mlp_layers + [latent_size],
-                    use_layer_norm=use_layer_norm,
-                ),
-            )
-            node_model = DropoutIfTraining(
-                p=dropnode_rate,
-                submodule=MLP(
-                    latent_size * 4,
-                    [mlp_hidden_size] * mlp_layers + [latent_size],
-                    use_layer_norm=use_layer_norm,
-                ),
-            )
-            global_model = MLP(
-                latent_size * (4 if use_face else 3),
-                [mlp_hidden_size] * mlp_layers + [latent_size],
-                use_layer_norm=use_layer_norm,
-                dropout=dropout,
-            )
-            if use_face:
-                face_model = MLP(
-                    latent_size * 4,
-                    [mlp_hidden_size] * mlp_layers + [latent_size],
-                    use_layer_norm=use_layer_norm,
-                    dropout=dropout,
-                )
-            else:
-                face_model = None
-            self.gnn_layers.append(
-                MetaLayer(
-                    edge_model=edge_model,
-                    node_model=node_model,
-                    face_model=face_model,
-                    global_model=global_model,
-                    aggregate_edges_for_node_fn=_REDUCER_NAMES[node_reducer],
-                    aggregate_edges_for_globals_fn=_REDUCER_NAMES[global_reducer],
-                    aggregate_nodes_for_globals_fn=_REDUCER_NAMES[global_reducer],
-                    aggregate_edges_for_face_fn=_REDUCER_NAMES[face_reducer],
-                )
-            )
-
-        decoder_input_dim = latent_size
-        if use_face:
-            decoder_input_dim += latent_size
-        if not ignore_globals:
-            decoder_input_dim += latent_size
-
-        self.decoder = MLP(
-            decoder_input_dim, [mlp_hidden_size] * mlp_layers + [1], use_layer_norm=False
-        )
-
-        self.use_face = use_face
-        self.latent_size = latent_size
-        self.aggregate_nodes_for_globals_fn = _REDUCER_NAMES[global_reducer]
-        self.aggregate_edges_for_node_fn = _REDUCER_NAMES[node_reducer]
-        self.aggregate_edges_for_face_fn = _REDUCER_NAMES[face_reducer]
-        self.ignore_globals = ignore_globals
-        self.pooling = _REDUCER_NAMES[graph_pooling]
-
-        self.dropnet = dropnet
-        self.init_face = init_face
-        self.use_outer = use_outer
-
-    def forward(self, batch):
-        (
-            x,
-            edge_index,
-            edge_attr,
-            node_batch,
-            face_mask,
-            face_index,
-            num_nodes,
-            num_faces,
-            num_edges,
-            num_graphs,
-        ) = (
-            batch.x,
-            batch.edge_index,
-            batch.edge_attr,
-            batch.batch,
-            batch.ring_mask,
-            batch.ring_index,
-            batch.n_nodes,
-            batch.num_rings,
-            batch.n_edges,
-            batch.num_graphs,
-        )
-
-        x = one_hot_atoms(x)
-        edge_attr = one_hot_bonds(edge_attr)
-
-        graph_idx = torch.arange(num_graphs).to(x.device)
-        edge_batch = torch.repeat_interleave(graph_idx, num_edges, dim=0)
-
-        u = x.new_zeros((num_graphs, self.latent_size))
-
-        x = self.encoder_node(x)
-        edge_attr = self.encoder_edge(edge_attr)
-        u = self.encoder_global(u)
-
-        if self.use_face:
-            face_batch = torch.repeat_interleave(graph_idx, num_faces, dim=0)
-            if self.init_face:
-                sent_attributes = x[edge_index[0]]
-                received_attributes = x[edge_index[1]]
-                feat = torch.cat([edge_attr, sent_attributes + received_attributes], dim=1)
-                face = self.aggregate_edges_for_face_fn(
-                    feat, face_index[0], size=num_faces.sum().item()
-                )
-                face = self.encoder_face(face)
-                face = torch.where(face_mask.unsqueeze(1), face.new_zeros((face.shape[0], 1)), face)
-            else:
-                face = x.new_zeros((num_faces.sum().item(), self.latent_size))
-                face = self.encoder_face(face)
-        else:
-            face = None
-            face_batch = None
-            face_index = None
-
-        for layer in self.gnn_layers:
-            x_1, edge_attr_1, u_1, face_1 = layer(
-                x,
-                edge_index,
-                edge_attr,
-                u,
-                node_batch,
-                edge_batch,
-                face_batch,
-                face,
-                face_mask,
-                face_index,
-                num_nodes,
-                num_faces,
-                num_edges,
-            )
-            x = x_1 + x
-            edge_attr = edge_attr_1 + edge_attr
-            u = u_1 + u
-            if face is not None:
-                face = face_1 + face
-
-        aggregated_feats = []
-        aggregated_feats.append(self.pooling(x, node_batch, size=num_graphs))
-        if self.use_face:
-            aggregated_feats.append(self.pooling(face, face_batch, size=num_graphs))
-            if self.dropnet > 0:
-                random_1 = (
-                    aggregated_feats[0].new_zeros((aggregated_feats[0].shape[0], 1)).uniform_()
-                )
-                random_2 = 1 - random_1
-                mask_2 = (random_2 >= self.dropnet).to(torch.float32)
-                mask_1 = ((random_1 >= self.dropnet) | (num_faces.unsqueeze(1).eq(1))).to(
-                    torch.float32
-                )
-                aggregated_feats = [aggregated_feats[0] * mask_1, aggregated_feats[1] * mask_2]
-        if not self.ignore_globals:
-            aggregated_feats.append(
-                u * (u.new_zeros((u.shape[0], 1)).uniform_() >= self.dropnet).to(torch.float32)
-            )
-        aggregated_feat = torch.cat(aggregated_feats, dim=1)
-        mol_features = self.pooling(x, node_batch, size=num_graphs)
-        mol_feat_face = self.pooling(face, face_batch, size=num_graphs)
-        return mol_features, mol_feat_face, x, edge_attr, u
-    
-        if self.ddi:
-            return aggregated_feat
-        out = self.decoder(aggregated_feat)
-        return out
-
-
-class GNN2(nn.Module):
     def __init__(
         self,
         mlp_hidden_size: int = 512,
@@ -364,7 +137,7 @@ class GNN2(nn.Module):
                     )
             else:
                 face_model = None
-            sublayer = MetaLayer2
+            sublayer = MetaLayer
             self.gnn_layers.append(
                 sublayer(
                     edge_model=edge_model,
@@ -443,7 +216,6 @@ class GNN2(nn.Module):
             batch.nf_ring.view(-1),
             
         )
-        # print(batch.x.shape, batch.edge_attr.shape, batch.num_edges, batch.n_edges, batch.n_edges.sum())
         if self.use_outer:
             face_mask = face_mask.fill_(False)
         x = one_hot_atoms(x)
@@ -480,7 +252,6 @@ class GNN2(nn.Module):
                 feat = torch.cat([node_attributes, sent_attributes, received_attributes], dim=1)
                 feat = torch.where(face_mask.unsqueeze(1), feat.new_zeros((feat.shape[0], 1)), feat)
                 face = self.encoder_face(feat)
-                # face = torch.where(face_mask.unsqueeze(1), face.new_zeros((face.shape[0], 1)), face)
             else:
                 face = x.new_zeros((num_faces.sum().item(), self.latent_size))
                 face = self.encoder_face(face)
@@ -530,32 +301,9 @@ class GNN2(nn.Module):
             mol_feat_bond = self.pooling(edge_attr, edge_batch, size=num_graphs)
             mol_feat_ring = self.pooling(face, face_batch, size=num_graphs)
 
-            # mol_feat_atom =  GradMultiply.apply(mol_feat_atom, 50)
-            # mol_feat_bond =  GradMultiply.apply(mol_feat_bond, 50)
-            # mol_feat_ring =  GradMultiply.apply(mol_feat_ring, 50)
-            # if (self.training) and (self.dropnet > 0):
-            #     random_1 = (
-            #         mol_feat_atom.new_zeros((mol_feat_atom.shape[0], 1)).uniform_()
-            #     )
-            #     random_2 = 1 - random_1
-            #     mask_2 = (random_2 >= self.dropnet).to(torch.float32)
-            #     mask_1 = ((random_1 >= self.dropnet) | (num_faces.unsqueeze(1).eq(1))).to(
-            #         torch.float32
-            #     )
-            #     mol_feat_atom = mol_feat_atom * mask_1
-            #     mol_feat_ring = mol_feat_ring * mask_2
-
-            #     # Edge feature에 대한 Dropout 추가
-            #     random_3 = mol_feat_bond.new_zeros((mol_feat_bond.shape[0], 1)).uniform_()
-            #     mask_3 = (random_3 >= self.dropnet).to(torch.float32)
-            #     mol_feat_bond = mol_feat_bond * mask_3
-
             return mol_feat_atom, mol_feat_bond, mol_feat_ring, x, edge_attr, u, x_encoder_node, edge_attr_encoder_edge
         else:
             return self.pooling(x, node_batch, size=num_graphs)
-        if self.gradmultiply > 0:
-            x = self.pooling(x, node_batch, size=num_graphs)
-            x = GradMultiply.apply(x, self.gradmultiply)        
         
 
     def get_last_layer(self, input):

@@ -1,25 +1,11 @@
-import argparse
-import os.path as osp
-from typing import Any, Dict, Optional
-import numpy as np
-
 import torch
 from torch.nn import Sequential, Dropout, Linear
-# from torch_geometric.nn import Linear
-from typing import Any, Dict, Optional
-import torch.nn.functional as F
-from torch import Tensor
-from torch_geometric.nn.pool import TopKPooling
-from .dualgraph.gnn import GNN2, GNN, one_hot_bonds, one_hot_atoms
-from torch_geometric.utils import softmax
-
-# from torch_scatter import scatter
+from .dualgraph.gnn import GNN, one_hot_bonds, one_hot_atoms
 from torch_geometric.nn.models import GCN, GIN, GAT
 from torch_geometric.nn import MessagePassing
-# from torch_geometric.nn import MPNN
-from torch_geometric.utils import scatter, add_self_loops
+from torch_geometric.utils import  add_self_loops
 from torch_geometric.nn.pool import global_add_pool
-from modules.ogb.utils.features import get_atom_feature_dims, get_bond_feature_dims
+from modules.ogb.utils.features import get_atom_feature_dims
 
 class MPNNConv(MessagePassing):
     def __init__(self, in_channels, out_channels):
@@ -28,17 +14,13 @@ class MPNNConv(MessagePassing):
         self.edge_lin = torch.nn.Linear(13, out_channels)
 
     def forward(self, x, edge_index, edge_attr):
-        # Add self-loops to the adjacency matrix
         edge_index, edge_attr = add_self_loops(edge_index, edge_attr, num_nodes=x.size(0))
-        
-        # Linearly transform node feature matrix
         x = self.lin(x)
 
         return self.propagate(edge_index, x=x, edge_attr=edge_attr)
 
     def message(self, x_j, edge_attr):
-        # x_j has shape [E, out_channels]
-        # edge_attr has shape [E, 1]
+
 
         return x_j + self.edge_lin(edge_attr)
 
@@ -52,18 +34,13 @@ class Attention(torch.nn.Module):
                                 Linear(channels, channels, bias=False),
                                 torch.nn.PReLU(init=0.05),
                                 Dropout(dropout),
-                                # torch.nn.Sigmoid(),
                                 torch.nn.Tanh()
                                 )
-        # self.fc = Sequential(
-        #                 Dropout(dropout),
-        #                 Linear(channels, n_classes),
-        #                 )
+
         self.fc = Sequential(
             torch.nn.LayerNorm(channels),
             Linear(channels, channels),
             torch.nn.BatchNorm1d(channels),
-            # torch.nn.InstanceNorm1d(channels),
             torch.nn.PReLU(init=0.05),
             Dropout(dropout),
             Linear(channels, n_classes)
@@ -77,7 +54,7 @@ class Attention(torch.nn.Module):
         return self.fc(mul_x)
   
 
-class SOMPredictorV2(torch.nn.Module):
+class SOMPredictor(torch.nn.Module):
     def __init__(self, channels, dropout_som, dropout_type, n_classes, cyp_list):
         super().__init__()
         self.cyp_list = cyp_list
@@ -89,8 +66,8 @@ class SOMPredictorV2(torch.nn.Module):
         self.reaction_head = torch.nn.ModuleDict()
         self.subtype_head = torch.nn.ModuleDict()
         for cyp in self.cyp_list:
-            self.reaction_head[cyp] = Attention(channels, dropout_som, 1)  # Predicting reaction occurrence (0: no, 1: yes)
-            self.subtype_head[cyp] = Attention(channels + 1, dropout_type, n_classes-1)  # Subtype prediction (1, 2, 3)
+            self.reaction_head[cyp] = Attention(channels, dropout_som, 1) 
+            self.subtype_head[cyp] = Attention(channels + 1, dropout_type, n_classes-1)  
 
     def forward(self, x):
         x = self.proj_edge(x)
@@ -135,7 +112,7 @@ class CYPMAP_GNN(torch.nn.Module):
             self.pooling_u=False
 
         else:
-            self.gnn = GNN2(
+            self.gnn = GNN(
                         mlp_hidden_size = channels,
                         mlp_layers = num_layers,
                         num_message_passing_steps=gnn_num_layers,
@@ -180,10 +157,6 @@ class CYPMAP_GNN(torch.nn.Module):
                                             )
         else:
             self.substrate_fc = torch.nn.Sequential(
-                                            # torch.nn.LayerNorm(latent_size),
-                                            # Linear(latent_size , latent_size),
-                                            # torch.nn.BatchNorm1d(latent_size),
-                                            # torch.nn.PReLU(init=0.05),
                                             torch.nn.Dropout(dropout_fc),
                                             Linear(latent_size , len(cyp_list))
                                             )
@@ -193,8 +166,8 @@ class CYPMAP_GNN(torch.nn.Module):
         self.bond_tasks = ['bond_som', 'bond_oxc', 'bond_oxi', 'bond_epo', 'bond_sut', 'bond_dhy', 'bond_hys', 'bond_rdc']
         self.tasks = ['subs'] + self.atom_tasks + self.bond_tasks
         
-        self.atom_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, len(self.atom_tasks), cyp_list)
-        self.bond_fc = SOMPredictorV2(latent_size, dropout_som_fc, dropout_type_fc, len(self.bond_tasks), cyp_list)
+        self.atom_fc = SOMPredictor(latent_size, dropout_som_fc, dropout_type_fc, len(self.atom_tasks), cyp_list)
+        self.bond_fc = SOMPredictor(latent_size, dropout_som_fc, dropout_type_fc, len(self.bond_tasks), cyp_list)
                 
     def forward(self, batch):
         if self.gnn_type == 'gnn':

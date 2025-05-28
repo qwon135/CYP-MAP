@@ -9,23 +9,92 @@ CYP-MAP is a multi-level graph neural network (GNN) model designed to predict si
 - **Programming Language**: Python 3.8 or higher
 - **GPU Support**: CUDA 11.8 or higher (multi-GPU support)
 
-## Installation Guide
-Required Dependencies
+## 📦 Installation
+
+This project is tested and recommended to run on Ubuntu (Linux) environments with Python 3.9+ and GPU support.
+
 ```bash
+git clonehttps://github.com/qwon135/CYP-MAP.git
+cd CYP-MAP
+```
+### ⚠️ CUDA Runtime Requirement
+
+This project uses PyTorch with GPU acceleration, and requires:
+
+- ✅ NVIDIA GPU (with at least 6–8GB VRAM recommended)
+- ✅ Driver version ≥ 520 (supports CUDA 11.8)
+- ✅ CUDA 11.8 Runtime
+
+💡 Our experiments typically use 4–6GB of VRAM, but for stable training and inference, we recommend using a GPU with at least 8GB VRAM.
+
+You do not need to install the full CUDA Toolkit — the runtime only is enough.
+
+✅ You can check your driver version with:
+```bash
+nvidia-smi
+```
+
+🔗 Download CUDA 11.8 Runtime:
+- MetaboGNN is tested with CUDA 11.8. If `nvidia-smi` does not work or your driver is outdated, install the CUDA 11.8 runtime (used in our experiments) 
+- here: 👉 https://developer.nvidia.com/cuda-11-8-0-download-archive
+
+### 🧪 Environment Setup (with conda)
+
+```bash
+conda create -n cypmap python=3.9
+conda activate cypmap
+
+# Install PyTorch 2.1 + CUDA 11.8
+conda install pytorch==2.1.2 pytorch-cuda=11.8 -c pytorch -c nvidia
+
+# Install DGL with CUDA 11.8
+conda install -c dglteam/label/th21_cu118 dgl
+
+# Install PyTorch Geometric (PyG)
+conda install conda-forge::pytorch_geometric
+conda install pytorch-scatter=2.1.2 -c pyg
+conda install pytorch-sparse=0.6.18 -c pyg
+
+# 📝 Note:
+# Make sure the CUDA versions match across PyTorch, DGL, and PyG.
+# If any installation fails, try upgrading pip & setuptools:
+# python -m pip install --upgrade pip setuptools
 pip install -r requirements.txt
 ```
 
-Essential packages:
-- PyTorch 2.0.1
-- RDKit 2022.03.2
-- NumPy 1.20.0+
-- torch_geometric 2.3.1
-- dgl 1.1.2+cu117
+- Estimated Installation Time: Typical installation time: approximately 5-10 minutes (may vary depending on environment and internet speed)
 
-## Estimated Installation Time
-Typical installation time: approximately 5-10 minutes (may vary depending on environment and internet speed)
+## Project Structure
 
-## Usage
+```bash
+MetaboGNN/
+CYP-MAP/
+│
+├── modules/                 # Core modules for molecule processing and model components
+│   ├── som_models.py        # Main CYP-MAP model definition (GNN architecture)
+│   ├── som_dataset.py       # Dataset class for molecular graph inputs
+│   └── dualgraph/           # Utilities for dual-graph processing 
+│
+├── pretrain/                # Graph Contrastive Learning (GCL) pretraining code
+│   ├── run_pretrain.py           # For single-GPU  pretraining
+│   ├── run_pretrain_parallel.py # Distributed (multi-GPU) pretraining script
+│   ├── save_graph_pretrain.py   # Saves graphs as torch tensors for pretraining
+│   └── ckpt_pretrain/            # Directory for storing pretrained model checkpoints
+│
+├── output_module/           # Postprocessing module to convert predictions into SDF/metabolite format
+│
+├── infer.py                 # Inference script using the trained model
+├── train.py                 # Main training script for CYP-SoM prediction
+├── save_graph.py            # Utility to save processed graphs
+├── utils.py                 # General-purpose utility functions
+│
+├── requirements.txt         # Python dependencies for the project
+└── README.md                # Project documentation and usage instructions
+
+```
+
+## How to Run
+### 1. Pretraining
 1. Prepare Pretraining Data
    ```bash
    cd pretrain
@@ -58,18 +127,25 @@ Typical installation time: approximately 5-10 minutes (may vary depending on env
    pretrain/ckpt_pretrain/gnn_pretrain.pt
 
    ```
+   
+   After Pretraining
+   ```bash
+   cd ..
 
-3. Prepare Fine-tuning Graph
+   ```
+### 2. Fine-tuning Experiments
+
+1. Prepare Fine-tuning Graph
    ```bash
    python save_graph.py
    ```
 
-4. Train Model
+2. Train Model
    ```bash
    python train.py --seed 42
    ```
 
-5. Inference
+3. Inference
    ```bash
    python -u infer.py --ckpt ckpt/42.pt --th 0.15
    ```
@@ -77,10 +153,14 @@ Typical installation time: approximately 5-10 minutes (may vary depending on env
 ## Demo Execution
 How to run the model with example data:
 ```bash
-python -u infer.py --demo --ckpt ckpt/42.pt --th 0.15
+python -u infer.py --demo
 ```
-- Typical execution time: approximately 0.5 seconds per molecule (CPU), 0.1 seconds (GPU)
-- Batch processing time for 1000 molecules: approximately 2 minutes (on GPU)
+- In demo mode, 1000 molecules are randomly sampled from the test set for inference.
+- Inference is performed with batch size = 1.
+- Execution speed is similar between CPU and GPU.
+- On an NVIDIA RTX 4090 (24GB), processing 1000 molecules takes approximately 28 seconds.
+- On CPU, the same task takes approximately 32 seconds.
+- This mode is useful for quick testing or demonstration of model outputs without training the model or preparing a full dataset.PU)
 
 ## Command Line Usage
 

@@ -14,5 +14,4 @@ pretrain/pretrain_data.parquet
 pretrain/pretrain_data
 !get_probablity.ipynb
 !infer.ipynb
-
-wandb
+output_dir

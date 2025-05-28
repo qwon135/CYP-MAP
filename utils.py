@@ -7,12 +7,10 @@ warnings.filterwarnings('ignore', '')
 warnings.filterwarnings('ignore', '.*Sparse CSR tensor support is in beta state.*')
 
 def som_unbatch(x, num_count, num_mol, mid_list):
-    # print(torch.arange(num_mol).shape, torch.LongTensor(num_count).shape)
     batch = torch.arange(num_mol).repeat_interleave(torch.LongTensor(num_count))
     
     new_dict = {}
     for k,v in x.items():
-        # print(torch.tensor(v).shape, batch.shape)
         x_unbatch = unbatch(torch.tensor(v), batch)
         new_dict[k] = {mid : [round(j,3) for j in i.tolist()] for i, mid in zip(x_unbatch, mid_list)}
             
@@ -156,33 +154,6 @@ class Validator:
         self.spn_atom += batch.spn_atom.tolist()
         self.bonds_idx_h += batch.bonds_idx_h
 
-    # def adjust_substrate(self, sub_th):
-    #     for cyp in self.cyp_list:
-    #         y_prob_sub = torch.FloatTensor(self.y_prob['subs'][cyp])
-    #         n_nodes = torch.LongTensor(self.n_nodes)
-    #         n_edges = torch.LongTensor(self.n_edges)
-
-    #         sub_node = (torch.repeat_interleave(y_prob_sub, n_nodes) > sub_th).long().numpy()
-    #         sub_edge = (torch.repeat_interleave(y_prob_sub, n_edges) > sub_th).long().numpy()
-    
-    #         for task in self.tasks:
-    #             if task == 'subs':
-    #                 continue
-    #             if task in ['bond', 'clv', 'hdx', 'oxi', 'rdc']:
-    #                 self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * sub_edge).tolist()
-    #             else:
-    #                 self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * sub_node).tolist()
-
-    # def adjust_som(self, th):
-    #     for cyp in self.cyp_list:            
-    #         for task in self.tasks:
-    #             if task == 'subs':
-    #                 continue
-    #             if task in ['spn']:
-    #                 self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * (np.array(self.y_prob['atom'][cyp]) >th).astype(int)).tolist()
-    #             elif task in ['clv', 'hdx', 'oxi', 'rdc',]:
-    #                 self.y_prob[task][cyp] = (np.array(self.y_prob[task][cyp]) * (np.array(self.y_prob['bond'][cyp]) >th).astype(int) ).tolist()
-
     def add_loss(self, loss_dict):
         self.valid_loss_dict['total_loss'] += loss_dict['total_loss']
         for cyp in self.cyp_list:
@@ -235,27 +206,6 @@ class Validator:
                 self.y_prob_unbatch[tsk][cyp] = self.som_unbatch(self.y_prob[tsk][cyp], node_batch)
                 self.y_true_unbatch[tsk][cyp] = self.som_unbatch(self.y_true[tsk][cyp], node_batch)        
 
-    # def eq_mean(self):        
-    #     for mol_idx, eq_bonds in enumerate(self.equivalent_bonds):
-    #         for b1, b2 in eq_bonds:
-    #             for tsk in ['bond', 'clv', 'oxi', 'rdc', 'hdx',]:
-    #                 for cyp in self.cyp_list:                                
-    #                     avg_prob = (self.y_prob_unbatch[tsk][cyp][mol_idx][b1] + self.y_prob_unbatch[tsk][cyp][mol_idx][b2])/2
-    #                     self.y_prob_unbatch[tsk][cyp][mol_idx][b1] = avg_prob
-    #                     self.y_prob_unbatch[tsk][cyp][mol_idx][b2] = avg_prob
-
-    #     for mol_idx, eq_atoms in enumerate(self.equivalent_atoms):
-    #         for a1, a2 in eq_atoms:
-    #             for tsk in ['atom', 'spn']:    
-    #                 for cyp in self.cyp_list:                                
-    #                     avg_prob = (self.y_prob_unbatch[tsk][cyp][mol_idx][a1] + self.y_prob_unbatch[tsk][cyp][mol_idx][a2])/2
-    #                     self.y_prob_unbatch[tsk][cyp][mol_idx][a1] = avg_prob
-    #                     self.y_prob_unbatch[tsk][cyp][mol_idx][a2] = avg_prob
-
-    #     for tsk in [ 'bond', 'atom',  'spn', 'hdx', 'clv', 'oxi', 'rdc']:
-    #         for cyp in self.cyp_list:
-    #             self.y_prob[tsk][cyp] = np.concatenate( self.y_prob_unbatch[tsk][cyp], 0).tolist()                
-
     def som_unbatch(self, x, batch):
         batch = torch.from_numpy(batch)
         x = np.array(x)
@@ -290,11 +240,7 @@ def validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args):
         validator.adjust_substrate(args.substrate_th)
     
     metrics = ['jac', 'f1s', 'prc', 'rec', 'auc', 'apc']
-    # validator.unbatch()
 
-    # if args.equivalent_mean:
-    #     validator.unbatch()
-    #     validator.eq_mean()
 
     for cyp in model.cyp_list:
         scores[cyp] = {}
@@ -304,9 +250,6 @@ def validation(model, valid_loader, loss_fn_ce, loss_fn_bce, args):
             y_true, y_prob = validator.get_probs(task, cyp)
             scores[cyp][f'n_{task}'] = f'{int(sum(y_true))} / {len(y_true)}'
             if task != 'som':
-                # if task in ['dea', 'epo', 'oxi', 'dha', 'dhy']:
-                #     scores[cyp][f'{task}_loss'] = validator.valid_loss_dict[f'{cyp}_bond_{task}_loss']
-                # else:
                 scores[cyp][f'{task}_loss'] = validator.valid_loss_dict[f'{cyp}_{task}_loss']
 
             if task == 'subs':
