@@ -5,7 +5,7 @@
 CYP-MAP is a multi-level graph neural network (GNN) model designed to predict sites of metabolism (SoM) by Cytochrome P450 (CYP) enzymes, which play a key role in drug metabolism. By analyzing the molecular structure of drug candidates, CYP-MAP identifies potential metabolic sites, reaction types, and CYP450 subtypes. Developed using experimentally validated metabolic data from DrugBank and other sources, the model integrates global, bond, and atom-level representations to capture both local reactivity and broader molecular properties. This predictive capability supports drug optimization for improved efficacy and safety.
 
 ## Supported Environment
-- **Operating Systems**: Linux (Ubuntu 18.04 or higher recommended), macOS
+- **Operating Systems**: Linux (Ubuntu 18.04 or higher recommended)
 - **Programming Language**: Python 3.8 or higher
 - **GPU Support**: CUDA 11.8 or higher (multi-GPU support)
 
