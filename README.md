@@ -171,8 +171,8 @@ python output_module --smiles 'CC1=C(C=C(C=C1)NC2=NC=CC(=N2)N(C)C3=CC4=NN(C(=C4C
 
 ### When the input is Structural Data File (SDF):
 ```bash
-python output_module --sdf "./example_molecules.sdf" --subtype sub9 --base_dir "./output_dir/"
-python output_module --sdf "./example_molecules.sdf" --subtype sub9 --mode broad --base_dir "./output_dir/"
+python output_module --sdf "./data/example_molecule.sdf" --subtype sub9 --base_dir "./output_dir/"
+python output_module --sdf "./data/example_molecule.sdf" --subtype sub9 --mode broad --base_dir "./output_dir/"
 ```
 
 ### Input Type Options:
@@ -208,3 +208,4 @@ python output_module --sdf "./example_molecules.sdf" --subtype sub9 --mode broad
   - `Decoys_cypreact_Drug_like.sdf`: Training data with molecules that have no known CYP reactions
   - `cyp_map_test.sdf`: Specially curated test dataset for model evaluation
   - `cyp_map_train_with_decoy.sdf`: Combined dataset containing both CYP reactions (from cyp_map_train) and decoy molecules
+  - `example_molecule.sdf`: A single-molecule SDF file containing Nirmatrelvir, provided as an example input for demonstrating CYP-MAP execution.
