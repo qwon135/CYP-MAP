@@ -160,7 +160,7 @@ python -u infer.py --demo
 - Execution speed is similar between CPU and GPU.
 - On an NVIDIA RTX 4090 (24GB), processing 1000 molecules takes approximately 28 seconds.
 - On CPU, the same task takes approximately 32 seconds.
-- This mode is useful for quick testing or demonstration of model outputs without training the model or preparing a full dataset.PU)
+- This mode is useful for quick testing or demonstration of model outputs without training the model or preparing a full dataset.
 
 ## Command Line Usage
 
