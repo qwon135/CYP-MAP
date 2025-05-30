@@ -67,7 +67,6 @@ pip install -r requirements.txt
 ## Project Structure
 
 ```bash
-MetaboGNN/
 CYP-MAP/
 │
 ├── modules/                 # Core modules for molecule processing and model components
@@ -161,6 +160,16 @@ python -u infer.py --demo
 - Inference takes ~28 seconds on an NVIDIA RTX 4090, and ~32 seconds on CPU.
 
 ## Command Line Usage
+
+### 🔄 Inference with Fine-tuned Model Checkpoints
+
+To facilitate reproducibility, we provide fine-tuned model checkpoints that can be used to reproduce the inference results without retraining.
+🔗 [Download checkpoints (ckpt.zip)](https://drive.google.com/file/d/1DLw63esltA2cvgn_fIfmhqgQGjgjoXNR/view?usp=drive_link)
+Please unzip `ckpt.zip` into the root directory of the project (`CYP-MAP/`) so that the following structure is maintained:
+```bash
+CYP-MAP/
+├── ckpt/
+```
 
 ### When the input is SMILES:
 ```bash
