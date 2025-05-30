@@ -2,7 +2,7 @@
 ![Model Architecture](data/img.png)
 
 ### Overview
-CYP-MAP is a multi-level graph neural network (GNN) model designed to predict sites of metabolism (SoM) by Cytochrome P450 (CYP) enzymes, which play a key role in drug metabolism. By analyzing the molecular structure of drug candidates, CYP-MAP identifies potential metabolic sites, reaction types, and CYP450 subtypes. Developed using experimentally validated metabolic data from DrugBank and other sources, the model integrates global, bond, and atom-level representations to capture both local reactivity and broader molecular properties. This predictive capability supports drug optimization for improved efficacy and safety.
+CYP-MAP is a multi-level graph neural network (GNN) model designed to predict sites of metabolism (SoM) by Cytochrome P450 (CYP) enzymes, which play a key role in drug metabolism. By analyzing the molecular structure of drug candidates, CYP-MAP identifies potential metabolic sites, reaction types, and CYP450 subtypes. Developed using experimentally validated metabolic data from DrugBank and other sources, the model integrates global, bond, and atom-level representations to capture both local reactivity and broader molecular properties. This predictive capability supports drug optimization for improved efficacy and safety. You can also try CYP-MAP directly through the web interface at https://chembioinfo.com/CYP-MAP/.
 
 ## Supported Environment
 - **Operating Systems**: Linux (Ubuntu 18.04 or higher recommended)
@@ -14,7 +14,7 @@ CYP-MAP is a multi-level graph neural network (GNN) model designed to predict si
 This project is tested and recommended to run on Ubuntu (Linux) environments with Python 3.9+ and GPU support.
 
 ```bash
-git clonehttps://github.com/qwon135/CYP-MAP.git
+git clone https://github.com/qwon135/CYP-MAP.git
 cd CYP-MAP
 ```
 ### ⚠️ CUDA Runtime Requirement
@@ -155,12 +155,10 @@ How to run the model with example data:
 ```bash
 python -u infer.py --demo
 ```
-- In demo mode, 1000 molecules are randomly sampled from the test set for inference.
-- Inference is performed with batch size = 1.
-- Execution speed is similar between CPU and GPU.
-- On an NVIDIA RTX 4090 (24GB), processing 1000 molecules takes approximately 28 seconds.
-- On CPU, the same task takes approximately 32 seconds.
-- This mode is useful for quick testing or demonstration of model outputs without training the model or preparing a full dataset.
+- In demo mode, 1000 molecules are randomly sampled with replacement from the test set, and inference is performed with a batch size of 1.
+- No pretrained model or checkpoint is required.
+- It is intended for quick functionality checks, not for performance evaluation.  
+- Inference takes ~28 seconds on an NVIDIA RTX 4090, and ~32 seconds on CPU.
 
 ## Command Line Usage
 
@@ -186,21 +184,17 @@ python output_module --sdf "./data/example_molecule.sdf" --subtype sub9 --mode b
 
 ### Prediction Window (--mode):
 - `--mode`: Prediction mode. Options: 'default', 'broad'
-  - **Default**: An optimized option without coverage constraints
-  - **Broad**: An option optimized under the condition of 80% SOM (Site of Metabolism) coverage
+  - **default**: An optimized option without coverage constraints
+  - **broad**: An option optimized under the condition of 80% SOM (Site of Metabolism) coverage
 
-### Output Type:
-- `--output_type`: Type of output to generate (e.g., default, only-som, json)
+### Output Type (--output_type):
+- `--output_type`: Type of output to generate (e.g., default, only-som, raw-score)
+- **default**: Displays both the predicted SoMs and the corresponding metabolites. Only the SoMs linked to a generated metabolite are highlighted. Metabolite generation depends on the predicted SoM, reaction type, and SMIRKS template coverage.
+- **only-som**: Displays only the predicted Sites of Metabolism without generating metabolites. Useful for focused analysis of metabolic sites without structural transformation.
+- **raw-score**: Outputs the raw prediction scores for all candidate sites without additional visualization or classification. Suitable for custom thresholding or post-processing.
 
 ### Output Path:
 - `--base_dir`: Base directory to save outputs
-
-### Algorithm Description
-- CYP-MAP uses molecular graph representation and graph neural networks to predict drug metabolism sites. Key features:
-
-### Self-supervised graph contrastive learning
-- Utilization of atomic and bond properties of molecular structures
-- Prediction of metabolism sites for various CYP isoforms
 
 ## Example Dataset
 - `data/` directory contains the following files:
