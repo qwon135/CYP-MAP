@@ -55,10 +55,7 @@ conda install conda-forge::pytorch_geometric
 conda install pytorch-scatter=2.1.2 -c pyg
 conda install pytorch-sparse=0.6.18 -c pyg
 
-# 📝 Note:
-# Make sure the CUDA versions match across PyTorch, DGL, and PyG.
-# If any installation fails, try upgrading pip & setuptools:
-# python -m pip install --upgrade pip setuptools
+
 pip install -r requirements.txt
 ```
 
