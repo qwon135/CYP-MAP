@@ -149,7 +149,7 @@ CYP-MAP/
    python -u infer.py --ckpt ckpt/42.pt --th 0.15
    ```
 
-## Demo Execution
+### Demo Execution
 How to run the model with example data:
 ```bash
 python -u infer.py --demo
@@ -159,7 +159,6 @@ python -u infer.py --demo
 - It is intended for quick functionality checks, not for performance evaluation.  
 - Inference takes ~28 seconds on an NVIDIA RTX 4090, and ~32 seconds on CPU.
 
-## 📤 Command Line Usage
 
 ### 🔄 Inference with Fine-tuned Model Checkpoints
 
@@ -174,6 +173,8 @@ CYP-MAP/
 ├── ckpt/         # directory with fine-tuned model checkpoints for inference
 │   ├── *.pt      # checkpoint files used during model inference
 ```
+
+## 📤 Command Line Usage for SoM and Metabolite Prediction
 
 ### ✅ When the input is SMILES:
 ```bash
