@@ -159,24 +159,28 @@ python -u infer.py --demo
 - It is intended for quick functionality checks, not for performance evaluation.  
 - Inference takes ~28 seconds on an NVIDIA RTX 4090, and ~32 seconds on CPU.
 
-## Command Line Usage
+## 📤 Command Line Usage
 
 ### 🔄 Inference with Fine-tuned Model Checkpoints
 
 To facilitate reproducibility, we provide fine-tuned model checkpoints that can be used to reproduce the inference results without retraining.
+
 🔗 [Download checkpoints (ckpt.zip)](https://drive.google.com/file/d/1DLw63esltA2cvgn_fIfmhqgQGjgjoXNR/view?usp=drive_link)
+
 Please unzip `ckpt.zip` into the root directory of the project (`CYP-MAP/`) so that the following structure is maintained:
+
 ```bash
 CYP-MAP/
-├── ckpt/
+├── ckpt/         # directory with fine-tuned model checkpoints for inference
+│   ├── *.pt      # checkpoint files used during model inference
 ```
 
-### When the input is SMILES:
+### ✅ When the input is SMILES:
 ```bash
 python output_module --smiles 'CC1=C(C=C(C=C1)NC2=NC=CC(=N2)N(C)C3=CC4=NN(C(=C4C=C3)C)C)S(=O)(=O)N' --subtype sub9 --base_dir "./output_dir/"
 ```
 
-### When the input is Structural Data File (SDF):
+### ✅ When the input is Structural Data File (SDF):
 ```bash
 python output_module --sdf "./data/example_molecule.sdf" --subtype sub9 --base_dir "./output_dir/"
 python output_module --sdf "./data/example_molecule.sdf" --subtype sub9 --mode broad --base_dir "./output_dir/"
@@ -205,7 +209,7 @@ python output_module --sdf "./data/example_molecule.sdf" --subtype sub9 --mode b
 ### Output Path:
 - `--base_dir`: Base directory to save outputs
 
-## Example Dataset
+## 🧾 Example Dataset
 - `data/` directory contains the following files:
   - `cyp_map_train.sdf`: Training data for known CYP reactions
   - `Decoys_cypreact_Drug_like.sdf`: Training data with molecules that have no known CYP reactions
