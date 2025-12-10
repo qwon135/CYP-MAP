@@ -35,7 +35,7 @@ nvidia-smi
 ```
 
 🔗 Download CUDA 11.8 Runtime:
-- MetaboGNN is tested with CUDA 11.8. If `nvidia-smi` does not work or your driver is outdated, install the CUDA 11.8 runtime (used in our experiments) 
+- CYP-MAP is tested with CUDA 11.8. If `nvidia-smi` does not work or your driver is outdated, install the CUDA 11.8 runtime (used in our experiments) 
 - here: 👉 https://developer.nvidia.com/cuda-11-8-0-download-archive
 
 ### 🧪 Environment Setup (with conda)
@@ -55,10 +55,7 @@ conda install conda-forge::pytorch_geometric
 conda install pytorch-scatter=2.1.2 -c pyg
 conda install pytorch-sparse=0.6.18 -c pyg
 
-# 📝 Note:
-# Make sure the CUDA versions match across PyTorch, DGL, and PyG.
-# If any installation fails, try upgrading pip & setuptools:
-# python -m pip install --upgrade pip setuptools
+
 pip install -r requirements.txt
 ```
 
@@ -67,7 +64,6 @@ pip install -r requirements.txt
 ## Project Structure
 
 ```bash
-MetaboGNN/
 CYP-MAP/
 │
 ├── modules/                 # Core modules for molecule processing and model components
@@ -150,7 +146,7 @@ CYP-MAP/
    python -u infer.py --ckpt ckpt/42.pt --th 0.15
    ```
 
-## Demo Execution
+### Demo Execution
 How to run the model with example data:
 ```bash
 python -u infer.py --demo
@@ -160,14 +156,29 @@ python -u infer.py --demo
 - It is intended for quick functionality checks, not for performance evaluation.  
 - Inference takes ~28 seconds on an NVIDIA RTX 4090, and ~32 seconds on CPU.
 
-## Command Line Usage
 
-### When the input is SMILES:
+### 🔄 Inference with Fine-tuned Model Checkpoints
+
+To facilitate reproducibility, we provide fine-tuned model checkpoints that can be used to reproduce the inference results without retraining.
+
+🔗 [Download checkpoints (ckpt.zip)](https://drive.google.com/file/d/1DLw63esltA2cvgn_fIfmhqgQGjgjoXNR/view?usp=drive_link)
+
+Please unzip `ckpt.zip` into the root directory of the project (`CYP-MAP/`) so that the following structure is maintained:
+
+```bash
+CYP-MAP/
+├── ckpt/         # directory with fine-tuned model checkpoints for inference
+│   ├── *.pt      # checkpoint files used during model inference
+```
+
+## 📤 Command Line Usage for SoM and Metabolite Prediction
+
+### ✅ When the input is SMILES:
 ```bash
 python output_module --smiles 'CC1=C(C=C(C=C1)NC2=NC=CC(=N2)N(C)C3=CC4=NN(C(=C4C=C3)C)C)S(=O)(=O)N' --subtype sub9 --base_dir "./output_dir/"
 ```
 
-### When the input is Structural Data File (SDF):
+### ✅ When the input is Structural Data File (SDF):
 ```bash
 python output_module --sdf "./data/example_molecule.sdf" --subtype sub9 --base_dir "./output_dir/"
 python output_module --sdf "./data/example_molecule.sdf" --subtype sub9 --mode broad --base_dir "./output_dir/"
@@ -196,7 +207,7 @@ python output_module --sdf "./data/example_molecule.sdf" --subtype sub9 --mode b
 ### Output Path:
 - `--base_dir`: Base directory to save outputs
 
-## Example Dataset
+## 🧾 Example Dataset
 - `data/` directory contains the following files:
   - `cyp_map_train.sdf`: Training data for known CYP reactions
   - `Decoys_cypreact_Drug_like.sdf`: Training data with molecules that have no known CYP reactions
