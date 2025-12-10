@@ -5,6 +5,7 @@ from multiprocessing import Pool
 from rdkit.Chem import Draw, PandasTools
 import sys
 import os
+
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(os.path.dirname(current_dir))
 sys.path.append(parent_dir)
@@ -21,16 +22,20 @@ import json
 warnings.filterwarnings('ignore', '.*Sparse CSR tensor support is in beta state.*')
 warnings.filterwarnings('ignore', '')
 
+
 def sort_atoms_by_canonical_rank(mol):
     ranks = Chem.CanonicalRankAtoms(mol)
     atom_order = sorted(range(len(ranks)), key=lambda x: ranks[x])
     sorted_mol = Chem.RenumberAtoms(mol, atom_order)
     return sorted_mol
+
+
 def sort_atoms_by_atomic_number(mol):
     mol = sort_atoms_by_canonical_rank(mol)
     atom_order = sorted(range(mol.GetNumAtoms()), key=lambda i: mol.GetAtomWithIdx(i).GetAtomicNum(), reverse=True)
     sorted_mol = Chem.RenumberAtoms(mol, atom_order)
     return sorted_mol
+
 
 def load_sdf_file(file_path):
     ro_mols = []
@@ -44,7 +49,7 @@ def load_sdf_file(file_path):
                 x_with_h = Chem.AddHs(x, addCoords=True)
                 Chem.SanitizeMol(x_with_h)
                 for idx, atom in enumerate(x_with_h.GetAtoms()):
-                  atom.SetAtomMapNum(idx + 1)
+                    atom.SetAtomMapNum(idx + 1)
                 sanitized_mols.append(x_with_h)
             except:
                 sanitized_mols.append('')
@@ -53,6 +58,7 @@ def load_sdf_file(file_path):
     df['ROMol'] = ro_mols
     df['Molecules'] = sanitized_mols
     return df
+
 
 def process_single_smiles(smiles):
     sanitized_mol = None
@@ -68,13 +74,16 @@ def process_single_smiles(smiles):
             sanitized_mol = None
     return pd.DataFrame({'SMILES': [smiles], 'Molecules': [sanitized_mol], 'ROMol': [mol]})
 
+
 def CYP_REACTION(x):
     cyp_col = ['BOM_1A2', 'BOM_2A6', 'BOM_2B6', 'BOM_2C8', 'BOM_2C9', 'BOM_2C19', 'BOM_2D6', 'BOM_2E1', 'BOM_3A4']
     cyp_reactions = x[cyp_col].tolist()
     cyp_reactions = [i for i in cyp_reactions if i]
     return '\n'.join(cyp_reactions)
 
+
 cyp_list = [f'BOM_{i}' for i in '1A2 2A6 2B6 2C8 2C9 2C19 2D6 2E1 3A4'.split()] + ['CYP_REACTION']
+
 
 class CONFIG:
     substrate_loss_weight = 0.33
@@ -93,7 +102,10 @@ class CONFIG:
     reduction = 'sum'
     metric_mode = 'bond'
     n_classes = 5
+
+
 config = CONFIG()
+
 
 def run_model_validation(model_path, test_df):
     model = CYPMAP_GNN(
@@ -127,17 +139,17 @@ def run_model_validation(model_path, test_df):
         for key in validator.y_prob.keys():
             validator_data[key] = {}
             if key not in validator.y_prob_unbatch:
-                for sub_key in validator.y_prob[key].keys():              
+                for sub_key in validator.y_prob[key].keys():
                     y_prob_data = validator.y_prob[key][sub_key]
                     data_list = []
 
                     for idx in range(test_df.shape[0]):
                         test_id = test_df.loc[idx, 'POS_ID']
-                        y_prob_mol = y_prob_data[idx]                        
+                        y_prob_mol = y_prob_data[idx]
 
                         data_list.append({
                             'id': test_id,
-                            'y_prob': y_prob_mol,                            
+                            'y_prob': y_prob_mol,
                         })
 
                     validator_data[key][sub_key] = data_list
@@ -156,8 +168,8 @@ def run_model_validation(model_path, test_df):
 
                         data_list.append({
                             'id': test_id,
-                            'y_prob': y_prob_mol.tolist(),                            
-                            'len_y_prob': len(y_prob_mol),                            
+                            'y_prob': y_prob_mol.tolist(),
+                            'len_y_prob': len(y_prob_mol),
                         })
 
                     validator_data[key][sub_key] = data_list
@@ -166,6 +178,7 @@ def run_model_validation(model_path, test_df):
 
     validator_data = collect_validator_data(validator, test_df)
     return validator_data
+
 
 def calculate_max_SOM_data(data):
     max_data = {}
@@ -177,17 +190,18 @@ def calculate_max_SOM_data(data):
 
     for key in data.keys():
         for sub_key in data[key].keys():
-          if sub_key != 'CYP_REACTION':
-            for i in range(len(data[key][sub_key])):
-                max_data[key]['max'][i]['y_prob'].append(data[key][sub_key][i]['y_prob'])
+            if sub_key != 'CYP_REACTION':
+                for i in range(len(data[key][sub_key])):
+                    max_data[key]['max'][i]['y_prob'].append(data[key][sub_key][i]['y_prob'])
 
     for key in max_data.keys():
         for sub_key in max_data[key].keys():
             for i in range(len(max_data[key][sub_key])):
-                y_prob_list = np.array(max_data[key][sub_key][i]['y_prob'])                
+                y_prob_list = np.array(max_data[key][sub_key][i]['y_prob'])
                 max_data[key][sub_key][i]['y_prob'] = np.max(y_prob_list, axis=0).tolist()
 
     return max_data
+
 
 def calculate_mean_data(data_list):
     mean_data = {}
@@ -199,33 +213,36 @@ def calculate_mean_data(data_list):
 
     for data in data_list:
         for key in data.keys():
-            for sub_key in data[key].keys():
-                for i in range(len(data[key][sub_key])):
-                    mean_data[key][sub_key][i]['y_prob'].append(data[key][sub_key][i]['y_prob'])                    
+            for key in data.keys():
+                for sub_key in data[key].keys():
+                    for i in range(len(data[key][sub_key])):
+                        mean_data[key][sub_key][i]['y_prob'].append(data[key][sub_key][i]['y_prob'])
 
     for key in mean_data.keys():
         for sub_key in mean_data[key].keys():
             for i in range(len(mean_data[key][sub_key])):
                 y_prob_list = np.array(mean_data[key][sub_key][i]['y_prob'])
-                
+
                 mean_data[key][sub_key][i]['y_prob'] = np.mean(y_prob_list, axis=0).tolist()
 
     max_data = calculate_max_SOM_data(mean_data)
     for key in mean_data.keys():
-      mean_data[key]['max'] = {}
-      mean_data[key]['max'] = max_data[key]['max']
+        mean_data[key]['max'] = {}
+        mean_data[key]['max'] = max_data[key]['max']
 
     return mean_data
 
+
 def main(smiles=None, sdf=None, subtype='all', base_dir='./output', output_type='default',
-         mode = 'default'):
+         mode='default', custom_threshold=0.5):  # custom_threshold 인자 추가
     if sdf:
         test_df = load_sdf_file(sdf)
     if smiles:
         test_df = process_single_smiles(smiles)
 
     test_df['POS_ID'] = 'MOL' + test_df.index.astype(str).str.zfill(4)
-    name_dict = {'1A2': 'BOM_1A2', '2A6': 'BOM_2A6','2B6': 'BOM_2B6','2C8': 'BOM_2C8','2C9': 'BOM_2C9','2C19': 'BOM_2C19',
+    name_dict = {'1A2': 'BOM_1A2', '2A6': 'BOM_2A6', '2B6': 'BOM_2B6', '2C8': 'BOM_2C8', '2C9': 'BOM_2C9',
+                 '2C19': 'BOM_2C19',
                  '2D6': 'BOM_2D6', '2E1': 'BOM_2E1', '3A4': 'BOM_3A4', 'all': 'CYP_REACTION', 'sub9': 'max'}
 
     subtype = name_dict[subtype]
@@ -245,7 +262,7 @@ def main(smiles=None, sdf=None, subtype='all', base_dir='./output', output_type=
     seed_mean_output = calculate_mean_data(output_data)
     image_dir_path = os.path.join(base_dir, f'image_output_{timestamp}')
     metabolite_path = os.path.join(base_dir, f'metabolite_output_{timestamp}')
-    #metabolite_image_path = os.path.join(metabolite_path, 'images')
+    # metabolite_image_path = os.path.join(metabolite_path, 'images')
     os.makedirs(image_dir_path, exist_ok=True)
 
     subtypes_threshold = {
@@ -261,38 +278,45 @@ def main(smiles=None, sdf=None, subtype='all', base_dir='./output', output_type=
         'CYP_REACTION': {'thr': 0.23, 'subthr': 0.55, 'som_thr': 0.23, 'low_thr': 0.12}
     }
 
-    if output_type == 'only-som':
-     if mode != 'broad':
-        if subtype == 'max':
-            SoM_to_image(test_df, seed_mean_output, image_dir_path, 'max', 0.26, 0.53)
-            for key in subtypes_threshold.keys():
-                if key != 'CYP_REACTION':
-                    threshold = subtypes_threshold[key]['som_thr']
-                    sub_threshold = subtypes_threshold[key]['subthr']
-                    SoM_to_image(test_df, seed_mean_output, image_dir_path, key, threshold, sub_threshold)
-        else:
-            threshold = subtypes_threshold[subtype]['som_thr']
-            sub_threshold = subtypes_threshold[subtype]['subthr']
-            SoM_to_image(test_df, seed_mean_output, image_dir_path, subtype, threshold, sub_threshold)
+    if mode == 'custom':
+        print(f"Running in Custom Mode with threshold: {custom_threshold}")
+        for key in subtypes_threshold:
+            subtypes_threshold[key]['thr'] = custom_threshold
+            subtypes_threshold[key]['som_thr'] = custom_threshold
+            subtypes_threshold[key]['low_thr'] = custom_threshold
 
-     else:
-        if subtype == 'max':
-            SoM_to_image(test_df, seed_mean_output, image_dir_path, 'max', 0.15, 0.53)
-            for key in subtypes_threshold.keys():
-                if key != 'CYP_REACTION':
-                    threshold = subtypes_threshold[key]['low_thr']
-                    sub_threshold = subtypes_threshold[key]['subthr']
-                    SoM_to_image(test_df, seed_mean_output, image_dir_path, key, threshold, sub_threshold)
+    if output_type == 'only-som':
+        if mode != 'broad':
+            if subtype == 'max':
+                SoM_to_image(test_df, seed_mean_output, image_dir_path, 'max', 0.26, 0.53)
+                for key in subtypes_threshold.keys():
+                    if key != 'CYP_REACTION':
+                        threshold = subtypes_threshold[key]['som_thr']
+                        sub_threshold = subtypes_threshold[key]['subthr']
+                        SoM_to_image(test_df, seed_mean_output, image_dir_path, key, threshold, sub_threshold)
+            else:
+                threshold = subtypes_threshold[subtype]['som_thr']
+                sub_threshold = subtypes_threshold[subtype]['subthr']
+                SoM_to_image(test_df, seed_mean_output, image_dir_path, subtype, threshold, sub_threshold)
+
         else:
-            threshold = subtypes_threshold[subtype]['low_thr']
-            sub_threshold = subtypes_threshold[subtype]['subthr']
-            SoM_to_image(test_df, seed_mean_output, image_dir_path, subtype, threshold, sub_threshold)
+            if subtype == 'max':
+                SoM_to_image(test_df, seed_mean_output, image_dir_path, 'max', 0.15, 0.53)
+                for key in subtypes_threshold.keys():
+                    if key != 'CYP_REACTION':
+                        threshold = subtypes_threshold[key]['low_thr']
+                        sub_threshold = subtypes_threshold[key]['subthr']
+                        SoM_to_image(test_df, seed_mean_output, image_dir_path, key, threshold, sub_threshold)
+            else:
+                threshold = subtypes_threshold[subtype]['low_thr']
+                sub_threshold = subtypes_threshold[subtype]['subthr']
+                SoM_to_image(test_df, seed_mean_output, image_dir_path, subtype, threshold, sub_threshold)
 
     if output_type == 'raw-score':
         score_json_path = os.path.join(base_dir, f'score_dict_{timestamp}.json')
         with open(score_json_path, 'w') as json_file:
             json.dump(seed_mean_output, json_file, indent=4)
-        aligned_sdf_path  = os.path.join(base_dir, f'aligned_molecules_{timestamp}.sdf')
+        aligned_sdf_path = os.path.join(base_dir, f'aligned_molecules_{timestamp}.sdf')
         writer = Chem.SDWriter(aligned_sdf_path)
         for i, row in test_df.iterrows():
             if row['ROMol'] and isinstance(row['ROMol'], Chem.Mol):
@@ -303,25 +327,26 @@ def main(smiles=None, sdf=None, subtype='all', base_dir='./output', output_type=
     if output_type == 'default':
         os.makedirs(metabolite_path, exist_ok=True)
         # os.makedirs(metabolite_image_path, exist_ok=True)
-        if mode in ['default', 'broad']:
+        if mode in ['default', 'broad', 'custom']:
             metabolite_output = make_reaction_output_reaction(test_df, seed_mean_output, subtypes_threshold, mode,
-                                                     prediction_type=subtype,
-                                                     reaction_rules=reaction_rules)
+                                                              prediction_type=subtype,
+                                                              reaction_rules=reaction_rules)
             SoM_to_image_metabolite(test_df, seed_mean_output, image_dir_path, subtype, 0, 0, metabolite_output)
             if subtype == 'max':
                 for key in subtypes_threshold.keys():
                     if key != 'CYP_REACTION':
                         threshold = subtypes_threshold[key]['low_thr'] if mode == 'broad' else subtypes_threshold[key]['som_thr']
                         sub_threshold = subtypes_threshold[key]['subthr']
-                        SoM_to_image_metabolite(test_df, seed_mean_output, image_dir_path, key, threshold, sub_threshold, metabolite_output)
+                        SoM_to_image_metabolite(test_df, seed_mean_output, image_dir_path, key, threshold,sub_threshold, metabolite_output)
             save_metabolites_to_sdf_total(metabolite_output, metabolite_path, subtypes_threshold)
 
-        #sdf_files = [f for f in os.listdir(metabolite_path) if f.endswith('.sdf')]
-        #for sdf_file in sdf_files:
-            #pos_id = sdf_file.split('_')[0]
-            #template = test_df.loc[test_df['POS_ID'] == pos_id, 'ROMol'].values[0]
-            #AllChem.Compute2DCoords(template)
-            #save_metabolite_image_web(metabolite_path, sdf_file, template, metabolite_image_path)
+        # sdf_files = [f for f in os.listdir(metabolite_path) if f.endswith('.sdf')]
+        # for sdf_file in sdf_files:
+        # pos_id = sdf_file.split('_')[0]
+        # template = test_df.loc[test_df['POS_ID'] == pos_id, 'ROMol'].values[0]
+        # AllChem.Compute2DCoords(template)
+        # save_metabolite_image_web(metabolite_path, sdf_file, template, metabolite_image_path)
+        
     print('Done')
 
 if __name__ == "__main__":
@@ -329,11 +354,18 @@ if __name__ == "__main__":
         description="Process a molecule (SMILES or SDF) and generate images and metabolites.")
     parser.add_argument('--smiles', type=str, help='SMILES string of the molecule.')
     parser.add_argument('--sdf', type=str, help='Path to the SDF file.')
-    parser.add_argument('--subtype', type=str, default='all', help="Subtype to predict. Options: 'sub9', 'all', '1A2', '2A6', '2B6', '2C8', '2C9', '2C19', '2D6', '2E1', '3A4'")
+    parser.add_argument('--subtype', type=str, default='all',
+                        help="Subtype to predict. Options: 'sub9', 'all', '1A2', '2A6', '2B6', '2C8', '2C9', '2C19', '2D6', '2E1', '3A4'")
     parser.add_argument('--base_dir', type=str, default='./output', help='Base directory to save outputs.')
-    parser.add_argument('--output_type', type=str, default='default', help='Type of output to generate (e.g., default, only-som, raw-score).')
-    parser.add_argument('--mode', type=str, default='default', help="Prediction mode. Options: 'default', 'broad'.")
+    parser.add_argument('--output_type', type=str, default='default',
+                        help='Type of output to generate (e.g., default, only-som, raw-score).')
+
+    parser.add_argument('--mode', type=str, default='default',
+                        help="Prediction mode. Options: 'default', 'broad', 'custom'.")
+    parser.add_argument('--custom_threshold', type=float, default=0.5,
+                        help='Threshold value for custom mode (default: 0.5).')
 
     args = parser.parse_args()
 
-    main(smiles=args.smiles, sdf=args.sdf, subtype=args.subtype, base_dir=args.base_dir, output_type=args.output_type, mode=args.mode)
+    main(smiles=args.smiles, sdf=args.sdf, subtype=args.subtype, base_dir=args.base_dir,
+         output_type=args.output_type, mode=args.mode, custom_threshold=args.custom_threshold)
