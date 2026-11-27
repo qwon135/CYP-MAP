@@ -1,0 +1,4 @@
+raw_Smiles,SMI_Idx,Status,std_Smiles,Smiles_marked,Enzyme,Enzyme_score,SOMs,Scores,RXN_Type,Uncertainty,Products,SOM_Type
+CCCCCCCCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F,74,0,CCCCCCCCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F,FC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)CCCCCCC[CH3:1],CYP2E1,0.6678851697593927,0.0,0.72,Hydroxylation,L,['OCCCCCCCCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F'],AOM
+CCCCCCCCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F,74,0,CCCCCCCCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F,C[CH2:1]CCCCCCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F,CYP2E1,0.6678851697593927,1.0,0.91,Hydroxylation,L,['CC(O)CCCCCCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F'],AOM
+CCCCCCCCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F,74,0,CCCCCCCCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F,CC[CH2:1]CCCCCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F,CYP2E1,0.6678851697593927,2.0,0.7,Hydroxylation,L,['CCC(O)CCCCCC(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F'],AOM

@@ -1,0 +1,3 @@
+raw_Smiles,SMI_Idx,Status,std_Smiles,Smiles_marked,Enzyme,Enzyme_score,SOMs,Scores,RXN_Type,Uncertainty,Products,SOM_Type
+[NH2:1][C:2](=[O:3])[O:4][CH:5]=[CH2:6],99,0,[NH2:1][C:2](=[O:3])[O:4][CH:5]=[CH2:6],[NH2:1][C:2]([O:2][CH:2]=[CH2:6])=[O:3],CYP2E1,0.9800743460655212,3.0,0.58,Dealkylation,H,"['C=C=O', 'NC(=O)O']",BOM
+[NH2:1][C:2](=[O:3])[O:4][CH:5]=[CH2:6],99,0,[NH2:1][C:2](=[O:3])[O:4][CH:5]=[CH2:6],[NH2:1][C:2](=[O:3])[O:4][CH:2]=[CH2:2],CYP2E1,0.9800743460655212,4.0,0.82,Epoxidation,H,['NC(=O)OC1CO1'],BOM

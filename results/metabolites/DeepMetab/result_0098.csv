@@ -1,0 +1,4 @@
+raw_Smiles,SMI_Idx,Status,std_Smiles,Smiles_marked,Enzyme,Enzyme_score,SOMs,Scores,RXN_Type,Uncertainty,Products,SOM_Type
+[Cl:1][CH:2]=[CH2:3],98,0,[Cl:1][CH:2]=[CH2:3],[Cl:2][CH:2]=[CH2:3],CYP2E1,0.9969967842102052,0.0,0.73,Dehalogenation,H,['C=CO'],BOM
+[Cl:1][CH:2]=[CH2:3],98,0,[Cl:1][CH:2]=[CH2:3],[Cl:1][CH:2]=[CH2:2],CYP2E1,0.9969967842102052,1.0,0.95,Epoxidation,H,['ClC1CO1'],BOM
+[Cl:1][CH:2]=[CH2:3],98,0,[Cl:1][CH:2]=[CH2:3],[Cl:1][CH:2]=[CH2:2],CYP2A6,0.79443449229002,1.0,0.96,Epoxidation,L,['ClC1CO1'],BOM

@@ -1,0 +1,3 @@
+raw_Smiles,SMI_Idx,Status,std_Smiles,Smiles_marked,Enzyme,Enzyme_score,SOMs,Scores,RXN_Type,Uncertainty,Products,SOM_Type
+NC(=O)c1ncn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)n1,57,0,NC(=O)c1ncn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)n1,NC(=O)c1ncn([C@@H]2O[C@H]([CH2:2][OH:2])[C@@H](O)[C@H]2O)n1,CYP3A4,0.9110631465911864,10.0,0.79,C-O Oxidation,H,['NC(=O)c1ncn([C@@H]2O[C@H](C=O)[C@@H](O)[C@H]2O)n1'],BOM
+NC(=O)c1ncn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)n1,57,0,NC(=O)c1ncn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)n1,NC(=O)c1ncn([C@@H]2O[C@H](CO)[C@@H:2]([OH:2])[C@H]2O)n1,CYP3A4,0.9110631465911864,12.0,0.69,C-O Oxidation,H,['NC(=O)c1ncn([C@@H]2O[C@H](CO)C(=O)[C@H]2O)n1'],BOM

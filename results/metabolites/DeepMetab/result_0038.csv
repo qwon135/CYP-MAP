@@ -1,0 +1,16 @@
+raw_Smiles,SMI_Idx,Status,std_Smiles,Smiles_marked,Enzyme,Enzyme_score,SOMs,Scores,RXN_Type,Uncertainty,Products,SOM_Type
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,COc1cc(OC)c(OC)cc1/C=C/[CH3:1],CYP2D6,0.8963820695877075,0.0,0.98,Hydroxylation,H,['COc1cc(OC)c(OC)cc1/C=C/CO'],AOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,COc1cc(OC)c(OC)cc1/C=C/[CH3:1],CYP1A2,0.8395579814910888,0.0,0.97,Hydroxylation,H,['COc1cc(OC)c(OC)cc1/C=C/CO'],AOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,COc1cc(OC)c(OC)cc1/C=C/[CH3:1],CYP2E1,0.8357629179954529,0.0,0.97,Hydroxylation,H,['COc1cc(OC)c(OC)cc1/C=C/CO'],AOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,COc1cc(OC)c(/[CH:2]=[CH:2]/C)cc1OC,CYP2D6,0.8963820695877075,1.0,0.66,Epoxidation,L,['COc1cc(OC)c(C2OC2C)cc1OC'],BOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,COc1cc(OC)c(/[CH:2]=[CH:2]/C)cc1OC,CYP1A2,0.8395579814910888,1.0,0.63,Epoxidation,L,['COc1cc(OC)c(C2OC2C)cc1OC'],BOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,COc1cc(OC)c(/[CH:2]=[CH:2]/C)cc1OC,CYP2E1,0.8357629179954529,1.0,0.73,Epoxidation,L,['COc1cc(OC)c(C2OC2C)cc1OC'],BOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,C/C=C/c1cc([O:2][CH3:2])c(OC)cc1OC,CYP2D6,0.8963820695877075,6.0,0.99,Dealkylation,H,"['C=O', 'C/C=C/c1cc(O)c(OC)cc1OC']",BOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,C/C=C/c1cc([O:2][CH3:2])c(OC)cc1OC,CYP1A2,0.8395579814910888,6.0,0.99,Dealkylation,H,"['C=O', 'C/C=C/c1cc(O)c(OC)cc1OC']",BOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,C/C=C/c1cc([O:2][CH3:2])c(OC)cc1OC,CYP2E1,0.8357629179954529,6.0,0.98,Dealkylation,H,"['C=O', 'C/C=C/c1cc(O)c(OC)cc1OC']",BOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,C/C=C/c1cc(OC)c([O:2][CH3:2])cc1OC,CYP2D6,0.8963820695877075,9.0,0.99,Dealkylation,H,"['C/C=C/c1cc(OC)c(O)cc1OC', 'C=O']",BOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,C/C=C/c1cc(OC)c([O:2][CH3:2])cc1OC,CYP1A2,0.8395579814910888,9.0,0.99,Dealkylation,H,"['C/C=C/c1cc(OC)c(O)cc1OC', 'C=O']",BOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,C/C=C/c1cc(OC)c([O:2][CH3:2])cc1OC,CYP2E1,0.8357629179954529,9.0,0.98,Dealkylation,H,"['C/C=C/c1cc(OC)c(O)cc1OC', 'C=O']",BOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,C/C=C/c1cc(OC)c(OC)cc1[O:2][CH3:2],CYP2D6,0.8963820695877075,13.0,0.99,Dealkylation,H,"['C=O', 'C/C=C/c1cc(OC)c(OC)cc1O']",BOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,C/C=C/c1cc(OC)c(OC)cc1[O:2][CH3:2],CYP1A2,0.8395579814910888,13.0,0.99,Dealkylation,H,"['C=O', 'C/C=C/c1cc(OC)c(OC)cc1O']",BOM
+C/C=C/c1cc(OC)c(OC)cc1OC,38,0,C/C=C/c1cc(OC)c(OC)cc1OC,C/C=C/c1cc(OC)c(OC)cc1[O:2][CH3:2],CYP2E1,0.8357629179954529,13.0,0.98,Dealkylation,H,"['C=O', 'C/C=C/c1cc(OC)c(OC)cc1O']",BOM

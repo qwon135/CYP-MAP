@@ -1,0 +1,4 @@
+raw_Smiles,SMI_Idx,Status,std_Smiles,Smiles_marked,Enzyme,Enzyme_score,SOMs,Scores,RXN_Type,Uncertainty,Products,SOM_Type
+[C:1]([CH3:2])([CH:3]=[CH2:5])=[CH2:4],86,0,[C:1]([CH3:2])([CH:3]=[CH2:5])=[CH2:4],[CH3:1][C:1]([CH:3]=[CH2:5])=[CH2:4],CYP2E1,0.915365481376648,1.0,0.75,Hydroxylation,L,['C=CC(=C)CO'],AOM
+[C:1]([CH3:2])([CH:3]=[CH2:5])=[CH2:4],86,0,[C:1]([CH3:2])([CH:3]=[CH2:5])=[CH2:4],[C:1]([CH3:2])([CH:2]=[CH2:2])=[CH2:4],CYP2E1,0.915365481376648,2.0,0.89,Epoxidation,H,['C=C(C)C1CO1'],BOM
+[C:1]([CH3:2])([CH:3]=[CH2:5])=[CH2:4],86,0,[C:1]([CH3:2])([CH:3]=[CH2:5])=[CH2:4],[CH2:2]=[C:2]([CH3:2])[CH:3]=[CH2:5],CYP2E1,0.915365481376648,3.0,0.89,Epoxidation,H,['C=CC1(C)CO1'],BOM

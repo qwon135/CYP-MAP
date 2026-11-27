@@ -1,0 +1,9 @@
+raw_Smiles,SMI_Idx,Status,std_Smiles,Smiles_marked,Enzyme,Enzyme_score,SOMs,Scores,RXN_Type,Uncertainty,Products,SOM_Type
+[Cl:1][CH2:3][CH2:4][Cl:2],100,0,[Cl:1][CH2:3][CH2:4][Cl:2],[Cl:1][CH2:1][CH2:4][Cl:2],CYP2E1,0.960253643989563,1.0,0.68,Hydroxylation,L,['OC(Cl)CCl'],AOM
+[Cl:1][CH2:3][CH2:4][Cl:2],100,0,[Cl:1][CH2:3][CH2:4][Cl:2],[Cl:1][CH2:1][CH2:4][Cl:2],CYP2B6,0.6345885619521141,1.0,0.7,Hydroxylation,L,['OC(Cl)CCl'],AOM
+[Cl:1][CH2:3][CH2:4][Cl:2],100,0,[Cl:1][CH2:3][CH2:4][Cl:2],[Cl:1][CH2:1][CH2:4][Cl:2],CYP2A6,0.568570563942194,1.0,0.69,Hydroxylation,L,['OC(Cl)CCl'],AOM
+[Cl:1][CH2:3][CH2:4][Cl:2],100,0,[Cl:1][CH2:3][CH2:4][Cl:2],[Cl:1][CH2:3][CH2:1][Cl:2],CYP2E1,0.960253643989563,2.0,0.68,Hydroxylation,L,['OC(Cl)CCl'],AOM
+[Cl:1][CH2:3][CH2:4][Cl:2],100,0,[Cl:1][CH2:3][CH2:4][Cl:2],[Cl:1][CH2:3][CH2:1][Cl:2],CYP2B6,0.6345885619521141,2.0,0.7,Hydroxylation,L,['OC(Cl)CCl'],AOM
+[Cl:1][CH2:3][CH2:4][Cl:2],100,0,[Cl:1][CH2:3][CH2:4][Cl:2],[Cl:1][CH2:3][CH2:1][Cl:2],CYP2A6,0.568570563942194,2.0,0.69,Hydroxylation,L,['OC(Cl)CCl'],AOM
+[Cl:1][CH2:3][CH2:4][Cl:2],100,0,[Cl:1][CH2:3][CH2:4][Cl:2],[Cl:2][CH2:2][CH2:4][Cl:2],CYP2E1,0.960253643989563,0.0,0.58,Dehalogenation,L,['OCCCl'],BOM
+[Cl:1][CH2:3][CH2:4][Cl:2],100,0,[Cl:1][CH2:3][CH2:4][Cl:2],[Cl:1][CH2:3][CH2:2][Cl:2],CYP2E1,0.960253643989563,2.0,0.58,Dehalogenation,L,['OCCCl'],BOM

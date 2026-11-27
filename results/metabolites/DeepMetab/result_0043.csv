@@ -1,0 +1,12 @@
+raw_Smiles,SMI_Idx,Status,std_Smiles,Smiles_marked,Enzyme,Enzyme_score,SOMs,Scores,RXN_Type,Uncertainty,Products,SOM_Type
+N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,43,0,N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,N#Cc1cc(F)c([C@H]2CCc3cncn32)c[cH:1]1,CYP3A4,0.8968278408050537,3.0,0.82,Hydroxylation,H,['N#Cc1cc(F)c([C@H]2CCc3cncn32)cc1O'],AOM
+N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,43,0,N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,N#Cc1cc(F)c([C@H]2CCc3cncn32)c[cH:1]1,CYP2D6,0.8616950869560241,3.0,0.82,Hydroxylation,H,['N#Cc1cc(F)c([C@H]2CCc3cncn32)cc1O'],AOM
+N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,43,0,N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,N#Cc1cc(F)c([C@H]2CCc3cncn32)c[cH:1]1,CYP2C19,0.8572189569473266,3.0,0.81,Hydroxylation,H,['N#Cc1cc(F)c([C@H]2CCc3cncn32)cc1O'],AOM
+N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,43,0,N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,N#Cc1ccc([C@H:1]2CCc3cncn32)c(F)c1,CYP3A4,0.8968278408050537,6.0,0.59,Hydroxylation,H,['N#Cc1ccc([C@]2(O)CCc3cncn32)c(F)c1'],AOM
+N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,43,0,N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,N#Cc1ccc([C@H:1]2CCc3cncn32)c(F)c1,CYP2D6,0.8616950869560241,6.0,0.51,Hydroxylation,H,['N#Cc1ccc([C@]2(O)CCc3cncn32)c(F)c1'],AOM
+N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,43,0,N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,N#Cc1ccc([C@H:1]2CCc3cncn32)c(F)c1,CYP2A6,0.7494388163089752,6.0,0.58,Hydroxylation,L,['N#Cc1ccc([C@]2(O)CCc3cncn32)c(F)c1'],AOM
+N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,43,0,N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,N#Cc1ccc([C@H]2C[CH2:1]c3cncn32)c(F)c1,CYP3A4,0.8968278408050537,8.0,0.94,Hydroxylation,H,['N#Cc1ccc([C@H]2CC(O)c3cncn32)c(F)c1'],AOM
+N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,43,0,N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,N#Cc1ccc([C@H]2C[CH2:1]c3cncn32)c(F)c1,CYP2D6,0.8616950869560241,8.0,0.93,Hydroxylation,H,['N#Cc1ccc([C@H]2CC(O)c3cncn32)c(F)c1'],AOM
+N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,43,0,N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,N#Cc1ccc([C@H]2C[CH2:1]c3cncn32)c(F)c1,CYP2C19,0.8572189569473266,8.0,0.95,Hydroxylation,H,['N#Cc1ccc([C@H]2CC(O)c3cncn32)c(F)c1'],AOM
+N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,43,0,N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,N#Cc1ccc([C@H]2CCc3c[n:1]cn32)c(F)c1,CYP3A4,0.8968278408050537,11.0,0.55,N-Oxidation,H,['N#Cc1ccc([C@H]2CCc3c[n+]([O-])cn32)c(F)c1'],AOM
+N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,43,0,N#Cc1ccc([C@H]2CCc3cncn32)c(F)c1,N#Cc1ccc([C@H]2CCc3c[n:1]cn32)c(F)c1,CYP2D6,0.8616950869560241,11.0,0.54,N-Oxidation,H,['N#Cc1ccc([C@H]2CCc3c[n+]([O-])cn32)c(F)c1'],AOM

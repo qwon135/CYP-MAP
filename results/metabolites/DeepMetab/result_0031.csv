@@ -1,0 +1,4 @@
+raw_Smiles,SMI_Idx,Status,std_Smiles,Smiles_marked,Enzyme,Enzyme_score,SOMs,Scores,RXN_Type,Uncertainty,Products,SOM_Type
+O=C(c1ccccc1)c1ccc2n1CC[C@H]2C(=O)O,31,0,O=C(c1ccccc1)c1ccc2n1CC[C@H]2C(=O)O,O=C(c1cc[cH:1]cc1)c1ccc2n1CC[C@H]2C(=O)O,CYP2C9,0.9548814058303832,5.0,0.89,Hydroxylation,H,['O=C(c1ccc(O)cc1)c1ccc2n1CC[C@H]2C(=O)O'],AOM
+O=C(c1ccccc1)c1ccc2n1CC[C@H]2C(=O)O,31,0,O=C(c1ccccc1)c1ccc2n1CC[C@H]2C(=O)O,O=C(c1cc[cH:1]cc1)c1ccc2n1CC[C@H]2C(=O)O,CYP2C8,0.8995697855949402,5.0,0.89,Hydroxylation,H,['O=C(c1ccc(O)cc1)c1ccc2n1CC[C@H]2C(=O)O'],AOM
+O=C(c1ccccc1)c1ccc2n1CC[C@H]2C(=O)O,31,0,O=C(c1ccccc1)c1ccc2n1CC[C@H]2C(=O)O,O=C(c1cc[cH:1]cc1)c1ccc2n1CC[C@H]2C(=O)O,CYP3A4,0.7934844493865967,5.0,0.85,Hydroxylation,H,['O=C(c1ccc(O)cc1)c1ccc2n1CC[C@H]2C(=O)O'],AOM

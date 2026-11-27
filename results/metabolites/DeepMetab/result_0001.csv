@@ -1,0 +1,19 @@
+raw_Smiles,SMI_Idx,Status,std_Smiles,Smiles_marked,Enzyme,Enzyme_score,SOMs,Scores,RXN_Type,Uncertainty,Products,SOM_Type
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(OC[C@H]2CNC(=O)O2)cc([CH3:1])c1,CYP2D6,0.7030076026916504,0.0,0.97,Hydroxylation,H,['Cc1cc(CO)cc(OC[C@H]2CNC(=O)O2)c1'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(OC[C@H]2CNC(=O)O2)cc([CH3:1])c1,CYP3A4,0.6824545204639435,0.0,0.96,Hydroxylation,L,['Cc1cc(CO)cc(OC[C@H]2CNC(=O)O2)c1'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(OC[C@H]2CNC(=O)O2)cc([CH3:1])c1,CYP1A2,0.534112960100174,0.0,0.96,Hydroxylation,L,['Cc1cc(CO)cc(OC[C@H]2CNC(=O)O2)c1'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(OC[C@H]2CNC(=O)O2)cc(C)[cH:1]1,CYP2D6,0.7030076026916504,2.0,0.9,Hydroxylation,H,['Cc1cc(OC[C@H]2CNC(=O)O2)cc(C)c1O'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(OC[C@H]2CNC(=O)O2)cc(C)[cH:1]1,CYP3A4,0.6824545204639435,2.0,0.94,Hydroxylation,L,['Cc1cc(OC[C@H]2CNC(=O)O2)cc(C)c1O'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(OC[C@H]2CNC(=O)O2)cc(C)[cH:1]1,CYP1A2,0.534112960100174,2.0,0.93,Hydroxylation,L,['Cc1cc(OC[C@H]2CNC(=O)O2)cc(C)c1O'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(OC[C@H]2CNC(=O)O2)cc([CH3:1])c1,CYP2D6,0.7030076026916504,4.0,0.97,Hydroxylation,H,['Cc1cc(CO)cc(OC[C@H]2CNC(=O)O2)c1'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(OC[C@H]2CNC(=O)O2)cc([CH3:1])c1,CYP3A4,0.6824545204639435,4.0,0.96,Hydroxylation,L,['Cc1cc(CO)cc(OC[C@H]2CNC(=O)O2)c1'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(OC[C@H]2CNC(=O)O2)cc([CH3:1])c1,CYP1A2,0.534112960100174,4.0,0.96,Hydroxylation,L,['Cc1cc(CO)cc(OC[C@H]2CNC(=O)O2)c1'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(C)cc(OC[C@@H]2OC(=O)N[CH2:1]2)c1,CYP2D6,0.7030076026916504,10.0,0.86,Hydroxylation,H,['Cc1cc(C)cc(OC[C@@H]2OC(=O)NC2O)c1'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(C)cc(OC[C@@H]2OC(=O)N[CH2:1]2)c1,CYP3A4,0.6824545204639435,10.0,0.92,Hydroxylation,L,['Cc1cc(C)cc(OC[C@@H]2OC(=O)NC2O)c1'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(C)cc(OC[C@@H]2OC(=O)N[CH2:1]2)c1,CYP1A2,0.534112960100174,10.0,0.89,Hydroxylation,L,['Cc1cc(C)cc(OC[C@@H]2OC(=O)NC2O)c1'],AOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(C)cc([O:2][CH2:2][C@H]2CNC(=O)O2)c1,CYP2D6,0.7030076026916504,7.0,0.87,Dealkylation,H,"['O=C[C@H]1CNC(=O)O1', 'Cc1cc(C)cc(O)c1']",BOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(C)cc([O:2][CH2:2][C@H]2CNC(=O)O2)c1,CYP3A4,0.6824545204639435,7.0,0.9,Dealkylation,L,"['O=C[C@H]1CNC(=O)O1', 'Cc1cc(C)cc(O)c1']",BOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(C)cc([O:2][CH2:2][C@H]2CNC(=O)O2)c1,CYP1A2,0.534112960100174,7.0,0.86,Dealkylation,L,"['O=C[C@H]1CNC(=O)O1', 'Cc1cc(C)cc(O)c1']",BOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(C)cc(OC[C@H]2C[NH:2][C:2](=O)O2)c1,CYP2D6,0.7030076026916504,11.0,0.68,Hydrolysis,L,['Cc1cc(C)cc(OC[C@@H](CN)OC(=O)O)c1'],BOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(C)cc(OC[C@H]2C[NH:2][C:2](=O)O2)c1,CYP3A4,0.6824545204639435,11.0,0.7,Hydrolysis,L,['Cc1cc(C)cc(OC[C@@H](CN)OC(=O)O)c1'],BOM
+Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,1,0,Cc1cc(C)cc(OC[C@H]2CNC(=O)O2)c1,Cc1cc(C)cc(OC[C@H]2C[NH:2][C:2](=O)O2)c1,CYP1A2,0.534112960100174,11.0,0.56,Hydrolysis,L,['Cc1cc(C)cc(OC[C@@H](CN)OC(=O)O)c1'],BOM

@@ -1,0 +1,3 @@
+raw_Smiles,SMI_Idx,Status,std_Smiles,Smiles_marked,Enzyme,Enzyme_score,SOMs,Scores,RXN_Type,Uncertainty,Products,SOM_Type
+CO/N=C(\C(=O)N[C@@H]1C(=O)N2C(C(=O)O)=CCS[C@H]12)c1csc(N)n1,22,0,CO/N=C(\C(=O)N[C@@H]1C(=O)N2C(C(=O)O)=CCS[C@H]12)c1csc(N)n1,CO/N=C(\C(=O)N[C@@H]1C(=O)N2C(C(=O)O)=C[CH2:1]S[C@H]12)c1csc(N)n1,CYP3A4,0.9367429971694946,16.0,0.89,Hydroxylation,H,['CO/N=C(\\C(=O)N[C@@H]1C(=O)N2C(C(=O)O)=CC(O)S[C@H]12)c1csc(N)n1'],AOM
+CO/N=C(\C(=O)N[C@@H]1C(=O)N2C(C(=O)O)=CCS[C@H]12)c1csc(N)n1,22,0,CO/N=C(\C(=O)N[C@@H]1C(=O)N2C(C(=O)O)=CCS[C@H]12)c1csc(N)n1,Nc1nc(/C(=N/[O:2][CH3:2])C(=O)N[C@@H]2C(=O)N3C(C(=O)O)=CCS[C@H]23)cs1,CYP3A4,0.9367429971694946,0.0,0.95,Dealkylation,H,"['C=O', 'Nc1nc(/C(=N/O)C(=O)N[C@@H]2C(=O)N3C(C(=O)O)=CCS[C@H]23)cs1']",BOM
